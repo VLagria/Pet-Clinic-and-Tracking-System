@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/vethome', function () {
+    return view('vethome');
+});
+Route::get('/vetpatient',function() {
+    return view('vetpatient');
+});
+Route::get('/viewvetpatient',function() {
+    return view('viewvetpatient');
+});
