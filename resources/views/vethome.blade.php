@@ -186,12 +186,12 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
        
-          <li class="nav-item menu-open">
+          <li class="nav-nav-treeview">
             <a href="#" class="nav-link active">
               
               <p>
                 Main
-                <i class="right fas fa-angle-left"></i>
+                <!-- <i class="right fas fa-angle-left"></i> -->
               </p>
             </a>
             <!-- <ul class="nav nav-treeview">
@@ -213,6 +213,9 @@
               </li>
             </ul>
           </li>
+          <br>
+          <br>
+          <br>
           <br>
           <br>
           <br>

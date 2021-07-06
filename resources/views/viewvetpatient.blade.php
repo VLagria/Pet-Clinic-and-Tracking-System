@@ -186,21 +186,21 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
        
-          <li class="nav-item menu-open">
+        <li class="nav-nav-treeview">
             <a href="vethome" class="nav-link ">
               
               <p>
                 Main
-                <i class="right fas fa-angle-left"></i>
+                <!-- <i class="right fas fa-angle-left"></i> -->
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" class="nav-link">
                
                   <p>Appointment</p>
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a href="vetpatient" class="nav-link active">
                   <p>Patients</p>
@@ -336,9 +336,9 @@
     
     </td>
     <td>
-    <a class="btn btn-primary" href="#" role="button">Update </a>
-<button class="btn btn-primary" type="submit">Delete </button>
-<button class="btn btn-primary" type="submit">View  </button>
+    <a class="btn btn-info" href="#" role="button">Update </a>
+    <button type="button" class="btn btn-danger">Delete </button>
+<button class="btn btn-dark" type="submit">View  </button>
     </td>
 
 
