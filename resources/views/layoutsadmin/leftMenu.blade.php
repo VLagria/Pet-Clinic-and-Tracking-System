@@ -85,14 +85,16 @@
                    Clinic
                   </p>
                 </a>
+
               </li>
         
              
-          </li>
+          </li>      
+
 
           
           
-        </ul>
+        
       </nav>
       <!-- /.sidebar-menu -->
     </div>
