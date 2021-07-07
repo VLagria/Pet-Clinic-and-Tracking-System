@@ -9,6 +9,7 @@
   <link rel="stylesheet" href= "{{ asset('vendors/plugins/fontawesome-free/css/all.min.css') }}">
   <link rel="stylesheet" href= "{{ asset('vendors/dist/css/adminlte.min.css') }}">
 </head>
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
@@ -280,23 +281,25 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <table class="table table-success table-striped table-hover">
+    <table  style="table-layout: fixed;" class="table table-success table-striped table-hover">
   <thead>
     <tr>
-      <th scope="col">Pet ID</th>
-      <th scope="col">Pet Name</th>
-      <th scope="col">Pet Gender</th>
-      <th scope="col">Pet Birthday</th>
-      <th scope="col">Pet Notes</th>
-      <th scope="col">Pet Blood Type</th>
-      <th scope="col">Pet Profile</th>
-      <th scope="col">Pet Registered Date</th>
-      <th scope="col">Pet Type ID</th>
-      <th scope="col">Pet Breed ID</th>
-      <th scope="col">Customer ID</th>
-      <th scope="col">Clinic ID</th>
-      <th scope="col">Status</th>
-      <th scope="col">Action</th>
+      <th style="width:100px; scope="col">Pet ID</th>
+      <th style="width:120px;scope="col">Pet Name</th>
+      <th style="width:130px;scope="col">Pet Gender</th>
+      <th style="width:150px;scope="col">Pet Birthday</th>
+      <th style="width:130px;scope="col">Pet Notes</th>
+      <th style="width:180px;scope="col">Pet Blood Type</th>
+      <th style="width:130px;scope="col">Pet Profile</th>
+      <th style="width:200px;scope="col">Pet Registered Date</th>
+      <th style="width:180px;scope="col">Pet Type ID</th>
+      <th style="width:180px;scope="col">Pet Breed ID</th>
+      <th style="width:180px;scope="col">Customer ID</th>
+      <th style="width:150px;scope="col">Clinic ID</th>
+      <th style="width:100px;scope="col">Status</th>
+      <th style="width:100px;scope="col">Action</th>
+
+
      
     </tr>
   </thead>
