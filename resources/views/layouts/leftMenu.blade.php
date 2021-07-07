@@ -33,6 +33,20 @@
         </div>
       </div>
 
+       <!-- Sidebar Menu -->
+       <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+               <li class="nav-item">
+                <a href="vet/CRUDvet.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                   Dashboard
+                  </p>
+                </a>
+              </li>
+
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">

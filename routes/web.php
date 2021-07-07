@@ -13,8 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('admin/clinic/CRUDclinic', function () {
+    return view('admin/clinic/CRUDclinic');
+});
+
+Route::get('admin/customer/CRUDcustomers', function () {
+    return view('admin/customer/CRUDcustomers');
+});
+
+Route::get('admin/pets/CRUDpet', function () {
+    return view('admin/pets/CRUDpet');
+});
+
+Route::get('admin/vet/CRUDvet', function () {
+    return view('admin/vet/CRUDvet');
 });
 
 Route::get('veterinary/vethome', function () {
