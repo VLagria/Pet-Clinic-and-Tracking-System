@@ -280,7 +280,7 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <table class="table table-success table-striped table-hover">
+    <table class="table table-striped table-hover">
   <thead>
     <tr>
       <th scope="col">Clinic ID</th>
@@ -289,12 +289,8 @@
       <th scope="col">Clinic Mobile</th>
       <th scope="col">Clinic Email</th>
       <th scope="col">Clinic Telephone Number</th>
-      <th scope="col">Clinic Block</th>
-      <th scope="col">Clinic Street</th>
-      <th scope="col">Clinic Barangay</th>
-      <th scope="col">Clinic City</th>
-      <th scope="col">Clinic Zip</th>
-      <th scope="col">Admin Clinic ID</th>
+      <th scope="col">Clinic Address</th>
+      <th scope="col">Admin Clinic ID </th>
       <th scope="col">Status</th>
       <!-- <th scope="col">Action</th> -->
      
@@ -328,18 +324,7 @@
     <td>
     
     </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
+   
     <!-- <td>
     <a class="btn btn-info" href="#" role="button">Update </a>
     <button type="button" class="btn btn-danger">Delete </button>

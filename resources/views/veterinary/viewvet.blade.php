@@ -280,26 +280,19 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <table class="table table-success table-striped table-hover">
+    <table class="table table-striped table-hover">
   <thead>
     <tr>
       <th scope="col">Veterinary ID</th>
-      <th scope="col">Vet FirstName</th>
-      <th scope="col">Vet LastName</th>
-      <th scope="col">Vet Middle Name</th>
+      <th scope="col">Vet Name</th>
       <th scope="col">Vet Mobile</th>
       <th scope="col">Vet Telephone</th>
       <th scope="col">Vet Birthday</th>
       <th scope="col">Vet Profile </th>
-      <th scope="col">Vet Block</th>
-      <th scope="col">Vet Street</th>
-      <th scope="col">Vet Subdivision</th>
-      <th scope="col">Vet Barangay</th>
-      <th scope="col">Vet City</th>
-      <th scope="col">Vet Zip</th>
-      <th scope="col">Vet Vet Date Added</th>
-      <th scope="col">Clinic ID</th>
-      <th scope="col">User ID</th>
+      <th scope="col">Vet Address</th>
+      <th scope="col">Vet Date Added</th>
+      <th scope="col">Clinic </th>
+      <th scope="col">User </th>
       <th scope="col">Status</th>
      
      
@@ -339,23 +332,10 @@
     <td>
     
     </td>
-    <td>
-    </td>
-    <td>
-    </td>
-    <td>
-    </td>
-    <td>
-    </td>
-    <td>
-    </td>
-    <td>
     
     
-    </td>
-    <td>
     
-    </td>
+ 
    
 
   </tbody>

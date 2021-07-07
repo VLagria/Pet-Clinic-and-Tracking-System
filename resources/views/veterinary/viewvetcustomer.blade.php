@@ -280,12 +280,12 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <table class="table table-success table-striped table-hover">
+    <table class="table  table-striped table-hover">
   <thead>
     <tr>
-      <th scope="col" style="width:5%">Customer ID</th>
-      <th scope="col"style="width:10%">Customer Name</th>
-      <th scope="col"style="width:10%">Customer Mobile</th>
+      <th scope="col" style="width:5%">#</th>
+      <th scope="col"style="width:5%">Customer Name</th>
+      <th scope="col"style="width:5%">Customer Mobile</th>
       <th scope="col"style="width:5%">Customer Telephone</th>
       <th scope="col"style="width:10%">Customer Gender</th>
       <th scope="col"style="width:5%">Customer Birthday</th>
@@ -294,61 +294,117 @@
       <th scope="col"style="width:10%">Customer Zip</th>
       <th scope="col"style="width:5%">User ID</th>
       <th scope="col"style="width:10%">Status</th>
-      <th scope="col"style="width:60%">Action</th>
+      <th scope="col"style="width:65%">Action</th>
     </tr>
   </thead>
   <tbody>
   <td>
-    
+    1
     </td>
     <td>
-    
+    Shayna Goles
     </td>
     <td>
-    
+    1234567
     </td>
     <td>
-    
+    2225584
     </td>
     <td>
-    
+    Female
     </td>
     <td>
-    
+    05-05-1999
     </td>
     <td>
-    
+    profilke
     </td>
     <td>
-    
+    Calinan Davao City
     </td>
     <td>
-    
+  2000
     </td>
     <td>
-    
+   daw
     </td>
     <td>
-    
+    active
     </td>
+  
+
     <td class="project-actions text-right">
-                          <a class="btn btn-primary btn-sm-1" href="#"style="margin-right:2%"style="width=5%">
+                          <a class="btn btn-primary btn-sm-1" href="#"style="margin-right:2%"style="width=2%">
                               <i class="fas fa-folder">
                               </i>
                               View
                           </a>
-                          <a class="btn btn-info btn-sm-1" href="#"style="margin-right:2%"style="width=5%">	
+                          <a class="btn btn-info btn-sm-1" href="#"style="margin-right:2%"style="width=2%">	
                               <i class="fas fa-pencil-alt">
                               </i>
                               Edit
                           </a>
-                          <a class="btn btn-danger btn-sm-1" href="#"style="margin-right:2%"style="width=5%">
+                          <a class="btn btn-danger btn-sm-1" href="#"style="margin-right:2%"style="width=2%">
                               <i class="fas fa-trash">
                               </i>
                               Delete
                           </a>
                       </td>
-  </tbody>
+ </tbody>
+ <tbody>
+  <td>
+    2
+    </td>
+    <td>
+    Shayna Goles
+    </td>
+    <td>
+    1234567
+    </td>
+    <td>
+    2225584
+    </td>
+    <td>
+    Female
+    </td>
+    <td>
+    05-05-1999
+    </td>
+    <td>
+    profilke
+    </td>
+    <td>
+    Calinan Davao City
+    </td>
+    <td>
+  2000
+    </td>
+    <td>
+   daw
+    </td>
+    <td>
+    active
+    </td>
+  
+
+    <td class="project-actions text-right">
+                          <a class="btn btn-primary btn-sm-1" href="#"style="margin-right:2%"style="width=2%">
+                              <i class="fas fa-folder">
+                              </i>
+                              View
+                          </a>
+                          <a class="btn btn-info btn-sm-1" href="#"style="margin-right:2%"style="width=2%">	
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Edit
+                          </a>
+                          <a class="btn btn-danger btn-sm-1" href="#"style="margin-right:2%"style="width=2%">
+                              <i class="fas fa-trash">
+                              </i>
+                              Delete
+                          </a>
+                      </td>
+ </tbody>
 </table>
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">

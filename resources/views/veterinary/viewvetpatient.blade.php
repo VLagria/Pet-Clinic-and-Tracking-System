@@ -280,7 +280,7 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <table class="table table-success table-striped table-hover">
+    <table class="table  table-striped table-hover">
   <thead>
     <tr>
       <th scope="col">Pet ID</th>
@@ -291,10 +291,10 @@
       <th scope="col">Pet Blood Type</th>
       <th scope="col">Pet Profile</th>
       <th scope="col">Pet Registered Date</th>
-      <th scope="col">Pet Type ID</th>
-      <th scope="col">Pet Breed ID</th>
-      <th scope="col">Customer ID</th>
-      <th scope="col">Clinic ID</th>
+      <th scope="col">Pet Type </th>
+      <th scope="col">Pet Breed </th>
+      <th scope="col">Customer </th>
+      <th scope="col">Clinic </th>
       <th scope="col">Status</th>
       <th scope="col">Action</th>
      
@@ -352,7 +352,7 @@
 
 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal">
    Register Pet
-    <i class="fas fa-trash">
+    <i class="far fa-registered">
     </i>
   </button>
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
