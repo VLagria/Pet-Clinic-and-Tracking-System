@@ -187,7 +187,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
        
           <li class="nav-nav-treeview">
-            <a href="vethome" class="nav-link active ">
+            <a href="vethome" class="nav-link  ">
               
               <p>
                 Main
@@ -202,7 +202,7 @@
                 </a>
               </li> -->
               <li class="nav-item">
-                <a href="vetpatient" class="nav-link">
+                <a href="vetpatient" class="nav-link active">
                   <p>Patients</p>
                 </a>
               </li>
@@ -262,7 +262,7 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
-        <div class="row mb-2">
+        <div class="row mb-3">
           <div class="col-sm-6">
             <h1 class="m-0">Pet Registration</h1>
           </div><!-- /.col -->
@@ -278,24 +278,30 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <form class="row g-1">
-  <div class="col-md-3">
+    <form class="row g-3">
+  <div class="col-md-3 margin-right">
     <label for="inputpetname" class="form-label">Pet Name</label>
     <input type="name" class="form-control" id="inputpetname">
   </div>
+  <br>
+  <br>
   <div class="col-md-3">
     <label for="inputgender" class="form-label">Pet Gender</label>
     <br>
-    <select id="inputState" class="form-select">
+    <select id="inputgender" class="form-select">
       <option selected>Choose...</option>
       <option>Male</option>
       <option>FeMale</option>
     </select>
   </div>
+  <br>
+  <br>
   <div class="col-12">
     <label for="inputbday" class="form-label">Pet Birthday</label>
     <input type="date" id="birthday" name="birthday">
   </div>
+  <br>
+  <br>
   <div class="col-12">
     <label for="inputpetnotes" class="form-label">Pet Notes</label>
     <br>
@@ -303,54 +309,70 @@
 
     </textarea>
   </div>
+  <br>
+  <br>
   <div class="col-md-2">
     <label for="inputBloodtype" class="form-label">Pet BloodType</label>
     <input type="text" class="form-control" id="inputBloodtype">
   </div>
+  <br>
+  <br>
   <div class="col-12">
-    <label for="inputpetrf" class="form-label">Pet Registered Date</label>
+    <label for="inputpetrd" class="form-label">Pet Registered Date</label>
     <input type="date" id="date" name="date">
   </div>
-  <div class="col-md-1">
+  <br>
+  <br>
+  <div class="col-md-2">
     <label for="inputpettypeid" class="form-label ">Pet Type </label>
     <input type="text" class="form-control" id="inputpettypeid" hidden>
-    <select id="inputState" class="form-select">
+    <select id="inputpettypeid" class="form-select">
       <option selected>Choose Pet Type </option>
       <option></option>
     </select>
   </div>
-  <div class="col-md-1">
-    <label for="inputpettypeid" class="form-label ">Pet Breed</label>
+  <br>
+  <br>
+  <div class="col-md-2">
+    <label for="inputpetbreed" class="form-label ">Pet Breed</label>
     <input type="text" class="form-control" id="inputpettypeid" hidden>
-    <select id="inputState" class="form-select">
+    <select id="inputpetbreed" class="form-select">
       <option selected>Choose Pet Breed </option>
       <option></option>
     </select>
   </div>
-  <div class="col-md-1">
-    <label for="inputpettypeid" class="form-label ">Customer </label>
+  <br>
+  <br>
+  <div class="col-md-2">
+    <label for="inputpetcustomer" class="form-label ">Customer </label>
     <input type="text" class="form-control" id="inputpettypeid" hidden>
-    <select id="inputState" class="form-select">
+    <select id="inputpetcustomer" class="form-select">
       <option selected>Choose Customer </option>
       <option></option>
     </select>
   </div>
-  <div class="col-md-1">
-    <label for="inputpettypeid" class="form-label "> Clinic </label>
+  <br>
+  <br>
+  <div class="col-md-2">
+    <label for="inputpetclinic" class="form-label "> Clinic </label>
     <input type="text" class="form-control" id="inputpettypeid" hidden>
-    <select id="inputState" class="form-select">
+    <select id="inputpetclinic" class="form-select">
       <option selected>Choose Clinic </option>
       <option></option>
     </select>
   </div>
-  <div class="col-md-1">
-    <label for="inputpettypeid" class="form-label ">Status </label>
-    <select id="inputState" class="form-select">
+  <br>
+  <br>
+  <div class="col-md-2">
+    <label for="inputpetstatus" class="form-label ">Status </label>
+    <select id="inputpetstatus" class="form-select">
       <option selected>is Pet Active?</option>
       <option>Yes</option>
       <option>No</option>
     </select>
   </div>
+  <br>
+  <br>
   <div class="col-md-2">
     <label for="inputdp" class="form-label">Pet Profile Picture</label>
     <form action="/action_page.php">
@@ -366,6 +388,8 @@
       </label>
     </div>
   </div>
+  <br>
+  <br>
   <div class="col-12">
     <button type="submit" class="btn btn-success">Register Pet</button>
   </div>

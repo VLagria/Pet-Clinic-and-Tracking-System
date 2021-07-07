@@ -291,7 +291,7 @@
       <th scope="col">Clinic Zip</th>
       <th scope="col">Admin Clinic ID</th>
       <th scope="col">Status</th>
-      <th scope="col">Action</th>
+      <!-- <th scope="col">Action</th> -->
      
     </tr>
   </thead>
@@ -335,11 +335,11 @@
     <td>
     
     </td>
-    <td>
+    <!-- <td>
     <a class="btn btn-info" href="#" role="button">Update </a>
     <button type="button" class="btn btn-danger">Delete </button>
 <button class="btn btn-dark" type="submit">View  </button>
-    </td>
+    </td> -->
 
 
   </tbody>

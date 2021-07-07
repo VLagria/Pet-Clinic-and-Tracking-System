@@ -279,19 +279,24 @@
   <thead>
     <tr>
       <th scope="col">Veterinary ID</th>
-      <th scope="col">Clinic Name</th>
-      <th scope="col">Owner name</th>
-      <th scope="col">Clinic Mobile</th>
-      <th scope="col">Clinic Email</th>
-      <th scope="col">Clinic Telephone Number</th>
-      <th scope="col">Clinic Block</th>
-      <th scope="col">Clinic Street</th>
-      <th scope="col">Clinic Barangay</th>
-      <th scope="col">Clinic City</th>
-      <th scope="col">Clinic Zip</th>
-      <th scope="col">Admin Clinic ID</th>
+      <th scope="col">Vet FirstName</th>
+      <th scope="col">Vet LastName</th>
+      <th scope="col">Vet Middle Name</th>
+      <th scope="col">Vet Mobile</th>
+      <th scope="col">Vet Telephone</th>
+      <th scope="col">Vet Birthday</th>
+      <th scope="col">Vet Profile </th>
+      <th scope="col">Vet Block</th>
+      <th scope="col">Vet Street</th>
+      <th scope="col">Vet Subdivision</th>
+      <th scope="col">Vet Barangay</th>
+      <th scope="col">Vet City</th>
+      <th scope="col">Vet Zip</th>
+      <th scope="col">Vet Vet Date Added</th>
+      <th scope="col">Clinic ID</th>
+      <th scope="col">User ID</th>
       <th scope="col">Status</th>
-      <th scope="col">Action</th>
+     
      
     </tr>
   </thead>
@@ -330,17 +335,23 @@
     
     </td>
     <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    
     
     </td>
     <td>
     
     </td>
-    <td>
-    <a class="btn btn-info" href="#" role="button">Update </a>
-    <button type="button" class="btn btn-danger">Delete </button>
-<button class="btn btn-dark" type="submit">View  </button>
-    </td>
-
+   
 
   </tbody>
 </table>
