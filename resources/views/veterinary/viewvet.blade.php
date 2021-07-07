@@ -9,6 +9,19 @@
   <link rel="stylesheet" href= "{{ asset('vendors/plugins/fontawesome-free/css/all.min.css') }}">
   <link rel="stylesheet" href= "{{ asset('vendors/dist/css/adminlte.min.css') }}">
 </head>
+<style>
+  .navbar {
+    
+  overflow: hidden;
+  background-color: rgb(111, 196, 156);
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 83%; /* Full width */
+   white-space: nowrap;
+  
+}
+
+</style>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
@@ -266,9 +279,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
+            <br><br><br>
             <h1 class="m-0">Veterinaries</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
+            <br><br><br>
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item">Home</li>
               <li class="breadcrumb-item active"><a href="vetclinic">Clinic</a></li>
