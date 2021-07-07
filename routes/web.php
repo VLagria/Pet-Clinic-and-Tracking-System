@@ -38,3 +38,9 @@ Route::get('veterinary/viewvetclinic',function() {
 Route::get('veterinary/viewvet',function() {
     return view('veterinary/viewvet');
 });
+Route::get('veterinary/vetcustomer',function() {
+    return view('veterinary/vetcustomer');
+});
+Route::get('veterinary/viewvetcustomer',function() {
+    return view('veterinary/viewvetcustomer');
+});

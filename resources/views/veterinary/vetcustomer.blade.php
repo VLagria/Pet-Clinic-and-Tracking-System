@@ -203,12 +203,12 @@
               </li> -->
               
               <li class="nav-item">
-                <a href="vetcustomer" class="nav-link active ">
+                <a href="vetpatient" class="nav-link ">
                   <p>Patients</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="vetcustomer" class="nav-link ">
+                <a href="vetcustomer" class="nav-link active">
                   <p>Customer</p>
                 </a>
               </li>
@@ -217,6 +217,7 @@
                   <p>Clinic</p>
                 </a>
               </li>
+              
             </ul>
           </li>
           <br>
@@ -266,12 +267,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Patients</h1>
+            <h1 class="m-0">Customer</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item">Home</li>
-              <li class="breadcrumb-item active"><a href="vetpatient">Patients</a></li>
+              <li class="breadcrumb-item active"><a href="vetpatient">Customer</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -347,15 +348,7 @@
         </div>
   
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-    <div class="p-3">
-      <h5>Title</h5>
-      <p>Sidebar content</p>
-    </div>
-  </aside>
-  <!-- /.control-sidebar -->
+ 
   <div class="content">
       <div class="container-fluid">
         <div class="row">
@@ -363,19 +356,19 @@
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Number of Patients</h3>
-                  <a href="viewvetpatient">View Patients</a>
+                  <h3 class="card-title">Number of Customers</h3>
+                  <a href="viewvetcustomer">View Customers</a>
                 </div>
               </div>
               <div class="card-body">
                 <div class="d-flex">
                   <p class="d-flex flex-column">
                     <span class="text-bold text-lg">0</span>
-                    <span>Patients that is registered</span>
+                    <span>Customers that are registered</span>
                   </p>
                   <p class="ml-auto d-flex flex-column text-right">
                     <span class="text-success">
-                      <i class="fas fa-arrow-up"></i> 12.5%
+                      <i class="fas fa-arrow-up"></i> 9.5%
                     </span>
                     <span class="text-muted">Since last week</span>
                   </p>

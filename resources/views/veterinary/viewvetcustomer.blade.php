@@ -201,14 +201,13 @@
                   <p>Appointment</p>
                 </a>
               </li> -->
-              
               <li class="nav-item">
-                <a href="vetcustomer" class="nav-link active ">
+                <a href="vetpatient" class="nav-link ">
                   <p>Patients</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="vetcustomer" class="nav-link ">
+                <a href="vetcustomer" class="nav-link active ">
                   <p>Customer</p>
                 </a>
               </li>
@@ -230,7 +229,8 @@
           <br>
           <br>
           <br>
-      
+          <br>
+          <br>
           
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -266,12 +266,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Patients</h1>
+            <h1 class="m-0">Customer</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item">Home</li>
-              <li class="breadcrumb-item active"><a href="vetpatient">Patients</a></li>
+              <li class="breadcrumb-item active"><a href="vetcustomer">Customer</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -280,126 +280,84 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>0</h3>
-
-                <p>Pet Registered</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="viewvetpatient" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>0</h3>
-
-                <p>Appointment</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>0</h3>
-
-                <p>User Registrations</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>0</h3>
-
-                <p>Clinic Registered</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-              </div>
-              <a href="viewvetclinic" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-        </div>
-  
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
+    <table class="table table-success table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col" style="width:5%">Customer ID</th>
+      <th scope="col"style="width:10%">Customer Name</th>
+      <th scope="col"style="width:10%">Customer Mobile</th>
+      <th scope="col"style="width:5%">Customer Telephone</th>
+      <th scope="col"style="width:10%">Customer Gender</th>
+      <th scope="col"style="width:5%">Customer Birthday</th>
+      <th scope="col"style="width:10%">Customer Profile</th>
+      <th scope="col"style="width:2%">Customer Address</th>
+      <th scope="col"style="width:10%">Customer Zip</th>
+      <th scope="col"style="width:5%">User ID</th>
+      <th scope="col"style="width:10%">Status</th>
+      <th scope="col"style="width:60%">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <td>
+    
+    </td>
+    <td>
+    
+    </td>
+    <td>
+    
+    </td>
+    <td>
+    
+    </td>
+    <td>
+    
+    </td>
+    <td>
+    
+    </td>
+    <td>
+    
+    </td>
+    <td>
+    
+    </td>
+    <td>
+    
+    </td>
+    <td>
+    
+    </td>
+    <td>
+    
+    </td>
+    <td class="project-actions text-right">
+                          <a class="btn btn-primary btn-sm-1" href="#"style="margin-right:2%"style="width=5%">
+                              <i class="fas fa-folder">
+                              </i>
+                              View
+                          </a>
+                          <a class="btn btn-info btn-sm-1" href="#"style="margin-right:2%"style="width=5%">	
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Edit
+                          </a>
+                          <a class="btn btn-danger btn-sm-1" href="#"style="margin-right:2%"style="width=5%">
+                              <i class="fas fa-trash">
+                              </i>
+                              Delete
+                          </a>
+                      </td>
+  </tbody>
+</table>
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
     <div class="p-3">
       <h5>Title</h5>
       <p>Sidebar content</p>
     </div>
   </aside>
-  <!-- /.control-sidebar -->
-  <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header border-0">
-                <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Number of Patients</h3>
-                  <a href="viewvetpatient">View Patients</a>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex">
-                  <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">0</span>
-                    <span>Patients that is registered</span>
-                  </p>
-                  <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-success">
-                      <i class="fas fa-arrow-up"></i> 12.5%
-                    </span>
-                    <span class="text-muted">Since last week</span>
-                  </p>
-                </div>
-                </div>
-          
-          <!-- /.col-md-6 -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-    <div class="p-3">
-      <h5>Title</h5>
-      <p>Sidebar content</p>
-    </div>
-  </aside>
-  <!-- /.control-sidebar -->
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- To the right -->

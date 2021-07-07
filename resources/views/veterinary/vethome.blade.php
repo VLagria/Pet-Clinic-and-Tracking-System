@@ -209,6 +209,10 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="vetcustomer" class="nav-link ">
+                  <p>Customer</p>
+                </a>
+              <li class="nav-item">
                 <a href="vetclinic" class="nav-link">
                   <p>Clinic</p>
                 </a>
