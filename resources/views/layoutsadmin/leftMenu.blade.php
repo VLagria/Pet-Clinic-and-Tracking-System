@@ -40,7 +40,7 @@
                with font-awesome or any other icon font library -->
                <li class="nav-item">
                 <a href="vet/CRUDvet.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>
                    Dashboard
                   </p>

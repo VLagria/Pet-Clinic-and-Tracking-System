@@ -4,6 +4,8 @@
 
 @section('content')
   <!-- Content Wrapper. Contains page content -->
+
+  
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -12,7 +14,7 @@
           <div class="col-sm-6">
         
           </div><!-- /.col -->
-          <div class="col-sm-6">
+          <div class="col-sm-lg">
             <ol class="breadcrumb float-sm-right">
             </ol>
           </div><!-- /.col -->
@@ -20,8 +22,6 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
-   
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
@@ -125,19 +125,18 @@
                   2423
                   </a>
               </td>
-  
-                              <td class="project-actions text-right">
-                      <a class="btn btn-primary btn-sm" href="#">
+                        <td class="project-actions text-right">
+                      <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal" >
                           <i class="fas fa-folder">
                           </i>
                           View
                       </a>
-                      <a class="btn btn-info btn-sm" href="#">
+                      <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
                           <i class="fas fa-pencil-alt">
                           </i>
                           Edit
                       </a>
-                      <a class="btn btn-danger btn-sm" href="#">
+                      <a class="btn btn-danger btn-sm" >
                           <i class="fas fa-trash">
                           </i>
                           Delete
@@ -146,217 +145,6 @@
               </tr>
               <tr>
               </tr>
-  
-              <tr>
-                <td>
-                    #
-                </td>
-                <td>
-                    <a>
-                       Hannah Ramirez
-                    </a>
-                    <br/>
-                    <small>
-        
-                    </small>
-                </td>
-                
-                <td>
-                    <a>
-                      Vincent Lagria
-                    </a>
-                </td>
-                <td>
-                    <a>
-                 0921387435
-                    </a>
-                </td>
-  
-                <td>
-                  <a>
-               Clinicepet@gmail.com
-                  </a>
-              </td>
-              <td>
-                <a>
-            08123672
-                </a>
-            </td>
-            
-            <td>
-              <a>
-           Purok 25 b3 Maa Peoples Village
-              </a>
-          </td>
-                <td class="project-state">
-                    <span class="badge badge-success">Yes</span>
-                </td> 
-              <td>
-                <a>
-                2423
-                </a>
-            </td>
-  
-                            <td class="project-actions text-right">
-                    <a class="btn btn-primary btn-sm" href="#">
-                        <i class="fas fa-folder">
-                        </i>
-                        View
-                    </a>
-                    <a class="btn btn-info btn-sm" href="#">
-                        <i class="fas fa-pencil-alt">
-                        </i>
-                        Edit
-                    </a>
-                    <a class="btn btn-danger btn-sm" href="#">
-                        <i class="fas fa-trash">
-                        </i>
-                        Delete
-                    </a>
-                </td> 
-            </tr>
-            <tr>
-            </tr>
-            <tr>
-              <td>
-                  #
-              </td>
-              <td>
-                  <a>
-                     Hannah Ramirez
-                  </a>
-                  <br/>
-                  <small>
-      
-                  </small>
-              </td>
-              
-              <td>
-                  <a>
-                    Vincent Lagria
-                  </a>
-              </td>
-              <td>
-                  <a>
-               0921387435
-                  </a>
-              </td>
-  
-              <td>
-                <a>
-             Clinicepet@gmail.com
-                </a>
-            </td>
-            <td>
-              <a>
-          08123672
-              </a>
-          </td>
-          
-          <td>
-            <a>
-         Purok 25 b3 Maa Peoples Village
-            </a>
-        </td>
-              <td class="project-state">
-                  <span class="badge badge-success">Yes</span>
-              </td> 
-            <td>
-              <a>
-              2423
-              </a>
-          </td>
-  
-                          <td class="project-actions text-right">
-                  <a class="btn btn-primary btn-sm" href="#">
-                      <i class="fas fa-folder">
-                      </i>
-                      View
-                  </a>
-                  <a class="btn btn-info btn-sm" href="#">
-                      <i class="fas fa-pencil-alt">
-                      </i>
-                      Edit
-                  </a>
-                  <a class="btn btn-danger btn-sm" href="#">
-                      <i class="fas fa-trash">
-                      </i>
-                      Delete
-                  </a>
-              </td> 
-          </tr>
-          <tr>
-          </tr>
-          <tr>
-            <td>
-                #
-            </td>
-            <td>
-                <a>
-                   Hannah Ramirez
-                </a>
-                <br/>
-                <small>
-    
-                </small>
-            </td>
-            
-            <td>
-                <a>
-                  Vincent Lagria
-                </a>
-            </td>
-            <td>
-                <a>
-             0921387435
-                </a>
-            </td>
-  
-            <td>
-              <a>
-           Clinicepet@gmail.com
-              </a>
-          </td>
-          <td>
-            <a>
-        08123672
-            </a>
-        </td>
-        
-        <td>
-          <a>
-       Purok 25 b3 Maa Peoples Village
-          </a>
-      </td>
-            <td class="project-state">
-                <span class="badge badge-success">Yes</span>
-            </td> 
-          <td>
-            <a>
-            2423
-            </a>
-        </td>
-  
-                        <td class="project-actions text-right">
-                <a class="btn btn-primary btn-sm" href="#">
-                    <i class="fas fa-folder">
-                    </i>
-                    View
-                </a>
-                <a class="btn btn-info btn-sm" href="#">
-                    <i class="fas fa-pencil-alt">
-                    </i>
-                    Edit
-                </a>
-                <a class="btn btn-danger btn-sm" href="#">
-                    <i class="fas fa-trash">
-                    </i>
-                    Delete
-                </a>
-            </td> 
-        </tr>
-        <tr>
-        </tr>  
           </tbody>
       </table>
     </div>
@@ -364,16 +152,147 @@
   </div>
   <!-- /.card -->
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal">
-    Create
-    <i class="fas fa-trash">
-    </i>
-  </button>
+  {{-- View  modal  --}}
 
+  <div class="modal" id="viewModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">View Clinic</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  {{-- end view modal --}}
+   
+    <!-- edit Modal -->
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Clinic</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <form action="" method="POST">
+        <div class="modal-body">
+
+      
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Clinic Name</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Clinic Name">
+                  
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Owner Name</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Owner Name">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Mobile Number</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
+                  
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Telephone</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Telephone">
+                </div>
+              
+                 
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+                  
+                </div>
+    
+             
+              <div class="form-group">
+                <label for="exampleInputEmail1">House Block/Building/Floor No.</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Street/Highway</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Barangay</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">City</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Zip Code</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Addres">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Street/Highway</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
+                
+              </div>
+
+              <div class="form-group">
+                <label for="inputStatus">Status</label>
+                <select id="inputStatus" class="form-control custom-select">
+                  <option selected disabled>Yes</option>
+                  <option>Yes</option>
+                  <option>No</option>
+    
+                </select>
+              </div> 
+
+              <div class="form-group">
+                <label for="inputStatus">Admin Clinic ID</label>
+                <select id="inputStatus" class="form-control custom-select">
+                  <option selected disabled>--</option>
+                  <option>Clinic 1</option>
+                  <option>Clinic 2</option>
+                </select>
+              </div> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- end edit modal  --}}
+
+  <!-- Button trigger modal -->
+  <div class = "d-grid gap-2 d-md-flex justify-content-md-end">
+    <button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#addModal">
+        Create
+    
+        </i>
+      </button>
+      </div>
   
+
+   
+
   <!-- Add Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -464,10 +383,6 @@
                   <option>Clinic 2</option>
                 </select>
               </div> 
-
-
-             
-          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -476,6 +391,8 @@
       </div>
     </div>
   </div>
+
+  {{-- end add modal  --}}
 
   </section>
   <!-- /.content -->
