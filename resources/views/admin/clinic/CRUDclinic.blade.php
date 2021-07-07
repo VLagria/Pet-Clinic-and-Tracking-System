@@ -21,89 +21,11 @@
     </div>
     <!-- /.content-header -->
 
-    {{-- Main content  --}}
-<div class= "content">
-<div class= "containter-fluid">
-    <div class="row">
-        <div class="col-sm-12">
-            <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-          <!-- Small boxes (Stat box) -->
-          <div class="row">
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-info">
-                <div class="inner">
-                  <h3>150</h3>
-  
-                  <p>Veterinarians</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info<i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-success">
-                <div class="inner">
-                  <h3>53<sup style="font-size: 20px"></sup></h3>
-  
-                  <p>Pets</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-warning">
-                <div class="inner">
-                  <h3>44</h3>
-  
-                  <p>Customers</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-danger">
-                <div class="inner">
-                  <h3>65</h3>
-  
-                  <p>Clinic</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-
-            <!-- ./col -->
-          </div>
-          <!-- /.row -->
-
-
-        </div>
-    </div>
-</div>
-</div>
+   
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-      <h3 class="card-title">CLINIC</h3>
+      <h3 class="card-title">REGISTER CLINIC</h3>
   
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -131,7 +53,7 @@
                       Mobile Number
                   </th>
                   <th style="width: 5%" >
-                      email
+                      Email
                 </th>
                   <th style="width: 5%" >
                       Telephone
@@ -443,49 +365,118 @@
   <!-- /.card -->
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
+<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal">
+    Create
+    <i class="fas fa-trash">
+    </i>
   </button>
+
   
   <!-- Add Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Create Clinic</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+
+        <form action="" method="POST">
         <div class="modal-body">
 
-            <form> action="" method="POST">
+      
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  <label for="exampleInputEmail1">Clinic Name</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Clinic Name">
+                  
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  <label for="exampleInputEmail1">Owner Name</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Owner Name">
                 </div>
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Mobile Number</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
+                  
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Telephone</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Telephone">
+                </div>
+              
+                 
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+                  
+                </div>
+    
+             
+              <div class="form-group">
+                <label for="exampleInputEmail1">House Block/Building/Floor No.</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+              </div>
 
+              <div class="form-group">
+                <label for="exampleInputEmail1">Street/Highway</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Barangay</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">City</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Zip Code</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Addres">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Street/Highway</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
+                
+              </div>
+
+              <div class="form-group">
+                <label for="inputStatus">Status</label>
+                <select id="inputStatus" class="form-control custom-select">
+                  <option selected disabled>Yes</option>
+                  <option>Yes</option>
+                  <option>No</option>
+    
+                </select>
+              </div> 
+
+              <div class="form-group">
+                <label for="inputStatus">Admin Clinic ID</label>
+                <select id="inputStatus" class="form-control custom-select">
+                  <option selected disabled>--</option>
+                  <option>Clinic 1</option>
+                  <option>Clinic 2</option>
+                </select>
+              </div> 
+
+
+             
           
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary">Save</button>
         </div>
       </div>
     </div>
   </div>
-  
+
   </section>
   <!-- /.content -->
   </div>
