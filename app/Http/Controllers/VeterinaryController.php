@@ -29,6 +29,8 @@ class VeterinaryController extends Controller
     public function vet()
     {
         return view ('vetpatient');
+        return view ('viewvetpatient');
     }
+    
 }
    

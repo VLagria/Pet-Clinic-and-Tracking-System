@@ -20,7 +20,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="home" class="nav-link">Home</a>
+        <a href="vethome" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -187,7 +187,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
        
           <li class="nav-nav-treeview">
-            <a href="#" class="nav-link active">
+            <a href="vethome" class="nav-link ">
               
               <p>
                 Main
@@ -206,8 +206,8 @@
                   <p>Patients</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
+              <li class="nav-item ">
+                <a href="vetclinic" class="nav-link active">
                   <p>Clinic</p>
                 </a>
               </li>
@@ -264,12 +264,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">Veterinary Clinic</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item">Home</li>
-              <li class="breadcrumb-item active"><a href="#">Dashboard</a></li>
+              <li class="breadcrumb-item active"><a href="vetclinic">Vet Clinic</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -349,25 +349,25 @@
           <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Pet Registration</h5>
+                <h5 class="card-title"> Veterinarian or Clinic</h5>
 
                 <p class="card-text">
-                  Register a pet and record its health condition.
+                  View a veterinarian and Clinic that is available
                 </p>
 
-                <a href="#" class="card-link">Register a Pet </a>
-                <a href="#" class="card-link">View Health Condition of Pet</a>
+                <a href="viewvet" class="card-link">View A Veterinarian </a>
+                <a href="viewvetclinic" class="card-link">View Clinic</a>
               </div>
             </div>
 
             <div class="card card-primary card-outline">
               <div class="card-body">
-                <h5 class="card-title">Pet Information</h5>
+                <h5 class="card-title">ASSIGNING YOUR PET </h5>
 
                 <p class="card-text">
-                  Update pet information and health condition .
+                  Assigning your pet to a veterinarian and a clinic for vet operations.
                 </p>
-                <a href="viewvetpatient" class="card-link">Update Pet Information</a>
+                <a href="#" class="card-link">Assign Pet</a>
                 
               </div>
             </div><!-- /.card -->
@@ -376,11 +376,11 @@
                 <h5 class="m-0">Featured</h5>
               </div>
               <div class="card-body">
-                <h6 class="card-title">Featured Pets</h6>
+                <h6 class="card-title">Featured Clinic</h6>
 
-                <p class="card-text">Another set of cute pets of our lovely clients.</p>
+                <p class="card-text">Our Lovely Veterinary Clinic</p>
                 <div class="media">
-              <img src="{{ asset('vendors/dist/img/pets2.jpg') }}" alt="User Avatar" class="img-size-100 img-square mr-3">
+              <img src="{{ asset('vendors/dist/img/vetclinic1.jpg') }}" alt="User Avatar" class="img-size-60 img-square mr-3">
               </div>
               </div>
             </div>
@@ -389,14 +389,14 @@
           <div class="col-lg-6">
             <div class="card">
               <div class="card-header">
-                <h5 class="m-0">Featured</h5>
+                <h5 class="m-0">Featured </h5>
               </div>
               <div class="card-body">
-                <h6 class="card-title">Featured Pets</h6>
+                <h6 class="card-title">Featured Clinic</h6>
 
-                <p class="card-text">These are the pets of our clients.</p>
+                <p class="card-text">Another Nice Clinic </p>
                 <div class="media">
-              <img src="{{ asset('vendors/dist/img/pets.jpg') }}" alt="User Avatar" class="img-size-100 img-square mr-3">
+              <img src="{{ asset('vendors/dist/img/vetclinic2.jpg') }}" alt="User Avatar" class="img-size-100 img-square mr-3">
               </div>
               
               </div>

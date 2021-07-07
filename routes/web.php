@@ -17,12 +17,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/vethome', function () {
-    return view('vethome');
+Route::get('veterinary/vethome', function () {
+    return view('veterinary/vethome');
 });
-Route::get('/vetpatient',function() {
-    return view('vetpatient');
+Route::get('veterinary/vetpatient',function() {
+    return view('veterinary/vetpatient');
 });
-Route::get('/viewvetpatient',function() {
-    return view('viewvetpatient');
+Route::get('veterinary/viewvetpatient',function() {
+    return view('veterinary/viewvetpatient');
+});
+Route::get('veterinary/vetclinic',function() {
+    return view('veterinary/vetclinic');
+});
+Route::get('veterinary/petregistration',function() {
+    return view('veterinary/petregistration');
+});
+Route::get('veterinary/viewvetclinic',function() {
+    return view('veterinary/viewvetclinic');
+});
+Route::get('veterinary/viewvet',function() {
+    return view('veterinary/viewvet');
 });

@@ -20,7 +20,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="home" class="nav-link">Home</a>
+        <a href="vethome" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -201,13 +201,14 @@
                   <p>Appointment</p>
                 </a>
               </li> -->
+              
               <li class="nav-item">
                 <a href="vetpatient" class="nav-link active">
                   <p>Patients</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="vetclinic" class="nav-link">
                   <p>Clinic</p>
                 </a>
               </li>
@@ -275,76 +276,126 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <table class="table table-success table-striped table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Pet ID</th>
-      <th scope="col">Pet Name</th>
-      <th scope="col">Pet Gender</th>
-      <th scope="col">Pet Birthday</th>
-      <th scope="col">Pet Notes</th>
-      <th scope="col">Pet Blood Type</th>
-      <th scope="col">Pet Profile</th>
-      <th scope="col">Pet Registered Date</th>
-      <th scope="col">Pet Type ID</th>
-      <th scope="col">Pet Breed ID</th>
-      <th scope="col">Customer ID</th>
-      <th scope="col">Clinic ID</th>
-      <th scope="col">Status</th>
-      <th scope="col">Action</th>
-     
-    </tr>
-  </thead>
-  <tbody>
-  <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    <a class="btn btn-info" href="#" role="button">Update </a>
-    <button type="button" class="btn btn-danger">Delete </button>
-<button class="btn btn-dark" type="submit">View  </button>
-    </td>
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>0</h3>
 
+                <p>Pet Registered</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>0</h3>
 
-  </tbody>
-</table>
+                <p>Appointment</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>0</h3>
 
+                <p>User Registrations</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>0</h3>
+
+                <p>Clinic Registered</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+  
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+    <div class="p-3">
+      <h5>Title</h5>
+      <p>Sidebar content</p>
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+  <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header border-0">
+                <div class="d-flex justify-content-between">
+                  <h3 class="card-title">Number of Patients</h3>
+                  <a href="viewvetpatient">View Patients</a>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="d-flex">
+                  <p class="d-flex flex-column">
+                    <span class="text-bold text-lg">0</span>
+                    <span>Patients that is registered</span>
+                  </p>
+                  <p class="ml-auto d-flex flex-column text-right">
+                    <span class="text-success">
+                      <i class="fas fa-arrow-up"></i> 12.5%
+                    </span>
+                    <span class="text-muted">Since last week</span>
+                  </p>
+                </div>
+                </div>
+          
+          <!-- /.col-md-6 -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+    <div class="p-3">
+      <h5>Title</h5>
+      <p>Sidebar content</p>
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- To the right -->

@@ -20,7 +20,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="home" class="nav-link">Home</a>
+        <a href="vethome" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -153,7 +153,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="home" class="brand-link">
+    <a href="vethome" class="brand-link">
       <img src="{{ asset('vendors/dist/img/MediaoneLogo.png') }}" alt="MediaOne Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Veterinary Dashboard</span>
     </a>
@@ -186,8 +186,8 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
        
-        <li class="nav-nav-treeview">
-            <a href="vethome" class="nav-link ">
+          <li class="nav-nav-treeview">
+            <a href="vethome" class="nav-link active">
               
               <p>
                 Main
@@ -196,23 +196,27 @@
             </a>
             <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link ">
                
                   <p>Appointment</p>
                 </a>
               </li> -->
+              
               <li class="nav-item">
-                <a href="vetpatient" class="nav-link active">
+                <a href="vetpatient" class="nav-link">
                   <p>Patients</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="vetclinic" class="nav-link">
                   <p>Clinic</p>
                 </a>
               </li>
             </ul>
           </li>
+          <br>
+          <br>
+          <br>
           <br>
           <br>
           <br>
@@ -261,12 +265,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Patients</h1>
+            <h1 class="m-0">Dashboard</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item">Home</li>
-              <li class="breadcrumb-item active"><a href="vetpatient">Patients</a></li>
+              <li class="breadcrumb-item active"><a href="#">Dashboard</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -340,7 +344,76 @@
           </div>
           <!-- ./col -->
         </div>
-  
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Pet Registration</h5>
+
+                <p class="card-text">
+                  Register a pet and record its health condition.
+                </p>
+
+                <a href="petregistration" class="card-link">Register a Pet </a>
+                <a href="#" class="card-link">View Health Condition of Pet</a>
+              </div>
+            </div>
+
+            <div class="card card-primary card-outline">
+              <div class="card-body">
+                <h5 class="card-title">Pet Information</h5>
+
+                <p class="card-text">
+                  Update pet information and health condition .
+                </p>
+                <a href="viewvetpatient" class="card-link">Update Pet Information</a>
+                
+              </div>
+            </div><!-- /.card -->
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h5 class="m-0">Featured</h5>
+              </div>
+              <div class="card-body">
+                <h6 class="card-title">Featured Pets</h6>
+
+                <p class="card-text">Another set of cute pets of our lovely clients.</p>
+                <div class="media">
+              <img src="{{ asset('vendors/dist/img/pets2.jpg') }}" alt="User Avatar" class="img-size-100 img-square mr-3">
+              </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.col-md-6 -->
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="m-0">Featured</h5>
+              </div>
+              <div class="card-body">
+                <h6 class="card-title">Featured Pets</h6>
+
+                <p class="card-text">These are the pets of our clients.</p>
+                <div class="media">
+              <img src="{{ asset('vendors/dist/img/pets.jpg') }}" alt="User Avatar" class="img-size-100 img-square mr-3">
+              </div>
+              
+              </div>
+            </div>
+
+           
+          </div>
+          
+          <!-- /.col-md-6 -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -351,30 +424,7 @@
     </div>
   </aside>
   <!-- /.control-sidebar -->
-  <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header border-0">
-                <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Number of Patients</h3>
-                  <a href="viewvetpatient">View Patients</a>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex">
-                  <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">0</span>
-                    <span>Patients Have an Appointment</span>
-                  </p>
-                  <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-success">
-                      <i class="fas fa-arrow-up"></i> 12.5%
-                    </span>
-                    <span class="text-muted">Since last week</span>
-                  </p>
-                </div>
+
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- To the right -->
