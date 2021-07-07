@@ -8,8 +8,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href= "{{ asset('vendors/plugins/fontawesome-free/css/all.min.css') }}">
   <link rel="stylesheet" href= "{{ asset('vendors/dist/css/adminlte.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('vendors/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -225,11 +226,7 @@
           <br>
           <br>
           <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
+         
           
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -294,7 +291,7 @@
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="viewvetpatient" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -339,7 +336,7 @@
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="viewvetclinic" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -357,7 +354,7 @@
                 </p>
 
                 <a href="petregistration" class="card-link">Register a Pet </a>
-                <a href="#" class="card-link">View Health Condition of Pet</a>
+                <a href="viewvetpatient" class="card-link">View  Health Condition of Pet</a>
               </div>
             </div>
 
