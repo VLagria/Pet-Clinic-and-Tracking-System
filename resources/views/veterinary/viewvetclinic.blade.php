@@ -232,7 +232,7 @@
           <br>
           <br>
           
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <p>
                 Account Settings
@@ -252,7 +252,7 @@
               </p>
             </a>
           </li>
-        </ul>
+        </ul> --}}
       </nav>
       <!-- /.sidebar-menu -->
     </div>
