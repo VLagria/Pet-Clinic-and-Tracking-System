@@ -355,7 +355,7 @@
 
 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal">
    Register Pet
-    <i class="fas fa-trash">
+    <i class="far fa-registered">
     </i>
   </button>
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
