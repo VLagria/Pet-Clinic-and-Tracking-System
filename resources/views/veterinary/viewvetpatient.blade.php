@@ -6,8 +6,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 @section('content')
+
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -24,8 +26,25 @@
     </div>
     <!-- /.content-header -->
 
+   
+<!-- Default box -->
+<div class="card">
+    <div class="card-header">
+      <h3 class="header">Patients</h3>
+  
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+          <i class="fas fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+   
  <!-- Main content -->
-    <table  style="table-layout: fixed;" class="table  table-striped table-hover">
+ <div class="card-body p-0">
+      <table class="table table-striped projects">
   <thead>
     <tr>
       <th style="width:100px; scope="col">Pet ID</th>
@@ -34,14 +53,14 @@
       <th style="width:150px;scope="col">Pet Birthday</th>
       <th style="width:130px;scope="col">Pet Notes</th>
       <th style="width:180px;scope="col">Pet Blood Type</th>
-      <th style="width:130px;scope="col">Pet Profile</th>
+      <!-- <th style="width:130px;scope="col">Pet Profile</th> -->
       <th style="width:200px;scope="col">Pet Registered Date</th>
-      <th style="width:180px;scope="col">Pet Type ID</th>
-      <th style="width:180px;scope="col">Pet Breed ID</th>
-      <th style="width:180px;scope="col">Customer ID</th>
-      <th style="width:150px;scope="col">Clinic ID</th>
+      <th style="width:180px;scope="col">Pet Type </th>
+      <th style="width:180px;scope="col">Pet Breed </th>
+      <th style="width:180px;scope="col">Customer </th>
+      <th style="width:150px;scope="col">Clinic </th>
       <th style="width:100px;scope="col">Status</th>
-      <th style="width:180px;scope="col">Action</th>
+      <th style="width:200px;scope="col">Action</th>
 
 
      
@@ -63,6 +82,9 @@
     <td>
     
     </td>
+    <!-- <td>
+    
+    </td> -->
     <td>
     
     </td>
@@ -84,23 +106,31 @@
     <td>
     
     </td>
-    <td>
-    
-    </td>
-    <td>
-    <a class="btn btn-info" href="#" role="button">Update </a>
-    <button type="button" class="btn btn-danger">Delete </button>
-<button class="btn btn-dark" type="submit">View  </button>
-    </td>
-
+    <td class="project-actions text-right">
+                      <a class="btn btn-primary btn-sm" href="#">
+                          <i class="fas fa-folder">
+                          </i>
+                          View
+                      </a>
+                      <a class="btn btn-info btn-sm" href="#">
+                          <i class="fas fa-pencil-alt">
+                          </i>
+                          Edit
+                      </a>
+                      <a class="btn btn-danger btn-sm" href="#">
+                          <i class="fas fa-trash">
+                          </i>
+                          Delete
+                      </a>
+                  </td> 
 
   </tbody>
 </table>
 
 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal">
    Register Pet
-    <i class="far fa-registered">
-    </i>
+   <i class="fas fa-save"></i>
+  
   </button>
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
