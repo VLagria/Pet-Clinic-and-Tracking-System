@@ -311,12 +311,12 @@
       <th style="width:150px;scope="col">Pet Birthday</th>
       <th style="width:130px;scope="col">Pet Notes</th>
       <th style="width:180px;scope="col">Pet Blood Type</th>
-      <th style="width:130px;scope="col">Pet Profile</th>
+      <!-- <th style="width:130px;scope="col">Pet Profile</th> -->
       <th style="width:200px;scope="col">Pet Registered Date</th>
-      <th style="width:180px;scope="col">Pet Type ID</th>
-      <th style="width:180px;scope="col">Pet Breed ID</th>
-      <th style="width:180px;scope="col">Customer ID</th>
-      <th style="width:150px;scope="col">Clinic ID</th>
+      <th style="width:180px;scope="col">Pet Type </th>
+      <th style="width:180px;scope="col">Pet Breed </th>
+      <th style="width:180px;scope="col">Customer </th>
+      <th style="width:150px;scope="col">Clinic </th>
       <th style="width:100px;scope="col">Status</th>
       <th style="width:180px;scope="col">Action</th>
 
@@ -343,6 +343,9 @@
     <td>
     
     </td>
+    <!-- <td>
+    
+    </td> -->
     <td>
     
     </td>
@@ -361,14 +364,23 @@
     <td>
     
     </td>
-    <td>
-    
-    </td>
-    <td>
-    <a class="btn btn-info" href="#" role="button">Update </a>
-    <button type="button" class="btn btn-danger">Delete </button>
-<button class="btn btn-dark" type="submit">View  </button>
-    </td>
+     <td class="project-actions text-right">
+                <a class="btn btn-primary btn-sm" href="#">
+                    <i class="fas fa-folder">
+                    </i>
+                    View
+                </a>
+                <a class="btn btn-info btn-sm" href="#">
+                    <i class="fas fa-pencil-alt">
+                    </i>
+                    Edit
+                </a>
+                <a class="btn btn-danger btn-sm" href="#">
+                    <i class="fas fa-trash">
+                    </i>
+                    Delete
+                </a>
+            </td> 
 
 
   </tbody>

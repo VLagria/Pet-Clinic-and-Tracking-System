@@ -345,12 +345,23 @@
     
     </td>
     
-    <td>
-    
-    <a class="btn btn-info" href="#" role="button">Update </a>
-    <button type="button" class="btn btn-danger">Delete </button>
-<button class="btn btn-dark" type="submit">View  </button>
-    </td>
+    <td class="project-actions text-right">
+                <a class="btn btn-primary btn-sm" href="#">
+                    <i class="fas fa-folder">
+                    </i>
+                    View
+                </a>
+                <a class="btn btn-info btn-sm" href="#">
+                    <i class="fas fa-pencil-alt">
+                    </i>
+                    Edit
+                </a>
+                <a class="btn btn-danger btn-sm" href="#">
+                    <i class="fas fa-trash">
+                    </i>
+                    Delete
+                </a>
+            </td> 
 
 
   </tbody>
