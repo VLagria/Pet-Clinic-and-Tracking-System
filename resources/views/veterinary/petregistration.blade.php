@@ -257,13 +257,20 @@
     <!-- /.sidebar -->
   </aside>
 
+  
   <!-- Content Wrapper. Contains page content -->
+
   <div class="content-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-16">
+            
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
+           
             <h1 class="m-0">Pet Registration</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
@@ -275,52 +282,56 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
+
     <!-- /.content-header -->
 
     <!-- Main content -->
+    <div class="col-12">
     <form class="row g-1">
-  <div class="col-md-3">
+       
+      <div class="col-md-3">
     <label for="inputpetname" class="form-label">Pet Name</label>
-    <input type="name" class="form-control" id="inputpetname">
+    <input type="name" required placeholder="Enter Name" class="form-control" id="inputpetname">
   </div>
   <div class="col-md-3">
-    <label for="inputgender" class="form-label">Pet Gender</label>
+    <label for="inputgender"  class="form-label">Pet Gender</label>
     <br>
     <select id="inputState" class="form-select">
       <option selected>Choose...</option>
       <option>Male</option>
       <option>FeMale</option>
+      
     </select>
   </div>
+</div>
   <div class="col-12">
-    <label for="inputbday" class="form-label">Pet Birthday</label>
-    <input type="date" id="birthday" name="birthday">
-  </div>
-  <div class="col-12">
-    <label for="inputpetnotes" class="form-label">Pet Notes</label>
     <br>
-    <textarea id="inputpetnotes" name="petnotes" rows="4" cols="50">
+   
+  <div class="col-12">
+    <label for="inputpetnotes"  class="form-label">Pet Notes</label>
+    <br>
+    <textarea placeholder="Enter Description and Health Conditions" id="inputpetnotes"  name="petnotes" rows="4" cols="50">
 
     </textarea>
   </div>
   <div class="col-md-2">
     <label for="inputBloodtype" class="form-label">Pet BloodType</label>
-    <input type="text" class="form-control" id="inputBloodtype">
-  </div>
-  <div class="col-12">
-    <label for="inputpetrf" class="form-label">Pet Registered Date</label>
+    <input type="text" placeholder="Optional" class="form-control" id="inputBloodtype">
+  
+    <label for="inputpetrf" required class="form-label">Pet Registered Date</label>
     <input type="date" id="date" name="date">
   </div>
+
   <div class="col-md-1">
-    <label for="inputpettypeid" class="form-label ">Pet Type </label>
+    <label for="inputpettypeid" required class="form-label ">Pet Type </label>
     <input type="text" class="form-control" id="inputpettypeid" hidden>
     <select id="inputState" class="form-select">
       <option selected>Choose Pet Type </option>
       <option></option>
     </select>
   </div>
-  <div class="col-md-1">
-    <label for="inputpettypeid" class="form-label ">Pet Breed</label>
+  <div class="col-md-2">
+    <label for="inputpettypeid" required  class="form-label ">Pet Breed</label>
     <input type="text" class="form-control" id="inputpettypeid" hidden>
     <select id="inputState" class="form-select">
       <option selected>Choose Pet Breed </option>
@@ -328,7 +339,7 @@
     </select>
   </div>
   <div class="col-md-1">
-    <label for="inputpettypeid" class="form-label ">Customer </label>
+    <label for="inputpettypeid" required class="form-label ">Customer </label>
     <input type="text" class="form-control" id="inputpettypeid" hidden>
     <select id="inputState" class="form-select">
       <option selected>Choose Customer </option>
@@ -336,7 +347,7 @@
     </select>
   </div>
   <div class="col-md-1">
-    <label for="inputpettypeid" class="form-label "> Clinic </label>
+    <label for="inputpettypeid" required class="form-label "> Clinic </label>
     <input type="text" class="form-control" id="inputpettypeid" hidden>
     <select id="inputState" class="form-select">
       <option selected>Choose Clinic </option>
@@ -344,7 +355,7 @@
     </select>
   </div>
   <div class="col-md-1">
-    <label for="inputpettypeid" class="form-label ">Status </label>
+    <label for="inputpettypeid" required class="form-label ">Status </label>
     <select id="inputState" class="form-select">
       <option selected>is Pet Active?</option>
       <option>Yes</option>
@@ -352,27 +363,27 @@
     </select>
   </div>
   <div class="col-md-2">
-    <label for="inputdp" class="form-label">Pet Profile Picture</label>
+    <label for="inputdp" required class="form-label">Pet Profile Picture</label>
     <form action="/action_page.php">
   <input type="file" id="myFile" name="filename">
 
 </form>
   </div>
+  <br>
   <div class="col-12">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
+      <input class="form-check-input"  type="checkbox" id="gridCheck" required/>
+      <label class="form-check-label" style="font-family:cursive;  " for="gridCheck">
         Remember me
       </label>
     </div>
   </div>
+  <br>
   <div class="col-12">
     <button type="submit" class="btn btn-success">Register Pet</button>
-  </div>
-  <br>
-  <div class="col-3">
+  
     <button type="submit" class="btn btn-danger">Cancel</button>
-  </div>
+  </div> </div>
 </form>
            
 
