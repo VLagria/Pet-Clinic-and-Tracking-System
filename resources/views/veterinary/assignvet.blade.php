@@ -432,7 +432,7 @@
     <div class="form-check">
       <input class="form-check-input"  type="checkbox" id="gridCheck" required/>
       <label class="form-check-label" style="font-family:cursive;  " for="gridCheck">
-        Remember me
+        EULA
       </label>
     </div>
   </div>
@@ -440,7 +440,7 @@
 
   <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Register</button>
+          <button type="button" class="btn btn-primary">Assign</button>
         </div>
       </div>
     </div>
