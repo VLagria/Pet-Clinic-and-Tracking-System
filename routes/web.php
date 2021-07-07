@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',function(){
-    return view('welcome');
+Route::get('login/login',function(){
+    return view('login/login');
 });
 Route::get('admin/clinic/CRUDclinic', function () {
     return view('admin/clinic/CRUDclinic');

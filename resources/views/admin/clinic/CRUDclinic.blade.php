@@ -22,6 +22,7 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+    
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
@@ -124,24 +125,23 @@
                   <a>
                   2423
                   </a>
-              </td>
-                        <td class="project-actions text-right">
-                      <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal" >
-                          <i class="fas fa-folder">
-                          </i>
-                          View
-                      </a>
-                      <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
-                          <i class="fas fa-pencil-alt">
-                          </i>
-                          Edit
-                      </a>
-                      <a class="btn btn-danger btn-sm" >
-                          <i class="fas fa-trash">
-                          </i>
-                          Delete
-                      </a>
-                  </td> 
+              </td> <td class="project-actions text-right">
+                <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal" >
+                    <i class="fas fa-folder">
+                    </i>
+                    View
+                </a>
+                <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
+                    <i class="fas fa-pencil-alt">
+                    </i>
+                    Edit
+                </a>
+                <a class="btn btn-danger btn-sm" >
+                    <i class="fas fa-trash">
+                    </i>
+                    Delete
+                </a>
+            </td> 
               </tr>
               <tr>
               </tr>
@@ -164,7 +164,10 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>Modal body text goes here.</p>
+          <h5>Clinic Name: Hannah Ramirez.</h5>
+          <h5>Owner Name: Viasdasdasncent Lagria.</h5>
+          <h5>Mobile Number: Hannah Ramirez.</h5>
+          <h5>Owner Name: Vincent Lagria.</h5>
         </div>
         <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -282,7 +285,7 @@
   <!-- Button trigger modal -->
   <div class = "d-grid gap-2 d-md-flex justify-content-md-end">
     <button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#addModal">
-        Create
+       <i> Create
     
         </i>
       </button>
