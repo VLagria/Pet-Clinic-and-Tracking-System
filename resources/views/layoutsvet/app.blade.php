@@ -18,9 +18,9 @@
 
  
  {{-- 1. Top Menu  --}}
- @include('layouts.topMenu')
+ @include('layoutsvet.topMenu')
  {{-- 2. Left Menu --}}
- @include('layouts.leftMenu')
+ @include('layoutsvet.leftMenu')
  {{-- 3. Main Content (Body) --}}
 
 
@@ -35,9 +35,9 @@
 
  {{-- 4. Right Menu  --}}
  
- @include('layouts.rightMenu')
+ @include('layoutsvet.rightMenu')
 {{-- 5. Footer --}}
-@include('layouts.footer')
+@include('layoutsvet.footer')
  
 <!-- ./wrapper -->
 
