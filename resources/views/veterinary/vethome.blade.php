@@ -13,12 +13,12 @@
 <style>
   .navbar {
     
-  overflow: hidden;
+ 
   background-color: rgb(111, 196, 156);
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 83%; /* Full width */
-   white-space: nowrap;
+
   
 }
 </style>

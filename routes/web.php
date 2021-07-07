@@ -59,3 +59,6 @@ Route::get('veterinary/vetcustomer',function() {
 Route::get('veterinary/viewvetcustomer',function() {
     return view('veterinary/viewvetcustomer');
 });
+Route::get('veterinary/assignvet',function() {
+    return view('veterinary/assignvet');
+});

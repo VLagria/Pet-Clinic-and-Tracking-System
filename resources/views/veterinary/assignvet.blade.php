@@ -12,23 +12,24 @@
 <style>
   .navbar {
     
-
+  
   background-color: rgb(111, 196, 156);
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 83%; /* Full width */
-
+  
   
 }
 
 </style>
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav  class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
-    <ul class="navbar-nav">
+    <ul  class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
@@ -41,7 +42,7 @@
     </ul>
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+    <ul  class="navbar-nav ml-auto">
       <!-- Navbar Search -->
       <li class="nav-item">
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
@@ -214,8 +215,9 @@
                   <p>Appointment</p>
                 </a>
               </li> -->
+              
               <li class="nav-item">
-                <a href="vetpatient" class="nav-link ">
+                <a href="vetpatient" class="nav-link active">
                   <p>Patients</p>
                 </a>
               </li>
@@ -225,7 +227,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="vetclinic" class="nav-link active">
+                <a href="vetclinic" class="nav-link">
                   <p>Clinic</p>
                 </a>
               </li>
@@ -275,18 +277,23 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
+    
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <br><br><br>
-            <h1 class="m-0">Veterinaries</h1>
+            <br>
+    <br>
+    <br>
+            <h1 class="m-0">Assigning Vet/Clinic</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-            <br><br><br>
-            <ol class="breadcrumb float-sm-right">
+            <br>
+            <br>
+            <br>
+            <ol style=" position: auto;"class="breadcrumb float-sm-right">
               <li class="breadcrumb-item">Home</li>
-              <li class="breadcrumb-item active"><a href="vetclinic">Clinic</a></li>
+              <li class="breadcrumb-item active"><a href="vetpatient">Assigning Vet/Clinic</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -295,21 +302,20 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <table class="table table-striped table-hover">
+    <table  style="table-layout: fixed;" class="table  table-striped table-hover">
   <thead>
     <tr>
-      <th scope="col">Veterinary ID</th>
-      <th scope="col">Vet Name</th>
-      <th scope="col">Vet Mobile</th>
-      <th scope="col">Vet Telephone</th>
-      <th scope="col">Vet Birthday</th>
-      <th scope="col">Vet Profile </th>
-      <th scope="col">Vet Address</th>
-      <th scope="col">Vet Date Added</th>
-      <th scope="col">Clinic </th>
-      <th scope="col">User </th>
-      <th scope="col">Status</th>
-     
+      <th style="width:80px; scope="col">Vet ID</th>
+      <th style="width:100px; scope="col">Vet Name</th>
+      <th style="width:120px; scope="col">Vet Address</th>
+      <th style="width:100px; scope="col">Pet ID</th>
+      <th style="width:100px;scope="col">Pet Name</th>
+      <th style="width:180px;scope="col">Pet Registered Date</th>
+      <th style="width:130px;scope="col">Customer ID</th>
+      <th style="width:100px;scope="col">Status</th>
+      <th style="width:180px;scope="col">Action</th>
+
+
      
     </tr>
   </thead>
@@ -338,41 +344,111 @@
     <td>
     
     </td>
+    
     <td>
     
+    <a class="btn btn-info" href="#" role="button">Update </a>
+    <button type="button" class="btn btn-danger">Delete </button>
+<button class="btn btn-dark" type="submit">View  </button>
     </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    
-    
-    
- 
-   
+
 
   </tbody>
 </table>
-<!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-    <div class="p-3">
-      <h5>Title</h5>
-      <p>Sidebar content</p>
+
+<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal">
+   Assign a Vet/Clinic
+    <i class="far fa-registered">
+    </i>
+  </button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Choose a Vet/Clinic</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+    <form action="" method="POST">
+    <div class="col-12">
+    <div class="modal-body">
+       
+    <div class="form-group">
+    <label for="inputvetname" class="form-label">Vet Name</label>
+    <input type="name" required placeholder="Enter Name" class="form-control" id="inputvetname">
+  </div>
+  <div class="form-group">
+    <label for="inputvetAdd" class="form-label">Vet Address</label>
+    <input type="name" required placeholder="Enter Name" class="form-control" id="inputvetAdd">
+  </div>
+  <div class="col-md-2">
+    <label for="inputpetid" required  class="form-label ">Pet ID</label>
+    <input type="text" class="form-control" id="inputpetid" hidden>
+    <select id="inputpetid" class="form-select">
+      <option selected>Choose Pet ID </option>
+      <option></option>
+    </select>
+  </div>
+  <div class="col-md-2">
+    <label for="inputpetname" required  class="form-label ">Pet Name</label>
+    <input type="text" class="form-control" id="inputpetname" hidden>
+    <select id="inputpetname" class="form-select">
+      <option selected>Choose Pet Name </option>
+      <option></option>
     </div>
-  </aside>
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      Some things just fill your heart without  trying
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2021-2022 <a href="http://mediaoneph.com">MediaOne.io</a>.</strong> All rights reserved.
-  </footer>
+    </select>
+  <div class="form-group">
+  <label for="inputvetrd" required class="form-label">Vet Registered Date</label>
+  <input type="date" id="date" name="date">
 </div>
+<div class="col-md-2">
+    <label for="inputcustomerid" required  class="form-label ">Customer ID</label>
+    <input type="text" class="form-control" id="inputcustomerid" hidden>
+    <select id="inputpetbreed" class="form-select">
+      <option selected>Choose Customer ID </option>
+      <option></option>
+    </div>
+    </select>
+  </div>
+  <div class="col-md-1">
+    <label for="inputpettypeid" required class="form-label ">Status </label>
+    <select id="inputState" class="form-select">
+      <option selected>is Pet Active?</option>
+      <option>Yes</option>
+      <option>No</option>
+    </div>
+    </select>
+  </div>
+</div>
+  <div class="col-12">
+    <br>
+
+</form>
+  </div>
+  <br>
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input"  type="checkbox" id="gridCheck" required/>
+      <label class="form-check-label" style="font-family:cursive;  " for="gridCheck">
+        Remember me
+      </label>
+    </div>
+  </div>
+  <br>
+
+  <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>
+           </section>
+
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
