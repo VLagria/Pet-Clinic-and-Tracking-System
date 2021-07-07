@@ -349,6 +349,7 @@
 
   </tbody>
 </table>
+
 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal">
    Register Pet
     <i class="fas fa-trash">
@@ -469,25 +470,8 @@
   </div>
 
 </form>
-           
-<!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-    <div class="p-3">
-      <h5>Title</h5>
-      <p>Sidebar content</p>
-    </div>
-  </aside>
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      Some things just fill your heart without  trying
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2021-2022 <a href="http://mediaoneph.com">MediaOne.io</a>.</strong> All rights reserved.
-  </footer>
-</div>
+           </section>
+
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
