@@ -215,7 +215,7 @@
                   <p>Appointment</p>
                 </a>
               </li> -->
-              {{-- <li class="nav-item">
+               <li class="nav-item">
                 <a href="vetpatient" class="nav-link">
                   <p>Patients</p>
                 </a>
@@ -229,7 +229,7 @@
                   <p>Clinic</p>
                 </a>
               </li>
-            </ul> --}}
+            </ul> 
           </li>
           <br>
           <br>
