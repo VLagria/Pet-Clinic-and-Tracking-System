@@ -357,7 +357,7 @@
                   Register a pet and record its health condition.
                 </p>
 
-                <a href="petregistration" class="card-link">Register a Pet </a>
+                <a href="viewvetpatient" class="card-link">Register a Pet </a>
                 <a href="viewvetpatient" class="card-link">View  Health Condition of Pet</a>
               </div>
             </div>
