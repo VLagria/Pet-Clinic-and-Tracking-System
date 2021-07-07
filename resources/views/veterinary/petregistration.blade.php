@@ -316,8 +316,8 @@
 
     </textarea>
   </div>
-  <br>
-  <br>
+  
+ 
   <div class="col-md-2">
     <label for="inputBloodtype" class="form-label">Pet BloodType</label>
     <input type="text" placeholder="Optional" class="form-control" id="inputBloodtype">
@@ -366,8 +366,7 @@
       <option>No</option>
     </select>
   </div>
-  <br>
-  <br>
+ 
   <div class="col-md-2">
     <label for="inputdp" required class="form-label">Pet Profile Picture</label>
     <form action="/action_page.php">
