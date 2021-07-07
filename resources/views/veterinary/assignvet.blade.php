@@ -217,7 +217,7 @@
               </li> -->
               
               <li class="nav-item">
-                <a href="vetpatient" class="nav-link active">
+                <a href="vetpatient" class="nav-link ">
                   <p>Patients</p>
                 </a>
               </li>
@@ -227,7 +227,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="vetclinic" class="nav-link">
+                <a href="vetclinic" class="nav-link active">
                   <p>Clinic</p>
                 </a>
               </li>
