@@ -22,6 +22,7 @@ Route::get('/admin/customer/CRUDcustomers', [MainController::class, 'adminCustom
 Route::get('/admin/vet/CRUDvet', [MainController::class, 'adminVet']);
 
 // Mao ni ako gibuhat 
+//kinsa diay ka?? HAHAHAHAHH
 
 
 
