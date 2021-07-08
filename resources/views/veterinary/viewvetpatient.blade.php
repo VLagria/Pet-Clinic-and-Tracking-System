@@ -221,7 +221,7 @@
 
 </form>
   </div>
-  <br>
+
   <!-- <div class="col-12">
     <div class="form-check">
       <input class="form-check-input"  type="checkbox" id="gridCheck" required/>
@@ -230,7 +230,7 @@
       </label>
     </div>
   </div> -->
-  <br>
+
 
   <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
