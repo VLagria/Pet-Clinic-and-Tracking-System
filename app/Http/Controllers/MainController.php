@@ -24,5 +24,5 @@ class MainController extends Controller
     final function adminVet(){
         return view('admin/vet/CRUDvet');
     }
-
+   
 }
