@@ -2,12 +2,32 @@
  <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
     <div class="p-3">
-      <h5>MediaOne PH</h5>
-      <p>Mediaone is a team of dedicated web developers and web designers based in Davao City,
-       Philippines who came from a diversed media and interactive backgrounds.
-        We pride ourselves on having the skills to integrate cross Disciplinary experience into each project, 
-        taking advantage of our thirst for new and innovative ideas 
-        in order to bring out a wide variety of business solutions no matter what it takes to get there.</p>
+      <h5>Pet Clinic and Tracking System</h5>
+      <p>Our animal hospital offer a full range of veterinary services. </p>
+        
+        <div class="row">
+              <div class ="column"margin:center;>
+              <img src="{{ asset('vendors/dist/img/soy.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+            </div>
+            <br>
+            <div class="row">
+              <div class ="column">
+              <img src="{{ asset('vendors/dist/img/shayn.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              </div>
+
+             <div class="row">
+              <div class ="column">
+              <img src="{{ asset('vendors/dist/img/kang.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              </div>
+               <div class="row">
+              <div class ="column">
+              <img src="{{ asset('vendors/dist/img/han.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              </div>
+              <div class="row">
+              <div class ="column">
+              <img src="{{ asset('vendors/dist/img/rus.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              </div>
     </div>
+    
   </aside>
   <!-- /.control-sidebar -->
