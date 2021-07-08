@@ -108,6 +108,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        
 
     <form action="" method="POST">
     <div class="col-12">
