@@ -24,7 +24,7 @@
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-      <h3 class="header">Dashboard</h3>
+      <h3 class="header">Customer</h3>
       <br>
    
     <!-- Main content -->

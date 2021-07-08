@@ -44,7 +44,7 @@ Route::get('customer/createCust', function () {
     return view('customer/createCust');
 });
 
-Route::get('admin/clinic/CRUDclinic', function () {
+
 
 Route::get('/admin/clinic/CRUDclinic', function () {
     return view('admin/clinic/CRUDclinic');

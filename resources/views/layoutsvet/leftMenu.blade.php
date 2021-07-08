@@ -54,7 +54,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                <a href="vetpatient" class="nav-link">
+                <a href="viewvetpatient" class="nav-link">
                 <i class="nav-icon fas fa-paw"></i>
                   <p>
                    Patients
@@ -63,7 +63,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="vetcustomer" class="nav-link">
+                <a href="viewvetcustomer" class="nav-link">
                   <i class="fas fa-user nav-icon"></i>
                   <p>
                    Customer

@@ -150,7 +150,32 @@
                 <div class="media">
               <img src="{{ asset('vendors/dist/img/pets.jpg') }}" alt="User Avatar" class="img-size-100 img-square mr-3">
               </div>
-              
+              <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header border-0">
+                <div class="d-flex justify-content-between">
+                  <h3 class="card-title">Number of Patients</h3>
+                  <a href="viewvetpatient">View Patients</a>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="d-flex">
+                  <p class="d-flex flex-column">
+                    <span class="text-bold text-lg">0</span>
+                    <span>Patients that is registered</span>
+                  </p>
+                  <p class="ml-auto d-flex flex-column text-right">
+                    <span class="text-success">
+                      <i class="fas fa-arrow-up"></i> 12.5%
+                    </span>
+                    <span class="text-muted">Since last week</span>
+                  </p>
+                </div>
+                </div>
+                
               </div>
             </div>
 
@@ -166,26 +191,7 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-    <div class="p-3">
-      <h5>Title</h5>
-      <p>Sidebar content</p>
-    </div>
-  </aside>
-  <!-- /.control-sidebar -->
-
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      Some things just fill your heart without  trying
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2021-2022 <a href="http://mediaoneph.com">MediaOne.io</a>.</strong> All rights reserved.
-  </footer>
-</div>
+ 
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->

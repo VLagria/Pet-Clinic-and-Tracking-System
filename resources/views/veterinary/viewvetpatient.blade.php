@@ -136,7 +136,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Register </h5>
+          <h5 class="modal-title" id="exampleModalLabel">Register a Pet </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -148,94 +148,88 @@
        
     <div class="form-group">
     <label for="inputname" class="form-label"> Name</label>
-    <input type="name" required placeholder="Enter Name" class="form-control" id="inputname">
+    <input type="name" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Enter Pet Name">
   </div>
-  <div class="col-md-3">
-    <label for="inputgender"  class="form-label"> Gender</label>
-    <select id="inputgender" class="form-select">
-      <option selected>Choose...</option>
-      <option>Male</option>
-      <option>FeMale</option>
-      
-    </select>
+  <div class="form-group">
+                <label for="inputGender">Gender</label>
+                <select id="inputStatus" class="form-control custom-select">
+                  <option selected disabled>Choose...</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
   </div>
-</div>
-  <div class="col-12">
-    <br>
-   
-  <div class="col-12">
+  <div class="form-group">
     <label for="inputnotes"  class="form-label"> Notes</label>
-    <br>
-    <textarea placeholder="Enter Description and Health Conditions" id="inputnotes"  name="notes" rows="4" cols="50">
-
+    <textarea placeholder="Enter Description and Health Conditions" class="form-control"aria-describedby="namelHelp"id="inputnotes"  name="notes" >
     </textarea>
   </div>
-  
- 
-  <div class="col-md-5">
+  <div class="form-group">
     <label for="inputBloodtype" class="form-label"> BloodType</label>
-    <input type="text" placeholder="Optional" class="form-control" id="inputBloodtype">
-  
-    <label for="inputrf" required class="form-label"> Registered Date</label>
+    <input type="bloodtype" class="form-control" id="exampleInputBloodtype" aria-describedby="emailHelp" placeholder="Optional">
+  <br>
+  <div class="form-group">
+    <label for="inputrd" required class="form-label"> Registered Date</label>
+    <br>
     <input type="date" id="date" name="date">
   </div>
 
-  <div class="col-md-1">
-    <label for="inputtypeid" required class="form-label "> Type </label>
-    <input type="text" class="form-control" id="inputtypeid" hidden>
-    <select id="inputtypeid" class="form-select">
-      <option selected>Choose  Type </option>
-      <option></option>
-    </select>
+  <div class="form-group">
+                <label for="inputType">Type</label>
+                <select id="inputType" class="form-control custom-select">
+                  <option selected disabled>Choose Type</option>
+                  <option>...</option>
+                  <option>...</option>
+                </select>
   </div>
-  <div class="col-md-2">
-    <label for="inputtypeid" required  class="form-label "> Breed</label>
-    <input type="text" class="form-control" id="inputtypeid" hidden>
-    <select id="inputbreed" class="form-select">
-      <option selected>Choose  Breed </option>
-      <option></option>
-    </select>
+  <div class="form-group">
+                <label for="inputBreed">Breed</label>
+                <select id="inputBreed" class="form-control custom-select">
+                  <option selected disabled>Choose Breed</option>
+                  <option>...</option>
+                  <option>...</option>
+                </select>
   </div>
-  <div class="col-md-1">
-    <label for="inputtypeid" required class="form-label ">Customer </label>
-    <input type="text" class="form-control" id="inputtypeid" hidden>
-    <select id="inputcustomer" class="form-select">
-      <option selected>Choose Customer </option>
-      <option></option>
-    </select>
+  <div class="form-group">
+                <label for="inputCustomer">Customer</label>
+                <select id="inputCustomer" class="form-control custom-select">
+                  <option selected disabled>Choose Customer</option>
+                  <option>...</option>
+                  <option>...</option>
+                </select>
   </div>
-  <div class="col-md-1">
-    <label for="inputtypeid" required class="form-label "> Clinic </label>
-    <input type="text" class="form-control" id="inputtypeid" hidden>
-    <select id="inputclinic" class="form-select">
-      <option selected>Choose Clinic </option>
-      <option></option>
-    </select>
+  <div class="form-group">
+                <label for="inputClinic">Clinic</label>
+                <select id="inputClinic" class="form-control custom-select">
+                  <option selected disabled>Choose Clinic</option>
+                  <option>...</option>
+                  <option>...</option>
+                </select>
   </div>
-  <div class="col-md-1">
-    <label for="inputtypeid" required class="form-label ">Status </label>
-    <select id="inputState" class="form-select">
-      <option selected>is  Active?</option>
-      <option>Yes</option>
-      <option>No</option>
-    </select>
+  <div class="form-group">
+                <label for="inputStatus">Status</label>
+                <select id="inputStatus" class="form-control custom-select">
+                  <option selected disabled>is Pet Active?</option>
+                  <option>...</option>
+                  <option>...</option>
+                </select>
   </div>
-  <div class="col-md-2">
-    <label for="inputdp" required class="form-label"> Profile Picture</label>
+  <div class="form-group">
+    <label for="inputdp" > Profile Picture</label>
+    <br>
     <form action="/action_page.php">
   <input type="file" id="myFile" name="filename">
 
 </form>
   </div>
   <br>
-  <div class="col-12">
+  <!-- <div class="col-12">
     <div class="form-check">
       <input class="form-check-input"  type="checkbox" id="gridCheck" required/>
       <label class="form-check-label" style="font-family:cursive;  " for="gridCheck">
         Remember me
       </label>
     </div>
-  </div>
+  </div> -->
   <br>
 
   <div class="modal-footer">

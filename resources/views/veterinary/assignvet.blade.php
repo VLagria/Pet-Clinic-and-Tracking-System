@@ -121,51 +121,45 @@
     <label for="inputvetAdd" class="form-label">Vet Address</label>
     <input type="name" required placeholder="Enter Name" class="form-control" id="inputvetAdd">
   </div>
-  <div class="col-md-2">
-    <label for="inputpetid" required  class="form-label ">Pet ID</label>
-    <input type="text" class="form-control" id="inputpetid" hidden>
-    <select id="inputpetid" class="form-select">
-      <option selected>Choose Pet ID </option>
-      <option></option>
-    </select>
-  </div>
-  <div class="col-md-2">
-    <label for="inputpetname" required  class="form-label ">Pet Name</label>
-    <input type="text" class="form-control" id="inputpetname" hidden>
-    <select id="inputpetname" class="form-select">
-      <option selected>Choose Pet Name </option>
-      <option></option>
-    </div>
-    </select>
   <div class="form-group">
-  <label for="inputvetrd" required class="form-label">Vet Registered Date</label>
-  <input type="date" id="date" name="date">
-</div>
-<div class="col-md-2">
-    <label for="inputcustomerid" required  class="form-label ">Customer ID</label>
-    <input type="text" class="form-control" id="inputcustomerid" hidden>
-    <select id="inputpetbreed" class="form-select">
-      <option selected>Choose Customer ID </option>
-      <option></option>
-    </div>
-    </select>
+  <label for="inputPetID">Pet ID</label>
+                <select id="inputPetID" class="form-control custom-select">
+                  <option selected disabled>Choose Pet ID</option>
+                  <option>...</option>
+                  <option>...</option>
+                </select>
   </div>
-  <div class="col-md-1">
-    <label for="inputpettypeid" required class="form-label ">Status </label>
-    <select id="inputState" class="form-select">
-      <option selected>is Pet Active?</option>
-      <option>Yes</option>
-      <option>No</option>
-    </div>
-    </select>
+  <div class="form-group">
+  <label for="inputPetname">Pet Name</label>
+                <select id="inputPetID" class="form-control custom-select">
+                  <option selected disabled>Choose Pet Name</option>
+                  <option>...</option>
+                  <option>...</option>
+                </select>
   </div>
-</div>
-  <div class="col-12">
+  <div class="form-group">
+    <label for="inputvrd" required class="form-label">Vet Registered Date</label>
     <br>
-
-</form>
+    <input type="date" id="date" name="date">
   </div>
-  <br>
+  <div class="form-group">
+  <label for="inputPetname">Customer ID</label>
+                <select id="inputPetID" class="form-control custom-select">
+                  <option selected disabled>Choose Customer ID</option>
+                  <option>...</option>
+                  <option>...</option>
+                </select>
+  </div>
+  <div class="form-group">
+  <label for="inputPetname">Status</label>
+                <select id="inputStatus" class="form-control custom-select">
+                  <option selected disabled>is Pet Active?</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+  </div>
+
+  <!-- <br>
   <div class="col-12">
     <div class="form-check">
       <input class="form-check-input"  type="checkbox" id="gridCheck" required/>
@@ -174,7 +168,7 @@
       </label>
     </div>
   </div>
-  <br>
+  <br> -->
 
   <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
