@@ -47,20 +47,20 @@
       <table class="table table-striped projects">
   <thead>
     <tr>
-      <th style="width:100px; scope="col">Pet ID</th>
-      <th style="width:120px;scope="col">Pet Name</th>
-      <th style="width:130px;scope="col">Pet Gender</th>
-      <th style="width:150px;scope="col">Pet Birthday</th>
-      <th style="width:130px;scope="col">Pet Notes</th>
-      <th style="width:180px;scope="col">Pet Blood Type</th>
+      <th style="width:140px; scope="col">Pet ID</th>
+      <th style="width:160px;scope="col">Pet Name</th>
+      <th style="width:180px;scope="col">Pet Gender</th>
+      <th style="width:200px;scope="col">Pet Birthday</th>
+      <th style="width:170px;scope="col">Pet Notes</th>
+      <th style="width:220px;scope="col">Pet Blood Type</th>
       <!-- <th style="width:130px;scope="col">Pet Profile</th> -->
-      <th style="width:200px;scope="col">Pet Registered Date</th>
-      <th style="width:180px;scope="col">Pet Type </th>
-      <th style="width:180px;scope="col">Pet Breed </th>
-      <th style="width:180px;scope="col">Customer </th>
-      <th style="width:150px;scope="col">Clinic </th>
-      <th style="width:100px;scope="col">Status</th>
-      <th style="width:200px;scope="col">Action</th>
+      <th style="width:240px;scope="col">Pet Registered Date</th>
+      <th style="width:220px;scope="col">Pet Type </th>
+      <th style="width:220px;scope="col">Pet Breed </th>
+      <th style="width:220px;scope="col">Customer </th>
+      <th style="width:190px;scope="col">Clinic </th>
+      <th style="width:140px;scope="col">Status</th>
+      <th style="width:240px;scope="col">Action</th>
 
 
      
@@ -107,17 +107,17 @@
     
     </td>
     <td class="project-actions text-right">
-                      <a class="btn btn-primary btn-sm" href="#">
+                      <a class="btn btn-primary btn-sm-3" href="#">
                           <i class="fas fa-folder">
                           </i>
                           View
                       </a>
-                      <a class="btn btn-info btn-sm" href="#">
+                      <a class="btn btn-info btn-sm-3" href="#">
                           <i class="fas fa-pencil-alt">
                           </i>
                           Edit
                       </a>
-                      <a class="btn btn-danger btn-sm" href="#">
+                      <a class="btn btn-danger btn-sm-3" href="#">
                           <i class="fas fa-trash">
                           </i>
                           Delete
