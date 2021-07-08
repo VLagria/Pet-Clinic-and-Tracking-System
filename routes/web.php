@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +14,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('login/login',function(){
+Route::get('/login/login', [MainController::class, 'logIn']);
+Route::get('/admin/index', [MainController::class, 'adminDashboard']);
+Route::get('/admin/pets/CRUDpet', [MainController::class, 'adminPet']);
+Route::get('/admin/clinic/CRUDclinic', [MainController::class, 'adminClinic']);
+Route::get('/admin/customer/CRUDcustomers', [MainController::class, 'adminCustomer']);
+Route::get('/admin/vet/CRUDvet', [MainController::class, 'adminVet']);
+
+// Mao ni ako gibuhat 
+
+
+
+Route::get('/login/login',function(){
     return view('login/login');
 });
-Route::get('admin/clinic/CRUDclinic', function () {
+Route::get('/admin/clinic/CRUDclinic', function () {
     return view('admin/clinic/CRUDclinic');
 });
+Route::get('/admin/index', function () {
+    return view('/admin/index');
+});
 
-Route::get('admin/customer/CRUDcustomers', function () {
+Route::get('/admin/customer/CRUDcustomers', function () {
     return view('admin/customer/CRUDcustomers');
 });
 

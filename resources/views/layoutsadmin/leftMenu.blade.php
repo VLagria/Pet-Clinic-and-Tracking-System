@@ -39,7 +39,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                <a href="vet/CRUDvet.html" class="nav-link">
+                <a href="/admin/index" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>
                    Dashboard
@@ -53,7 +53,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                <a href="vet/CRUDvet.html" class="nav-link">
+                <a href="/admin/vet/CRUDvet" class="nav-link">
                   <i class="nav-icon fas fa-ambulance"></i>
                   <p>
                    Veterinarians
@@ -62,7 +62,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="pages/widgets.html" class="nav-link">
+                <a href="/admin/pets/CRUDpet" class="nav-link">
                   <i class="nav-icon fas fa-paw"></i>
                   <p>
                    Pets
@@ -70,7 +70,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/widgets.html" class="nav-link">
+                <a href="/admin/customer/CRUDcustomers" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
                   <p>
                    Customers
@@ -79,31 +79,24 @@
               </li>
 
               <li class="nav-item">
-                <a href="pages/widgets.html" class="nav-link">
+                <a href="/admin/clinic/CRUDclinic" class="nav-link">
                   <i class="nav-icon fas fa-clinic-medical"></i>
                   <p>
                    Clinic
                   </p>
                 </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>
+                   Users
+                  </p>
+                </a>
 
               </li>
         
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-             
+  
               <li class="nav-item">
                 <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-sign-out-alt "></i>
