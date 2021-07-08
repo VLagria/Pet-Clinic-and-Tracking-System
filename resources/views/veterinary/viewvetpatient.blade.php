@@ -44,23 +44,23 @@
    
  <!-- Main content -->
  <div class="card-body p-0">
-      <table class="table table-striped projects">
+      <table style="table-layout: fixed; width: 100%;" class="table table-striped projects">
   <thead>
     <tr>
-      <th style="width:140px; scope="col">Pet ID</th>
-      <th style="width:160px;scope="col">Pet Name</th>
-      <th style="width:180px;scope="col">Pet Gender</th>
-      <th style="width:200px;scope="col">Pet Birthday</th>
-      <th style="width:170px;scope="col">Pet Notes</th>
-      <th style="width:220px;scope="col">Pet Blood Type</th>
-      <!-- <th style="width:130px;scope="col">Pet Profile</th> -->
-      <th style="width:240px;scope="col">Pet Registered Date</th>
-      <th style="width:220px;scope="col">Pet Type </th>
-      <th style="width:220px;scope="col">Pet Breed </th>
-      <th style="width:220px;scope="col">Customer </th>
-      <th style="width:190px;scope="col">Clinic </th>
-      <th style="width:140px;scope="col">Status</th>
-      <th style="width:240px;scope="col">Action</th>
+      <th style="width:70px;" scope="col">ID</th>
+      <th style="width:90px;"scope="col"> Name</th>
+      <th style="width:95px;"scope="col"> Gender</th>
+      <th style="width: 100px;"scope="col">Birthday</th>
+      <th style="width:95px;"scope="col"> Notes</th>
+      <th style="width: 80px;"scope="col"> Blood Type</th>
+      <!-- <th style="width:95px;"scope="col"> Profile</th> -->
+      <th style="width:130px;"scope="col"> Registered Date</th>
+      <th style="width: 90px;"scope="col"> Type </th>
+      <th style="width: 90px;"scope="col"> Breed </th>
+      <th style="width: 100px;"scope="col">Customer </th>
+      <th style="width: 90px;"scope="col">Clinic </th>
+      <th style="width:80px;"scope="col">Status</th>
+      <th style="width:100px;"scope="col">Action</th>
 
 
      
@@ -128,7 +128,7 @@
 </table>
 
 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal">
-   Register Pet
+   Register 
    <i class="fas fa-save"></i>
   
   </button>
@@ -136,7 +136,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Register Pet</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Register </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -147,11 +147,11 @@
     <div class="modal-body">
        
     <div class="form-group">
-    <label for="inputpetname" class="form-label">Pet Name</label>
-    <input type="name" required placeholder="Enter Name" class="form-control" id="inputpetname">
+    <label for="inputname" class="form-label"> Name</label>
+    <input type="name" required placeholder="Enter Name" class="form-control" id="inputname">
   </div>
   <div class="col-md-3">
-    <label for="inputgender"  class="form-label">Pet Gender</label>
+    <label for="inputgender"  class="form-label"> Gender</label>
     <select id="inputgender" class="form-select">
       <option selected>Choose...</option>
       <option>Male</option>
@@ -164,64 +164,64 @@
     <br>
    
   <div class="col-12">
-    <label for="inputpetnotes"  class="form-label">Pet Notes</label>
+    <label for="inputnotes"  class="form-label"> Notes</label>
     <br>
-    <textarea placeholder="Enter Description and Health Conditions" id="inputpetnotes"  name="petnotes" rows="4" cols="50">
+    <textarea placeholder="Enter Description and Health Conditions" id="inputnotes"  name="notes" rows="4" cols="50">
 
     </textarea>
   </div>
   
  
   <div class="col-md-5">
-    <label for="inputBloodtype" class="form-label">Pet BloodType</label>
+    <label for="inputBloodtype" class="form-label"> BloodType</label>
     <input type="text" placeholder="Optional" class="form-control" id="inputBloodtype">
   
-    <label for="inputpetrf" required class="form-label">Pet Registered Date</label>
+    <label for="inputrf" required class="form-label"> Registered Date</label>
     <input type="date" id="date" name="date">
   </div>
 
   <div class="col-md-1">
-    <label for="inputpettypeid" required class="form-label ">Pet Type </label>
-    <input type="text" class="form-control" id="inputpettypeid" hidden>
-    <select id="inputpettypeid" class="form-select">
-      <option selected>Choose Pet Type </option>
+    <label for="inputtypeid" required class="form-label "> Type </label>
+    <input type="text" class="form-control" id="inputtypeid" hidden>
+    <select id="inputtypeid" class="form-select">
+      <option selected>Choose  Type </option>
       <option></option>
     </select>
   </div>
   <div class="col-md-2">
-    <label for="inputpettypeid" required  class="form-label ">Pet Breed</label>
-    <input type="text" class="form-control" id="inputpettypeid" hidden>
-    <select id="inputpetbreed" class="form-select">
-      <option selected>Choose Pet Breed </option>
+    <label for="inputtypeid" required  class="form-label "> Breed</label>
+    <input type="text" class="form-control" id="inputtypeid" hidden>
+    <select id="inputbreed" class="form-select">
+      <option selected>Choose  Breed </option>
       <option></option>
     </select>
   </div>
   <div class="col-md-1">
-    <label for="inputpettypeid" required class="form-label ">Customer </label>
-    <input type="text" class="form-control" id="inputpettypeid" hidden>
-    <select id="inputpetcustomer" class="form-select">
+    <label for="inputtypeid" required class="form-label ">Customer </label>
+    <input type="text" class="form-control" id="inputtypeid" hidden>
+    <select id="inputcustomer" class="form-select">
       <option selected>Choose Customer </option>
       <option></option>
     </select>
   </div>
   <div class="col-md-1">
-    <label for="inputpettypeid" required class="form-label "> Clinic </label>
-    <input type="text" class="form-control" id="inputpettypeid" hidden>
-    <select id="inputpetclinic" class="form-select">
+    <label for="inputtypeid" required class="form-label "> Clinic </label>
+    <input type="text" class="form-control" id="inputtypeid" hidden>
+    <select id="inputclinic" class="form-select">
       <option selected>Choose Clinic </option>
       <option></option>
     </select>
   </div>
   <div class="col-md-1">
-    <label for="inputpettypeid" required class="form-label ">Status </label>
+    <label for="inputtypeid" required class="form-label ">Status </label>
     <select id="inputState" class="form-select">
-      <option selected>is Pet Active?</option>
+      <option selected>is  Active?</option>
       <option>Yes</option>
       <option>No</option>
     </select>
   </div>
   <div class="col-md-2">
-    <label for="inputdp" required class="form-label">Pet Profile Picture</label>
+    <label for="inputdp" required class="form-label"> Profile Picture</label>
     <form action="/action_page.php">
   <input type="file" id="myFile" name="filename">
 
