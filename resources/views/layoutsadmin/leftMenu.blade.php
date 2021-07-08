@@ -54,7 +54,7 @@
                with font-awesome or any other icon font library -->
                <li class="nav-item">
                 <a href="vet/CRUDvet.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon fas fa-ambulance"></i>
                   <p>
                    Veterinarians
                   </p>
@@ -63,7 +63,7 @@
 
               <li class="nav-item">
                 <a href="pages/widgets.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon fas fa-paw"></i>
                   <p>
                    Pets
                   </p>
@@ -71,7 +71,7 @@
               </li>
               <li class="nav-item">
                 <a href="pages/widgets.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon fas fa-user"></i>
                   <p>
                    Customers
                   </p>
@@ -80,12 +80,17 @@
 
               <li class="nav-item">
                 <a href="pages/widgets.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon fas fa-clinic-medical"></i>
                   <p>
                    Clinic
                   </p>
                 </a>
+
+              </li>
+        
              
+          </li>      
+
 
           
           
