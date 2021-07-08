@@ -1,9 +1,9 @@
  <!-- Main Sidebar Container -->
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/" class="brand-link">
+    <a href="custhome" class="brand-link">
       <img src="{{asset('vendors/dist/img/MediaoneLogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">PET CLINIC ADMIN
+      <span class="brand-text font-weight-light">CUSTOMER PAGE
 
       </span>
     </a>
@@ -13,10 +13,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{asset('vendors/dist/img/rouen.jpg') }}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{asset('vendors/dist/img/han.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin</a>
+          <a href="custprofile" class="d-block">User</a>
           
         </div>
       </div>
@@ -39,7 +39,8 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                <a href="/admin/index" class="nav-link">
+
+                <a href="custhome" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>
                    Dashboard
@@ -53,15 +54,13 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                <a href="/admin/vet/CRUDvet" class="nav-link">
-                  <i class="nav-icon fas fa-ambulance"></i>
+                <a href="viewvetpatient" class="nav-link">
+                <i class="nav-icon fas fa-ambulance"></i>
                   <p>
-                   Veterinarians
+                   Veterinary
                   </p>
                 </a>
               </li>
-              
-
               <li class="nav-item">
                 <a href="/admin/pets/CRUDpet" class="nav-link">
                   <i class="nav-icon fas fa-paw"></i>
@@ -71,33 +70,31 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/customer/CRUDcustomers" class="nav-link">
+                <a href="custprofile" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
                   <p>
-                   Customers
+                  Account Settings
                   </p>
                 </a>
               </li>
 
-              <li class="nav-item">
-                <a href="/admin/clinic/CRUDclinic" class="nav-link">
-                  <i class="nav-icon fas fa-clinic-medical"></i>
-                  <p>
-                   Clinic
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-users"></i>
-                  <p>
-                   Users
-                  </p>
-                </a>
-
-              </li>
-        
-  
+              
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+             
               <li class="nav-item">
                 <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-sign-out-alt "></i>
@@ -105,12 +102,10 @@
                    Logout
                   </p>
                 </a>
-              </li>    
-
-
+              </li>
           
           
-        
+        </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
