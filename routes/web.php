@@ -29,6 +29,23 @@ Route::get('/admin/vet/CRUDvet', [MainController::class, 'adminVet']);
 Route::get('/login/login',function(){
     return view('login/login');
 });
+
+Route::get('login/customerLogin',function(){
+    return view('login/customerLogin');
+});
+
+
+Route::get('createAcc/createacc',function(){
+    return view('createAcc/createacc');
+});
+
+
+Route::get('customer/createCust', function () {
+    return view('customer/createCust');
+});
+
+Route::get('admin/clinic/CRUDclinic', function () {
+
 Route::get('/admin/clinic/CRUDclinic', function () {
     return view('admin/clinic/CRUDclinic');
 });
