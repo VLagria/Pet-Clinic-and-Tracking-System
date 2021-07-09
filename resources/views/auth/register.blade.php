@@ -55,7 +55,7 @@ body {
 	height: 95px;
 	border-radius: 50%;
 	z-index: 9;
-	background: #70c5c0;
+	background: #373838;
 	padding: 15px;
 	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
 }
@@ -69,12 +69,12 @@ body {
 .login-form .btn, .login-form .btn:active {        
 	font-size: 16px;
 	font-weight: bold;
-	background: #70c5c0 !important;
+	background: #3d3f3f !important;
 	border: none;
 	margin-bottom: 20px;
 }
 .login-form .btn:hover, .login-form .btn:focus {
-	background: #50b8b3 !important;
+	background: #585e5d !important;
 }    
 .login-form a {
 	color: #fff;
@@ -100,32 +100,38 @@ body {
     <form action="/customer/createCust" method="get">
 		<div class="avatar">
 			<img src="{{asset('vendors/dist/img/VINCENT.jpg') }}"  alt="Avatar">
-		</div>
+	</div>
         <h2 class="text-center">CREATE ACCOUNT</h2>   
+
         <div class="form-group">
         	<input type="text" class="form-control" name="username" placeholder="Username" required="required">
         </div>
 		<div class="form-group">
             <input type="password" class="form-control" name="password" placeholder="Password" required="required">
-        </div>        
+        </div>
+		<div class="form-group">
+            <input type="numbers" class="form-control" name="mobile" placeholder="Mobile" required="required">
+        </div> 
+		<div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Email" required="required">
+        </div>       
    <div class="col-md-20">
           <label style="width:100px; font-size:15px;" for="usertype" required  class="form-label ">User Type:</label>
           <input  type="text" class="form-control" id="usertype" hidden>
           <select style="width:180px; padding:8px; " id="inputpetid" class="form-select">
             <option selected>USER </option>
             <option selected>CLINIC/VET</option>
-            <option selected>ADMIN</option>
             <option></option>
           </select>
-        </div>
+     </div>
         <br>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-lg btn-block">NEXT</button>
         </div>
 		<div class="bottom-action clearfix">
             <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
-            
         </div>
+		<a href="{{ route('auth.login')}}">I Already Have an Account, Sign In</a>
     </form>
   
 </div>

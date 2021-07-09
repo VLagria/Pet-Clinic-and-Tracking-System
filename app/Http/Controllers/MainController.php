@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 class MainController extends Controller
 {
     final function logIn(){
-        return view('login/login');
+        return view('auth/login');
+    }
+    final function register(){
+        return view('auth/register');
     }
     final function adminDashboard(){
         return view('admin/index');

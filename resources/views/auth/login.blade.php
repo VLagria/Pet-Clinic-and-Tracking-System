@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Bootstrap Login Form with Avatar Image</title>
+<title>LogIn</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -71,7 +71,8 @@ body {
 	font-weight: bold;
 	background: #3d3f3f !important;
 	border: none;
-	margin-bottom: 20px;
+	margin-bottom: 8px;
+	width: 290px;
 }
 .login-form .btn:hover, .login-form .btn:focus {
 	background: #585e5d !important;
@@ -103,7 +104,7 @@ body {
 		</div>
         <h2 class="text-center">LOGIN ACCOUNT</h2>   
         <div class="form-group">
-        	<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+        	<input type="text" class="form-control" name="username" placeholder="Email" required="required">
         </div>
 		<div class="form-group">
             <input type="password" class="form-control" name="password" placeholder="Password" required="required">
@@ -111,7 +112,10 @@ body {
   
         <br>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Log In</button>
+            <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Login</a>
+        </div>
+		<div class="form-group">
+            <a href="/auth/register" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Register</a>
         </div>
 		<div class="bottom-action clearfix">
             <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>

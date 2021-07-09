@@ -14,26 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login/login', [MainController::class, 'logIn']);
+Route::get('/', function () {
+    return view('auth/login');
+});
+
+
+Route::get('/auth/login', [MainController::class, 'logIn'])->name('auth.login');
+Route::get('/auth/register', [MainController::class, 'register'])->name('auth.register');
 Route::get('/admin/index', [MainController::class, 'adminDashboard']);
 Route::get('/admin/pets/CRUDpet', [MainController::class, 'adminPet']);
 Route::get('/admin/clinic/CRUDclinic', [MainController::class, 'adminClinic']);
 Route::get('/admin/customer/CRUDcustomers', [MainController::class, 'adminCustomer']);
 Route::get('/admin/vet/CRUDvet', [MainController::class, 'adminVet']);
 
-
-// Mao ni ako gibuhat 
-//kinsa diay ka?? HAHAHAHAHH
-
-
-
-Route::get('/login/login',function(){
-    return view('login/login');
-});
-
-Route::get('login/customerLogin',function(){
-    return view('login/customerLogin');
-});
 
 
 Route::get('createAcc/createacc',function(){
