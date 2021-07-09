@@ -139,10 +139,12 @@
                 </select>
   </div>
   <div class="form-group">
-    <label for="inputvrd" required class="form-label">Vet Registered Date</label>
+    <label for="date" required class="form-label"> Registered Date</label>
     <br>
-    <input type="date" id="date" name="date">
+    <div class="col-sm-12">
+    <input type="date" class="form-control" id="date" >
   </div>
+</div>
   <div class="form-group">
   <label for="inputPetname">Customer ID</label>
                 <select id="inputPetID" class="form-control custom-select">
