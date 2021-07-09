@@ -1,11 +1,7 @@
 @extends('layoutsadmin.app')
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
 @section('content')
   <!-- Content Wrapper. Contains page content -->
-
-  
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -14,7 +10,7 @@
           <div class="col-sm-6">
         
           </div><!-- /.col -->
-          <div class="col-sm-lg">
+          <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
             </ol>
           </div><!-- /.col -->
@@ -22,11 +18,15 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    
+
+
+
+
+
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-      <h3 class="card-title">REGISTER CLINIC</h3>
+      <h3 class="card-title">Clinic</h3>
   
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -37,120 +37,74 @@
         </button>
       </div>
     </div>
-    <div class="card-body p-0">
-      <table class="table table-striped projects">
-          <thead>
-              <tr>
-                  <th style="width: 1%">
-                      #
-                  </th>
-                  <th style="width: 10%">
-                      Clinic Name
-                  </th>
-                  <th style="width: 10%">
-                      Owner Name
-                  </th>
-                  <th style="width: 10%">
-                      Mobile Number
-                  </th>
-                  <th style="width: 5%" >
-                      Email
-                </th>
-                  <th style="width: 5%" >
-                      Telephone
-                  </th>
-                  <th style="width: 15%">
-                    Address
-                  </th>
-                  <th style="width: 10%" class="text-center">
-                   isActive
-                  </th>
-                  <th style="width: 10%">
-                    Admin Clinic ID
-                  </th>
-                  
+    <div class="card-body table-responsive p-0">
+      <table class="table table-striped table-valign-middle">
+        <thead>
+        <tr>
   
-                </th>
-                <th style="width: 15%" class="text-center">
+          <th>ID</th>
+          <th>Clinic Name</th>
+          <th>Owner Name</th>
+          <th>Mobile No</th>
+          <th>Telephone</th>
+          <th>Email</th>       
+          <th>Address</th>
+          <th>Status</th>
+          <th>Admin Clinic</th>
+            
+        <th style="width: 13%" class="text-center">
                   Action
                 </th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>
-                      #
-                  </td>
-                  <td>
-                      <a>
-                         Hannah Ramirez
-                      </a>
-                      <br/>
-                      <small>
           
-                      </small>
-                  </td>
-                  
-                  <td>
-                      <a>
-                        Vincent Lagria
-                      </a>
-                  </td>
-                  <td>
-                      <a>
-                   0921387435
-                      </a>
-                  </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+           <td>242</td>
+          <td>MediaOne</td>
+          <td>Vincent Lagria</td> 
+          
+          <td> 
+          0901293786
+          </td>
+          <td>83293782</td>
+          <td>vlagria@gmail.com</td>
+          <td>Purok 25 Maa Davao City</td>
+          <td class="project-state">
+            <span class="badge badge-success">Yes</span>
+        </td> 
+
+          <td>12345</td>
+          
+            <td class="project-actions">
+              <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal" >
+                  <i class="fas fa-folder">
+                  </i>
+                  View
+              </a>
+              <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
+                  <i class="fas fa-pencil-alt">
+                  </i>
+                  Edit
+              </a>
+              <a class="btn btn-danger btn-sm" >
+                  <i class="fas fa-trash">
+                  </i>
+                  Delete
+              </a>
+          </td> 
+        
+        </tbody>
   
-                  <td>
-                    <a>
-                 Clinicepet@gmail.com
-                    </a>
-                </td>
-                <td>
-                  <a>
-              08123672
-                  </a>
-              </td>
-              
-              <td>
-                <a>
-             Purok 25 b3 Maa Peoples Village
-                </a>
-            </td>
-                  <td class="project-state">
-                      <span class="badge badge-success">Yes</span>
-                  </td> 
-                <td>
-                  <a>
-                  2423
-                  </a>
-              </td> <td class="project-actions text-right">
-                <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal" >
-                    <i class="fas fa-folder">
-                    </i>
-                    View
-                </a>
-                <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
-                    <i class="fas fa-pencil-alt">
-                    </i>
-                    Edit
-                </a>
-                <a class="btn btn-danger btn-sm" >
-                    <i class="fas fa-trash">
-                    </i>
-                    Delete
-                </a>
-            </td> 
-              </tr>
-              <tr>
-              </tr>
-          </tbody>
+        
       </table>
+      
     </div>
-    <!-- /.card-body -->
   </div>
   <!-- /.card -->
+  
+
+
 
   {{-- View  modal  --}}
 
@@ -164,10 +118,10 @@
           </button>
         </div>
         <div class="modal-body">
-          <h5>Clinic Name: Hannah Ramirez.</h5>
-          <h5>Owner Name: Viasdasdasncent Lagria.</h5>
-          <h5>Mobile Number: Hannah Ramirez.</h5>
-          <h5>Owner Name: Vincent Lagria.</h5>
+          <h5>Name:   Hannah Ramirez.</h5>
+          <h5>Birthday:    12/105/1999.</h5>
+          <h5>Gender: Bayot.</h5>
+          <h5>Mobile:        09129837823.</h5>
         </div>
         <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -176,7 +130,6 @@
     </div>
   </div>
 
-
   {{-- end view modal --}}
    
     <!-- edit Modal -->
@@ -184,7 +137,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Update Clinic</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Update Veterinarian</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -192,86 +145,91 @@
 
         <form action="" method="POST">
         <div class="modal-body">
-
       
+                <div class="form-group">
+                  <label for="exampleInputEmail1">ID</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ID">
+                </div>
+
                 <div class="form-group">
                   <label for="exampleInputEmail1">Clinic Name</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Clinic Name">
-                  
                 </div>
+             
                 <div class="form-group">
                   <label for="exampleInputEmail1">Owner Name</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Owner Name">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Mobile Number</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
                   
                 </div>
+
+                
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Mobile No</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                </div>
+
                 <div class="form-group">
                   <label for="exampleInputEmail1">Telephone</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Telephone">
                 </div>
-              
-                 
+
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">House Block/Building/Floor No.</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="House Block/Building/Floor No.">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Street/Highway</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="House Block/Building/Floor No.">
                   
                 </div>
-    
-             
-              <div class="form-group">
-                <label for="exampleInputEmail1">House Block/Building/Floor No.</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Barangay</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Barangay">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">City</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="City">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Zip Code</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Zip Code">
+                </div>
+  
+
+
+          <div class="form-group">
+            <label for="inputStatus">Active</label>
+            <select id="inputStatus" class="form-control custom-select">
+              <option selected disabled>--</option>
+              <option>Yes</option>
+              <option>No</option>  
+            </select>
+ 
+
+            <div class="form-group">
+              <label for="inputStatus">Admin Clinic</label>
+              <select id="inputStatus" class="form-control custom-select">
+                <option selected disabled>--</option>
+                <option>--</option>
+                <option>--</option>  
+              </select>
               </div>
+  
 
-              <div class="form-group">
-                <label for="exampleInputEmail1">Street/Highway</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
-                
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Barangay</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">City</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Zip Code</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Addres">
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Street/Highway</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
-                
-              </div>
-
-              <div class="form-group">
-                <label for="inputStatus">Status</label>
-                <select id="inputStatus" class="form-control custom-select">
-                  <option selected disabled>Yes</option>
-                  <option>Yes</option>
-                  <option>No</option>
-    
-                </select>
-              </div> 
-
-              <div class="form-group">
-                <label for="inputStatus">Admin Clinic ID</label>
-                <select id="inputStatus" class="form-control custom-select">
-                  <option selected disabled>--</option>
-                  <option>Clinic 1</option>
-                  <option>Clinic 2</option>
-                </select>
-              </div> 
+          </div>
         </div>
+  
+              
+      
+    
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Save Changes</button>
@@ -283,10 +241,9 @@
   {{-- end edit modal  --}}
 
   <!-- Button trigger modal -->
-  <div class = "d-grid gap-2 d-md-flex justify-content-md-end">
-    <button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#addModal">
-    <i class="fas fa-save"> Create
-    
+  <div class = " float-right">
+    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addModal">
+        Create
         </i>
       </button>
       </div>
@@ -307,95 +264,103 @@
 
         <form action="" method="POST">
         <div class="modal-body">
-
       
+                <div class="form-group">
+                  <label for="exampleInputEmail1">ID</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ID">
+                </div>
+
                 <div class="form-group">
                   <label for="exampleInputEmail1">Clinic Name</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Clinic Name">
-                  
                 </div>
+             
                 <div class="form-group">
                   <label for="exampleInputEmail1">Owner Name</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Owner Name">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Mobile Number</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
                   
                 </div>
+
+                
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Mobile No</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                </div>
+
                 <div class="form-group">
                   <label for="exampleInputEmail1">Telephone</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Telephone">
                 </div>
-              
-                 
+
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">House Block/Building/Floor No.</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="House Block/Building/Floor No.">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Street/Highway</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="House Block/Building/Floor No.">
                   
                 </div>
-    
-             
-              <div class="form-group">
-                <label for="exampleInputEmail1">House Block/Building/Floor No.</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Barangay</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Barangay">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">City</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="City">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Zip Code</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Zip Code">
+                </div>
+  
+
+
+          <div class="form-group">
+            <label for="inputStatus">Active</label>
+            <select id="inputStatus" class="form-control custom-select">
+              <option selected disabled>--</option>
+              <option>Yes</option>
+              <option>No</option>  
+            </select>
+ 
+
+            <div class="form-group">
+              <label for="inputStatus">Admin Clinic</label>
+              <select id="inputStatus" class="form-control custom-select">
+                <option selected disabled>--</option>
+                <option>--</option>
+                <option>--</option>  
+              </select>
               </div>
+  
 
-              <div class="form-group">
-                <label for="exampleInputEmail1">Street/Highway</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
-                
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Barangay</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">City</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Zip Code</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Addres">
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Street/Highway</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
-                
-              </div>
-
-              <div class="form-group">
-                <label for="inputStatus">Status</label>
-                <select id="inputStatus" class="form-control custom-select">
-                  <option selected disabled>Yes</option>
-                  <option>Yes</option>
-                  <option>No</option>
-    
-                </select>
-              </div> 
-
-              <div class="form-group">
-                <label for="inputStatus">Admin Clinic ID</label>
-                <select id="inputStatus" class="form-control custom-select">
-                  <option selected disabled>--</option>
-                  <option>Clinic 1</option>
-                  <option>Clinic 2</option>
-                </select>
-              </div> 
+          </div>
         </div>
+  
+              
+      
+    
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-primary">Save Changes</button>
         </div>
       </div>
     </div>
   </div>
 
+
   {{-- end add modal  --}}
+      
+      
 
   </section>
   <!-- /.content -->
@@ -410,4 +375,4 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 
-  @endsection
+@endsection

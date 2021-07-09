@@ -1,6 +1,5 @@
 @extends('layoutsadmin.app')
 
-
 @section('content')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -20,13 +19,15 @@
     </div>
     <!-- /.content-header -->
 
- 
+
+
+
 
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
       <h3 class="card-title">Veterinarians</h3>
-
+  
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
           <i class="fas fa-minus"></i>
@@ -36,560 +37,468 @@
         </button>
       </div>
     </div>
-    <div class="card-body p-0">
-      <table class="table table-striped projects">
-          <thead>
-              <tr>
-                  <th style="width: 1%">
-                      #
-                  </th>
-                  <th style="width: 3%">
-                      Vet Name
-                  </th>
-                  <th style="width: 2%">
-                      Date of Birth
-                  </th>
-                  <th style="width:2%">
-                      Email
-                  </th>
-                  <th style="width: 2%" >
-                  Mobile Number
-                </th>
-                  <th style="width: 2%" >
-                      Telephone
-                  </th>
-                  <th style="width: 4%">
-                    Address
-                  </th>
-                  <th style="width: 2%" class="text-center">
-                   isActive
-                  </th>
-                  <th style="width: 2%">
-                    Date Added
-                  </th>
-                  <th style="width: 2%">
-                    Clinic ID
-                  </th>
-                  <th style="width: 3%">
-                    User ID
-                  </th>
-
-                </th>
-                <th style="width: 7%" class="text-center">
+    <div class="card-body table-responsive p-0">
+      <table class="table table-striped table-valign-middle">
+        <thead>
+        <tr>
+  
+          <th>ID</th>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Birthdate</th>
+          <th>Mobile No</th>
+          <th>Telephone</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Status</th>
+          <th>Clinic</th>
+            
+        <th style="width: 13%" class="text-center">
                   Action
                 </th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>
-                      #
-                  </td>
-                  <td>
-                      <a>
-                         Hannah Ramirez
-                      </a>
-                      <br/>
-                      <small>
           
-                      </small>
-                  </td>
-                  
-                  <td>
-                      <a>
-                        11/15/1999
-                      </a>
-                  </td>
-                  <td>
-                      <a>
-                    hannahf@gmail.com
-                      </a>
-                  </td>
-
-                  <td>
-                    <a>
-                 09432364481
-                    </a>
-                </td>
-                <td>
-                  <a>
-              08123672
-                  </a>
-              </td>
-              
-              <td>
-                <a>
-             Purok 25 Maa Peoples Village
-                </a>
-            </td>
-                  <td class="project-state">
-                      <span class="badge badge-success">Yes</span>
-                  </td> 
-
-                  <td>
-                    <a>
-                    12/15/2008
-                    </a>
-                </td>
-      
-                <td>
-                  <a>
-                  2423
-                  </a>
-              </td>
-
-              <td>
-                <a>
-               3243
-                </a>
-              </td>
-                   <td class="project-actions text-right">
-                      <a class="btn btn-primary btn-sm" href="#">
-                          <i class="fas fa-folder">
-                          </i>
-                          View
-                      </a>
-                      <a class="btn btn-info btn-sm" href="#">
-                          <i class="fas fa-pencil-alt">
-                          </i>
-                          Edit
-                      </a>
-                      <a class="btn btn-danger btn-sm" href="#">
-                          <i class="fas fa-trash">
-                          </i>
-                          Delete
-                      </a>
-                  </td> 
-              </tr>
-              <tr>
-              </tr>
-
-              <tr>
-                <td>
-                    #
-                </td>
-                <td>
-                    <a>
-                       Hannah Ramirez
-                    </a>
-                    <br/>
-                    <small>
-        
-                    </small>
-                </td>
-                
-                <td>
-                    <a>
-                      11/15/1999
-                    </a>
-                </td>
-                <td>
-                    <a>
-                  hannahf@gmail.com
-                    </a>
-                </td>
-
-                <td>
-                  <a>
-               09432364481
-                  </a>
-              </td>
-              <td>
-                <a>
-            08123672
-                </a>
-            </td>
-            
-            <td>
-              <a>
-           Purok 25 Maa Peoples Village
-              </a>
-          </td>
-                <td class="project-state">
-                    <span class="badge badge-success">Yes</span>
-                </td> 
-
-                <td>
-                  <a>
-                  12/15/2008
-                  </a>
-              </td>
-    
-              <td>
-                <a>
-                2423
-                </a>
-            </td>
-
-            <td>
-              <a>
-             3243
-              </a>
-            </td>
-                 <td class="project-actions text-right">
-                    <a class="btn btn-primary btn-sm" href="#">
-                        <i class="fas fa-folder">
-                        </i>
-                        View
-                    </a>
-                    <a class="btn btn-info btn-sm" href="#">
-                        <i class="fas fa-pencil-alt">
-                        </i>
-                        Edit
-                    </a>
-                    <a class="btn btn-danger btn-sm" href="#">
-                        <i class="fas fa-trash">
-                        </i>
-                        Delete
-                    </a>
-                </td> 
-            </tr>
-            <tr>
-            </tr>
-
-            <tr>
-              <td>
-                  #
-              </td>
-              <td>
-                  <a>
-                     Hannah Ramirez
-                  </a>
-                  <br/>
-                  <small>
-      
-                  </small>
-              </td>
-              
-              <td>
-                  <a>
-                    11/15/1999
-                  </a>
-              </td>
-              <td>
-                  <a>
-                hannahf@gmail.com
-                  </a>
-              </td>
-
-              <td>
-                <a>
-             09432364481
-                </a>
-            </td>
-            <td>
-              <a>
-          08123672
-              </a>
-          </td>
-          
-          <td>
-            <a>
-         Purok 25 Maa Peoples Village
-            </a>
-        </td>
-              <td class="project-state">
-                  <span class="badge badge-success">Yes</span>
-              </td> 
-
-              <td>
-                <a>
-                12/15/2008
-                </a>
-            </td>
-  
-            <td>
-              <a>
-              2423
-              </a>
-          </td>
-
-          <td>
-            <a>
-           3243
-            </a>
-          </td>
-               <td class="project-actions text-right">
-                  <a class="btn btn-primary btn-sm" href="#">
-                      <i class="fas fa-folder">
-                      </i>
-                      View
-                  </a>
-                  <a class="btn btn-info btn-sm" href="#">
-                      <i class="fas fa-pencil-alt">
-                      </i>
-                      Edit
-                  </a>
-                  <a class="btn btn-danger btn-sm" href="#">
-                      <i class="fas fa-trash">
-                      </i>
-                      Delete
-                  </a>
-              </td> 
-          </tr>
-          <tr>
-          </tr>
-          <tr>
-            <td>
-                #
-            </td>
-            <td>
-                <a>
-                   Hannah Ramirez
-                </a>
-                <br/>
-                <small>
-    
-                </small>
-            </td>
-            
-            <td>
-                <a>
-                  11/15/1999
-                </a>
-            </td>
-            <td>
-                <a>
-              hannahf@gmail.com
-                </a>
-            </td>
-
-            <td>
-              <a>
-           09432364481
-              </a>
-          </td>
-          <td>
-            <a>
-        08123672
-            </a>
-        </td>
-        
-        <td>
-          <a>
-       Purok 25 Maa Peoples Village
-          </a>
-      </td>
-            <td class="project-state">
-                <span class="badge badge-success">Yes</span>
-            </td> 
-
-            <td>
-              <a>
-              12/15/2008
-              </a>
-          </td>
-
-          <td>
-            <a>
-            2423
-            </a>
-        </td>
-
-        <td>
-          <a>
-         3243
-          </a>
-        </td>
-             <td class="project-actions text-right">
-                <a class="btn btn-primary btn-sm" href="#">
-                    <i class="fas fa-folder">
-                    </i>
-                    View
-                </a>
-                <a class="btn btn-info btn-sm" href="#">
-                    <i class="fas fa-pencil-alt">
-                    </i>
-                    Edit
-                </a>
-                <a class="btn btn-danger btn-sm" href="#">
-                    <i class="fas fa-trash">
-                    </i>
-                    Delete
-                </a>
-            </td> 
         </tr>
+        </thead>
+        <tbody>
         <tr>
-        </tr>
-
-        <tr>
+           <td>242</td>
+          <td>LagriaVincent21</td>
+          <td>-----</td> 
           <td>
-              #
+            <img src="dist/img/askal.jpg" class="img-circle img-size-32 mr-2">
+            Vincent
+       
           </td>
+         <td>Male</td> 
+         <td>12/12/1999</td>
           <td>
-              <a>
-                 Hannah Ramirez
-              </a>
-              <br/>
-              <small>
-  
-              </small>
+            <small class="text-success mr-1">
+              
+            </small>
+            09123242123
           </td>
-          
-          <td>
-              <a>
-                11/15/1999
-              </a>
-          </td>
-          <td>
-              <a>
-            hannahf@gmail.com
-              </a>
-          </td>
-
-          <td>
-            <a>
-         09432364481
-            </a>
-        </td>
-        <td>
-          <a>
-      08123672
-          </a>
-      </td>
-      
-      <td>
-        <a>
-     Purok 25 Maa Peoples Village
-        </a>
-    </td>
+          <td>83293782</td>
+          <td>vlagria@gmail.com</td>
+          <td>Purok 25 Maa Davao City</td>
           <td class="project-state">
-              <span class="badge badge-success">Yes</span>
-          </td> 
+            <span class="badge badge-success">Yes</span>
+        </td> 
 
-          <td>
-            <a>
-            12/15/2008
-            </a>
-        </td>
-
-        <td>
-          <a>
-          2423
-          </a>
-      </td>
-
-      <td>
-        <a>
-       3243
-        </a>
-      </td>
-           <td class="project-actions text-right">
-              <a class="btn btn-primary btn-sm" href="#">
+          <td>Cubao</td>
+          
+            <td class="project-actions">
+              <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal" >
                   <i class="fas fa-folder">
                   </i>
                   View
               </a>
-              <a class="btn btn-info btn-sm" href="#">
+              <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
                   <i class="fas fa-pencil-alt">
                   </i>
                   Edit
               </a>
-              <a class="btn btn-danger btn-sm" href="#">
+              <a class="btn btn-danger btn-sm" >
                   <i class="fas fa-trash">
                   </i>
                   Delete
               </a>
           </td> 
-      </tr>
-      <tr>
-      </tr>
-
-      <tr>
-        <td>
-            #
-        </td>
-        <td>
-            <a>
-               Hannah Ramirez
-            </a>
-            <br/>
-            <small>
-
-            </small>
-        </td>
         
-        <td>
-            <a>
-              11/15/1999
-            </a>
-        </td>
-        <td>
-            <a>
-          hannahf@gmail.com
-            </a>
-        </td>
-
-        <td>
-          <a>
-       09432364481
-          </a>
-      </td>
-      <td>
-        <a>
-    08123672
-        </a>
-    </td>
-    
-    <td>
-      <a>
-   Purok 25 Maa Peoples Village
-      </a>
-  </td>
-        <td class="project-state">
-            <span class="badge badge-success">Yes</span>
-        </td> 
-
-        <td>
-          <a>
-          12/15/2008
-          </a>
-      </td>
-
-      <td>
-        <a>
-        2423
-        </a>
-    </td>
-
-    <td>
-      <a>
-     3243
-      </a>
-    </td>
-         <td class="project-actions text-right">
-            <a class="btn btn-primary btn-sm" href="#">
-                <i class="fas fa-folder">
-                </i>
-                View
-            </a>
-            <a class="btn btn-info btn-sm" href="#">
-                <i class="fas fa-pencil-alt">
-                </i>
-                Edit
-            </a>
-            <a class="btn btn-danger btn-sm" href="#">
-                <i class="fas fa-trash">
-                </i>
-                Delete
-            </a>
-        </td> 
-    </tr>
-    <tr>
-    </tr>
-
-                        
-          </tbody>
+        </tbody>
+  
+        
       </table>
+      
     </div>
-    <!-- /.card-body -->
   </div>
   <!-- /.card -->
+  
 
-</section>
-<!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
+
+
+  {{-- View  modal  --}}
+
+  <div class="modal" id="viewModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">View Veterinarian</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>Name:   Hannah Ramirez.</h5>
+          <h5>Birthday:    12/105/1999.</h5>
+          <h5>Gender: Bayot.</h5>
+          <h5>Mobile:        09129837823.</h5>
+        </div>
+        <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- end view modal --}}
+   
+    <!-- edit Modal -->
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Veterinarian</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <form action="" method="POST">
+        <div class="modal-body">
+      
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Username</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Username">
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Password</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name">
+                </div>
+             
+                <div class="form-group">
+                  <label for="exampleInputEmail1">First Name</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                  
+                </div>
+
+                
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Last Name</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                </div>
+
+          <div class="form-group">
+            <label for="inputStatus">Gender</label>
+            <select id="inputStatus" class="form-control custom-select">
+              <option selected disabled>--</option>
+              <option>Female</option>
+              <option>Male</option>  
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="date" required class="form-label">Birthdate</label>
+            <br>
+            <div class="">
+            <input type="date" class="form-control" id="date" >
+          </div>
+          </div>
+          
+             
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Mobile</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                  
+                </div>
+                
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Telephone</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Telephone">
+                  
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+                  
+                </div>
+
+              
+             
+                <div class="form-group">
+                  <label for="exampleInputEmail1">House Block/Building/Floor No.</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Street/Highway</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                  
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Barangay</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">City</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Zip Code</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Addres">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Street/Highway</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
+                  
+                </div>
+
+
+
+          <div class="form-group">
+            <label for="inputStatus">Active</label>
+            <select id="inputStatus" class="form-control custom-select">
+              <option selected disabled>--</option>
+              <option>Yes</option>
+              <option>No</option>  
+            </select>
+
+            
+  
+            <div class="form-group">
+              <label for="date" required class="form-label">Registration Date</label>
+        
+              <div class="">
+              <input type="date" class="form-control" id="date" >
+            </div>
+            </div>
+       
+
+            <div class="form-group">
+              <label for="inputStatus">Clinic</label>
+              <select id="inputStatus" class="form-control custom-select">
+                <option selected disabled>--</option>
+                <option>--</option>
+                <option>--</option>  
+              </select>
+              </div>
+  
+
+
+              <div class="form-group">
+                <label for="inputdp" > Profile Picture</label>
+                <br>
+                <form action="/action_page.php">
+              <input type="file" id="myFile" name="filename">
+      
+      
+      
+            </div>
+
+
+          </div>
+        </div>
+  
+              
+      
+    
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- end edit modal  --}}
+
+  <!-- Button trigger modal -->
+  <div class = " float-right">
+    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addModal">
+        Create
+        </i>
+      </button>
+      </div>
+  
+
+   
+
+  <!-- Add Modal -->
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create Veterinarian</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <form action="" method="POST">
+        <div class="modal-body">
+      
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Username</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Username">
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Password</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name">
+                </div>
+             
+                <div class="form-group">
+                  <label for="exampleInputEmail1">First Name</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                  
+                </div>
+
+                
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Last Name</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                </div>
+
+          <div class="form-group">
+            <label for="inputStatus">Gender</label>
+            <select id="inputStatus" class="form-control custom-select">
+              <option selected disabled>--</option>
+              <option>Female</option>
+              <option>Male</option>  
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="date" required class="form-label">Birthdate</label>
+            <br>
+            <div class="">
+            <input type="date" class="form-control" id="date" >
+          </div>
+          </div>
+          
+             
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Mobile</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                  
+                </div>
+                
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Telephone</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Telephone">
+                  
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+                  
+                </div>
+
+              
+             
+                <div class="form-group">
+                  <label for="exampleInputEmail1">House Block/Building/Floor No.</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Street/Highway</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                  
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Barangay</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">City</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Zip Code</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Addres">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Street/Highway</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
+                  
+                </div>
+
+
+
+          <div class="form-group">
+            <label for="inputStatus">Active</label>
+            <select id="inputStatus" class="form-control custom-select">
+              <option selected disabled>--</option>
+              <option>Yes</option>
+              <option>No</option>  
+            </select>
+
+            
+  
+            <div class="form-group">
+              <label for="date" required class="form-label">Registration Date</label>
+        
+              <div class="">
+              <input type="date" class="form-control" id="date" >
+            </div>
+            </div>
+       
+
+            <div class="form-group">
+              <label for="inputStatus">Clinic</label>
+              <select id="inputStatus" class="form-control custom-select">
+                <option selected disabled>--</option>
+                <option>--</option>
+                <option>--</option>  
+              </select>
+              </div>
+  
+
+
+              <div class="form-group">
+                <label for="inputdp" > Profile Picture</label>
+                <br>
+                <form action="/action_page.php">
+              <input type="file" id="myFile" name="filename">
+      
+      
+      
+            </div>
+
+
+          </div>
+        </div>
+  
+              
+      
+    
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  {{-- end add modal  --}}
+      
+      
+
+  </section>
+  <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
 
 @endsection
-          

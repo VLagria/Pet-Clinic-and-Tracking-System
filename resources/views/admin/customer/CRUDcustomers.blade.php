@@ -19,7 +19,10 @@
     </div>
     <!-- /.content-header -->
 
-   
+
+
+
+
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
@@ -34,145 +37,82 @@
         </button>
       </div>
     </div>
-    <div class="card-body p-0">
-      <table class="table table-striped projects">
-          <thead>
-              <tr>
-                  <th style="width: 1%">
-                      #
-                  </th>
-                  <th style="width: 10%">
-                      Name
-                  </th>
-                  <th style="width: 5%">
-                    Birthdate
-                </th>
-
-                <th style="width: 5%">
-                  Gender
-              </th>
-                  <th style="width: 5%">
-                      Mobile
-                  </th>
-                  <th style="width: 10%">
-                      Email
-                  </th>
-                  <th style="width: 10%" >
-                      Telephone
-                </th>
-                  <th style="width: 8%" >
-                    Profile Image
-                  </th>
-                  <th style="width: 10%">
-                    Address
-                  </th>
-                  <th style="width: 10%" class="text-center">
-                   isActive
-                  </th>
-                  <th style="width: 10%">
-                    User ID
-                  </th>
-                </th>
-                <th style="width: 15%" class="text-center">
+    <div class="card-body table-responsive p-0">
+      <table class="table table-striped table-valign-middle">
+        <thead>
+        <tr>
+  
+          
+          <th>ID</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Birthdate</th>
+          <th>Mobile No</th>
+          <th>Telephone</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Status</th>
+       
+            
+        <th style="width: 13%" class="text-center">
                   Action
                 </th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>
-                      #
-                  </td>
-                  <td>
-                      <a>
-                         Hannah Ramirez
-                      </a>
-                      <br/>
-                      <small>
           
-                      </small>
-                  </td>
-                  
-                  <td>
-                      <a>
-                        11/15/1999
-                      </a>
-                  </td>
-                  <td>
-                    <a>
-                 Female
-                    </a>
-                </td>
-                  <td>
-                      <a>
-                   0921387435
-                      </a>
-                  </td>
-  
-                  <td>
-                    <a>
-                 Clinicepet@gmail.com
-                    </a>
-                </td>
-                <td>
-                  <a>
-              08123672
-                  </a>
-              </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+           <td>123</td>
+          <td>
+            <img src="dist/img/askal.jpg" class="img-circle img-size-32 mr-2">
+            Vincent
+       
+          </td>
+         <td>Male</td> 
+         <td>12/12/1999</td>
+          <td>
+            <small class="text-success mr-1">
+              
+            </small>
+            09123242123
+          </td>
+          <td>83293782</td>
+          <td>vlagria@gmail.com</td>
+          <td>Purok 25 Maa Davao City</td>
+          <td class="project-state">
+            <span class="badge badge-success">Yes</span>
+        </td> 
 
-            </td>
-
-            <td>
-              <a>
-           (Image Here))
+    
+          
+            <td class="project-actions">
+              <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal" >
+                  <i class="fas fa-folder">
+                  </i>
+                  View
               </a>
-
-              
-            </td>
-              
-              <td>
-                <a>
-             Purok 25 b3 Maa Peoples Village
-                </a>
-
-
-           
-                  <td class="project-state">
-                      <span class="badge badge-success">Yes</span>
-                  </td> 
-                <td>
-                  <a>
-                  2423
-                  </a>
-              </td>
-              <td class="project-actions text-right">
-                <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal" >
-                    <i class="fas fa-folder">
-                    </i>
-                    View
-                </a>
-                <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
-                    <i class="fas fa-pencil-alt">
-                    </i>
-                    Edit
-                </a>
-                <a class="btn btn-danger btn-sm" >
-                    <i class="fas fa-trash">
-                    </i>
-                    Delete
-                </a>
-            </td> 
-              </tr>
-              <tr>
-              </tr>
+              <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
+                  <i class="fas fa-pencil-alt">
+                  </i>
+                  Edit
+              </a>
+              <a class="btn btn-danger btn-sm" >
+                  <i class="fas fa-trash">
+                  </i>
+                  Delete
+              </a>
+          </td> 
+        
+        </tbody>
   
-            
-          </tbody>
+        
       </table>
+      
     </div>
-    <!-- /.card-body -->
   </div>
   <!-- /.card -->
+  
+
 
 
   {{-- View  modal  --}}
@@ -181,7 +121,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">View Customers</h5>
+          <h5 class="modal-title">View Veterinarian</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -214,37 +154,47 @@
 
         <form action="" method="POST">
         <div class="modal-body">
-
       
+       
                 <div class="form-group">
                   <label for="exampleInputEmail1">First Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Clinic Name">
-                  
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Middle Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Owner Name">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Last Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
-                  
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Birthdate</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Telephone">
-                </div>
-              
-                 
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Gender</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
                   
                 </div>
 
+                
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Last Name</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                </div>
+
+          <div class="form-group">
+            <label for="inputStatus">Gender</label>
+            <select id="inputStatus" class="form-control custom-select">
+              <option selected disabled>--</option>
+              <option>Female</option>
+              <option>Male</option>  
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="date" required class="form-label">Birthdate</label>
+            <br>
+            <div class="">
+            <input type="date" class="form-control" id="date" >
+          </div>
+          </div>
+          
+             
                 <div class="form-group">
                   <label for="exampleInputEmail1">Mobile</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                  
+                </div>
+                
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Telephone</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Telephone">
                   
                 </div>
 
@@ -254,70 +204,73 @@
                   
                 </div>
 
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Telephone</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
-                  
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Profile Image</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
-                  
-                </div>
-    
+              
              
-              <div class="form-group">
-                <label for="exampleInputEmail1">House Block/Building/Floor No.</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
-              </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">House Block/Building/Floor No.</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Street/Highway</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                  
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Barangay</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">City</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Zip Code</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Addres">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Street/Highway</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
+                  
+                </div>
+
+
+
+          <div class="form-group">
+            <label for="inputStatus">Active</label>
+            <select id="inputStatus" class="form-control custom-select">
+              <option selected disabled>--</option>
+              <option>Yes</option>
+              <option>No</option>  
+            </select>
+
+            
+  
+       
+
+            
 
               <div class="form-group">
-                <label for="exampleInputEmail1">Street/Highway</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
-                
-              </div>
+                <label for="inputdp" > Profile Picture</label>
+                <br>
+                <form action="/action_page.php">
+              <input type="file" id="myFile" name="filename">
+      
+      
+      
+            </div>
 
-              <div class="form-group">
-                <label for="exampleInputEmail1">Barangay</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
-              </div>
 
-              <div class="form-group">
-                <label for="exampleInputEmail1">City</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Zip Code</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Addres">
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Street/Highway</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
-                
-              </div>
-
-              <div class="form-group">
-                <label for="inputStatus">Status</label>
-                <select id="inputStatus" class="form-control custom-select">
-                  <option selected disabled>Yes</option>
-                  <option>Yes</option>
-                  <option>No</option>
-    
-                </select>
-              </div> 
-
-              <div class="form-group">
-                <label for="inputStatus">User ID</label>
-                <select id="inputStatus" class="form-control custom-select">
-                  <option selected disabled>--</option>
-                  <option>User 1</option>
-                  <option>User 1</option>
-                </select>
-              </div> 
+          </div>
         </div>
+  
+              
+      
+    
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Save Changes</button>
@@ -329,10 +282,9 @@
   {{-- end edit modal  --}}
 
   <!-- Button trigger modal -->
-  <div class = "d-grid gap-2 d-md-flex justify-content-md-end">
-    <button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#addModal">
+  <div class = " float-right">
+    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addModal">
         Create
-    
         </i>
       </button>
       </div>
@@ -345,7 +297,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Update Customers</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Create Customers</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -353,37 +305,56 @@
 
         <form action="" method="POST">
         <div class="modal-body">
-
       
                 <div class="form-group">
-                  <label for="exampleInputEmail1">First Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Clinic Name">
-                  
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Middle Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Owner Name">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Last Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
-                  
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Birthdate</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Telephone">
-                </div>
-              
-                 
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Gender</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
-                  
+                  <label for="exampleInputEmail1">Username</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Username">
                 </div>
 
                 <div class="form-group">
+                  <label for="exampleInputEmail1">Password</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name">
+                </div>
+             
+                <div class="form-group">
+                  <label for="exampleInputEmail1">First Name</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                  
+                </div>
+
+                
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Last Name</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                </div>
+
+          <div class="form-group">
+            <label for="inputStatus">Gender</label>
+            <select id="inputStatus" class="form-control custom-select">
+              <option selected disabled>--</option>
+              <option>Female</option>
+              <option>Male</option>  
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="date" required class="form-label">Birthdate</label>
+            <br>
+            <div class="">
+            <input type="date" class="form-control" id="date" >
+          </div>
+          </div>
+          
+             
+                <div class="form-group">
                   <label for="exampleInputEmail1">Mobile</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                  
+                </div>
+                
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Telephone</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Telephone">
                   
                 </div>
 
@@ -393,70 +364,89 @@
                   
                 </div>
 
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Telephone</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
-                  
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Profile Image</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
-                  
-                </div>
-    
+              
              
-              <div class="form-group">
-                <label for="exampleInputEmail1">House Block/Building/Floor No.</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">House Block/Building/Floor No.</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Street/Highway</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                  
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Barangay</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">City</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Zip Code</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Addres">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Street/Highway</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
+                  
+                </div>
+
+
+
+          <div class="form-group">
+            <label for="inputStatus">Active</label>
+            <select id="inputStatus" class="form-control custom-select">
+              <option selected disabled>--</option>
+              <option>Yes</option>
+              <option>No</option>  
+            </select>
+
+            
+  
+            <div class="form-group">
+              <label for="date" required class="form-label">Registration Date</label>
+        
+              <div class="">
+              <input type="date" class="form-control" id="date" >
+            </div>
+            </div>
+       
+
+            <div class="form-group">
+              <label for="inputStatus">Clinic</label>
+              <select id="inputStatus" class="form-control custom-select">
+                <option selected disabled>--</option>
+                <option>--</option>
+                <option>--</option>  
+              </select>
               </div>
+  
+
 
               <div class="form-group">
-                <label for="exampleInputEmail1">Street/Highway</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
-                
-              </div>
+                <label for="inputdp" > Profile Picture</label>
+                <br>
+                <form action="/action_page.php">
+              <input type="file" id="myFile" name="filename">
+      
+      
+      
+            </div>
 
-              <div class="form-group">
-                <label for="exampleInputEmail1">Barangay</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
-              </div>
 
-              <div class="form-group">
-                <label for="exampleInputEmail1">City</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Zip Code</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Addres">
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Street/Highway</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
-                
-              </div>
-
-              <div class="form-group">
-                <label for="inputStatus">Status</label>
-                <select id="inputStatus" class="form-control custom-select">
-                  <option selected disabled>Yes</option>
-                  <option>Yes</option>
-                  <option>No</option>
-    
-                </select>
-              </div> 
-
-              <div class="form-group">
-                <label for="inputStatus">User ID</label>
-                <select id="inputStatus" class="form-control custom-select">
-                  <option selected disabled>--</option>
-                  <option>User 1</option>
-                  <option>User 1</option>
-                </select>
-              </div> 
+          </div>
         </div>
+  
+              
+      
+    
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Save Changes</button>
@@ -467,14 +457,13 @@
 
 
   {{-- end add modal  --}}
+      
+      
 
-  
   </section>
   <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-        
 
   <script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -483,10 +472,5 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-  
-
-
-
-
 
 @endsection
