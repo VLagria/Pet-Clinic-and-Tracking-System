@@ -1,15 +1,12 @@
-
-
-
 @extends('layoutsvet.app')
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 @section('content')
-
   <!-- Content Wrapper. Contains page content -->
- <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper">
+
+  
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -17,7 +14,7 @@
           <div class="col-sm-6">
         
           </div><!-- /.col -->
-          <div class="col-sm-6">
+          <div class="col-sm-lg">
             <ol class="breadcrumb float-sm-right">
             </ol>
           </div><!-- /.col -->
@@ -25,14 +22,13 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
-   
+    
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-      <h3 class="header">Patients</h3>
+      <h3 class="card-title">Patients</h3>
   
-       <div class="card-tools">
+      <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
           <i class="fas fa-minus"></i>
         </button>
@@ -40,10 +36,8 @@
           <i class="fas fa-times"></i>
         </button>
       </div>
-    </div> 
-   
- <!-- Main content -->
- <div class="card-body p-0">
+    </div>
+    <div class="card-body p-0">
       <table style="table-layout: fixed; width: 100%;" class="table table-striped projects">
   <thead>
     <tr>
@@ -107,12 +101,12 @@
     
     </td>
     <td class="project-actions text-right">
-                      <a class="btn btn-primary btn-sm" href="#">
+                      <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal">
                           <i class="fas fa-folder">
                           </i>
                           View
                       </a>
-                      <a class="btn btn-info btn-sm" href="#">
+                      <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
                           <i class="fas fa-pencil-alt">
                           </i>
                           Edit
@@ -126,24 +120,184 @@
 
   </tbody>
 </table>
+</div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
 
-<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal">
-   
-   <i class="fas fa-save">Register </i>
-  
-  </button>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  {{-- View  modal  --}}
+
+  <div class="modal" id="viewModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Register a Pet </h5>
+          <h5 class="modal-title">View Patients</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>Pet Name: Hannah Ramirez.</h5>
+          <h5>Gender: male.</h5>
+          <h5>Birthday: 09-15-2000.</h5>
+          <h5>Notes: Vincent Lagria.</h5>
+          <h5>Bloodtype: A</h5>
+          <h5>Registered Date: 06-14-2021</h5>
+        </div>
+        <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  {{-- end view modal --}}
+   
+    <!-- edit Modal -->
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Patients</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
 
-    <form action="" method="POST">
-    <div class="col-12">
+        <form action="" method="POST">
+        <div class="modal-body">
+
+      
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Pet Name</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Pet Name">
+                  
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Gender</label>
+                  <select id="inputStatus" class="form-control custom-select">
+                  <option selected disabled>Choose...</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Birthday</label>
+                  <input type="date" class="form-control" id="date" >
+             
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Notes</label>
+                  <textarea placeholder="Enter Description and Health Conditions" class="form-control"aria-describedby="namelHelp"id="inputnotes"  name="notes" >
+                   </textarea>
+                </div>
+              
+                 
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Bloodtype</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Optional">
+                  
+                </div>
+    
+             
+              <div class="form-group">
+                <label for="exampleInputEmail1">Registered Date</label>
+                <input type="date" class="form-control" id="date" >
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Type</label>
+                <select id="inputStatus" class="form-control custom-select">
+                  <option selected disabled>Choose...</option>
+                  <option>...</option>
+                  <option>...</option>
+                </select>
+                
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Breed</label>
+                <select id="inputStatus" class="form-control custom-select">
+                  <option selected disabled>Choose...</option>
+                  <option>...</option>
+                  <option>...</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Customer</label>
+                <select id="inputStatus" class="form-control custom-select">
+                  <option selected disabled>Choose...</option>
+                  <option>...</option>
+                  <option>...</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Clinic</label>
+                <select id="inputStatus" class="form-control custom-select">
+                  <option selected disabled>Choose...</option>
+                  <option>...</option>
+                  <option>...</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Status</label>
+                <select id="inputStatus" class="form-control custom-select">
+                  <option selected disabled>is Pet Active?</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+                
+              </div>
+
+              <div class="form-group">
+                <label for="inputStatus">Pet Profile Picture</label>
+                <br>
+                <form action="/action_page.php">
+               <input type="file" id="myFile" name="filename">
+              </div> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- end edit modal  --}}
+
+  <!-- Button trigger modal -->
+  <div class = "d-grid gap-2 d-md-flex justify-content-md-end">
+    <button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#addModal">
+    <i class="fas fa-save"> Register
+    
+        </i>
+      </button>
+      </div>
+  
+
+   
+
+  <!-- Add Modal -->
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Register a Pet</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <form action="" method="POST">
+        <div class="modal-body">
+
+      
+        <form action="" method="POST">
     <div class="modal-body">
        
     <div class="form-group">
@@ -219,21 +373,8 @@
     <br>
     <form action="/action_page.php">
   <input type="file" id="myFile" name="filename">
-
-</form>
-  </div>
-
-  <!-- <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input"  type="checkbox" id="gridCheck" required/>
-      <label class="form-check-label" style="font-family:cursive;  " for="gridCheck">
-        Remember me
-      </label>
-    </div>
-  </div> -->
-
-
-  <div class="modal-footer">
+</div>
+<div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Register</button>
         </div>
@@ -241,12 +382,7 @@
     </div>
   </div>
 
-</form>
-           </section>
-
-<!-- ./wrapper -->
-
-  
+  {{-- end add modal  --}}
 
   </section>
   <!-- /.content -->
