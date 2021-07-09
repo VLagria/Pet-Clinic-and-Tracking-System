@@ -27,5 +27,9 @@ class MainController extends Controller
     final function adminVet(){
         return view('admin/vet/CRUDvet');
     }
+
+    final function adminUsers(){
+        return view('admin/users/CRUDusers');
+    }
    
 }
