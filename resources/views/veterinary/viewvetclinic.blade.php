@@ -42,7 +42,7 @@
       <th scope="col">Clinic Address</th>
       <th scope="col">Admin Clinic ID </th>
       <th scope="col">Status</th>
-      <!-- <th scope="col">Action</th> -->
+      <th scope="col">Action</th>
      
     </tr>
   </thead>
@@ -74,6 +74,12 @@
     <td>
     
     </td>
+    <td class="project-actions text-right">
+                      <a class="btn btn-primary btn-sm" href="#">
+                          <i class="fas fa-folder">
+                          </i>
+                          View
+                      </a>
    
     <!-- <td>
     <a class="btn btn-info" href="#" role="button">Update </a>

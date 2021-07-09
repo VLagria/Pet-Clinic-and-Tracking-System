@@ -32,7 +32,7 @@
     <div class="card-header">
       <h3 class="header">Patients</h3>
   
-      <div class="card-tools">
+      <!-- <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
           <i class="fas fa-minus"></i>
         </button>
@@ -40,7 +40,7 @@
           <i class="fas fa-times"></i>
         </button>
       </div>
-    </div>
+    </div> -->
    
  <!-- Main content -->
  <div class="card-body p-0">
@@ -52,7 +52,7 @@
       <th style="width:95px;"scope="col"> Gender</th>
       <th style="width: 100px;"scope="col">Birthday</th>
       <th style="width:95px;"scope="col"> Notes</th>
-      <th style="width: 80px;"scope="col"> Blood Type</th>
+      <th style="width: 100px;"scope="col"> Blood Type</th>
       <!-- <th style="width:95px;"scope="col"> Profile</th> -->
       <th style="width:130px;"scope="col"> Registered Date</th>
       <th style="width: 90px;"scope="col"> Type </th>
@@ -60,7 +60,7 @@
       <th style="width: 100px;"scope="col">Customer </th>
       <th style="width: 90px;"scope="col">Clinic </th>
       <th style="width:80px;"scope="col">Status</th>
-      <th style="width:100px;"scope="col">Action</th>
+      <th style="width:250px;"scope="col">Action</th>
 
 
      
@@ -107,17 +107,17 @@
     
     </td>
     <td class="project-actions text-right">
-                      <a class="btn btn-primary btn-sm-3" href="#">
+                      <a class="btn btn-primary btn-sm" href="#">
                           <i class="fas fa-folder">
                           </i>
                           View
                       </a>
-                      <a class="btn btn-info btn-sm-3" href="#">
+                      <a class="btn btn-info btn-sm" href="#">
                           <i class="fas fa-pencil-alt">
                           </i>
                           Edit
                       </a>
-                      <a class="btn btn-danger btn-sm-3" href="#">
+                      <a class="btn btn-danger btn-sm" href="#">
                           <i class="fas fa-trash">
                           </i>
                           Delete

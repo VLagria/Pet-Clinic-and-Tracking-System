@@ -43,6 +43,7 @@
       <th scope="col">Clinic </th>
       <th scope="col">User </th>
       <th scope="col">Status</th>
+      <th scope="col">Action</th>
      
      
     </tr>
@@ -82,7 +83,12 @@
     
     </td>
     
-    
+    <td class="project-actions text-right">
+                      <a class="btn btn-primary btn-sm" href="#">
+                          <i class="fas fa-folder">
+                          </i>
+                          View
+                      </a>
     
  
    
