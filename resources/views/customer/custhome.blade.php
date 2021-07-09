@@ -40,7 +40,7 @@
               <div class="inner">
                 <h3>0</h3>
 
-                <p>Pet Registered</p>
+                <p>Pets</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -55,12 +55,12 @@
               <div class="inner">
                 <h3>0</h3>
 
-                <p>Appointment</p>
+                <p>Veterinarians</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="custVet" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -70,7 +70,7 @@
               <div class="inner">
                 <h3>0</h3>
 
-                <p>User Registrations</p>
+                <p>Customers</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -85,7 +85,7 @@
               <div class="inner">
                 <h3>0</h3>
 
-                <p>Clinic Registered</p>
+                <p>Clinic </p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
