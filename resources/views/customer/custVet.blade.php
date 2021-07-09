@@ -83,19 +83,42 @@
     
     </td>
     <td class="project-actions text-right">
-                      <a class="btn btn-primary btn-sm-3" href="#">
+                      <a class="btn btn-primary btn-sm-3" data-toggle="modal" data-target="#viewModal">
                           <i class="fas fa-folder">
                           </i>
                           View
                       </a>
-    
-    
- 
-   
-
   </tbody>
 </table>
+</div>
+{{-- View  modal  --}}
 
+  <div class="modal" id="viewModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">View Veterinarians</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>Vet Name: Hannah Ramirez.</h5>
+          <h5>Vet Mobile: 0996945684</h5>
+          <h5>Vet Telephone: 0996945684</h5>
+          <h5>Vet Birthday: 06-14-2021</h5>
+          <h5>Vet Profile:(insert profile)</h5>
+          <h5>Vet Address: Maa, Davao City</h5>
+        </div>
+        <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  {{-- end view modal --}}
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
