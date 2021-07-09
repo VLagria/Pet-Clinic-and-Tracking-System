@@ -1,5 +1,5 @@
 
-@extends('layoutsvet.app')
+@extends('layoutscustomer.app')
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -25,24 +25,26 @@
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-      <h3 class="header">View Clinic</h3>
+      <h3 class="header">View Veterinary</h3>
       <br>
      
-
     <!-- Main content -->
     <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th scope="col">Clinic ID</th>
-      <th scope="col">Clinic Name</th>
-      <th scope="col">Owner name</th>
-      <th scope="col">Clinic Mobile</th>
-      <th scope="col">Clinic Email</th>
-      <th scope="col">Clinic Telephone Number</th>
-      <th scope="col">Clinic Address</th>
-      <th scope="col">Admin Clinic ID </th>
+      <th scope="col">Veterinary ID</th>
+      <th scope="col">Vet Name</th>
+      <th scope="col">Vet Mobile</th>
+      <th scope="col">Vet Telephone</th>
+      <th scope="col">Vet Birthday</th>
+      <th scope="col">Vet Profile </th>
+      <th scope="col">Vet Address</th>
+      <th scope="col">Vet Date Added</th>
+      <th scope="col">Clinic </th>
+      <th scope="col">User </th>
       <th scope="col">Status</th>
-      <!-- <th scope="col">Action</th> -->
+      <th scope="col">Action</th>
+     
      
     </tr>
   </thead>
@@ -74,18 +76,27 @@
     <td>
     
     </td>
+    <td>
+    
+    </td>
+    <td>
+    
+    </td>
+    <td class="project-actions text-right">
+                      <a class="btn btn-primary btn-sm-3" href="#">
+                          <i class="fas fa-folder">
+                          </i>
+                          View
+                      </a>
+    
+    
+ 
    
-    <!-- <td>
-    <a class="btn btn-info" href="#" role="button">Update </a>
-    <button type="button" class="btn btn-danger">Delete </button>
-<button class="btn btn-dark" type="submit">View  </button>
-    </td> -->
-
 
   </tbody>
 </table>
 
- 
+<!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
 

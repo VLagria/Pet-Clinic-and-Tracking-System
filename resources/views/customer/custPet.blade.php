@@ -1,7 +1,7 @@
 
 
 
-@extends('layoutsvet.app')
+@extends('layoutscustomer.app')
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -30,7 +30,7 @@
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-      <h3 class="header">Patients</h3>
+      <h3 class="header">View Pets</h3>
   
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -112,22 +112,12 @@
                           </i>
                           View
                       </a>
-                      <a class="btn btn-info btn-sm-3" href="#">
-                          <i class="fas fa-pencil-alt">
-                          </i>
-                          Edit
-                      </a>
-                      <a class="btn btn-danger btn-sm-3" href="#">
-                          <i class="fas fa-trash">
-                          </i>
-                          Delete
-                      </a>
-                  </td> 
+                   
 
   </tbody>
 </table>
 
-<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal">
+<!-- <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal">
    Register 
    <i class="fas fa-save"></i>
   
@@ -220,7 +210,7 @@
   <input type="file" id="myFile" name="filename">
 
 </form>
-  </div>
+  </div> -->
 
   <!-- <div class="col-12">
     <div class="form-check">
@@ -232,10 +222,10 @@
   </div> -->
 
 
-  <div class="modal-footer">
+  <!-- <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Register</button>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -259,5 +249,4 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-
   @endsection

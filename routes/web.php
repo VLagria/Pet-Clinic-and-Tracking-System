@@ -44,6 +44,12 @@ Route::get('customer/custhome',function() {
 Route::get('customer/custprofile',function() {
     return view ('customer/custprofile');
 });
+Route::get('customer/custPet',function() {
+    return view ('customer/custPet');
+});
+Route::get('customer/custVet',function() {
+    return view ('customer/custVet');
+});
 Route::get('/admin/clinic/CRUDclinic', function () {
     return view('admin/clinic/CRUDclinic');
 });

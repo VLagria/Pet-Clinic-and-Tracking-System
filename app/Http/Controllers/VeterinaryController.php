@@ -22,15 +22,7 @@ class VeterinaryController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('vethome');
-    }
-    public function vet()
-    {
-        return view ('vetpatient');
-        return view ('viewvetpatient');
-    }
+  
     
 }
    

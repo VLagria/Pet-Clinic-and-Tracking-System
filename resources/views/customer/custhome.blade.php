@@ -107,7 +107,7 @@
                   Proceeds to the veterinary . . .
                 </p> -->
                 <br>
-                <a href="viewvetpatient" class="card-link">Proceed to Vet </a>
+                <a href="#" class="card-link">Proceed to Vet </a>
                 <!-- <a href="viewvetpatient" class="card-link">View  Health Condition of Pet</a> -->
               </div>
             </div>
@@ -126,7 +126,7 @@
                   Proceeds to the veterinary . . .
                 </p> -->
                 <br>
-                <a href="viewvetpatient" class="card-link">View Pet Record </a>
+                <a href="custPet" class="card-link">View Pet Record </a>
                 <!-- <a href="viewvetpatient" class="card-link">View  Health Condition of Pet</a> -->
               </div>
             </div>
@@ -141,9 +141,11 @@
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="{{ asset('vendors/plugins/jquery/jquery.min.js') }}"></script>
+<script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="{{ asset('vendors/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-    <script src="{{ asset('vendors/dist/js/adminlte.min.js') "></script>
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
 @endsection
