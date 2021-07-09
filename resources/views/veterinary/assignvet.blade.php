@@ -96,8 +96,8 @@
 </table>
 
 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal">
-   Assign a Vet/Clinic
-   <i class="fas fa-save"></i>
+   
+   <i class="fas fa-save">Assign a Vet/Clinic</i>
   </button>
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

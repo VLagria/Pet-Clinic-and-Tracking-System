@@ -285,7 +285,7 @@
   <!-- Button trigger modal -->
   <div class = "d-grid gap-2 d-md-flex justify-content-md-end">
     <button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#addModal">
-       <i> Create
+    <i class="fas fa-save"> Create
     
         </i>
       </button>
