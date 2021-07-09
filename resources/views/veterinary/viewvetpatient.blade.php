@@ -32,7 +32,7 @@
     <div class="card-header">
       <h3 class="header">Patients</h3>
   
-      <!-- <div class="card-tools">
+       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
           <i class="fas fa-minus"></i>
         </button>
@@ -40,7 +40,7 @@
           <i class="fas fa-times"></i>
         </button>
       </div>
-    </div> -->
+    </div> 
    
  <!-- Main content -->
  <div class="card-body p-0">
