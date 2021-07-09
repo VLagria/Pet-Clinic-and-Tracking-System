@@ -67,7 +67,7 @@
           <td>LagriaVincent21</td>
           <td>-----</td> 
           <td>
-            <img src="dist/img/askal.jpg" class="img-circle img-size-32 mr-2">
+            <img src="{{asset('vendors/dist/img/vincent.jpg') }}" class="img-circle img-size-32 mr-2">
             Vincent
        
           </td>
@@ -165,19 +165,19 @@
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Password</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Password">
                 </div>
              
                 <div class="form-group">
                   <label for="exampleInputEmail1">First Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name">
                   
                 </div>
 
                 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Last Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Last Name">
                 </div>
 
           <div class="form-group">
@@ -246,7 +246,7 @@
   
                 <div class="form-group">
                   <label for="exampleInputEmail1">Street/Highway</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Street/Highway">
                   
                 </div>
 
@@ -341,19 +341,19 @@
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Password</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Password">
                 </div>
              
                 <div class="form-group">
                   <label for="exampleInputEmail1">First Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name">
                   
                 </div>
 
                 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Last Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Last Name">
                 </div>
 
           <div class="form-group">
@@ -422,7 +422,7 @@
   
                 <div class="form-group">
                   <label for="exampleInputEmail1">Street/Highway</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Street/Highway">
                   
                 </div>
 

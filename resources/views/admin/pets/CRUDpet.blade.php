@@ -42,7 +42,7 @@
         <thead>
         <tr>
   
-  
+          <th>ID</th>
           <th>Name</th>
           <th>Gender</th>
           <th>Pet Type</th>
@@ -62,8 +62,10 @@
         </thead>
         <tbody>
         <tr>
+          <td>ID</td>
+
           <td>
-            <img src="dist/img/askal.jpg" class="img-circle img-size-32 mr-2">
+            <img src="{{asset('vendors/dist/img/askal.jpg') }}" class="img-circle img-size-32 mr-2">
             Vincent
        
           </td>
@@ -154,41 +156,33 @@
         <form action="" method="POST">
         <div class="modal-body">
 
+          <div class="form-group">
+            <label for="exampleInputEmail1">ID</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ID">
+            
+          </div>
+
       
                 <div class="form-group">
                   <label for="exampleInputEmail1">Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Clinic Name">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Pet Name">
                   
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Gender</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Owner Name">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Gender">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Pet Type</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Pet Type">
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Pet Breed</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Pet Breed">
                 </div>
                 
                 
-             
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Mobile</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
-                  
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
-                  
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Telephone</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
-                  
-                </div>
-
                 <div class="form-group">
                   <label for="date" required class="form-label">Birthdate</label>
                   <br>
@@ -197,6 +191,16 @@
                 </div>
                 </div>
                 
+                
+          <div class="form-group">
+            <label for="inputStatus">Blood Type</label>
+            <select id="inputStatus" class="form-control custom-select">
+              <option selected disabled>--</option>
+              <option>A</option>
+              <option>B</option>  
+            </select>
+          </div>
+
         
 
           <div class="form-group">
@@ -281,7 +285,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Create Pet</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Update Pet</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -290,41 +294,32 @@
         <form action="" method="POST">
         <div class="modal-body">
 
-      
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">ID</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ID">
+            
+          </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Clinic Name">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Pet Name">
                   
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Gender</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Owner Name">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Gender">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Pet Type</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Pet Type">
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Pet Breed</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Pet Breed">
                 </div>
                 
                 
-             
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Mobile</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
-                  
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
-                  
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Telephone</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
-                  
-                </div>
-
                 <div class="form-group">
                   <label for="date" required class="form-label">Birthdate</label>
                   <br>
@@ -333,6 +328,16 @@
                 </div>
                 </div>
                 
+                
+          <div class="form-group">
+            <label for="inputStatus">Blood Type</label>
+            <select id="inputStatus" class="form-control custom-select">
+              <option selected disabled>--</option>
+              <option>A</option>
+              <option>B</option>  
+            </select>
+          </div>
+
         
 
           <div class="form-group">

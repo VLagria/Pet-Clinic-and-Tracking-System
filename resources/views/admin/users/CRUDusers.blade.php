@@ -58,7 +58,7 @@
           <td>LagriaVincent21</td>
           <td>-----</td> 
           <td>
-            <img src="dist/img/askal.jpg" class="img-circle img-size-32 mr-2">
+            <img src="{{asset('vendors/dist/img/vincent.jpg') }}" class="img-circle img-size-32 mr-2">
             Vincent
        
           </td>
