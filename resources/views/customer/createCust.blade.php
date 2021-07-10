@@ -101,7 +101,7 @@ body {
 <div class="login-form">
     <form action="" method="post">
 		<div class="avatar">
-			<img src="{{asset('vendors/dist/img/VINCENT.jpg') }}"  alt="Avatar">
+			<img src="{{asset('vendors/dist/img/MediaoneLogo.png') }}"  alt="Avatar">
 		</div>
         <h2 class="text-center">CREATE ACCOUNT</h2>   
        
