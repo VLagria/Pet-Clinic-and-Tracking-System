@@ -272,22 +272,22 @@
     <div class="card-body p-0">
       <ul class="users-list clearfix">
         <li>
-          <img src="{{asset('vendors/dist/img/user1-128x128.jpg') }}" alt="User Image">
+          <img src="{{asset('vendors/dist/img/rus.jpg') }}" alt="User Image">
           <a class="users-list-name" href="#">Vincent Lagria</a>
           <span class="users-list-date">Today</span>
         </li>
         <li>
-          <img src="{{asset('vendors/dist/img/user8-128x128.jpg') }}" alt="User Image">
+          <img src="{{asset('vendors/dist/img/soy.jpg') }}" alt="User Image">
           <a class="users-list-name" href="#">Russel Viernes</a>
           <span class="users-list-date">Yesterday</span>
         </li>
         <li>
-          <img src="{{asset('vendors/dist/img/user4-128x128.jpg') }}" alt="User Image">
+          <img src="{{asset('vendors/dist/img/kang.jpg') }}" alt="User Image">
           <a class="users-list-name" href="#">Ericka Esleta</a>
           <span class="users-list-date">12 Jan</span>
         </li>
         <li>
-          <img src="{{asset('vendors/dist/img/user5-128x128.jpg') }}" alt="User Image">
+          <img src="{{asset('vendors/dist/img/shayn.jpg') }}" alt="User Image">
           <a class="users-list-name" href="#">Shayna Goles</a>
           <span class="users-list-date">12 Jan</span>
         </li>

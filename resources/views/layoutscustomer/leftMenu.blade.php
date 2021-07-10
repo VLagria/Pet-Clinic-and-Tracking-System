@@ -16,7 +16,7 @@
           <img src="{{asset('vendors/dist/img/han.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="custprofile" class="d-block">User</a>
+          <a href="custprofile" class="d-block">Hannah Ramirez</a>
           
         </div>
       </div>
@@ -66,6 +66,14 @@
                   <i class="nav-icon fas fa-paw"></i>
                   <p>
                    Pets
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-calendar-alt"></i>
+                  <p>
+                   Appointment
                   </p>
                 </a>
               </li>

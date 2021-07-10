@@ -93,7 +93,7 @@
             <div class="card">
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Overview</a></li>
                   <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
                   <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Update Profile</a></li>
                 </ul>
@@ -220,61 +220,58 @@
                       <!-- timeline time label -->
                       <div class="time-label">
                         <span class="bg-danger">
-                          10 Feb. 2014
+                          10 July. 2021
                         </span>
                       </div>
 
                       <!-- /.timeline-label -->
                       <!-- timeline item -->
                       <div>
-                        <i class="fas fa-envelope bg-primary"></i>
+                        <i class="fas fa-calendar-alt bg-blue"></i>
 
                         <div class="timeline-item">
                           <span class="time"><i class="far fa-clock"></i> 12:05</span>
 
-                          <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
+                          <h3 class="timeline-header">You request an appointment</h3>
 
                           <div class="timeline-body">
-                            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                            weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                            jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                            quora plaxo ideeli hulu weebly balihoo...
+                           You just sent an appointment to one of the veterinarians.
                           </div>
                           <div class="timeline-footer">
-                            <a href="#" class="btn btn-primary btn-sm">Read more</a>
-                            <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="#" class="btn btn-primary btn-sm">Request Another One</a>
+                            <a href="custhome" class="btn btn-danger btn-sm">Dashboard</a>
                           </div>
                         </div>
                       </div>
                       <!-- END timeline item -->
                       <!-- timeline item -->
                       <div>
-                        <i class="fas fa-user bg-info"></i>
+                        <i class="fas fa-ambulance bg-pink"></i>
 
                         <div class="timeline-item">
                           <span class="time"><i class="far fa-clock"></i> 5 mins ago</span>
 
-                          <h3 class="timeline-header border-0"><a href="#">Sarah Young</a> accepted your friend request
+                          <h3 class="timeline-header border-0">One of the veterinarians accepted your appointment
                           </h3>
                         </div>
                       </div>
                       <!-- END timeline item -->
                       <!-- timeline item -->
                       <div>
-                        <i class="fas fa-comments bg-warning"></i>
+                        <i class="fas fa-paw bg-warning"></i>
 
                         <div class="timeline-item">
                           <span class="time"><i class="far fa-clock"></i> 27 mins ago</span>
 
-                          <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
+                          <h3 class="timeline-header">You viewed the Pets record.</h3>
 
-                          <div class="timeline-body">
+                          <!-- <div class="timeline-body">
                             Take me to your leader!
                             Switzerland is small and neutral!
                             We are more like Germany, ambitious and misunderstood!
-                          </div>
+                          </div> -->
                           <div class="timeline-footer">
-                            <a href="#" class="btn btn-warning btn-flat btn-sm">View comment</a>
+                            <a href="custPet" class="btn btn-warning btn-flat btn-sm">View Pets </a>
                           </div>
                         </div>
                       </div>
@@ -282,24 +279,24 @@
                       <!-- timeline time label -->
                       <div class="time-label">
                         <span class="bg-success">
-                          3 Jan. 2014
+                          3 Aug. 2021
                         </span>
                       </div>
                       <!-- /.timeline-label -->
                       <!-- timeline item -->
                       <div>
-                        <i class="fas fa-camera bg-purple"></i>
+                        <i class="fas fa-ambulance bg-purple"></i>
 
                         <div class="timeline-item">
                           <span class="time"><i class="far fa-clock"></i> 2 days ago</span>
 
-                          <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
+                          <h3 class="timeline-header">You viewed the list of Veterinarians</h3>
 
                           <div class="timeline-body">
-                            <img src="https://placehold.it/150x100" alt="...">
-                            <img src="https://placehold.it/150x100" alt="...">
-                            <img src="https://placehold.it/150x100" alt="...">
-                            <img src="https://placehold.it/150x100" alt="...">
+                          <img src="{{ asset('vendors/dist/img/soy.jpg') }}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                          <img src="{{ asset('vendors/dist/img/kang.jpg') }}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                          <img src="{{ asset('vendors/dist/img/rus.jpg') }}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                           
                           </div>
                         </div>
                       </div>
