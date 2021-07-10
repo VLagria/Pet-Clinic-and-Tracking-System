@@ -219,7 +219,7 @@
 
   <!-- Button trigger modal -->
   <div class = "d-grid gap-2 d-md-flex justify-content-md-end">
-    <button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#addModal">
+    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addModal">
     <i class="fas fa-save"> Assign Vet / Clinic
     
         </i>

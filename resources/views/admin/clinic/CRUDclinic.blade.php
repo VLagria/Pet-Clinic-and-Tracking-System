@@ -243,8 +243,9 @@
   <!-- Button trigger modal -->
   <div class = " float-right">
     <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addModal">
-        Create
-        </i>
+    <i class="fas fa-save"> Create
+    
+    </i>
       </button>
       </div>
   
