@@ -29,10 +29,9 @@ Route::get('/admin/vet/CRUDvet', [MainController::class, 'adminVet']);
 Route::get('/admin/users/CRUDusers', [MainController::class, 'adminUsers']);
 
 
+Route::get('/createAcc/createacc', [CustomerController::class, 'createAccount'])->name('createAcc.createacc');
 
-Route::get('createAcc/createacc',function(){
-    return view('createAcc/createacc');
-});
+
 
 
 Route::get('customer/createCust', function () {
