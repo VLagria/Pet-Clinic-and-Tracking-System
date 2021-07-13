@@ -3,6 +3,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 @section('content')
+
+@csrf
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -22,122 +24,51 @@
 
    
 <!-- Default box -->
-<div class="card">
-    <div class="card-header">
-      <h3 class="header">Customer</h3>
-      <br>
-   
+  <div class="card">
+    @csrf
+      <div class="card-header">
+        <h3 class="header">Customer</h3>
+        <br>
+
     <!-- Main content -->
-    <table class="table  table-striped table-hover">
-  <thead>
-    <tr>
-      <th scope="col" style="width:5%">#</th>
-      <th scope="col"style="width:5%">Customer Name</th>
-      <th scope="col"style="width:5%">Customer Mobile</th>
-      <th scope="col"style="width:5%">Customer Telephone</th>
-      <th scope="col"style="width:10%">Customer Gender</th>
-      <th scope="col"style="width:5%">Customer Birthday</th>
-      <th scope="col"style="width:10%">Customer Profile</th>
-      <th scope="col"style="width:2%">Customer Address</th>
-      <th scope="col"style="width:10%">Customer Zip</th>
-      <th scope="col"style="width:5%">User ID</th>
-      <th scope="col"style="width:10%">Status</th>
-      <!-- <th scope="col"style="width:65%">Action</th> -->
-    </tr>
+
+        <table class="table  table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col" style="width:5%">#</th>
+              <th scope="col"style="width:8%"> Name</th>
+    
+              <th scope="col"style="width:5%">Mobile</th>
+              <th scope="col"style="width:5%">Telephone</th>
+              <th scope="col"style="width:10%">Gender</th>
+              <th scope="col"style="width:5%">Birthday</th>
+              {{-- <th scope="col"style="width:10%">Customer Profile</th> --}}
+              <th scope="col"style="width:15%">Address</th>
+              <th scope="col"style="width:5%">User ID</th>
+              <th scope="col"style="width:10%">Status</th>
+              <!-- <th scope="col"style="width:65%">Action</th> -->
+            </tr>
   </thead>
   <tbody>
-  <td>
-    1
-    </td>
-    <td>
-    Shayna Goles
-    </td>
-    <td>
-    1234567
-    </td>
-    <td>
-    2225584
-    </td>
-    <td>
-    Female
-    </td>
-    <td>
-    05-05-1999
-    </td>
-    <td>
-    profilke
-    </td>
-    <td>
-    Calinan Davao City
-    </td>
-    <td>
-  2000
-    </td>
-    <td>
-   daw
-    </td>
-    <td>
-    active
-    </td>
-  
-
-    <!-- <td class="project-actions text-right">
-                          <a class="btn btn-primary btn-sm-1" href="#"style="margin-right:2%"style="width=2%">
-                              <i class="fas fa-folder">
-                              </i>
-                              View
-                          </a>
-                          <a class="btn btn-info btn-sm-1" href="#"style="margin-right:2%"style="width=2%">	
-                              <i class="fas fa-pencil-alt">
-                              </i>
-                              Edit
-                          </a>
-                          <a class="btn btn-danger btn-sm-1" href="#"style="margin-right:2%"style="width=2%">
-                              <i class="fas fa-trash">
-                              </i>
-                              Delete
-                          </a>
-                      </td> -->
- </tbody>
- <tbody>
-  <td>
-    2
-    </td>
-    <td>
-    Shayna Goles
-    </td>
-    <td>
-    1234567
-    </td>
-    <td>
-    2225584
-    </td>
-    <td>
-    Female
-    </td>
-    <td>
-    05-05-1999
-    </td>
-    <td>
-    profilke
-    </td>
-    <td>
-    Calinan Davao City
-    </td>
-    <td>
-  2000
-    </td>
-    <td>
-   daw
-    </td>
-    <td>
-    active
-    </td>
-  
-
-  
+    @foreach ($customers as $customer)
+    <tr>
+      <td>{{ $customer->customer_id}}</td>
+      <td>{{ $customer->customer_name}}</td>
+      <td>{{ $customer->customer_mobile}}</td>
+      <td>{{ $customer->customer_tel}}</td>
+      <td>{{ $customer->customer_gender}}</td>
+      <td>{{ $customer->customer_birthday}}</td>
+      <td>{{ $customer->customer_address}}</td>
+      <td>{{ $customer->user_id}}</td>
+      <td>{{ $customer->customer_isActive}}</td> 
+        
+    @endforeach
+    </tr>
  </tbody>
 </table>
+{{ $customers->links() }}
+      </div>
+  </div>
 
 <!-- ./wrapper -->
 
