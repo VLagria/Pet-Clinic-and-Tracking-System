@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\VeterinariansController;
+use App\Http\Controllers\PetTypeController;
 use App\Http\Controllers\VeterinaryController;
 use Illuminate\Support\Facades\Route;
 
@@ -74,15 +75,19 @@ Route::get('admin/vet/CRUDvet', function () {
 });
 
 Route::get('/veterinary/viewvetcustomer',[VeterinariansController::class, 'getAllCustomer'])->name('vet.getallcustomer');
+Route::get('/veterinary/viewvetpatient',[VeterinariansController::class, 'retrieveInfo']);
+Route::post('/veterinary/viewvetpatient',[VeterinariansController::class, 'addPatients'])->name('vet.addpatient');
+// Route::get('/veterinary/viewvetpatient',[PetTypeController::class, 'petType']);
+
 Route::get('veterinary/vethome', function () {
     return view('veterinary/vethome');
 });
 Route::get('veterinary/vetpatient',function() {
     return view('veterinary/vetpatient');
 });
-Route::get('veterinary/viewvetpatient',function() {
-    return view('veterinary/viewvetpatient');
-});
+// Route::get('veterinary/viewvetpatient',function() {
+//     return view('veterinary/viewvetpatient');
+// });
 Route::get('veterinary/vetclinic',function() {
     return view('veterinary/vetclinic');
 });
