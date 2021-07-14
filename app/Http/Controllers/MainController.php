@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
@@ -30,6 +31,55 @@ class MainController extends Controller
 
     final function adminUsers(){
         return view('admin/users/CRUDusers');
+    }
+
+    public function addAdminSubmit(Request $request){
+        DB::table('user_accounts')->insert([
+            'user_name' => $request->user_name,
+            'user_password' => $request->user_password,
+            'user_mobile' => $request->user_mobile,
+            'user_email' => $request->user_email,
+            'userType_id' => $request->userType_id
+        ]);
+        return back()->with('user_created');
+    }
+
+    public function editUserSubmit(Request $request){
+        DB::table('user_accounts')->insert([
+            'user_name' => $request->user_name,
+            'user_password' => $request->user_password,
+            'user_mobile' => $request->user_mobile,
+            'user_email' => $request->user_email,
+            'userType_id' => $request->userType_id
+        ]);
+        return back()->with('user_edited');
+    }
+
+    public function showUserTypes(){
+        
+
+        return view('admin.users.CRUDusers', compact('userOptions'));
+    }
+
+    public function getAllUsers(){
+        $user_accounts = DB::table('user_accounts')->get();
+        return view('admin.users.CRUDusers', compact('user_accounts'));
+    }
+
+    public function showUserInfo(){
+        $userTypes_name = DB::table('usertypes')
+        ->join('user_accounts', 'usertypes.userType_id', '=', 'user_accounts.userType_id')
+        ->select('user_accounts.*','usertypes.*')
+        ->get();
+
+        $userOptions = DB::table('usertypes')->get();
+
+        return view('admin.users.CRUDusers', compact('userTypes_name','userOptions'));
+    }
+
+    public function delete($id){
+        DB::table('user_accounts')->where('id',$id)->delete();
+        return redirect()->back()->with('success');
     }
    
 }

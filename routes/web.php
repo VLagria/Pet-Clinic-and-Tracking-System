@@ -27,7 +27,7 @@ Route::get('/admin/clinic/CRUDclinic', [MainController::class, 'adminClinic']);
 Route::get('/admin/customer/CRUDcustomers', [MainController::class, 'adminCustomer']);
 Route::get('/admin/vet/CRUDvet', [MainController::class, 'adminVet']);
 Route::get('/admin/users/CRUDusers', [MainController::class, 'adminUsers']);
-
+Route::get('/admin/users/CRUDusers', [MainController::class, 'showUserTypes']);
 
 
 Route::get('createAcc/createacc',function(){
@@ -100,3 +100,11 @@ Route::get('veterinary/viewvetcustomer',function() {
 Route::get('veterinary/assignvet',function() {
     return view('veterinary/assignvet');
 });
+
+
+Route::post('/admin/users/CRUDusers',[MainController::class,'addAdminSubmit'])->name('post.addadminsubmit');
+
+
+Route::get('/admin/users/CRUDusers',[MainController::class,'getAllUsers'])->name('post.getallusers');
+
+Route::get('/admin/users/CRUDusers',[MainController::class,'showUserInfo'])->name('post.showuserinfo');
