@@ -45,6 +45,24 @@ class MainController extends Controller
         return back()->with('user_created');
     }
 
+    public function addClinicSubmit(Request $request){
+        DB::table('clinic')->insert([
+            'clinic_name' => $request->clinic_name,
+            'owner_name' => $request->owner_name,
+            'clinic_mobile' => $request->clinic_mobile,
+            'clinic_tel' => $request->clinic_tel,
+            'clinic_email' => $request->clinic_email,
+            'clinic_blk' => $request->clinic_blk,
+            'clinic_street' => $request->clinic_street,
+            'clinic_barangay' => $request->clinic_barangay,
+            'clinic_city' => $request->clinic_city,
+            'clinic_zip' => $request->clinic_zip,
+            'admin_clinic_id' => $request->admin_clinic_id,
+            'clinic_isActive' => $request->clinic_isActive
+        ]);
+        return back()->with('clinic_created');
+    }
+
     public function editUserSubmit(Request $request){
         DB::table('user_accounts')->insert([
             'user_name' => $request->user_name,
@@ -56,11 +74,7 @@ class MainController extends Controller
         return back()->with('user_edited');
     }
 
-    public function showUserTypes(){
-        
-
-        return view('admin.users.CRUDusers', compact('userOptions'));
-    }
+    
 
     public function getAllUsers(){
         $user_accounts = DB::table('user_accounts')->get();
@@ -78,9 +92,10 @@ class MainController extends Controller
         return view('admin.users.CRUDusers', compact('userTypes_name','userOptions'));
     }
 
-    public function delete($id){
-        DB::table('user_accounts')->where('id',$id)->delete();
-        return redirect()->back()->with('success');
+    public function getAllClinic(){
+        $clinic = DB::table('clinic')->get();
+
+        return view('admin.clinic.CRUDclinic', compact('clinic'));
     }
    
 }

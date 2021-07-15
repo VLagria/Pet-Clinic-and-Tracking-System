@@ -43,7 +43,7 @@
           <th>Email</th>
           <th>User Type</th>
             
-        <th style="width: 20%" class="text-left">Action</th>
+        <th style="width: 25%" class="text-left">Action</th>
           
         </tr>
         </thead>
@@ -66,17 +66,15 @@
                   </i>
                   Edit
               </a>
-              <a href="" class="btn btn-danger btn-sm" >
+              <a href="" data-target="#deleteFunc" class="btn btn-danger btn-sm" >
                   <i class="fas fa-trash">
                   </i>
                   Delete
               </a>
           </td> 
           </tr>   
-        </tbody>
-  
-        @endforeach
-        
+          @endforeach
+        </tbody>      
       </table>
       
     </div>
@@ -217,28 +215,27 @@
 
   <!-- -------------------------------------------------------------------------------{{-- start add modal  --}} --------------------------------------------------------------------------------->
 
-  <div class = " float-right">
+  <div class = "float-right">
     
     <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addModal">
     <i class="fas fa-save"> Create </i>
       </button>
-      </div>
-  
+      </div>  
 
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">User Accounts</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
   
-          <form action="{{ route('post.addadminsubmit') }}" method="POST">
-          @CSRF
+          <form action="{{ route('post.addadminsubmit') }}" method="POST">  
+            
+          @csrf
           <div class="modal-body">
-          @CSRF
                   <div class="form-group">
                     <label>Username</label>
                     <input type="text" name="user_name" class="form-control" placeholder="Enter Username">
@@ -269,19 +266,24 @@
               </select>
             </div>
           </div>
-          
     
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" value ="submit" class="btn btn-primary">Save Changes</button>
           </div>
-          </form>
         </div>
+      </form>
       </div>
     </div>
   {{-- end add modal  --}}
       
+<!-- START DELETE -->
+
+
+
+
+<!-- END DELETE -->
 
 
   </section>

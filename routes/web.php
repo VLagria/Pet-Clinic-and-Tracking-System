@@ -111,9 +111,15 @@ Route::get('veterinary/assignvet',function() {
 });
 
 
-Route::post('/admin/users/CRUDusers',[MainController::class,'addAdminSubmit'])->name('post.addadminsubmit');
+Route::post('/admin/users/CRUDusers/save',[MainController::class,'addAdminSubmit'])->name('post.addadminsubmit');
 
+Route::post('/admin/clinic/CRUDclinic',[MainController::class,'addClinicSubmit'])->name('post.addclinicsubmit');
 
 Route::get('/admin/users/CRUDusers',[MainController::class,'getAllUsers'])->name('post.getallusers');
 
 Route::get('/admin/users/CRUDusers',[MainController::class,'showUserInfo'])->name('post.showuserinfo');
+
+Route::post('/admin/users/CRUDusers/edit',[MainController::class,'editUserSubmit'])->name('post.editusersubmit');
+
+
+Route::get('/admin/clinic/CRUDclinic',[MainController::class,'getAllClinic'])->name('post.getallclinic');

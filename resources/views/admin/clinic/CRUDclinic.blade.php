@@ -48,33 +48,29 @@
           <th>Mobile No</th>
           <th>Telephone</th>
           <th>Email</th>       
-          <th>Address</th>
+          <th style="width: 25%">Address</th>
           <th>Status</th>
-          <th>Admin Clinic</th>
             
-        <th style="width: 13%" class="text-center">
+        <th style="width: 22%" class="text-center">
                   Action
                 </th>
           
         </tr>
         </thead>
         <tbody>
+          @foreach($clinic as $cAccounts)
         <tr>
-           <td>242</td>
-          <td>MediaOne</td>
-          <td>Vincent Lagria</td> 
-          
-          <td> 
-          0901293786
-          </td>
-          <td>83293782</td>
-          <td>vlagria@gmail.com</td>
-          <td>Purok 25 Maa Davao City</td>
-          <td class="project-state">
-            <span class="badge badge-success">Yes</span>
-        </td> 
+           <td>{{ $cAccounts->clinic_id }}</td>
+           <td>{{ $cAccounts->clinic_name }}</td>
+           <td>{{ $cAccounts->owner_name }}</td>
+           <td>{{ $cAccounts->clinic_mobile }}</td>
+           <td>{{ $cAccounts->clinic_tel }}</td>
+           <td>{{ $cAccounts->clinic_email }}</td>
+           <td>{{ $cAccounts->clinic_blk }} / {{ $cAccounts->clinic_street }} / {{ $cAccounts->clinic_barangay }} / {{ $cAccounts->clinic_barangay }} / {{ $cAccounts->clinic_city }} / {{ $cAccounts->clinic_zip }}</td>
 
-          <td>12345</td>
+          <td class="project-state">
+            <span class="badge badge-success">{{ $cAccounts->clinic_isActive }}</span>
+          </td> 
           
             <td class="project-actions">
               <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal" >
@@ -93,7 +89,7 @@
                   Delete
               </a>
           </td> 
-        
+        @endforeach
         </tbody>
   
         
@@ -143,13 +139,8 @@
           </button>
         </div>
 
-        <form action="" method="POST">
+        <form action="{{ route('post.addclinicsubmit') }}" method="POST">
         <div class="modal-body">
-      
-                <div class="form-group">
-                  <label for="exampleInputEmail1">ID</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ID">
-                </div>
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Clinic Name</label>
@@ -232,7 +223,7 @@
     
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save Changes</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
         </div>
       </div>
     </div>
@@ -263,101 +254,92 @@
           </button>
         </div>
 
-        <form action="" method="POST">
+        <form action="{{ route('post.addclinicsubmit') }}" method="POST">
+          @csrf
         <div class="modal-body">
-      
-                <div class="form-group">
-                  <label for="exampleInputEmail1">ID</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ID">
-                </div>
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Clinic Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Clinic Name">
+                  <input type="text" class="form-control" name="clinic_name" placeholder="Enter Clinic Name">
                 </div>
              
                 <div class="form-group">
                   <label for="exampleInputEmail1">Owner Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Owner Name">
+                  <input type="text" class="form-control" name="owner_name" placeholder="Enter Owner Name">
                   
                 </div>
 
                 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Mobile No</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                  <input type="number" class="form-control" name="clinic_mobile" placeholder="Enter Mobile No">
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Telephone</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Telephone">
+                  <input type="number" class="form-control" name="clinic_tel" placeholder="Enter Telephone">
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+                  <input type="email" class="form-control" name="clinic_email" placeholder="Enter Email">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">House Block/Building/Floor No.</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="House Block/Building/Floor No.">
+                  <input type="text" class="form-control" name="clinic_blk" placeholder="House Block/Building/Floor No.">
                 </div>
   
                 <div class="form-group">
                   <label for="exampleInputEmail1">Street/Highway</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="House Block/Building/Floor No.">
+                  <input type="text" class="form-control" name="clinic_street" placeholder="House Block/Building/Floor No.">
                   
                 </div>
   
                 <div class="form-group">
                   <label for="exampleInputEmail1">Barangay</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Barangay">
+                  <input type="text" class="form-control" name="clinic_barangay" placeholder="Barangay">
                 </div>
   
                 <div class="form-group">
                   <label for="exampleInputEmail1">City</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="City">
+                  <input type="text" class="form-control" name="clinic_city" placeholder="City">
                 </div>
   
                 <div class="form-group">
                   <label for="exampleInputEmail1">Zip Code</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Zip Code">
+                  <input type="number" class="form-control" name="clinic_zip" placeholder="Zip Code">
                 </div>
   
 
 
           <div class="form-group">
             <label for="inputStatus">Active</label>
-            <select id="inputStatus" class="form-control custom-select">
-              <option selected disabled>--</option>
-              <option>Yes</option>
-              <option>No</option>  
+            <select  name="clinic_isActive" class="form-control custom-select">
+              <option selected disabled></option>
+              <option value=1> Yes </option>
+              <option value=0> No </option>  
             </select>
  
 
             <div class="form-group">
               <label for="inputStatus">Admin Clinic</label>
               <select id="inputStatus" class="form-control custom-select">
-                <option selected disabled>--</option>
-                <option>--</option>
-                <option>--</option>  
+                <option>null</option>
+                <option>null</option>
+                <option>null</option>  
               </select>
               </div>
-  
-
           </div>
         </div>
-  
-              
-      
     
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save Changes</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
         </div>
-      </div>
+      </form>
     </div>
   </div>
-
+</div>
 
   {{-- end add modal  --}}
       
