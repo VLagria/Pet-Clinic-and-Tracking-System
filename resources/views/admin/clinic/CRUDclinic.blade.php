@@ -1,13 +1,27 @@
 @extends('layoutsadmin.app')
 
+
+
 @section('content')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+
+
+
+    <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#addModal" >
+      <i class="fas fa-save">
+      </i>
+     create
+  </a>
+
+  
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
+
+            
         
           </div><!-- /.col -->
           <div class="col-sm-6">
@@ -73,7 +87,7 @@
           </td> 
           
             <td class="project-actions">
-              <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal" >
+              <a class="btn btn-primary btn-sm" href="#" >
                   <i class="fas fa-folder">
                   </i>
                   View
@@ -88,6 +102,12 @@
                   </i>
                   Delete
               </a>
+
+              <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#addvet" >
+                <i class="fas fa-save">
+                </i>
+             Create
+            </a>
           </td> 
         @endforeach
         </tbody>
@@ -133,7 +153,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Update Veterinarian</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Update Clinic</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -231,17 +251,174 @@
 
   {{-- end edit modal  --}}
 
-  <!-- Button trigger modal -->
-  <div class = " float-right">
-    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addModal">
-    <i class="fas fa-save"> Create
-    
-    </i>
-      </button>
-      </div>
+  
+   {{-- add vet modal --}}
+
+   <div class="modal fade" id="addvet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Veterinarian</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <form action="" method="POST">
+        <div class="modal-body">
+      
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Username</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Username">
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Password</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Password">
+                </div>
+             
+                <div class="form-group">
+                  <label for="exampleInputEmail1">First Name</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name">
+                  
+                </div>
+
+                
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Last Name</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Last Name">
+                </div>
+
+          <div class="form-group">
+            <label for="inputStatus">Gender</label>
+            <select id="inputStatus" class="form-control custom-select">
+              <option selected disabled>--</option>
+              <option>Female</option>
+              <option>Male</option>  
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="date" required class="form-label">Birthdate</label>
+            <br>
+            <div class="">
+            <input type="date" class="form-control" id="date" >
+          </div>
+          </div>
+          
+             
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Mobile</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                  
+                </div>
+                
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Telephone</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Telephone">
+                  
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+                  
+                </div>
+
+              
+             
+                <div class="form-group">
+                  <label for="exampleInputEmail1">House Block/Building/Floor No.</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Street/Highway</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                  
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Barangay</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">City</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Zip Code</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Addres">
+                </div>
+  
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Street/Highway</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Street/Highway">
+                  
+                </div>
+
+
+
+          <div class="form-group">
+            <label for="inputStatus">Active</label>
+            <select id="inputStatus" class="form-control custom-select">
+              <option selected disabled>--</option>
+              <option>Yes</option>
+              <option>No</option>  
+            </select>
+
+            
+  
+            <div class="form-group">
+              <label for="date" required class="form-label">Registration Date</label>
+        
+              <div class="">
+              <input type="date" class="form-control" id="date" >
+            </div>
+            </div>
+       
+
+            <div class="form-group">
+              <label for="inputStatus">Clinic</label>
+              <select id="inputStatus" class="form-control custom-select">
+                <option selected disabled>--</option>
+                <option>--</option>
+                <option>--</option>  
+              </select>
+              </div>
   
 
-   
+
+              <div class="form-group">
+                <label for="inputdp" > Profile Picture</label>
+                <br>
+                <form action="/action_page.php">
+              <input type="file" id="myFile" name="filename">
+      
+      
+      
+            </div>
+
+
+          </div>
+        </div>
+  
+              
+      
+    
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   {{-- end add vet modal  --}}
+
+
 
   <!-- Add Modal -->
   <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

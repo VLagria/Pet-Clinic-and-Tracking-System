@@ -38,6 +38,10 @@ Route::get('createAcc/createacc',function(){
     return view('createAcc/createacc');
 });
 
+Route::get('customer/contactus',function(){
+    return view('customer/contactus');
+});
+
 
 Route::get('customer/createCust', function () {
     return view('customer/createCust');

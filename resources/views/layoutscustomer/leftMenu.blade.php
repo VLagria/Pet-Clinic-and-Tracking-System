@@ -77,6 +77,16 @@
                   </p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="contactus" class="nav-link">
+              <i class="nav-icon fas fa-address-book"></i>
+                  <p>
+                   Contact Us
+                  </p>
+                </a>
+              </li>
+
               <li class="nav-item">
                 <a href="custprofile" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>

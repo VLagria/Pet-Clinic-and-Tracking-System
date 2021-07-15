@@ -17,11 +17,20 @@ class MainController extends Controller
     final function adminDashboard(){
         return view('admin/index');
     }
+    final function checkAdmin(){
+        return view('auth/login');
+    }
     final function adminPet(){
         return view('admin/pets/CRUDpet');
     }
     final function adminClinic(){
         return view('admin/clinic/CRUDclinic');
+    }
+    final function checkAdmin(Request $request){
+        $request->validate([
+            'user_email'=>'required',
+            'user_password'=>'required'
+        ]);
     }
     final function adminCustomer(){
         return view('admin/customer/CRUDcustomers');
