@@ -58,10 +58,10 @@
             <img src="{{asset('vendors/dist/img/icondoctor.png') }}">
 
             <div class="info-box-content">
-
-              <span class="info-box-text">Bookmarks</span>
-              <span class="info-box-number">410</span>
-            
+              <span class="info-box-number">Emergency Services</span>
+              <span class="info-box-text">We are fully prepared for</span>
+              <span class="info-box-text">any medical emergency </span>
+              <span class="info-box-text">your pet may encounter</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -70,26 +70,33 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-12">
+        <div class="col-lg-3 col-sm-6 col-12">
           <div class="info-box">
-            <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
-
+           
+            <img src="{{asset('vendors/dist/img/petpet.png') }}">
             <div class="info-box-content">
-              <span class="info-box-text">Bookmarks</span>
-              <span class="info-box-number">410</span>
+              <span class="info-box-number">Pet wellness</span>
+              <span class="info-box-text">Regular wellness exams  </span>
+              <span class="info-box-text">keep your pet healthy and  </span>
+              <span class="info-box-text">prevent future illness</span>
             </div>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
+
         <div class="col-md-3 col-sm-6 col-12">
           <div class="info-box">
-            <span class="info-box-icon bg-warning"><i class="far fa-copy"></i></span>
-
+           
+            <img src="{{asset('vendors/dist/img/vaccinations.png') }}">
             <div class="info-box-content">
-              <span class="info-box-text">Uploads</span>
-              <span class="info-box-number">13,648</span>
+              <span class="info-box-text">Vaccination</span>
+              <span class="info-box-text">Vaccines help prevent </span>
+              <span class="info-box-text">pet diseases,and can</span>
+              <span class="info-box-text">help you avoid costly  </span>
+              <span class="info-box-text">treatments for preventable </span>
+              <span class="info-box-text">animal illnesses.</span>
             </div>
             <!-- /.info-box-content -->
           </div>

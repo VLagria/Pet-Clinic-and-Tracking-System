@@ -87,11 +87,6 @@
           <th>A34</td>
           
             <td class="project-actions">
-              <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal" >
-                  <i class="fas fa-folder">
-                  </i>
-                  View
-              </a>
               <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
                   <i class="fas fa-pencil-alt">
                   </i>
@@ -268,18 +263,6 @@
   </div>
 
   {{-- end edit modal  --}}
-
-  <!-- Button trigger modal -->
-  <div class = " float-right">
-    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addModal">
-    <i class="fas fa-save"> Create
-    
-    </i>
-      </button>
-      </div>
-  
-
-   
 
   <!-- Add Modal -->
   <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
