@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\VeterinariansController;
+use App\Http\Controllers\PetTypeController;
+use App\Http\Controllers\VeterinaryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +24,7 @@ Route::get('/', function () {
 
 Route::get('/auth/login', [MainController::class, 'logIn'])->name('auth.login');
 Route::get('/auth/register', [MainController::class, 'register'])->name('auth.register');
+Route::post('/auth/checkAdmin', [MainController::class, 'checkAdmin'])->name('auth.checkAdmin');
 Route::get('/admin/index', [MainController::class, 'adminDashboard']);
 Route::get('/admin/pets/CRUDpet', [MainController::class, 'adminPet']);
 Route::get('/admin/clinic/CRUDclinic', [MainController::class, 'adminClinic']);
@@ -70,15 +74,20 @@ Route::get('admin/vet/CRUDvet', function () {
     return view('admin/vet/CRUDvet');
 });
 
+Route::get('/veterinary/viewvetcustomer',[VeterinariansController::class, 'getAllCustomer'])->name('vet.getallcustomer');
+Route::get('/veterinary/viewvetpatient',[VeterinariansController::class, 'retrieveInfo']);
+Route::post('/veterinary/viewvetpatient',[VeterinariansController::class, 'addPatients'])->name('vet.addpatient');
+// Route::get('/veterinary/viewvetpatient',[PetTypeController::class, 'petType']);
+
 Route::get('veterinary/vethome', function () {
     return view('veterinary/vethome');
 });
 Route::get('veterinary/vetpatient',function() {
     return view('veterinary/vetpatient');
 });
-Route::get('veterinary/viewvetpatient',function() {
-    return view('veterinary/viewvetpatient');
-});
+// Route::get('veterinary/viewvetpatient',function() {
+//     return view('veterinary/viewvetpatient');
+// });
 Route::get('veterinary/vetclinic',function() {
     return view('veterinary/vetclinic');
 });
@@ -94,9 +103,9 @@ Route::get('veterinary/viewvet',function() {
 Route::get('veterinary/vetcustomer',function() {
     return view('veterinary/vetcustomer');
 });
-Route::get('veterinary/viewvetcustomer',function() {
-    return view('veterinary/viewvetcustomer');
-});
+// Route::get('veterinary/viewvetcustomer',function() {
+//     return view('veterinary/viewvetcustomer');
+// });
 Route::get('veterinary/assignvet',function() {
     return view('veterinary/assignvet');
 });

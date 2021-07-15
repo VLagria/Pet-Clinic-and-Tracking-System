@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Veterinary;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VeterinaryController extends Controller
 {
@@ -22,7 +23,7 @@ class VeterinaryController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-  
+
     
 }
    

@@ -98,21 +98,29 @@ body {
 </head>
 <body>
 <div class="login-form">
-    <form action="" method="post">
+    <form action="{{ route('auth.checkAdmin') }}" method="post">
+		@if (Session::get('fail'))
+		<div class="alert alert-danger">
+			{{ Session::get('fail') }}
+		</div>
+		@endif
+		@csrf
 		<div class="avatar">
 			<img src="{{asset('vendors/dist/img/MediaoneLogo.png') }}"  alt="Avatar">
 		</div>
         <h2 class="text-center">LOGIN ACCOUNT</h2>   
         <div class="form-group">
-        	<input type="text" class="form-control" name="username" placeholder="Email" required="required">
+        	<input type="text" class="form-control" name="user_email" placeholder="Email" value="{{ old('user_email')}}">
+			<span class="text-danger">@error('user_email'){{ $message }}@enderror</span>
         </div>
 		<div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+            <input type="password" class="form-control" name="user_password" placeholder="Password">
+			<span class="text-danger">@error('user_password'){{ $message }}@enderror</span>
         </div>        
   
         <br>
         <div class="form-group">
-            <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Login</a>
+            <button type="submit" class="btn btn-block btn-primary">Sign In</button>
         </div>
 		<div class="form-group">
             <a href="/auth/register" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Register</a>
