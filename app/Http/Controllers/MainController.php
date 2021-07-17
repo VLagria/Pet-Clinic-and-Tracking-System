@@ -17,9 +17,7 @@ class MainController extends Controller
     final function adminDashboard(){
         return view('admin/index');
     }
-    final function checkAdmin(){
-        return view('auth/login');
-    }
+    
     final function adminPet(){
         return view('admin/pets/CRUDpet');
     }

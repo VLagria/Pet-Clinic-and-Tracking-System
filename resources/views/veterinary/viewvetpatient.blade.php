@@ -24,10 +24,14 @@
     <!-- /.content-header -->
     
 <!-- Default box -->
+@if(Session::has('patients_deleted'))
+             <div class="alert alert-danger" role="alert">
+              {{ Session::get('patients_deleted') }}
+              </div>
+        @endif
 <div class="card">
     <div class="card-header">
       <h3 class="card-title">Patients</h3>
-  
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
           <i class="fas fa-minus"></i>
@@ -62,6 +66,7 @@
   </thead>
   <tbody>
     @foreach ($petInfoDatas as $info)
+    <tr>
         <td>{{ $info->pet_id }}</td>
         <td>{{ $info->pet_name }}</td>
         <td>{{ $info->pet_gender }}</td>
@@ -75,25 +80,26 @@
         <td>{{ $info->clinic_name}}</td>
         <td>{{ $info->pet_isActive}}</td>
         
-    @endforeach
+    
     <td class="project-actions text-right">
-                      <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal">
+                      <a href="veterinary/viewvetpatient/{{ $info->pet_id }}" class="btn btn-primary btn-sm" data-id="{{ $info->pet_id }}" data-toggle="modal" data-target="#viewModal">
                           <i class="fas fa-folder">
                           </i>
                           View
-                      </a>
-                      <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
+                      </a>  
+                      <a href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
                           <i class="fas fa-pencil-alt">
                           </i>
                           Edit
                       </a>
-                      <a class="btn btn-danger btn-sm" href="#">
+                      <a class="btn btn-danger btn-sm" href="/veterinary/delete-viewvetpatient/{{ $info->pet_id }}">
                           <i class="fas fa-trash">
                           </i>
                           Delete
                       </a>
                   </td> 
-
+                </tr>
+   @endforeach
   </tbody>
 </table>
 </div>
@@ -113,12 +119,15 @@
           </button>
         </div>
         <div class="modal-body">
-          <h5>Pet Name: Hannah Ramirez.</h5>
-          <h5>Gender: male.</h5>
+          
+          
+          <h5 id="pet_name">Pet Name: </h5>
+          <h5 id="pet_gender">Gender: male.</h5>
           <h5>Birthday: 09-15-2000.</h5>
           <h5>Notes: Vincent Lagria.</h5>
           <h5>Bloodtype: A</h5>
           <h5>Registered Date: 06-14-2021</h5>
+         
         </div>
         <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -126,6 +135,8 @@
       </div>
     </div>
   </div>
+
+  
 
 
   {{-- end view modal --}}
@@ -399,13 +410,41 @@
   </div>
   <!-- /.content-wrapper -->
 
-<script src="{{ asset('main.js') }}"></script>
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+{{-- <script src="{{ asset('vendors/plugins/jquery/jquery.min.js') }}"></script> --}}
+{{-- <!-- Bootstrap 4 -->
+<script src="{{ asset('/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
+<script src="../../dist/js/demo.js"></script> --}}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+
+<script>
+
+  $('#viewModal').modal('hide');
+
+  $(document).ready(function() {
+    $('.btn-sm').click(function(){
+      const pet_id = $(this).attr('data-id');
+      
+      $.ajax({
+        url: 'patients_detail/'+pet_id,
+        type: 'GET',
+        data:{
+          'pet_id': pet_id
+        },
+        success:function(data){
+          console.log(data);
+          $('#pet_name').html(data.pet_name);
+        }
+      });
+
+    });
+  });
+</script>
 
   @endsection
