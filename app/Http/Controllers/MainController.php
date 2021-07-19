@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\user_account;
 use Illuminate\Http\Request;
+use App\Models\user_accounts;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
+
 
 class MainController extends Controller
 {
@@ -103,6 +105,11 @@ class MainController extends Controller
         $clinic = DB::table('clinic')->get();
 
         return view('admin.clinic.CRUDclinic', compact('clinic'));
+    }
+
+    public function user_details($user_id) {
+
+        return DB::table('user_accounts')::findOrFail($user_id);
     }
    
 }

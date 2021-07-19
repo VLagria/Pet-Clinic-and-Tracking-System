@@ -56,7 +56,7 @@
            <td>{{ $userAccounts->userType_name }}</td>
           
             <td class="project-actions">
-              <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal" >
+              <a href="" class="btn btn-primary btn-sm view-btn" data-toggle="modal" data-target="#viewModal" data-id="{{ $userAccounts->user_id }}">
                   <i class="fas fa-folder">
                   </i>
                   View
@@ -96,20 +96,18 @@
           </button>
         </div>
         
-        @foreach ($userTypes_name as $userAccounts) {{$userAccounts->user_id }}
         <div class="modal-body">
-           <h5>User ID: {{ $userAccounts->user_id }}</h5>
-           <h5>Username: {{ $userAccounts->user_name }}</h5>
-           <h5>Password: {{ $userAccounts->user_password }}</h5>
-           <h5>Mobile No.: {{ $userAccounts->user_mobile }}</h5>
-           <h5>Email: {{ $userAccounts->user_email }}</h5>
-           <h5>User Type: {{ $userAccounts->userType_name }}</h5>
+           <h5>User ID: </h5>
+           <h5>Username: </h5>
+           <h5>Password: </h5>
+           <h5>Mobile No.: </h5>
+           <h5>Email: </h5>
+           <h5>User Type: </h5>
         </div>
         <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
         
-        @endforeach
       </div>
     </div>
   </div>
@@ -138,7 +136,7 @@
 
                   <div class="form-group">
                     <label>User ID: </label>
-                    <input type="text" name="user_id" id="user_name" class="form-control" placeholder="">
+                    <input type="text" name="user_id" id="user_id" class="form-control" placeholder="">
                   </div>
 
                   <div class="form-group">
@@ -186,28 +184,27 @@
   </div>
 
   <!-- -------------------------------------------------------------------------------{{-- end edit modal  --}} --------------------------------------------------------------------------------->
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+
   <script>
-    $(document).ready( function () {
-      $('.editbtn').on('click', function() {
+    jQuery('#viewModal').modal('hide');
 
-         $('#editModal').modal('show');
-
-         $tr = $(this).closest('tr');
-
-         var data = $tr.children("td").map(function() {
-           return $(this).text;
-         }).get();
-
-         console.log(data);
-
-         $('#user_id').val(data[0]);
-         $('#user_name').val(data[1]);
-         $('#user_password').val(data[2]);
-         $('#user_mobile').val(data[3]);
-         $('#user_email').val(data[4]);
-         $('#userType_id').val(data[5]);
-
+    $('.view-btn').on('click',function(){ 
+       alert('i was clicked'); 
+      const id = $(this).attr('data-id');
+      console.log(id);
+      $.ajax({
+        url:"/user_details/"+id,
+        type:'GET',
+        data: {
+          "id":id
+        },
+        success:function(data){
+          console.log(data);
+        }
       });
     });
   </script>
@@ -276,7 +273,7 @@
       </form>
       </div>
     </div>
-  {{-- end add modal  --}}
+  <!-- {{-- end add modal  --}} -->
       
 <!-- START DELETE -->
 
@@ -291,13 +288,6 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
 
 
 @endsection

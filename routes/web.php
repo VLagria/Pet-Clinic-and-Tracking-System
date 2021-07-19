@@ -32,6 +32,7 @@ Route::get('/admin/customer/CRUDcustomers', [MainController::class, 'adminCustom
 Route::get('/admin/vet/CRUDvet', [MainController::class, 'adminVet']);
 Route::get('/admin/users/CRUDusers', [MainController::class, 'adminUsers']);
 Route::get('/admin/users/CRUDusers', [MainController::class, 'showUserTypes']);
+Route::get('/user_details/{user_id}', 'App\Http\Controllers\MainController@user_details');
 
 
 Route::get('createAcc/createacc',function(){
@@ -126,6 +127,5 @@ Route::get('/admin/users/CRUDusers',[MainController::class,'getAllUsers'])->name
 Route::get('/admin/users/CRUDusers',[MainController::class,'showUserInfo'])->name('post.showuserinfo');
 
 Route::post('/admin/users/CRUDusers/edit',[MainController::class,'editUserSubmit'])->name('post.editusersubmit');
-
 
 Route::get('/admin/clinic/CRUDclinic',[MainController::class,'getAllClinic'])->name('post.getallclinic');
