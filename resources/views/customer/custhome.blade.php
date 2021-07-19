@@ -100,13 +100,16 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-12">
+        <div class="col-md-3 col-sm-6 col-12">  
           <div class="info-box">
-            <span class="info-box-icon bg-danger"><i class="far fa-star"></i></span>
+            <span class="info-box-icon bg-danger"><i class="fas fa-dog"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Likes</span>
-              <span class="info-box-number">93,139</span>
+              <span class="info-box-text"><b>Pet Grooming</b></span>
+              <span class="info-box-text">Grooming packages for dogs</span>
+              <span class="info-box-text">and cats,and in-house pet</span>
+              <span class="info-box-text">store for all your pet care needs.</span>
+              
             </div>
             <!-- /.info-box-content -->
           </div>
