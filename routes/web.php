@@ -33,7 +33,9 @@ Route::get('/admin/vet/CRUDvet', [MainController::class, 'adminVet']);
 Route::get('/admin/users/CRUDusers', [MainController::class, 'adminUsers']);
 Route::get('/admin/users/CRUDusers', [MainController::class, 'showUserTypes']);
 
-
+Route::get('customer/home',function(){
+    return view('customer/home');
+});
 Route::get('createAcc/createacc',function(){
     return view('createAcc/createacc');
 });
