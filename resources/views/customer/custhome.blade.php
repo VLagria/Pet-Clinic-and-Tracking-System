@@ -17,7 +17,7 @@
       <div class="row">
         <div class="col-md-12 col-lg-6 col-xl-4">
           <div class="card mb-2 bg-gradient-dark">
-            <img class="card-img-top" src="{{asset('vendors/dist/img/dogcat.jpg') }}" alt="Dist Photo 1">
+            <img class="card-img-top" src="{{asset('vendors/dist/img/cust1.jpg') }}" alt="Dist Photo 1">
             <div class="card-img-overlay d-flex flex-column justify-content-end">
               <p class="card-text text-grey pb-2 pt-1">Never believe that animals suffer less than humans. Pain is the same for them that it is for us. Even worse, because they cannot help themselves.</p>
             </div>
@@ -25,7 +25,7 @@
         </div>
         <div class="col-md-12 col-lg-6 col-xl-4">
           <div class="card mb-2">
-            <img class="card-img-top" src="{{asset('vendors/dist/img/dogcat1.jpeg') }}" alt="Dist Photo 2">
+            <img class="card-img-top" src="{{asset('vendors/dist/img/cust2.jpg') }}" alt="Dist Photo 2">
             <div class="card-img-overlay d-flex flex-column justify-content-center">
   
         
@@ -35,7 +35,7 @@
         </div>
         <div class="col-md-12 col-lg-6 col-xl-4">
           <div class="card mb-2">
-            <img class="card-img-top" src="{{asset('vendors/dist/img/dogcat2.jpeg') }}" alt="Dist Photo 3">
+            <img class="card-img-top" src="{{asset('vendors/dist/img/cust3.jpg') }}" alt="Dist Photo 3">
             <div class="card-img-overlay">
               <p class="card-text pb-1 pt-1 text-white">
                 If having a soul means being able to <br>
@@ -91,12 +91,9 @@
            
             <img src="{{asset('vendors/dist/img/vaccinations.png') }}">
             <div class="info-box-content">
-              <span class="info-box-text">Vaccination</span>
+              <span class="info-box-number">Vaccination</span>
               <span class="info-box-text">Vaccines help prevent </span>
-              <span class="info-box-text">pet diseases,and can</span>
-              <span class="info-box-text">help you avoid costly  </span>
-              <span class="info-box-text">treatments for preventable </span>
-              <span class="info-box-text">animal illnesses.</span>
+              <span class="info-box-text">pet diseases.</span>
             </div>
             <!-- /.info-box-content -->
           </div>
