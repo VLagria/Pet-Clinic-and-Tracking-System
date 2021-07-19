@@ -82,11 +82,11 @@
         
     
     <td class="project-actions text-right">
-                      <a href="veterinary/viewvetpatient/{{ $info->pet_id }}" class="btn btn-primary btn-sm" data-id="{{ $info->pet_id }}" data-toggle="modal" data-target="#viewModal">
+                      <!-- <a href="veterinary/viewvetpatient/{{ $info->pet_id }}" class="btn btn-primary btn-sm" data-id="{{ $info->pet_id }}" data-toggle="modal" data-target="#viewModal">
                           <i class="fas fa-folder">
                           </i>
                           View
-                      </a>  
+                      </a>   -->
                       <a href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
                           <i class="fas fa-pencil-alt">
                           </i>
@@ -107,9 +107,9 @@
   </div>
   <!-- /.card -->
 
-  {{-- View  modal  --}}
+  <!-- {{-- View  modal  --}} -->
 
-  <div class="modal" id="viewModal" tabindex="-1" role="dialog">
+  <!-- <div class="modal" id="viewModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -136,10 +136,10 @@
     </div>
   </div>
 
-  
+   -->
 
 
-  {{-- end view modal --}}
+  <!-- {{-- end view modal --}} -->
    
     <!-- edit Modal -->
   <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -262,14 +262,14 @@
   
   
  <!-- Button add modal -->
- <div class = " float-right">
+ <!-- <div class = " float-right">
     
       
 
   <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addModal">
   <i class="fas fa-save">  Register </i>
     </button>
-    </div>
+    </div> -->
 
 
   <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
