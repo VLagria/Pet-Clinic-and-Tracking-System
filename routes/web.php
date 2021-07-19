@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\VeterinariansController;
+use App\Http\Controllers\PetTypeController;
+use App\Http\Controllers\VeterinaryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,17 +24,22 @@ Route::get('/', function () {
 
 Route::get('/auth/login', [MainController::class, 'logIn'])->name('auth.login');
 Route::get('/auth/register', [MainController::class, 'register'])->name('auth.register');
+Route::post('/auth/checkAdmin', [MainController::class, 'checkAdmin'])->name('auth.checkAdmin');
 Route::get('/admin/index', [MainController::class, 'adminDashboard']);
 Route::get('/admin/pets/CRUDpet', [MainController::class, 'adminPet']);
 Route::get('/admin/clinic/CRUDclinic', [MainController::class, 'adminClinic']);
 Route::get('/admin/customer/CRUDcustomers', [MainController::class, 'adminCustomer']);
 Route::get('/admin/vet/CRUDvet', [MainController::class, 'adminVet']);
 Route::get('/admin/users/CRUDusers', [MainController::class, 'adminUsers']);
-
+Route::get('/admin/users/CRUDusers', [MainController::class, 'showUserTypes']);
 
 Route::get('/createAcc/createacc', [CustomerController::class, 'createAccount'])->name('createAcc.createacc');
 
 
+
+Route::get('customer/contactus',function(){
+    return view('customer/contactus');
+});
 
 
 Route::get('customer/createCust', function () {
@@ -69,15 +77,22 @@ Route::get('admin/vet/CRUDvet', function () {
     return view('admin/vet/CRUDvet');
 });
 
+Route::get('/veterinary/viewvetcustomer',[VeterinariansController::class, 'getAllCustomer'])->name('vet.getallcustomer');
+Route::get('/veterinary/viewvetpatient',[VeterinariansController::class, 'retrieveInfo'])->name('vet.viewpatient');
+Route::post('/veterinary/viewvetpatient',[VeterinariansController::class, 'addPatients'])->name('vet.addpatient');
+Route::get('/veterinary/delete-viewvetpatient/{pet_id}',[VeterinariansController::class, 'deletePatients'])->name('vet.deletepatients');
+// Route::get('patients_detail/{pet_id}',[VeterinariansController::class, 'patients_detail']);
+Route::get('/veterinary/viewvetpatient/{pet_id}', 'App\Http\Controllers\VeterinariansController@patients_detail');
+
 Route::get('veterinary/vethome', function () {
     return view('veterinary/vethome');
 });
+Route::get('/veterinary/vethome',[VeterinariansController::class, 'countData']);
+
 Route::get('veterinary/vetpatient',function() {
     return view('veterinary/vetpatient');
 });
-Route::get('veterinary/viewvetpatient',function() {
-    return view('veterinary/viewvetpatient');
-});
+
 Route::get('veterinary/vetclinic',function() {
     return view('veterinary/vetclinic');
 });
@@ -93,9 +108,23 @@ Route::get('veterinary/viewvet',function() {
 Route::get('veterinary/vetcustomer',function() {
     return view('veterinary/vetcustomer');
 });
-Route::get('veterinary/viewvetcustomer',function() {
-    return view('veterinary/viewvetcustomer');
-});
+// Route::get('veterinary/viewvetcustomer',function() {
+//     return view('veterinary/viewvetcustomer');
+// });
 Route::get('veterinary/assignvet',function() {
     return view('veterinary/assignvet');
 });
+
+
+Route::post('/admin/users/CRUDusers/save',[MainController::class,'addAdminSubmit'])->name('post.addadminsubmit');
+
+Route::post('/admin/clinic/CRUDclinic',[MainController::class,'addClinicSubmit'])->name('post.addclinicsubmit');
+
+Route::get('/admin/users/CRUDusers',[MainController::class,'getAllUsers'])->name('post.getallusers');
+
+Route::get('/admin/users/CRUDusers',[MainController::class,'showUserInfo'])->name('post.showuserinfo');
+
+Route::post('/admin/users/CRUDusers/edit',[MainController::class,'editUserSubmit'])->name('post.editusersubmit');
+
+
+Route::get('/admin/clinic/CRUDclinic',[MainController::class,'getAllClinic'])->name('post.getallclinic');

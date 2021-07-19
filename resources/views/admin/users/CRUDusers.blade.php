@@ -40,59 +40,41 @@
   
           <th>ID</th>
           <th>Username</th>
-          <th>Password</th>
-          <th>Name</th>
-          <th>Mobile No</th>
           <th>Email</th>
           <th>User Type</th>
             
-        <th style="width: 13%" class="text-center">
-                  Action
-                </th>
+        <th style="width: 25%" class="text-left">Action</th>
           
         </tr>
         </thead>
         <tbody>
+          @foreach ($userTypes_name as $userAccounts)
         <tr>
-           <td>242</td>
-          <td>LagriaVincent21</td>
-          <td>-----</td> 
-          <td>
-            <img src="{{asset('vendors/dist/img/vincent.jpg') }}" class="img-circle img-size-32 mr-2">
-            Vincent
-       
-          </td>
-      
-          <td>
-            <small class="text-success mr-1">
-              
-            </small>
-            09123242123
-          </td>
-          <td>vlagria@gmail.com</td>
-         <td>Admin</td>
+           <td>{{ $userAccounts->user_id }}</td>
+           <td>{{ $userAccounts->user_name }}</td>
+           <td>{{ $userAccounts->user_email }}</td>
+           <td>{{ $userAccounts->userType_name }}</td>
           
             <td class="project-actions">
-              <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal" >
+              <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal" >
                   <i class="fas fa-folder">
                   </i>
                   View
               </a>
-              <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
+              <a href="" class="btn btn-info btn-sm editbtn" data-toggle="modal" data-target="#editModal">
                   <i class="fas fa-pencil-alt">
                   </i>
                   Edit
               </a>
-              <a class="btn btn-danger btn-sm" >
+              <a href="" data-target="#deleteFunc" class="btn btn-danger btn-sm" >
                   <i class="fas fa-trash">
                   </i>
                   Delete
               </a>
           </td> 
-        
-        </tbody>
-  
-        
+          </tr>   
+          @endforeach
+        </tbody>      
       </table>
       
     </div>
@@ -102,7 +84,7 @@
 
 
 
-  {{-- View  modal  --}}
+  <!------------------------------------------------------------- {{-- View  modal  --}} -------------------------------------------------------------------------------->
 
   <div class="modal" id="viewModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -113,60 +95,76 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        
+        @foreach ($userTypes_name as $userAccounts) {{$userAccounts->user_id }}
         <div class="modal-body">
-          <h5>Name:   Hannah Ramirez.</h5>
-          <h5>Birthday:    12/105/1999.</h5>
-          <h5>Gender: Bayot.</h5>
-          <h5>Mobile:        09129837823.</h5>
+           <h5>User ID: {{ $userAccounts->user_id }}</h5>
+           <h5>Username: {{ $userAccounts->user_name }}</h5>
+           <h5>Password: {{ $userAccounts->user_password }}</h5>
+           <h5>Mobile No.: {{ $userAccounts->user_mobile }}</h5>
+           <h5>Email: {{ $userAccounts->user_email }}</h5>
+           <h5>User Type: {{ $userAccounts->userType_name }}</h5>
         </div>
         <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
+        
+        @endforeach
       </div>
     </div>
   </div>
 
-  {{-- end view modal --}}
+  <!-- {{--------------------------------------------------------------------------------- end view modal ---------------------------------------------------------------------------------}} -->
    
-    <!-- edit Modal -->
+    <!--------------------------------------------------------------------------------- edit Modal --------------------------------------------------------------------------------->
+   
+      
   <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">User Accounts</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Edit Account</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
 
         <form action="" method="POST">
+
+        {{ csrf_field() }}
         <div class="modal-body">
-      
-                <div class="form-group">
-                  <label for="exampleInputEmail1">User ID</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter User ID">
-                </div>
 
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Username</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Username">
-                </div>
-             
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Mobile No</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                  <input type="hidden" name="update_id" id="update_id">
+
+                  <div class="form-group">
+                    <label>User ID: </label>
+                    <input type="text" name="user_id" id="user_name" class="form-control" placeholder="">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="user_name" id="user_name" class="form-control" placeholder="Enter Username">
+                  </div>
+               
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Password</label>
+                    <input type="password" name="user_password" id="user_password" class="form-control" placeholder="Enter Password">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Mobile No</label>
+                    <input type="text" name="user_mobile" id="user_mobile" class="form-control"  placeholder="Enter Mobile No">
+                    
+                  </div>
                   
-                </div>
-
-                
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
-                </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" name="user_email" id="user_email" class="form-control" placeholder="Enter Email">
+                  </div>
 
           <div class="form-group">
             <label for="inputStatus">Usertype</label>
-            <select id="inputStatus" class="form-control custom-select">
+            <select id="userType_id" class="form-control custom-select">
               <option selected disabled>--</option>
               <option>Admin</option>
               <option>Veterinarian</option>  
@@ -182,84 +180,111 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Save Changes</button>
         </div>
+      </form>
       </div>
     </div>
   </div>
 
-  {{-- end edit modal  --}}
-
-  <!-- Button trigger modal -->
-  <div class = " float-right">
-    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addModal">
-    <i class="fas fa-save"> Create
-    
-    </i>
-      </button>
-      </div>
+  <!-- -------------------------------------------------------------------------------{{-- end edit modal  --}} --------------------------------------------------------------------------------->
   
+  <script>
+    $(document).ready( function () {
+      $('.editbtn').on('click', function() {
+
+         $('#editModal').modal('show');
+
+         $tr = $(this).closest('tr');
+
+         var data = $tr.children("td").map(function() {
+           return $(this).text;
+         }).get();
+
+         console.log(data);
+
+         $('#user_id').val(data[0]);
+         $('#user_name').val(data[1]);
+         $('#user_password').val(data[2]);
+         $('#user_mobile').val(data[3]);
+         $('#user_email').val(data[4]);
+         $('#userType_id').val(data[5]);
+
+      });
+    });
+  </script>
 
 
- 
-    <!-- edit Modal -->
+  <!-- -------------------------------------------------------------------------------{{-- start add modal  --}} --------------------------------------------------------------------------------->
+
+  <div class = "float-right">
+    
+    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addModal">
+    <i class="fas fa-save"> Create </i>
+      </button>
+      </div>  
+
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">User Accounts</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
   
-          <form action="" method="POST">
+          <form action="{{ route('post.addadminsubmit') }}" method="POST">  
+            
+          @csrf
           <div class="modal-body">
-        
                   <div class="form-group">
-                    <label for="exampleInputEmail1">User ID</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter User ID">
-                  </div>
-  
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Username</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Username">
+                    <label>Username</label>
+                    <input type="text" name="user_name" class="form-control" placeholder="Enter Username">
                   </div>
                
                   <div class="form-group">
+                    <label for="exampleInputEmail1">Password</label>
+                    <input type="password" name="user_password" class="form-control" placeholder="Enter Password">
+                  </div>
+
+                  <div class="form-group">
                     <label for="exampleInputEmail1">Mobile No</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                    <input type="text" name="user_mobile" class="form-control"  placeholder="Enter Mobile No">
                     
                   </div>
-  
                   
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+                    <input type="email" name="user_email" class="form-control" placeholder="Enter Email">
                   </div>
   
             <div class="form-group">
               <label for="inputStatus">Usertype</label>
-              <select id="inputStatus" class="form-control custom-select">
-                <option selected disabled>--</option>
-                <option>Admin</option>
-                <option>Veterinarian</option>  
-                <option>Customer</option> 
+              <select name="userType_id" class="form-control custom-select">
+                  @foreach ($userOptions as $user_types)
+                    <option value="{{$user_types->userType_id}}"  > {{$user_types->userType_name}}</option>
+                  @endforeach
               </select>
             </div>
           </div>
     
-                
-        
-      
+
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save Changes</button>
+            <button type="submit" value ="submit" class="btn btn-primary">Save Changes</button>
           </div>
         </div>
+      </form>
       </div>
     </div>
   {{-- end add modal  --}}
       
-      
+<!-- START DELETE -->
+
+
+
+
+<!-- END DELETE -->
+
 
   </section>
   <!-- /.content -->
@@ -273,5 +298,6 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
 
 @endsection
