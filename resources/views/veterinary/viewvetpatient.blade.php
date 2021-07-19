@@ -30,6 +30,7 @@
               </div>
         @endif
 <div class="card">
+  @csrf
     <div class="card-header">
       <h3 class="card-title">Patients</h3>
       <div class="card-tools">
@@ -82,11 +83,15 @@
         
     
     <td class="project-actions text-right">
-                      <a href="veterinary/viewvetpatient/{{ $info->pet_id }}" class="btn btn-primary btn-sm" data-id="{{ $info->pet_id }}" data-toggle="modal" data-target="#viewModal">
+<<<<<<< HEAD
+                      <a href="" class="btn btn-primary btn-sm" data-id="{{ $info->pet_id }}" data-toggle="modal" data-target="#viewModal">
+=======
+                      <!-- <a href="veterinary/viewvetpatient/{{ $info->pet_id }}" class="btn btn-primary btn-sm" data-id="{{ $info->pet_id }}" data-toggle="modal" data-target="#viewModal">
+>>>>>>> 27f0ee63a38c00ba55831b300462fc61a073976c
                           <i class="fas fa-folder">
                           </i>
                           View
-                      </a>  
+                      </a>   -->
                       <a href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
                           <i class="fas fa-pencil-alt">
                           </i>
@@ -107,9 +112,9 @@
   </div>
   <!-- /.card -->
 
-  {{-- View  modal  --}}
+  <!-- {{-- View  modal  --}} -->
 
-  <div class="modal" id="viewModal" tabindex="-1" role="dialog">
+  <!-- <div class="modal" id="viewModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -121,7 +126,7 @@
         <div class="modal-body">
           
           
-          <h5 id="pet_name">Pet Name: </h5>
+          <h5 id="pet_name">Name: </h5>
           <h5 id="pet_gender">Gender: male.</h5>
           <h5>Birthday: 09-15-2000.</h5>
           <h5>Notes: Vincent Lagria.</h5>
@@ -136,10 +141,10 @@
     </div>
   </div>
 
-  
+   -->
 
 
-  {{-- end view modal --}}
+  <!-- {{-- end view modal --}} -->
    
     <!-- edit Modal -->
   <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -262,14 +267,14 @@
   
   
  <!-- Button add modal -->
- <div class = " float-right">
+ <!-- <div class = " float-right">
     
       
 
   <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addModal">
   <i class="fas fa-save">  Register </i>
     </button>
-    </div>
+    </div> -->
 
 
   <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -411,16 +416,10 @@
   <!-- /.content-wrapper -->
 
  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-{{-- <script src="{{ asset('vendors/plugins/jquery/jquery.min.js') }}"></script> --}}
-{{-- <!-- Bootstrap 4 -->
-<script src="{{ asset('/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script> --}}
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+<!-- jQuery -->
+<script src="{{asset('vendors/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{asset('vendors/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 
 <script>
@@ -433,7 +432,7 @@
       
       $.ajax({
         url: 'patients_detail/'+pet_id,
-        type: 'GET',
+        type: 'get',
         data:{
           'pet_id': pet_id
         },

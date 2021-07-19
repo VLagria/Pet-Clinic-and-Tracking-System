@@ -24,6 +24,7 @@
    
 <!-- Default box -->
 <div class="card">
+  @csrf
     <div class="card-header">
       <h3 class="header">View Veterinary</h3>
       <br>
@@ -41,7 +42,6 @@
       <th scope="col">Vet Address</th>
       <th scope="col">Vet Date Added</th>
       <th scope="col">Clinic </th>
-      <th scope="col">User </th>
       <th scope="col">Status</th>
       <th scope="col">Action</th>
      
@@ -49,46 +49,28 @@
     </tr>
   </thead>
   <tbody>
-  <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    
+    @foreach ($veterinaries as $veterinary)
+    <tr>
+      <td>{{ $veterinary->vet_id }}</td>
+      <td>{{ $veterinary->vet_name}}</td>
+      <td>{{ $veterinary->vet_mobile}}</td>
+      <td>{{ $veterinary->vet_tel}}</td>
+      <td>{{ $veterinary->vet_birthday}}</td>
+      <td> </td>
+      <td>{{ $veterinary->vet_address}}</td>
+      <td>{{ $veterinary->vet_dateAdded}}</td>
+      <td>{{ $veterinary->clinic_name}}</td>
+      <td>{{ $veterinary->vet_isActive}}</td>
+        
     <td class="project-actions text-right">
                       <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal">
                           <i class="fas fa-folder">
                           </i>
                           View
                       </a>
+    </tr>
+    @endforeach
+
   </tbody>
 </table>
 </div>
