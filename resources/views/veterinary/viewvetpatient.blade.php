@@ -30,6 +30,7 @@
               </div>
         @endif
 <div class="card">
+  @csrf
     <div class="card-header">
       <h3 class="card-title">Patients</h3>
       <div class="card-tools">
@@ -82,7 +83,7 @@
         
     
     <td class="project-actions text-right">
-                      <a href="veterinary/viewvetpatient/{{ $info->pet_id }}" class="btn btn-primary btn-sm" data-id="{{ $info->pet_id }}" data-toggle="modal" data-target="#viewModal">
+                      <a href="" class="btn btn-primary btn-sm" data-id="{{ $info->pet_id }}" data-toggle="modal" data-target="#viewModal">
                           <i class="fas fa-folder">
                           </i>
                           View
@@ -121,7 +122,7 @@
         <div class="modal-body">
           
           
-          <h5 id="pet_name">Pet Name: </h5>
+          <h5 id="pet_name">Name: </h5>
           <h5 id="pet_gender">Gender: male.</h5>
           <h5>Birthday: 09-15-2000.</h5>
           <h5>Notes: Vincent Lagria.</h5>
@@ -411,16 +412,10 @@
   <!-- /.content-wrapper -->
 
  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-{{-- <script src="{{ asset('vendors/plugins/jquery/jquery.min.js') }}"></script> --}}
-{{-- <!-- Bootstrap 4 -->
-<script src="{{ asset('/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script> --}}
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+<!-- jQuery -->
+<script src="{{asset('vendors/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{asset('vendors/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 
 <script>
@@ -433,7 +428,7 @@
       
       $.ajax({
         url: 'patients_detail/'+pet_id,
-        type: 'GET',
+        type: 'get',
         data:{
           'pet_id': pet_id
         },

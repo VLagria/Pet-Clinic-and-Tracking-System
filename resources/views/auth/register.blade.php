@@ -97,32 +97,40 @@ body {
 </head>
 <body>
 <div class="login-form">
-    <form action="/customer/createCust" method="get">
+
+
+    <form action="{{ route('auth.registerValidate') }} " method="post">
+    		@if (Session::get('fail'))
+		<div class="alert alert-danger">
+			{{ Session::get('fail') }}
+		</div>
+		@endif
+		@csrf
 		<div class="avatar">
 			<img src="{{asset('vendors/dist/img/MediaoneLogo.png') }}"  alt="Avatar">
 	</div>
         <h2 class="text-center">CREATE ACCOUNT</h2>   
 
         <div class="form-group">
-        	<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+        	<input type="text" class="form-control" name="user_name" placeholder="Username" value="{{ old('user_name')}}">
+        	<span class="text-danger">@error('user_email'){{ $message }}@enderror</span>
+
         </div>
 		<div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+            <input type="password" class="form-control" name="user_password" placeholder="Password">
+            <span class="text-danger">@error('user_password'){{ $message }}@enderror</span>
         </div>
 		<div class="form-group">
-            <input type="numbers" class="form-control" name="mobile" placeholder="Mobile" required="required">
+            <input type="numbers" class="form-control" name="user_mobile" placeholder="Mobile" value="{{ old('user_mobile')}}">
+            <span class="text-danger">@error('user_mobile'){{ $message }}@enderror</span>
         </div> 
 		<div class="form-group">
-            <input type="email" class="form-control" name="email" placeholder="Email" required="required">
+            <input type="email" class="form-control" name="user_email" placeholder="Email" value="{{ old('user_email')}}">
+            <span class="text-danger">@error('user_email'){{ $message }}@enderror</span>
+
         </div>       
    <div class="col-md-20">
-          <label style="width:100px; font-size:15px;" for="usertype" required  class="form-label ">User Type:</label>
-          <input  type="text" class="form-control" id="usertype" hidden>
-          <select style="width:180px; padding:8px; " id="inputpetid" class="form-select">
-            <option selected>USER </option>
-            <option selected>CLINIC/VET</option>
-            <option></option>
-          </select>
+          <input type="hidden" name="userType_id" value="1">
      </div>
         <br>
         <div class="form-group">

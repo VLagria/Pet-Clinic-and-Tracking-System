@@ -24,6 +24,8 @@ Route::get('/', function () {
 
 Route::get('/auth/login', [MainController::class, 'logIn'])->name('auth.login');
 Route::get('/auth/register', [MainController::class, 'register'])->name('auth.register');
+Route::post('/auth/registerValidate', [MainController::class, 'registerValidate'])->name('auth.registerValidate');
+
 Route::post('/auth/checkAdmin', [MainController::class, 'checkAdmin'])->name('auth.checkAdmin');
 Route::get('/admin/index', [MainController::class, 'adminDashboard']);
 Route::get('/admin/pets/CRUDpet', [MainController::class, 'adminPet']);
@@ -79,11 +81,14 @@ Route::get('admin/vet/CRUDvet', function () {
 });
 
 Route::get('/veterinary/viewvetcustomer',[VeterinariansController::class, 'getAllCustomer'])->name('vet.getallcustomer');
-Route::get('/veterinary/viewvetpatient',[VeterinariansController::class, 'retrieveInfo'])->name('vet.viewpatient');
+Route::get('/veterinary/viewvetpatient',[VeterinariansController::class, 'retrieveInfo'])->name('vet.retrieveInfo');
 Route::post('/veterinary/viewvetpatient',[VeterinariansController::class, 'addPatients'])->name('vet.addpatient');
 Route::get('/veterinary/delete-viewvetpatient/{pet_id}',[VeterinariansController::class, 'deletePatients'])->name('vet.deletepatients');
 // Route::get('patients_detail/{pet_id}',[VeterinariansController::class, 'patients_detail']);
-Route::get('/veterinary/viewvetpatient/{pet_id}', 'App\Http\Controllers\VeterinariansController@patients_detail');
+Route::post('/veterinary/viewvetpatient/{pet_id}', 'App\Http\Controllers\VeterinariansController@patients_detail');
+
+
+
 
 Route::get('veterinary/vethome', function () {
     return view('veterinary/vethome');
@@ -100,12 +105,19 @@ Route::get('veterinary/vetclinic',function() {
 Route::get('veterinary/petregistration',function() {
     return view('veterinary/petregistration');
 });
-Route::get('veterinary/viewvetclinic',function() {
-    return view('veterinary/viewvetclinic');
-});
-Route::get('veterinary/viewvet',function() {
-    return view('veterinary/viewvet');
-});
+Route::get('/veterinary/viewvetclinic', [VeterinariansController:: class, 'clinicInfo']);
+
+// Route::get('veterinary/viewvetclinic',function() {
+//     return view('veterinary/viewvetclinic');
+// });
+
+Route::get('/veterinary/viewvet', [VeterinariansController::class, 'veterinariesInfo']);
+
+// Route::get('veterinary/viewvet',function() {
+//     return view('veterinary/viewvet');
+// });
+
+
 Route::get('veterinary/vetcustomer',function() {
     return view('veterinary/vetcustomer');
 });

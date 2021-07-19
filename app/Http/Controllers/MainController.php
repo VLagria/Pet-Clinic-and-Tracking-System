@@ -29,6 +29,16 @@ class MainController extends Controller
             'user_email'=>'required',
             'user_password'=>'required'
         ]);
+
+    }
+    final function registerValidate(Request $request){
+        $request->validate([
+            'user_name'=>'required',
+            'user_password'=>'required',
+            'user_mobile'=>'required',
+            'user_email'=>'required|unique'
+        ]);
+
     }
     final function adminCustomer(){
         return view('admin/customer/CRUDcustomers');
