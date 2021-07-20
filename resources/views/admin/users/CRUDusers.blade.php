@@ -56,16 +56,11 @@
            <td>{{ $userAccounts->userType_name }}</td>
           
             <td class="project-actions">
-              <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal" >
-                  <i class="fas fa-folder">
-                  </i>
-                  View
-              </a>
-              <a href="" class="btn btn-info btn-sm editbtn" data-toggle="modal" data-target="#editModal">
-                  <i class="fas fa-pencil-alt">
-                  </i>
-                  Edit
-              </a>
+              <button type="button" class="btn btn-primary btn-sm view-btn" id="view" data-toggle="modal" data-target="#viewModal{{ $userAccounts->user_id }}">View</button>
+              
+              <button type="button" class="btn btn-info btn-sm editbtn" id="edit" data-toggle="modal" data-target="#editModal{{ $userAccounts->user_id }}"><i class="fas fa-pencil-alt">
+                  </i>Edit</button>
+              
               <a href="" data-target="#deleteFunc" class="btn btn-danger btn-sm" >
                   <i class="fas fa-trash">
                   </i>
@@ -73,6 +68,111 @@
               </a>
           </td> 
           </tr>   
+<!------------------------------------------------------------- {{-- View  modal  --}} -------------------------------------------------------------------------------->
+
+  <!-- Modal for Advance Filter -->
+  <div id="viewModal{{ $userAccounts->user_id }}" class="modal fade" role="dialog" style="display:none">
+    <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" style="display: inline-block;">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Advance Filter</h4>
+    </div>
+    <form action="" method="get">
+      <div class="modal-body">
+        <h5>User ID: {{ $userAccounts->user_id }}</h5>
+        <h5>Username: {{ $userAccounts->user_name }}</h5>
+        <h5>Password: {{ $userAccounts->user_password }}</h5>
+        <h5>Mobile No.: {{ $userAccounts->user_mobile }}</h5>
+        <h5>Email: {{ $userAccounts->user_email }}</h5>
+        <h5>User Type: {{ $userAccounts->userType_name }}</h5>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-dismiss="modal" id="CloseBtn">Close</button>
+      </div>
+    </form>
+    </div>
+    </div>
+    </div>
+  <!-- {{--------------------------------------------------------------------------------- end view modal ---------------------------------------------------------------------------------}} -->
+   
+ <!--------------------------------------------------------------------------------- edit Modal --------------------------------------------------------------------------------->
+   
+      
+    <div class="modal fade" id="editModal{{ $userAccounts->user_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Account</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <form action="/admin/clinic/CRUDclinic/update/{{$userAccounts->user_id}}" method="POST">
+
+            {{ csrf_field() }}
+            <div class="modal-body">
+
+                      <input type="hidden" name="update_id" id="update_id">
+
+                      <div class="form-group">
+                        <label>User ID: </label>
+                        <input type="text" name="user_id" id="user_id" class="form-control" disabled="" value="{{ $userAccounts->user_id }}">
+                      </div>
+
+                      <div class="form-group">
+                        <label>Username: </label>
+                        <input type="text" name="user_name" id="user_name" class="form-control" placeholder="Enter Username" value="{{ $userAccounts->user_name }}">
+                      </div>
+                  
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Password: </label>
+                        <input type="password" name="user_password" id="user_password" class="form-control" placeholder="Enter Password" value="{{ $userAccounts->user_password }}">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Mobile No: </label>
+                        <input type="text" name="user_mobile" id="user_mobile" class="form-control"  placeholder="Enter Mobile No" value="{{ $userAccounts->user_mobile }}">
+                        
+                      </div>
+                      
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Email: </label>
+                        <input type="email" name="user_email" id="user_email" class="form-control" placeholder="Enter Email" value="{{ $userAccounts->user_email }}">
+                      </div>
+
+              <div class="form-group">
+                <label for="inputStatus">Usertype</label>
+                
+                <select name="userType_id" class="form-control custom-select">
+                  @foreach ($userOptions as $user_types) 
+                    @if($user_types->userType_id == $userAccounts->userType_id)
+                      <option value="{{$user_types->userType_id}}" selected>{{$user_types->userType_name}}</option>
+                    @else
+                      <option value="{{$user_types->userType_id}}" >{{$user_types->userType_name}}</option>
+                    @endif
+                  @endforeach
+                </select>
+
+              </div>
+            </div>
+        
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+
+  <!-- -------------------------------------------------------------------------------{{-- end edit modal  --}} --------------------------------------------------------------------------------->
+  
+
+
           @endforeach
         </tbody>      
       </table>
@@ -84,133 +184,31 @@
 
 
 
-  <!------------------------------------------------------------- {{-- View  modal  --}} -------------------------------------------------------------------------------->
-
-  <div class="modal" id="viewModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">View User Accounts</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        
-        @foreach ($userTypes_name as $userAccounts) {{$userAccounts->user_id }}
-        <div class="modal-body">
-           <h5>User ID: {{ $userAccounts->user_id }}</h5>
-           <h5>Username: {{ $userAccounts->user_name }}</h5>
-           <h5>Password: {{ $userAccounts->user_password }}</h5>
-           <h5>Mobile No.: {{ $userAccounts->user_mobile }}</h5>
-           <h5>Email: {{ $userAccounts->user_email }}</h5>
-           <h5>User Type: {{ $userAccounts->userType_name }}</h5>
-        </div>
-        <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-        
-        @endforeach
-      </div>
-    </div>
-  </div>
-
-  <!-- {{--------------------------------------------------------------------------------- end view modal ---------------------------------------------------------------------------------}} -->
-   
-    <!--------------------------------------------------------------------------------- edit Modal --------------------------------------------------------------------------------->
-   
-      
-  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Edit Account</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-        <form action="" method="POST">
-
-        {{ csrf_field() }}
-        <div class="modal-body">
-
-                  <input type="hidden" name="update_id" id="update_id">
-
-                  <div class="form-group">
-                    <label>User ID: </label>
-                    <input type="text" name="user_id" id="user_name" class="form-control" placeholder="">
-                  </div>
-
-                  <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" name="user_name" id="user_name" class="form-control" placeholder="Enter Username">
-                  </div>
-               
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Password</label>
-                    <input type="password" name="user_password" id="user_password" class="form-control" placeholder="Enter Password">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Mobile No</label>
-                    <input type="text" name="user_mobile" id="user_mobile" class="form-control"  placeholder="Enter Mobile No">
-                    
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" name="user_email" id="user_email" class="form-control" placeholder="Enter Email">
-                  </div>
-
-          <div class="form-group">
-            <label for="inputStatus">Usertype</label>
-            <select id="userType_id" class="form-control custom-select">
-              <option selected disabled>--</option>
-              <option>Admin</option>
-              <option>Veterinarian</option>  
-              <option>Customer</option> 
-            </select>
-          </div>
-        </div>
   
-              
-      
-    
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save Changes</button>
-        </div>
-      </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- -------------------------------------------------------------------------------{{-- end edit modal  --}} --------------------------------------------------------------------------------->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
-  <script>
-    $(document).ready( function () {
-      $('.editbtn').on('click', function() {
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 
-         $('#editModal').modal('show');
 
-         $tr = $(this).closest('tr');
+  <!-- <script>
+    jQuery('#viewModal').modal('hide');
 
-         var data = $tr.children("td").map(function() {
-           return $(this).text;
-         }).get();
-
-         console.log(data);
-
-         $('#user_id').val(data[0]);
-         $('#user_name').val(data[1]);
-         $('#user_password').val(data[2]);
-         $('#user_mobile').val(data[3]);
-         $('#user_email').val(data[4]);
-         $('#userType_id').val(data[5]);
-
+    $('.view-btn').on('click',function(){ 
+       alert('i was clicked'); 
+      const id = $(this).attr('data-id');
+      console.log(id);
+      $.ajax({
+        url:"/user_details/"+id,
+        type:'GET',
+        data: {
+          "id":id
+        },
+        success:function(data){
+          console.log(data);
+        }
       });
     });
-  </script>
+  </script> -->
 
 
   <!-- -------------------------------------------------------------------------------{{-- start add modal  --}} --------------------------------------------------------------------------------->
@@ -276,7 +274,7 @@
       </form>
       </div>
     </div>
-  {{-- end add modal  --}}
+  <!-- {{-- end add modal  --}} -->
       
 <!-- START DELETE -->
 
@@ -291,13 +289,6 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
 
 
 @endsection

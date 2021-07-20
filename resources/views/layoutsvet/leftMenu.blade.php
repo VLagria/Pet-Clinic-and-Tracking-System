@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="vethome" class="brand-link">
       <img src="{{asset('vendors/dist/img/MediaoneLogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">VETERINARY 
+      <span class="brand-text font-weight-light">VETERINARY PAGE
 
       </span>
     </a>

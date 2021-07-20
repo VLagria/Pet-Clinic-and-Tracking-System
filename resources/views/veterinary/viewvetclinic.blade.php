@@ -36,44 +36,28 @@
       <th scope="col">Clinic ID</th>
       <th scope="col">Clinic Name</th>
       <th scope="col">Owner name</th>
-      <th scope="col">Clinic Mobile</th>
-      <th scope="col">Clinic Email</th>
-      <th scope="col">Clinic Telephone Number</th>
-      <th scope="col">Clinic Address</th>
-      <th scope="col">Admin Clinic ID </th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Email</th>
+      <th scope="col">Telephone</th>
+      <th scope="col">Address</th>
       <th scope="col">Status</th>
       <th scope="col">Action</th>
      
     </tr>
   </thead>
   <tbody>
-  <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
-    <td>
-    
-    </td>
+    @foreach ($clinics as $clinic)
+  <tr>
+    <td>{{ $clinic->clinic_id }}</td>
+    <td>{{ $clinic->clinic_name }}</td>
+    <td>{{ $clinic->owner_name }}</td>
+    <td>{{ $clinic->clinic_mobile}}</td>
+    <td>{{ $clinic->clinic_email}}</td>
+    <td>{{ $clinic->clinic_tel}}</td>
+    <td>{{ $clinic->clinic_address}}</td>
+    <td>{{ $clinic->clinic_isActive}}</td>
+
+  
     <td class="project-actions text-right">
                       <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal">
                           <i class="fas fa-folder">
@@ -87,7 +71,8 @@
 <button class="btn btn-dark" type="submit">View  </button>
     </td> -->
 
-
+  </tr>
+  @endforeach
   </tbody>
 </table>
 </div>

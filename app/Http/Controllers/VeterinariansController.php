@@ -23,6 +23,28 @@ class VeterinariansController extends Controller
         return view('veterinary/viewvetcustomer', ['customers'=>$customers]);
     }
 
+    function veterinariesInfo(){
+        
+        $veterinaries = DB::table('veterinary')
+        ->join('clinic','clinic.clinic_id','=','veterinary.vet_id')
+        ->select('veterinary.vet_id', DB::raw("CONCAT(vet_fname,' ', vet_lname) AS vet_name"),
+        'veterinary.vet_mobile','veterinary.vet_tel','veterinary.vet_birthday','veterinary.vet_DP', DB::raw("CONCAT(vet_blk, ' ', vet_street,' ',vet_subdivision,' ',vet_barangay,' ',
+        vet_city,' ',vet_zip) AS vet_address"),'veterinary.vet_dateAdded','clinic.clinic_name','veterinary.vet_isActive')
+        ->paginate(10);
+
+        return view('veterinary/viewvet', ['veterinaries'=>$veterinaries]);
+    }
+
+    function clinicInfo(){
+        $clinics = DB::table('clinic')
+        ->select('clinic_id','clinic_name','owner_name','clinic_mobile','clinic_email','clinic_tel',
+        DB::raw("CONCAT(clinic_blk,' ', clinic_street,' ',clinic_barangay,' ',clinic_city,' ',
+        clinic_zip) AS clinic_address"),'clinic_isActive')
+        ->paginate(15);
+
+        return view('veterinary.viewvetclinic',['clinics'=>$clinics]);
+    }
+
     function retrieveInfo(){
 
         
@@ -93,7 +115,7 @@ class VeterinariansController extends Controller
         // 'clinic.clinic_name')
         // ->where('pets.pet_id', $pet_id)->first();
 
-        return Pet::findorFail($pet_id);
+        return DB::table('pets')::findorFail($pet_id);
     }
 
 }

@@ -23,74 +23,107 @@
 
    
 <!-- Default box -->
-<div class="card">
-    <div class="card-header">
-      <h3 class="header">Clinic</h3>
-      <br>
-      
-  
+<h1 class="mb-2 mt-5 px-5 "><b>VETERINARIAN / CLINIC </b></h1>
+<br>
 
-    <!-- Main content -->
-  
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title"> Veterinarian or Clinic</h5>
-
-                <p class="card-text">
-                  View a veterinarian and Clinic that is available
-                </p>
-
-                <a href="viewvet" class="card-link">View A Veterinarian </a>
-                <a href="viewvetclinic" class="card-link">View Clinic</a>
+        <!-- <h5 class="mb-2">VIEW A VETERINARIAN OR CLINIC</h5> -->
+        <div class="row" >
+        <div class="col-lg-3 col-6 px-5 " >
+            <div class="card card-danger collapsed-card">
+              <div class="card-header">
+                <h3 class="card-title">VETERINARIANS </h3>
+          
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
               </div>
-            </div>
-
-            <div class="card card-primary card-outline">
+              <br>
+              <!-- /.card-header -->
               <div class="card-body">
-                <h5 class="card-title">ASSIGNING YOUR PET </h5>
-
-                <p class="card-text">
-                  Assigning your pet to a veterinarian and a clinic for vet operations.
-                </p>
-                <a href="assignvet" class="card-link">Assign Pet</a>
+              <a class ="btn btn-danger" href="viewvet" role="button">View A Veterinarian </a>
+              
                 
               </div>
-            </div><!-- /.card -->
-            <!-- <div class="card card-primary card-outline">
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+           <!-- /.col -->
+           <div class="col-lg-3 col-6 px-3">
+            <div class="card card-warning">
               <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Featured Clinic</h6> -->
+                <h3 class="card-title">Assign a Veterinary to your Pet</h3>
 
-                <!-- <p class="card-text">Our Lovely Veterinary Clinic</p>
-                <div class="media">
-              <img src="{{ asset('vendors/dist/img/vetclinic1.jpg') }}" alt="User Avatar" class="img-size-60 img-square mr-3">
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
               </div>
+              <br>
+              <!-- /.card-header -->
+              <div class="card-body">
+              <a class ="btn btn-warning" href="viewvet" role="button">Assign a Veterinarian</a>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+          <div class="col-lg-3 col-6 px-5">
+            <div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title">CLINIC </h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <br>
+              <!-- /.card-header -->
+              <div class="card-body">
+              <a class ="btn btn-success" href="viewvetclinic" role="button">View Clinic </a>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+</div>
+        <!-- /.row -->
+        <BR>
+        <h3 class="mb-2 mt-5 px-5"><b>WE PROVIDE THE BEST SERVICES  </b></h3>
+        <div class="card card-success">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12 col-lg-6 col-xl-4">
+                <div class="card mb-2 bg-gradient-dark">
+                  <img class="card-img-top" src="{{ asset('vendors/dist/img/vet1.jpg') }}" alt="User Avatar" class="img-size-60 img-square mr-3">
+                  
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-6 col-xl-4">
+                <div class="card mb-2">
+                  <img class="card-img-top" src="{{ asset('vendors/dist/img/vet2.jpg') }}" alt="User Avatar" class="img-size-60 img-square mr-3">
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-6 col-xl-4">
+                <div class="card mb-2">
+                  <img class="card-img-top" src="{{ asset('vendors/dist/img/vet4.jpg') }}"alt="User Avatar" class="img-size-60 img-square mr-3">
+                 
+                </div>
               </div>
             </div>
-          </div> -->
-          <!-- /.col-md-6 -->
-          <!-- <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="m-0">Featured </h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Featured Clinic</h6>
+          </div>
+        </div>
+      </div><
 
-                <p class="card-text">Another Nice Clinic </p>
-                <div class="media">
-              <img src="{{ asset('vendors/dist/img/vetclinic2.jpg') }}" alt="User Avatar" class="img-size-100 img-square mr-3">
-              </div>
-              
-              </div>
-            </div> -->
 
+ 
            
           </div>
           
