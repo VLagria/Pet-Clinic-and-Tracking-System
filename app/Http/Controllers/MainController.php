@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\user_accounts;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
 class MainController extends Controller
@@ -82,15 +84,18 @@ class MainController extends Controller
         return back()->with('clinic_created');
     }
 
-    public function editUserSubmit(Request $request){
-        DB::table('user_accounts')->insert([
-            'user_name' => $request->user_name,
-            'user_password' => $request->user_password,
-            'user_mobile' => $request->user_mobile,
-            'user_email' => $request->user_email,
-            'userType_id' => $request->userType_id
-        ]);
-        return back()->with('user_edited');
+    public function editUserSubmit(Request $request, $user_id){
+        DB::table('user_accounts')
+            ->where('user_id', $user_id)
+            ->update(array(
+            'user_name' => $request -> user_name,
+            'user_password' => $request -> user_password,
+            'user_mobile' => $request -> user_mobile,
+            'user_email' => $request -> user_email,
+            'userType_id' => $request -> userType_id
+        ));
+
+        return back()->with('user_updated');
     }
 
     
@@ -119,7 +124,8 @@ class MainController extends Controller
 
     public function user_details($user_id) {
 
-        return DB::table('user_accounts')::findOrFail($user_id);
+        return DB::table('user_accounts')->where('user_id',$user_id);
+        // return DB::table('user_accounts')::findOrFail($user_id);
     }
    
 }
