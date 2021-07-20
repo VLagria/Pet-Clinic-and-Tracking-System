@@ -133,7 +133,7 @@
           <h5 style="text-align: center;">QR code</h5>
           <div style="text-align: center;">
 
-            {{ QrCode::format('png')->generate('name: '.$info->pet_name.
+            {{ QrCode::size(150)->generate('name: '.$info->pet_name.
             ' Gender: '.$info->pet_gender.
             ' Type: '.$info->type_name.
             ' Breed: '.$info->breed_name.
