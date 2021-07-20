@@ -64,7 +64,7 @@
                           </i>
                           View
                       </a>
-   
+</td>
     <!-- <td>
     <a class="btn btn-info" href="#" role="button">Update </a>
     <button type="button" class="btn btn-danger">Delete </button>

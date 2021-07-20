@@ -68,6 +68,7 @@
                           </i>
                           View
                       </a>
+</td> 
     </tr>
     @endforeach
 
