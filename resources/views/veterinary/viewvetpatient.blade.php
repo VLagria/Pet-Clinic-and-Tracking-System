@@ -83,15 +83,11 @@
         
     
     <td class="project-actions text-right">
-<<<<<<< HEAD
-                      <a href="" class="btn btn-primary btn-sm" data-id="{{ $info->pet_id }}" data-toggle="modal" data-target="#viewModal">
-=======
-                      <!-- <a href="veterinary/viewvetpatient/{{ $info->pet_id }}" class="btn btn-primary btn-sm" data-id="{{ $info->pet_id }}" data-toggle="modal" data-target="#viewModal">
->>>>>>> 27f0ee63a38c00ba55831b300462fc61a073976c
+                      <a href="" class="btn btn-primary btn-sm" data-id="{{ $info->pet_id }}" data-toggle="modal" data-target="#viewModal{{ $info->pet_id }}">
                           <i class="fas fa-folder">
                           </i>
                           View
-                      </a>   -->
+                      </a>  
                       <a href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
                           <i class="fas fa-pencil-alt">
                           </i>
@@ -104,7 +100,7 @@
                       </a>
                   </td> 
                 </tr>
-   @endforeach
+ 
   </tbody>
 </table>
 </div>
@@ -114,7 +110,7 @@
 
   <!-- {{-- View  modal  --}} -->
 
-  <!-- <div class="modal" id="viewModal" tabindex="-1" role="dialog">
+<div class="modal" id="viewModal{{ $info->pet_id }}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -126,12 +122,27 @@
         <div class="modal-body">
           
           
-          <h5 id="pet_name">Name: </h5>
-          <h5 id="pet_gender">Gender: male.</h5>
-          <h5>Birthday: 09-15-2000.</h5>
-          <h5>Notes: Vincent Lagria.</h5>
-          <h5>Bloodtype: A</h5>
-          <h5>Registered Date: 06-14-2021</h5>
+          <h5 id="pet_name">Name:  {{ $info->pet_name }}</h5>
+          <h5 id="pet_gender">Gender:  {{ $info->pet_gender }}</h5>
+          <h5>Birthday:  {{ $info->pet_birthday }}</h5>
+          <h5>Type:  {{ $info->type_name }}</h5>
+          <h5>Breed:  {{ $info->breed_name }}</h5>
+          <h5>Registered Date:  {{ $info->pet_registeredDate }}</h5>
+          <h5>Owner:  {{ $info->customer_name}}</h5>
+          <h5>Address:  {{ $info->customer_address}}</h5>
+          <h5 style="text-align: center;">QR code</h5>
+          <div style="text-align: center;">
+
+            {{ QrCode::format('png')->generate('name: '.$info->pet_name.
+            ' Gender: '.$info->pet_gender.
+            ' Type: '.$info->type_name.
+            ' Breed: '.$info->breed_name.
+            ' Registered Date: '.$info->pet_registeredDate.
+            ' Owner: '.$info->customer_name.
+            ' Address: '.$info->customer_address); }}
+
+          </div>
+
          
         </div>
         <div class="modal-footer">
@@ -141,8 +152,8 @@
     </div>
   </div>
 
-   -->
 
+  @endforeach
 
   <!-- {{-- end view modal --}} -->
    
@@ -422,7 +433,7 @@
 <script src="{{asset('vendors/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 
-<script>
+<!-- <script>
 
   $('#viewModal').modal('hide');
 
@@ -444,6 +455,6 @@
 
     });
   });
-</script>
+</script> -->
 
   @endsection

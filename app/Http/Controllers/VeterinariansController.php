@@ -56,7 +56,8 @@ class VeterinariansController extends Controller
         ->join('clinic','clinic.clinic_id','=','pets.clinic_id')
         ->select('pets.pet_id','pets.pet_name','pets.pet_gender','pets.pet_birthday','pets.pet_notes','pets.pet_bloodType','pets.pet_registeredDate', 'pet_types.type_name',
         'pet_breeds.breed_name','pets.pet_isActive', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),
-        'clinic.clinic_name')
+        'clinic.clinic_name', DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
+        customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"))
         ->paginate(10);
 
         $pet_clinics = DB::table('clinic')->get();
@@ -105,17 +106,15 @@ class VeterinariansController extends Controller
     
     public function patients_detail($pet_id){
         
-        // $getbyID  = DB::table('pets')
-        // ->join('pet_types','pet_types.type_id','=','pets.pet_type_id')
-        // ->join('pet_breeds','pet_breeds.breed_id','=','pets.pet_breed_id')
-        // ->join('customers','customers.customer_id','=','pets.customer_id')
-        // ->join('clinic','clinic.clinic_id','=','pets.clinic_id')
-        // ->select('pets.pet_id','pets.pet_name','pets.pet_gender','pets.pet_birthday','pets.pet_notes','pets.pet_bloodType','pets.pet_registeredDate', 'pet_types.type_name',
-        // 'pet_breeds.breed_name','pets.pet_isActive', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),
-        // 'clinic.clinic_name')
-        // ->where('pets.pet_id', $pet_id)->first();
-
-        return DB::table('pets')::findorFail($pet_id);
+         return DB::table('pets')
+        ->join('pet_types','pet_types.type_id','=','pets.pet_type_id')
+        ->join('pet_breeds','pet_breeds.breed_id','=','pets.pet_breed_id')
+        ->join('customers','customers.customer_id','=','pets.customer_id')
+        ->join('clinic','clinic.clinic_id','=','pets.clinic_id')
+        ->select('pets.pet_id','pets.pet_name','pets.pet_gender','pets.pet_birthday','pets.pet_notes','pets.pet_bloodType','pets.pet_registeredDate', 'pet_types.type_name',
+        'pet_breeds.breed_name','pets.pet_isActive', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),
+        'clinic.clinic_name')
+        ->where('pets.pet_id', $pet_id);
     }
 
 }
