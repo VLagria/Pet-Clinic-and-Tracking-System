@@ -63,7 +63,7 @@ class MainController extends Controller
             'user_email' => $request->user_email,
             'userType_id' => $request->userType_id
         ]);
-        return back()->with('user_created');
+        return back()->with('user_created', 'User Created successfully!');
     }
 
     public function addClinicSubmit(Request $request){
@@ -84,6 +84,26 @@ class MainController extends Controller
         return back()->with('clinic_created');
     }
 
+    public function editClinicSubmit(Request $request, $clinic_id){
+        DB::table('clinic')
+            ->where('clinic_id', $clinic_id)
+            ->update(array(
+            'clinic_name' => $request -> clinic_name,
+            'owner_name' => $request -> owner_name,
+            'clinic_mobile' => $request -> clinic_mobile,
+            'clinic_tel' => $request -> clinic_tel,
+            'clinic_email' => $request -> clinic_email,
+            'clinic_blk' => $request -> clinic_blk,
+            'clinic_street' => $request -> clinic_street,
+            'clinic_barangay' => $request -> clinic_barangay,
+            'clinic_city' => $request -> clinic_city,
+            'clinic_zip' => $request -> clinic_zip,
+            'admin_clinic_id' => $request -> admin_clinic_id,
+            'clinic_isActive' => $request -> clinic_isActive
+        ));
+            return back()->with('clinic_updated','Clinic successfully updated');
+        }
+
     public function editUserSubmit(Request $request, $user_id){
         DB::table('user_accounts')
             ->where('user_id', $user_id)
@@ -95,7 +115,8 @@ class MainController extends Controller
             'userType_id' => $request -> userType_id
         ));
 
-        return back()->with('user_updated');
+        // return redirect('/admin/users/CRUDusers/')->with('user_updated', true);
+        return back()->with('user_updated','user successfully updated');
     }
 
     
@@ -126,6 +147,11 @@ class MainController extends Controller
 
         return DB::table('user_accounts')->where('user_id',$user_id);
         // return DB::table('user_accounts')::findOrFail($user_id);
+    }
+
+    final function deleteUsers($user_id){
+        DB::table('user_accounts')->where('user_id', $user_id)->delete();
+        return back()->with('user_deleted','user successfully deleted');
     }
    
 }
