@@ -20,7 +20,10 @@ class VeterinariansController extends Controller
         'customer_gender','customer_birthday', DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
         customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"), 'user_id', 'customer_isActive')
         ->paginate(15);
-        return view('veterinary/viewvetcustomer', ['customers'=>$customers]);
+        $pet_clinics = DB::table('clinic')->get();
+        $users = DB::table('user_accounts')->get();
+
+        return view('veterinary/viewvetcustomer', ['customers'=>$customers, 'users'=> $users]);
     }
 
     function veterinariesInfo(){
@@ -46,15 +49,12 @@ class VeterinariansController extends Controller
     }
 
     function retrieveInfo(){
-
-        
-    
         $petInfoDatas = DB::table('pets')
         ->join('pet_types','pet_types.type_id','=','pets.pet_type_id')
         ->join('pet_breeds','pet_breeds.breed_id','=','pets.pet_breed_id')
         ->join('customers','customers.customer_id','=','pets.customer_id')
         ->join('clinic','clinic.clinic_id','=','pets.clinic_id')
-        ->select('pets.pet_id','pets.pet_name','pets.pet_gender','pets.pet_birthday','pets.pet_notes','pets.pet_bloodType','pets.pet_registeredDate', 'pet_types.type_name',
+        ->select('pets.pet_id','pets.pet_name','pets.pet_type_id', 'pets.pet_breed_id','pets.pet_gender','pets.pet_birthday','pets.pet_notes','pets.pet_bloodType','pets.pet_registeredDate', 'pet_types.type_name',
         'pet_breeds.breed_name','pets.pet_isActive', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),
         'clinic.clinic_name', DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
         customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"))
@@ -69,6 +69,7 @@ class VeterinariansController extends Controller
         $pet_types = DB::table('pet_types')->get();
 
         $pet_breeds = DB::table('pet_breeds')->get();
+
         return view('veterinary.viewvetpatient', compact('pet_breeds', 'pet_types', 'pet_customers','pet_clinics','petInfoDatas'));
     }
     public function countData(){
@@ -77,6 +78,30 @@ class VeterinariansController extends Controller
         $countClinic = DB::table('clinic')->count();
         return view('veterinary.vethome', compact('countPet','countCustomers','countClinic'));
     }
+
+    function addCustomer(Request $request){
+        DB::table('customers')->insert([
+            'customer_fname'=>$request->customer_fname,
+            'customer_lname'=>$request->customer_lname,
+            'customer_mname'=>$request->customer_mname,
+            'customer_mobile'=>$request->customer_mobile,
+            'customer_tel'=>$request->customer_tel,
+            'customer_gender'=>$request->customer_gender,
+            'customer_birthday'=>$request->customer_birthday,
+            'customer_DP'=>$request->customer_DP,
+            'customer_blk'=>$request->customer_blk,
+            'customer_street'=>$request->customer_street,
+            'customer_subdivision'=>$request->customer_subdivision,
+            'customer_barangay'=>$request->customer_barangay,
+            'customer_city'=>$request->customer_city,
+            'customer_zip'=>$request->customer_zip,
+            'user_id'=>$request->user_id,
+            'customer_isActive'=>$request->isActive
+        ]);
+
+        return back()->with('newCustomer','Customer has been completely added succesfully');
+    }
+
     final function addPatients(Request $request){
 
 
@@ -95,6 +120,7 @@ class VeterinariansController extends Controller
             'pet_isActive'=>$request->pet_isActive,
             
         ]);
+
         return back()->with('newPatients', 'Patient has been added succesfully');
 
     }
@@ -115,6 +141,27 @@ class VeterinariansController extends Controller
         'pet_breeds.breed_name','pets.pet_isActive', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),
         'clinic.clinic_name')
         ->where('pets.pet_id', $pet_id);
+    }
+
+    final function QRcode($pet_id){
+
+
+        $QrCodeData= DB::table('pets')
+        ->join('pet_types','pet_types.type_id','=','pets.pet_type_id')
+        ->join('pet_breeds','pet_breeds.breed_id','=','pets.pet_breed_id')
+        ->join('customers','customers.customer_id','=','pets.customer_id')
+        ->join('clinic','clinic.clinic_id','=','pets.clinic_id')
+        ->select('pets.pet_id','pets.pet_name','pets.pet_type_id', 'pets.pet_breed_id','pets.pet_gender','pets.pet_birthday','pets.pet_notes','pets.pet_bloodType','pets.pet_registeredDate', 'pet_types.type_name',
+        'pet_breeds.breed_name','pets.pet_isActive', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),
+        'clinic.clinic_name', DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
+        customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"))
+        ->where('pet_id','=', $pet_id)
+        ->get()->first();
+
+
+        return view('veterinary.qrcode', compact('QrCodeData'));
+    
+
     }
 
 }

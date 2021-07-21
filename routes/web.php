@@ -89,9 +89,14 @@ Route::post('/veterinary/viewvetpatient',[VeterinariansController::class, 'addPa
 Route::get('/veterinary/delete-viewvetpatient/{pet_id}',[VeterinariansController::class, 'deletePatients'])->name('vet.deletepatients');
 // Route::get('patients_detail/{pet_id}',[VeterinariansController::class, 'patients_detail']);
 Route::post('/veterinary/viewvetpatient/{pet_id}', 'App\Http\Controllers\VeterinariansController@patients_detail');
+Route::post('/veterinary/viewvetcustomer/add-cust', [VeterinariansController::class, 'addCustomer'])->name('cust.vetaddcustomer');
 
 
 
+Route::get('veterinary/qrcode', function () {
+    return view('veterinary/qrcode');
+});
+Route::get('/veterinary/qrcode/{pet_id}',[VeterinariansController::class, 'QRcode'])->name('vet.qrcode');
 
 Route::get('veterinary/vethome', function () {
     return view('veterinary/vethome');
@@ -116,6 +121,7 @@ Route::get('/veterinary/viewvetclinic', [VeterinariansController:: class, 'clini
 
 Route::get('/veterinary/viewvet', [VeterinariansController::class, 'veterinariesInfo']);
 
+
 // Route::get('veterinary/viewvet',function() {
 //     return view('veterinary/viewvet');
 // });
@@ -130,6 +136,7 @@ Route::get('veterinary/vetcustomer',function() {
 Route::get('veterinary/assignvet',function() {
     return view('veterinary/assignvet');
 });
+
 
 
 Route::post('/admin/users/CRUDusers/save',[MainController::class,'addAdminSubmit'])->name('post.addadminsubmit');

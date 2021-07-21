@@ -63,7 +63,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="viewvetcustomer" class="nav-link">
+                <a href="/veterinary/viewvetcustomer" class="nav-link">
                   <i class="fas fa-user nav-icon"></i>
                   <p>
                    Customer
