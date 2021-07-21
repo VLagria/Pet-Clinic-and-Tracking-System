@@ -29,12 +29,12 @@ Route::post('/auth/registerValidate', [MainController::class, 'registerValidate'
 Route::post('/auth/checkAdmin', [MainController::class, 'checkAdmin'])->name('auth.checkAdmin');
 Route::get('/admin/index', [MainController::class, 'adminDashboard']);
 Route::get('/admin/pets/CRUDpet', [MainController::class, 'adminPet']);
-Route::get('/admin/clinic/CRUDclinic', [MainController::class, 'adminClinic']);
 Route::get('/admin/customer/CRUDcustomers', [MainController::class, 'adminCustomer']);
 Route::get('/admin/vet/CRUDvet', [MainController::class, 'adminVet']);
 Route::get('/admin/users/CRUDusers', [MainController::class, 'adminUsers']);
 Route::get('/admin/users/CRUDusers', [MainController::class, 'showUserTypes']);
-Route::get('/user_details/{user_id}', 'App\Http\Controllers\MainController@user_details');
+Route::get('/admin/users/CRUDusers/user_details/{user_id}', 'App\Http\Controllers\MainController@user_details');
+Route::get('/admin/users/CRUDusers/delete/{user_id}',[MainController::class, 'deleteUsers'])->name('post.deleteusers');
 
 Route::get('customer/home',function(){
     return view('customer/home');
@@ -149,6 +149,9 @@ Route::get('/admin/users/CRUDusers',[MainController::class,'showUserInfo'])->nam
 
 Route::post('/admin/users/CRUDusers/edit',[MainController::class,'editUserSubmit'])->name('post.editusersubmit');
 
+
 Route::get('/admin/clinic/CRUDclinic',[MainController::class,'getAllClinic'])->name('post.getallclinic');
 
-Route::post('/admin/clinic/CRUDclinic/update/{user_id}', [MainController::class,'editUserSubmit'])->name('post.editusersubmit');
+Route::post('/CRUDusers/update/{user_id}', [MainController::class,'editUserSubmit'])->name('post.editusersubmit');
+
+Route::post('/CRUDclinic/update/{clinic_id}',[MainController::class,'editClinicSubmit'])->name('post.editclinicsubmit');
