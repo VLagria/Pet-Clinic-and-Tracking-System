@@ -53,8 +53,8 @@ Route::get('customer/custhome',function() {
 Route::get('customer/custprofile',function() {
     return view ('customer/custprofile');
 });
-Route::get('customer/custPet',function() {
-    return view ('customer/custPet');
+Route::get('customer/custpet',function() {
+    return view ('customer/custpet');
 });
 Route::get('customer/custVet',function() {
     return view ('customer/custVet');
@@ -87,7 +87,9 @@ Route::post('/veterinary/viewvetpatient/{pet_id}', 'App\Http\Controllers\Veterin
 Route::post('/veterinary/viewvetcustomer/add-cust', [VeterinariansController::class, 'addCustomer'])->name('cust.vetaddcustomer');
 
 
-
+Route::get('veterinary/viewpatient', function () {
+    return view('veterinary/viewpatient');
+});
 Route::get('veterinary/qrcode', function () {
     return view('veterinary/qrcode');
 });

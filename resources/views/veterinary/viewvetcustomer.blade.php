@@ -61,7 +61,7 @@
             @endif
             
             <td class="project-actions text-right">
-              <a href="#" class="btn btn-primary btn-sm" data-id="" data-toggle="modal" data-target="#viewModal">
+              <a href="viewpatient" class="btn btn-primary btn-sm" ">
                 <i class="fas fa-folder"></i> View </a>
               <a href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
                 <i class="fas fa-pencil-alt"></i> Edit </a>
