@@ -57,7 +57,7 @@
                 <a href="viewvetpatient" class="nav-link">
                 <i class="nav-icon fas fa-paw"></i>
                   <p>
-                   Patients
+                   Pets
                   </p>
                 </a>
               </li>
