@@ -19,7 +19,27 @@
     </div>
     <!-- /.content-header -->
 
+
+
 <!-- Default box -->
+  @if(Session::has('user_deleted')) 
+    <div class="alert alert-danger" id="messageModal" data-toggle="modal" role="alert">
+      {{ Session::get('user_deleted') }}
+    </div> 
+  @endif
+
+  @if(Session::has('user_updated')) 
+    <div class="alert alert-success" id="messageModal" role="alert">
+      {{ Session::get('user_updated') }}
+    </div> 
+  @endif
+
+  @if(Session::has('user_created')) 
+    <div class="alert alert-success" id="messageModal" role="alert">
+      {{ Session::get('user_created') }}
+    </div> 
+  @endif
+
 <div class="card">
     <div class="card-header">
       <h3 class="card-title">User Accounts</h3>
@@ -61,16 +81,39 @@
               <button type="button" class="btn btn-info btn-sm editbtn" id="edit" data-toggle="modal" data-target="#editModal{{ $userAccounts->user_id }}"><i class="fas fa-pencil-alt">
                   </i>Edit</button>
               
-              <a href="" data-target="#deleteFunc" class="btn btn-danger btn-sm" >
-                  <i class="fas fa-trash">
-                  </i>
+              <button class="btn btn-danger btn-sm" id="delete" lass="btn btn-danger btn-sm" data-toggle="modal"  data-target="#deleteModal{{ $userAccounts->user_id }}">
+                  <i class="fas fa-trash"></i>
                   Delete
-              </a>
+                  </button>
           </td> 
           </tr>   
+<!---------------------------- delete modal -------------------------------->
+  <div class="modal fade" id="deleteModal{{ $userAccounts->user_id }}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action=" /admin/users/CRUDusers/delete/{{$userAccounts->user_id}} " method="GET">
+                {{ csrf_field() }}
+                <div class="modal-body">
+                    <h3>Confirm deletion of user?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger waves-effect remove-data-from-delete-form">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+<!---------------------------- end delete modal -------------------------------->
+
 <!------------------------------------------------------------- {{-- View  modal  --}} -------------------------------------------------------------------------------->
 
-  <!-- Modal for Advance Filter -->
   <div id="viewModal{{ $userAccounts->user_id }}" class="modal fade" role="dialog" style="display:none">
     <div class="modal-dialog">
 
@@ -78,16 +121,16 @@
     <div class="modal-content">
       <div class="modal-header" style="display: inline-block;">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Advance Filter</h4>
+        <h4 class="modal-title" style="font-weight: bold;">View User</h4>
     </div>
     <form action="" method="get">
-      <div class="modal-body">
-        <h5>User ID: {{ $userAccounts->user_id }}</h5>
-        <h5>Username: {{ $userAccounts->user_name }}</h5>
-        <h5>Password: {{ $userAccounts->user_password }}</h5>
-        <h5>Mobile No.: {{ $userAccounts->user_mobile }}</h5>
-        <h5>Email: {{ $userAccounts->user_email }}</h5>
-        <h5>User Type: {{ $userAccounts->userType_name }}</h5>
+      <div class="modal-body" style="font-weight: bold;">
+        <h5 style="font-weight: bold;">User ID: {{ $userAccounts->user_id }}
+        <br>Username: {{ $userAccounts->user_name }} 
+        <br>Password: {{ $userAccounts->user_password }}
+        <br>Mobile No.: {{ $userAccounts->user_mobile }}
+        <br>Email: {{ $userAccounts->user_email }}
+        <br>User Type: {{ $userAccounts->userType_name }}</h5>
       </div>
       <div class="modal-footer">
           <button type="button" class="btn btn-light" data-dismiss="modal" id="CloseBtn">Close</button>
@@ -99,9 +142,7 @@
   <!-- {{--------------------------------------------------------------------------------- end view modal ---------------------------------------------------------------------------------}} -->
    
  <!--------------------------------------------------------------------------------- edit Modal --------------------------------------------------------------------------------->
-   
-      
-    <div class="modal fade" id="editModal{{ $userAccounts->user_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal fade" id="editModal{{ $userAccounts->user_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -111,8 +152,7 @@
               </button>
             </div>
 
-            <form action="/admin/clinic/CRUDclinic/update/{{$userAccounts->user_id}}" method="POST">
-
+            <form action="/CRUDusers/update/{{ $userAccounts->user_id }}" method="POST">
             {{ csrf_field() }}
             <div class="modal-body">
 
@@ -156,7 +196,6 @@
                     @endif
                   @endforeach
                 </select>
-
               </div>
             </div>
         
@@ -189,6 +228,13 @@
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 
+  <script>
+    $("document").ready(function(){
+      setTimeout(function(){
+        $("#messageModal").remove();
+      }, 3000 );
+    });
+  </script>
 
   <!-- <script>
     jQuery('#viewModal').modal('hide');
@@ -211,14 +257,12 @@
   </script> -->
 
 
-  <!-- -------------------------------------------------------------------------------{{-- start add modal  --}} --------------------------------------------------------------------------------->
-
-  <div class = "float-right">
-    
-    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addModal">
-    <i class="fas fa-save"> Create </i>
+  <!-- ----------------------- start add modal  ------------------------------>
+    <div class="float-right">
+      <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addModal">
+        <i class="fas fa-save"> Create </i>
       </button>
-      </div>  
+    </div>
 
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">

@@ -65,7 +65,7 @@
               <br>
               <!-- /.card-header -->
               <div class="card-body">
-              <a class ="btn btn-warning" href="viewvet" role="button">Assign a Veterinarian</a>
+              <a class ="btn btn-warning" href="assignvet" role="button">Assign a Veterinarian</a>
               </div>
               <!-- /.card-body -->
             </div>

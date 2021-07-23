@@ -30,6 +30,12 @@
               </div>
         @endif
 <div class="card">
+  @if(Session::has('newPatients'))
+             <div class="alert alert-danger" role="alert">
+              {{ Session::get('newPatients') }}
+              </div>
+        @endif
+<div class="card">
   @csrf
     <div class="card-header">
       <h3 class="card-title">Patients</h3>
@@ -43,7 +49,8 @@
       </div>
     </div>
     <div class="card-body p-0">
-      <table style="table-layout: fixed; width: 100%;" class="table table-striped projects">
+      
+  <table style="table-layout: fixed; width: 100%;" class="table table-striped projects">
   <thead>
     <tr>
       <th style="width:15%;" scope="col">ID</th>
@@ -79,20 +86,23 @@
         <td>{{ $info->breed_name }}</td>
         <td>{{ $info->customer_name}}</td>
         <td>{{ $info->clinic_name}}</td>
-        <td>{{ $info->pet_isActive}}</td>
+        @if ($info->pet_isActive==1)
+        <td><span class="badge badge-success">Yes</span></td>
+        @else
+        <td><span class="badge badge-success">No</span></td>
+        @endif
+        
+
+        
         
     
     <td class="project-actions text-right">
-<<<<<<< HEAD
-                      <a href="" class="btn btn-primary btn-sm" data-id="{{ $info->pet_id }}" data-toggle="modal" data-target="#viewModal">
-=======
-                      <!-- <a href="veterinary/viewvetpatient/{{ $info->pet_id }}" class="btn btn-primary btn-sm" data-id="{{ $info->pet_id }}" data-toggle="modal" data-target="#viewModal">
->>>>>>> 27f0ee63a38c00ba55831b300462fc61a073976c
+                      <a href="" class="btn btn-primary btn-sm" data-id="{{ $info->pet_id }}" data-toggle="modal" data-target="#viewModal{{ $info->pet_id }}">
                           <i class="fas fa-folder">
                           </i>
                           View
-                      </a>   -->
-                      <a href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
+                      </a>  
+                      <a href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal{{ $info->pet_id }}">
                           <i class="fas fa-pencil-alt">
                           </i>
                           Edit
@@ -104,21 +114,19 @@
                       </a>
                   </td> 
                 </tr>
-   @endforeach
-  </tbody>
-</table>
-</div>
-    <!-- /.card-body -->
-  </div>
+ 
+ 
+
+
   <!-- /.card -->
 
   <!-- {{-- View  modal  --}} -->
 
-  <!-- <div class="modal" id="viewModal" tabindex="-1" role="dialog">
+<div class="modal" id="viewModal{{ $info->pet_id }}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">View Patients</h5>
+          <h1 class="modal-title">View Patients</h1>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -126,14 +134,29 @@
         <div class="modal-body">
           
           
-          <h5 id="pet_name">Name: </h5>
-          <h5 id="pet_gender">Gender: male.</h5>
-          <h5>Birthday: 09-15-2000.</h5>
-          <h5>Notes: Vincent Lagria.</h5>
-          <h5>Bloodtype: A</h5>
-          <h5>Registered Date: 06-14-2021</h5>
-         
+          <h5 id="pet_name"> Name: <strong>{{ $info->pet_name }} </strong></h5>
+          <h5 id="pet_gender" >Gender: <strong>{{ $info->pet_gender }}</strong></h5>
+          <h5>Birthday:  <strong>{{ $info->pet_birthday }}</strong></h5>
+          <h5>Type:  <strong>{{ $info->type_name }}</strong></h5>
+          <h5>Breed:  <strong>{{ $info->breed_name }}</strong></h5>
+          <h5>Registered Date:  <strong>{{ $info->pet_registeredDate }}</strong></h5>
+          <h5>Owner:  <strong>{{ $info->customer_name}}</strong></h5>
+          <h5>Address:  <strong>{{ $info->customer_address}}</strong></h5>
+
+          
+          
+           <h5 style="text-align: center">
+          {!! QrCode::size(150)->eyeColor(0, 255, 255, 255, 0, 0, 0)->generate('name: '.$info->pet_name.
+            ' Gender: '.$info->pet_gender.
+            ' Type: '.$info->type_name.
+            ' Breed: '.$info->breed_name.
+            ' Registered Date: '.$info->pet_registeredDate.
+            ' Owner: '.$info->customer_name.
+            ' Address: '.$info->customer_address); !!}
+            <br><strong>Scan Me</strong>
+          </h5> 
         </div>
+        
         <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
@@ -141,13 +164,13 @@
     </div>
   </div>
 
-   -->
 
+ 
 
   <!-- {{-- end view modal --}} -->
    
     <!-- edit Modal -->
-  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="editModal{{ $info->pet_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -158,54 +181,65 @@
         </div>
 
         <form action="" method="POST">
+          @csrf
         <div class="modal-body">
 
       
                 <div class="form-group">
                   <label for="exampleInputEmail1">Pet Name</label>
-                  <input type="email" class="form-control" name="pet_name" aria-describedby="emailHelp" placeholder="Enter Pet Name">
+                  <input type="email" class="form-control" name="pet_name" aria-describedby="emailHelp" value="{{ $info->pet_name }}">
                   
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Gender</label>
                   <select id="inputStatus" class="form-control custom-select" name="pet_gender">
-                  <option selected disabled>Choose...</option>
-                  <option value="Male">Male</option>
+                  
+                  @if ($info->pet_gender == "Male")
                   <option value="Female">Female</option>
+                  <option value="Male" selected>Male</option>
+                  
+                  @else
+                  <option value="Female" selected>Female</option>
+                  <option value="Male">Male</option>
+                  @endif
+                  
+                  
                 </select>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Birthday</label>
-                  <input type="date" class="form-control" id="date" name="pet_birthday">
+                  <input type="date" class="form-control" value = "{{ $info->pet_birthday }}"id="date" name="pet_birthday">
              
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Notes</label>
-                  <textarea placeholder="Enter Description and Health Conditions" class="form-control"aria-describedby="namelHelp"id="inputnotes"  name="pet_notes" >
-                   </textarea>
+                  <textarea placeholder="Enter Description and Health Conditions" class="form-control" id="inputnotes"  name="pet_notes" >{{ $info->pet_notes }}</textarea>
                 </div>
               
                  
                 <div class="form-group">
                   <label for="exampleInputEmail1">Bloodtype</label>
-                  <input type="email" class="form-control" name ="pet_bloodType" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Optional">
+                  <input type="email" class="form-control" value="{{ $info->pet_bloodType }}" name ="pet_bloodType" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Optional">
                   
                 </div>
     
              
               <div class="form-group">
                 <label for="exampleInputEmail1">Registered Date</label>
-                <input type="date" class="form-control" id="date" name="pet_registeredDate">
+                <input type="date" class="form-control" value="{{ $info->pet_registeredDate }}" id="date" name="pet_registeredDate">
               </div>
 
               <div class="form-group">
                 <label for="exampleInputEmail1">Type</label>
                 <select id="inputStatus" class="form-control custom-select" name="pet_type_id">
-                  <option selected disabled>Choose...</option>
-          
-                      <option value="">---</option>
-   
-                  
+                  @foreach ($pet_types as $type)
+                  @if ($type->type_id == $info->pet_type_id)
+                  <option value="{{ $type->type_id }}" selected>{{ $type->type_name }}</option>
+                  @else
+                  <option value="{{ $type->type_id }}">{{ $type->type_name }}</option>
+                  @endif
+                  @endforeach
+ 
                 </select>
                 
               </div>
@@ -213,9 +247,16 @@
               <div class="form-group">
                 <label for="exampleInputEmail1">Breed</label>
                 <select id="inputStatus" class="form-control custom-select" name="pet_breeds">
-                  <option selected disabled>Choose...</option>
+                  @foreach ($pet_breeds as $breed)
+                  @if ($breed->breed_id == $info->pet_breed_id)
+                  <option value="{{ $breed->breed_id }}">{{ $breed->breed_name }}</option>
+                  @else
+                  <option value="{{ $breed->breed_id }}">{{ $breed->breed_name }}</option>
+                  @endif
+                    
+                  @endforeach
              
-                  <option value="">----</option>
+                  
                 </select>
               </div>
 
@@ -262,6 +303,12 @@
       </div>
     </div>
   </div>
+  @endforeach
+</tbody> 
+</table> 
+</div>
+<!-- /.card-body -->
+</div>
 
   {{-- end edit modal  --}}
   
@@ -410,10 +457,11 @@
   </div>
 {{-- end add modal  --}}
 
-  </section>
+  {{-- </section> --}}
   <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  </div>
 
  
 <!-- jQuery -->
@@ -422,7 +470,7 @@
 <script src="{{asset('vendors/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 
-<script>
+<!-- <script>
 
   $('#viewModal').modal('hide');
 
@@ -444,6 +492,6 @@
 
     });
   });
-</script>
+</script> -->
 
   @endsection
