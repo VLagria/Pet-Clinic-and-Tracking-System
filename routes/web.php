@@ -146,7 +146,6 @@ Route::get('/admin/users/CRUDusers',[MainController::class,'showUserInfo'])->nam
 
 Route::post('/admin/users/CRUDusers/edit',[MainController::class,'editUserSubmit'])->name('post.editusersubmit');
 
-
 Route::get('/admin/clinic/CRUDclinic',[MainController::class,'getAllClinic'])->name('post.getallclinic');
 
 Route::post('/CRUDusers/update/{user_id}', [MainController::class,'editUserSubmit'])->name('post.editusersubmit');
