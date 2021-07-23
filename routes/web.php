@@ -59,6 +59,9 @@ Route::get('customer/custpet',function() {
 Route::get('customer/custVet',function() {
     return view ('customer/custVet');
 });
+Route::get('customer/home',function() {
+    return view('customer/home');
+});
 Route::get('/admin/clinic/CRUDclinic', function () {
     return view('admin/clinic/CRUDclinic');
 });
