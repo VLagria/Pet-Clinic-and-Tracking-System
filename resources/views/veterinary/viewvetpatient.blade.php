@@ -86,7 +86,14 @@
         <td>{{ $info->breed_name }}</td>
         <td>{{ $info->customer_name}}</td>
         <td>{{ $info->clinic_name}}</td>
-        <td>{{ $info->pet_isActive}}</td>
+        @if ($info->pet_isActive==1)
+        <td><span class="badge badge-success">Yes</span></td>
+        @else
+        <td><span class="badge badge-success">No</span></td>
+        @endif
+        
+
+        
         
     
     <td class="project-actions text-right">
@@ -108,11 +115,9 @@
                   </td> 
                 </tr>
  
-  </tbody>
-</table>
-</div>
-    <!-- /.card-body -->
-  </div>
+ 
+
+
   <!-- /.card -->
 
   <!-- {{-- View  modal  --}} -->
@@ -299,6 +304,11 @@
     </div>
   </div>
   @endforeach
+</tbody> 
+</table> 
+</div>
+<!-- /.card-body -->
+</div>
 
   {{-- end edit modal  --}}
   
@@ -447,10 +457,11 @@
   </div>
 {{-- end add modal  --}}
 
-  </section>
+  {{-- </section> --}}
   <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  </div>
 
  
 <!-- jQuery -->

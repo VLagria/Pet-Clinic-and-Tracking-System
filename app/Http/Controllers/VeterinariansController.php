@@ -21,9 +21,18 @@ class VeterinariansController extends Controller
         customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"), 'user_id', 'customer_isActive')
         ->paginate(15);
         $pet_clinics = DB::table('clinic')->get();
+
         $users = DB::table('user_accounts')->get();
 
-        return view('veterinary/viewvetcustomer', ['customers'=>$customers, 'users'=> $users]);
+        $pet_types = DB::table('pet_types')->get();
+
+        $pet_breeds = DB::table('pet_breeds')->get();
+
+        $pet_clinics = DB::table('clinic')->get();
+
+
+
+        return view('veterinary/viewvetcustomer', compact('customers','users','pet_clinics','pet_breeds', 'pet_types'));
     }
 
     function veterinariesInfo(){
@@ -60,17 +69,17 @@ class VeterinariansController extends Controller
         customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"))
         ->paginate(10);
 
-        $pet_clinics = DB::table('clinic')->get();
-
         $pet_customers = DB::table('customers')
         ->select('customer_id', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"))
         ->get();
 
         $pet_types = DB::table('pet_types')->get();
-
+        
         $pet_breeds = DB::table('pet_breeds')->get();
 
-        return view('veterinary.viewvetpatient', compact('pet_breeds', 'pet_types', 'pet_customers','pet_clinics','petInfoDatas'));
+        $pet_clinics = DB::table('clinic')->get();
+
+        return view('veterinary.viewvetpatient', compact('pet_customers','petInfoDatas','pet_types','pet_breeds','pet_clinics'));
     }
     public function countData(){
         $countPet = DB::table('pets')->count();
