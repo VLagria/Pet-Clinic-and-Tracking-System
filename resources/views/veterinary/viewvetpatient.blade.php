@@ -31,7 +31,7 @@
         @endif
 <div class="card">
   @if(Session::has('newPatients'))
-             <div class="alert alert-danger" role="alert">
+             <div class="alert alert-success" role="alert">
               {{ Session::get('newPatients') }}
               </div>
         @endif
@@ -143,7 +143,7 @@
           <h5>Owner:  <strong>{{ $info->customer_name}}</strong></h5>
           <h5>Address:  <strong>{{ $info->customer_address}}</strong></h5>
 
-          
+          {{-- {{ QrCode::generate('http://127.0.0.1:8000/veterinary/qrcode/$info->pet_id'); }} --}}
           
            <h5 style="text-align: center">
           {!! QrCode::size(150)->eyeColor(0, 255, 255, 255, 0, 0, 0)->generate('name: '.$info->pet_name.

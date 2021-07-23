@@ -7,9 +7,13 @@
     <title>QR codes</title>
 </head>
 <body>
-    @foreach ($QrCodeData as $code)
-    <h1>{{ $code->pet_id }}</h1>
-    @endforeach
+
+@if ($QrCodeDatas)
+  
+    <h1>{{ $QrCodeDatas->pet_name }}</h1>
+    
+@endif
+    
 
     
 </body>

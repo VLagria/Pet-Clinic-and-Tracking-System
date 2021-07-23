@@ -8,21 +8,20 @@ use App\Models\User;
 use App\Models\user_account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class VeterinariansController extends Controller
 {
      
     function getAllCustomer(){
         $customers = DB::table('customers')
-        ->select('customer_id', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 
+        ->select('customer_id','customer_fname','customer_lname', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 
         'customer_gender','customer_birthday', DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
         customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"), 'user_id', 'customer_isActive')
         ->paginate(15);
         $pet_clinics = DB::table('clinic')->get();
 
-        $users = DB::table('user_accounts')->get();
+        $users = DB::table('user_accounts')->where('userType_id','=','3')->get();
 
         $pet_types = DB::table('pet_types')->get();
 
@@ -89,6 +88,30 @@ class VeterinariansController extends Controller
     }
 
     function addCustomer(Request $request){
+
+        $validator = Validator::make($request->all,[
+            'customer_fname' => 'required',
+            'customer_lname' => 'required',
+            'customer_mname' => 'required',
+            'customer_mobile' => 'required',
+            'customer_tel' => 'required',
+            'customer_gender' => 'required',
+            'customer_DP' => 'required',
+            'customer_blk' => 'required',
+            'customer_street' => 'required',
+            'customer_subdivision' => 'required',
+            'customer_barangay' => 'required',
+            'customer_city' => 'required',
+            'customer_zip' => 'required',
+            'user_id' => 'required',
+            'isActive' => 'required',
+
+        ]);
+        if ($validator->fails())
+        {
+            return response()->json(['errors'=>$validator->errors()->all()]);
+        }
+      
         DB::table('customers')->insert([
             'customer_fname'=>$request->customer_fname,
             'customer_lname'=>$request->customer_lname,
@@ -112,8 +135,6 @@ class VeterinariansController extends Controller
     }
 
     final function addPatients(Request $request){
-
-
         DB::table('pets')->insert([
             'pet_name'=>$request->pet_name,
             'pet_gender'=>$request->pet_gender,
@@ -138,6 +159,11 @@ class VeterinariansController extends Controller
         DB::table('pets')->where('pet_id', $pet_id)->delete();
         return back()->with('patients_deleted','Patients has been deleted sucessfully');
     }
+
+    final function deleteCustomers($customer_id){
+        DB::table('customers')->where('customer_id', $customer_id)->delete();
+        return back()->with('customer_deleted','Customer has been deleted succesfully');
+    }
     
     public function patients_detail($pet_id){
         
@@ -155,7 +181,7 @@ class VeterinariansController extends Controller
     final function QRcode($pet_id){
 
 
-        $QrCodeData= DB::table('pets')
+        $QrCodeDatas= DB::table('pets')
         ->join('pet_types','pet_types.type_id','=','pets.pet_type_id')
         ->join('pet_breeds','pet_breeds.breed_id','=','pets.pet_breed_id')
         ->join('customers','customers.customer_id','=','pets.customer_id')
@@ -165,10 +191,10 @@ class VeterinariansController extends Controller
         'clinic.clinic_name', DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
         customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"))
         ->where('pet_id','=', $pet_id)
-        ->get()->first();
+        ->first();
 
 
-        return view('veterinary.qrcode', compact('QrCodeData'));
+        return view('veterinary.qrcode', compact('QrCodeDatas'));
     
 
     }

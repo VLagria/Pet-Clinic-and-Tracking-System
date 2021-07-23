@@ -89,7 +89,8 @@ Route::post('/veterinary/viewvetpatient',[VeterinariansController::class, 'addPa
 Route::get('/veterinary/delete-viewvetpatient/{pet_id}',[VeterinariansController::class, 'deletePatients'])->name('vet.deletepatients');
 // Route::get('patients_detail/{pet_id}',[VeterinariansController::class, 'patients_detail']);
 Route::post('/veterinary/viewvetpatient/{pet_id}', 'App\Http\Controllers\VeterinariansController@patients_detail');
-Route::post('/veterinary/viewvetcustomer/add-cust', [VeterinariansController::class, 'addCustomer'])->name('cust.vetaddcustomer');
+Route::post('/veterinary/viewvetcustomer', [VeterinariansController::class, 'addCustomer'])->name('cust.vetaddcustomer');
+Route::get('/veterinary/delete-viewvetcustomer/{customer_id}',[VeterinariansController::class, 'deleteCustomers'])->name('vet.deletecustomers');
 
 
 
