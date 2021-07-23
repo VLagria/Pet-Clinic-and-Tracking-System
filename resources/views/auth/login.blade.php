@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>LogIn</title>
+
+
+
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <!-- Font Awesome -->
@@ -13,13 +16,18 @@
 <!-- Theme style -->
 <link rel="stylesheet" href="{{ asset('vendors/dist/css/adminlte.min.css') }}">
 </head>
+
+
+
 <body>
 	<body class="hold-transition login-page">
 		<div class="login-box">
 		  <!-- /.login-logo -->
 		  <div class="card card-outline card-primary">
 			<div class="card-header text-center">
-			  <a href="" class="h1"><b>Admin</b>LTE</a>
+				<div class="avatar">
+					<img src="{{asset('vendors/dist/img/MediaoneLogo.png') }}"  alt="Avatar">
+				</div>
 			</div>
 			<div class="card-body">
 			  <p class="login-box-msg">Sign in to start your session</p>
@@ -73,10 +81,10 @@
 			  <!-- /.social-auth-links -->
 		
 			  <p class="mb-1">
-				<a href="forgot-password.html">I forgot my password</a>
+				<a href="{{ route('auth.recover') }}" class="text-center">I forgot my password</a>
 			  </p>
 			  <p class="mb-0">
-				<a href="{{ route('auth.register') }}" class="text-center">Register a new membership</a>
+				<a href="{{ route('auth.register') }}" class="text-center">Register a new account</a>
 			  </p>
 			</div>
 			<!-- /.card-body -->

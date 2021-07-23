@@ -154,7 +154,7 @@
           </div>
 
           <div class="form-group">
-            <labe>Clinic Name </label>
+            <label>Clinic Name </label>
               <input type="text" class="form-control" id="clinic_name" name="clinic_name" aria-describedby="emailHelp" placeholder="Enter Clinic Name" value="{{ $cAccounts->clinic_name }}">
           </div>
 <<<<<<< HEAD
