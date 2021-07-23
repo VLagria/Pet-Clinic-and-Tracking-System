@@ -62,10 +62,10 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="custPet" class="nav-link">
+                <a href="custpet" class="nav-link">
                   <i class="nav-icon fas fa-paw"></i>
                   <p>
-                   Pets
+                   Patients
                   </p>
                 </a>
               </li>

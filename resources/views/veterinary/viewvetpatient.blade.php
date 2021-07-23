@@ -93,11 +93,8 @@
         @endif
         
 
-        
-        
-    
     <td class="project-actions text-right">
-                      <a href="" class="btn btn-primary btn-sm" data-id="{{ $info->pet_id }}" data-toggle="modal" data-target="#viewModal{{ $info->pet_id }}">
+                      <a href="" class="btn btn-primary btn-sm" data-id="" data-toggle="modal" data-target="#viewModal{{ $info->pet_id }}">
                           <i class="fas fa-folder">
                           </i>
                           View

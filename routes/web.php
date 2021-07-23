@@ -25,6 +25,7 @@ Route::get('/', function () {
 Route::get('/auth/login', [MainController::class, 'logIn'])->name('auth.login');
 Route::get('/auth/register', [MainController::class, 'register'])->name('auth.register');
 Route::post('/auth/registerValidate', [MainController::class, 'registerValidate'])->name('auth.registerValidate');
+Route::get('/auth/recover', [MainController::class, 'recover'])->name('auth.recover');
 
 Route::post('/auth/checkAdmin', [MainController::class, 'checkAdmin'])->name('auth.checkAdmin');
 Route::get('/admin/index', [MainController::class, 'adminDashboard']);
@@ -36,12 +37,6 @@ Route::get('/admin/users/CRUDusers', [MainController::class, 'showUserTypes']);
 Route::get('/admin/users/CRUDusers/user_details/{user_id}', 'App\Http\Controllers\MainController@user_details');
 Route::get('/admin/users/CRUDusers/delete/{user_id}',[MainController::class, 'deleteUsers'])->name('post.deleteusers');
 
-Route::get('customer/home',function(){
-    return view('customer/home');
-});
-Route::get('createAcc/createacc',function(){
-    return view('createAcc/createacc');
-});
 
 Route::get('customer/contactus',function(){
     return view('customer/contactus');
@@ -58,8 +53,8 @@ Route::get('customer/custhome',function() {
 Route::get('customer/custprofile',function() {
     return view ('customer/custprofile');
 });
-Route::get('customer/custPet',function() {
-    return view ('customer/custPet');
+Route::get('customer/custpet',function() {
+    return view ('customer/custpet');
 });
 Route::get('customer/custVet',function() {
     return view ('customer/custVet');
@@ -88,10 +83,14 @@ Route::get('/veterinary/viewvetpatient',[VeterinariansController::class, 'retrie
 Route::post('/veterinary/viewvetpatient',[VeterinariansController::class, 'addPatients'])->name('vet.addpatient');
 Route::get('/veterinary/delete-viewvetpatient/{pet_id}',[VeterinariansController::class, 'deletePatients'])->name('vet.deletepatients');
 // Route::get('patients_detail/{pet_id}',[VeterinariansController::class, 'patients_detail']);
-Route::post('/veterinary/viewvetpatient/{pet_id}', 'App\Http\Controllers\VeterinariansController@patients_detail');
 Route::post('/veterinary/viewvetcustomer', [VeterinariansController::class, 'addCustomer'])->name('cust.vetaddcustomer');
 Route::get('/veterinary/delete-viewvetcustomer/{customer_id}',[VeterinariansController::class, 'deleteCustomers'])->name('vet.deletecustomers');
 
+
+Route::get('veterinary/viewpatient', function () {
+    return view('veterinary/viewpatient');
+});
+Route::get('/veterinary/viewpatient/{customer_id}',[VeterinariansController::class, 'patientsOwnerView']);
 
 
 Route::get('veterinary/qrcode', function () {
@@ -149,7 +148,6 @@ Route::get('/admin/users/CRUDusers',[MainController::class,'getAllUsers'])->name
 Route::get('/admin/users/CRUDusers',[MainController::class,'showUserInfo'])->name('post.showuserinfo');
 
 Route::post('/admin/users/CRUDusers/edit',[MainController::class,'editUserSubmit'])->name('post.editusersubmit');
-
 
 Route::get('/admin/clinic/CRUDclinic',[MainController::class,'getAllClinic'])->name('post.getallclinic');
 

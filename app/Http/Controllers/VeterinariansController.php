@@ -89,28 +89,28 @@ class VeterinariansController extends Controller
 
     function addCustomer(Request $request){
 
-        $validator = Validator::make($request->all,[
-            'customer_fname' => 'required',
-            'customer_lname' => 'required',
-            'customer_mname' => 'required',
-            'customer_mobile' => 'required',
-            'customer_tel' => 'required',
-            'customer_gender' => 'required',
-            'customer_DP' => 'required',
-            'customer_blk' => 'required',
-            'customer_street' => 'required',
-            'customer_subdivision' => 'required',
-            'customer_barangay' => 'required',
-            'customer_city' => 'required',
-            'customer_zip' => 'required',
-            'user_id' => 'required',
-            'isActive' => 'required',
+        // $validator = Validator::make($request->all,[
+        //     'customer_fname' => 'required',
+        //     'customer_lname' => 'required',
+        //     'customer_mname' => 'required',
+        //     'customer_mobile' => 'required',
+        //     'customer_tel' => 'required',
+        //     'customer_gender' => 'required',
+        //     'customer_DP' => 'required',
+        //     'customer_blk' => 'required',
+        //     'customer_street' => 'required',
+        //     'customer_subdivision' => 'required',
+        //     'customer_barangay' => 'required',
+        //     'customer_city' => 'required',
+        //     'customer_zip' => 'required',
+        //     'user_id' => 'required',
+        //     'isActive' => 'required',
 
-        ]);
-        if ($validator->fails())
-        {
-            return response()->json(['errors'=>$validator->errors()->all()]);
-        }
+        // ]);
+        // if ($validator->fails())
+        // {
+        //     return response()->json(['errors'=>$validator->errors()->all()]);
+        // }
       
         DB::table('customers')->insert([
             'customer_fname'=>$request->customer_fname,
@@ -165,17 +165,18 @@ class VeterinariansController extends Controller
         return back()->with('customer_deleted','Customer has been deleted succesfully');
     }
     
-    public function patients_detail($pet_id){
-        
-         return DB::table('pets')
+    final function patientsOwnerView($customer_id){
+       $PatientOwner = DB::table('pets')
         ->join('pet_types','pet_types.type_id','=','pets.pet_type_id')
         ->join('pet_breeds','pet_breeds.breed_id','=','pets.pet_breed_id')
         ->join('customers','customers.customer_id','=','pets.customer_id')
         ->join('clinic','clinic.clinic_id','=','pets.clinic_id')
         ->select('pets.pet_id','pets.pet_name','pets.pet_gender','pets.pet_birthday','pets.pet_notes','pets.pet_bloodType','pets.pet_registeredDate', 'pet_types.type_name',
-        'pet_breeds.breed_name','pets.pet_isActive', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),
+        'pet_breeds.breed_name','pets.pet_isActive','pets.customer_id', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),
         'clinic.clinic_name')
-        ->where('pets.pet_id', $pet_id);
+        ->where('pets.customer_id','=', $customer_id)->get();
+
+        return view('veterinary/viewpatient', ['PatientOwner'=>$PatientOwner]);
     }
 
     final function QRcode($pet_id){

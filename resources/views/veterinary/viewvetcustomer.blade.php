@@ -50,12 +50,15 @@
             <td>{{ $customer->customer_gender}}</td>
             <td>{{ $customer->customer_birthday}}</td>
             <td>{{ $customer->customer_address}}</td>
-            <td>{{ $customer->user_id}}</td> @if ($customer->customer_isActive == 1) <td>
-              <span class="badge badge-success">Yes</span>
-            </td> @else <td>
-              <span class="badge badge-error">No</span>
-            </td> @endif <td class="project-actions text-right">
-              <a href="#" class="btn btn-primary btn-sm" data-id="" data-toggle="modal" data-target="#viewModal">
+            <td>{{ $customer->user_id}}</td>
+            @if ($customer->customer_isActive == 1)
+            <td><span class="badge badge-success">Yes</span></td>
+            @else
+            <td><span class="badge badge-error">No</span></td>
+            @endif
+            
+            <td class="project-actions text-right">
+              <a href="/veterinary/viewpatient/{{ $customer->customer_id}}" class="btn btn-primary btn-sm" ">
                 <i class="fas fa-folder"></i> View </a>
               <a href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal{{ $customer->customer_id}}">
                 <i class="fas fa-pencil-alt"></i> Edit </a>

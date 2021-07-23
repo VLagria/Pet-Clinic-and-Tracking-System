@@ -12,11 +12,15 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class MainController extends Controller
 {
+    final function recover(){
+        return view('auth/recover');
+    }
     final function logIn(){
         return view('auth/login');
     }
     final function register(){
         return view('auth/register');
+        
     }
     final function adminDashboard(){
         return view('admin/index');
