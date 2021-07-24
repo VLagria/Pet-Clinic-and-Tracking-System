@@ -78,29 +78,12 @@
                   </p>
                 </a>
               </li>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
+              
               <br>
               <br>
               
               <li class="nav-item">
-                <a href="auth/login" class="nav-link">
+                <a href="{{ route('auth.logout') }}" class="nav-link">
                 <i class="nav-icon fas fa-sign-out-alt "></i>
                   <p>
                    Logout

@@ -23,11 +23,15 @@ Route::get('/', function () {
 
 
 Route::get('/auth/login', [MainController::class, 'logIn'])->name('auth.login');
+
+Route::get('/auth/logout', [MainController::class, 'logout'])->name('auth.logout');
+
 Route::get('/auth/register', [MainController::class, 'register'])->name('auth.register');
 Route::post('/auth/registerValidate', [MainController::class, 'registerValidate'])->name('auth.registerValidate');
 Route::get('/auth/recover', [MainController::class, 'recover'])->name('auth.recover');
 
 Route::post('/auth/checkAdmin', [MainController::class, 'checkAdmin'])->name('auth.checkAdmin');
+
 Route::get('/admin/index', [MainController::class, 'adminDashboard']);
 Route::get('/admin/pets/CRUDpet', [MainController::class, 'adminPet']);
 Route::get('/admin/customer/CRUDcustomers', [MainController::class, 'adminCustomer']);

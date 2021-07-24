@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\user_account;
 use Illuminate\Http\Request;
-use App\Models\user_accounts;
+use App\Models\User_accounts;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Hash;
+
 
 
 class MainController extends Controller
@@ -34,11 +36,48 @@ class MainController extends Controller
     }
     final function checkAdmin(Request $request){
         $request->validate([
-            'user_email'=>'required',
+            'user_email'=>'required',   
             'user_password'=>'required'
         ]);
 
+        $CheckRoleVet = DB::table('user_accounts')->where('userType_id','=', '2');
+        $emailCheck = user_account::where('user_email','=', $request->user_email)->first();
+
+        if (!$emailCheck) {
+            return back()->with('fail','We do not recognize your email address');
+        }else{
+
+                if ($request->user_password == $emailCheck->user_password) {
+                    
+                    if ($emailCheck->userType_id == 1) {
+                        $request->session()->put('LoggedUser', $emailCheck->user_id);
+                        return redirect('admin/index');
+                    }elseif ($emailCheck->userType_id == 3) {
+                        $request->session()->put('LoggedUser', $emailCheck->user_id);
+                        return redirect('customer/custhome');
+                    }
+                    elseif($emailCheck->userType_id == 2){
+                        $request->session()->put('LoggedUser', $emailCheck->user_id);
+                        return redirect('veterinary/vethome');
+                    }else{
+                        return back()->with('fail','Incorrect Password');
+                    }
+                 
+                }else{
+                    
+                }
+        }
+
     }
+
+    final function logout(){
+        if(session()->has('LoggedUser')){
+            session()->pull('LoggedUser');
+
+            return redirect('/auth/login');
+        }
+    }
+
     final function registerValidate(Request $request){
         $request->validate([
             'user_name'=>'required',

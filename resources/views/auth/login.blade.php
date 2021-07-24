@@ -51,7 +51,7 @@
 				<span class="text-danger">@error('user_email'){{ $message }}@enderror</span>
 				
 				<div class="input-group mb-3">
-				  <input type="password" class="form-control" placeholder="Password">
+				  <input type="password" class="form-control" name="user_password" placeholder="Password">
 				  <div class="input-group-append">
 					<div class="input-group-text">
 					  <span class="fas fa-lock"></span>
