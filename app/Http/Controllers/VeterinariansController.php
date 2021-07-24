@@ -16,7 +16,8 @@ class VeterinariansController extends Controller
     function getAllCustomer(){
         $customers = DB::table('customers')
         ->select('customer_id','customer_fname','customer_lname', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 
-        'customer_gender','customer_birthday', DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
+        'customer_gender','customer_DP','customer_birthday','customer_blk','customer_street','customer_subdivision','customer_barangay',
+        'customer_city','customer_zip', DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
         customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"), 'user_id', 'customer_isActive')
         ->paginate(15);
         $pet_clinics = DB::table('clinic')->get();
@@ -89,29 +90,7 @@ class VeterinariansController extends Controller
 
     function addCustomer(Request $request){
 
-        // $validator = Validator::make($request->all,[
-        //     'customer_fname' => 'required',
-        //     'customer_lname' => 'required',
-        //     'customer_mname' => 'required',
-        //     'customer_mobile' => 'required',
-        //     'customer_tel' => 'required',
-        //     'customer_gender' => 'required',
-        //     'customer_DP' => 'required',
-        //     'customer_blk' => 'required',
-        //     'customer_street' => 'required',
-        //     'customer_subdivision' => 'required',
-        //     'customer_barangay' => 'required',
-        //     'customer_city' => 'required',
-        //     'customer_zip' => 'required',
-        //     'user_id' => 'required',
-        //     'isActive' => 'required',
-
-        // ]);
-        // if ($validator->fails())
-        // {
-        //     return response()->json(['errors'=>$validator->errors()->all()]);
-        // }
-      
+  
         DB::table('customers')->insert([
             'customer_fname'=>$request->customer_fname,
             'customer_lname'=>$request->customer_lname,
@@ -132,6 +111,25 @@ class VeterinariansController extends Controller
         ]);
 
         return back()->with('newCustomer','Customer has been completely added succesfully');
+    }
+
+    final function editCustomer(Request $request, $customer_id){
+        DB::table('customers')
+        ->where('customer_id', $customer_id)
+        ->update(array(
+            'customer_fname'=>$request->customer_fname,
+            'customer_lname'=>$request->customer_lname,
+            'customer_mobile'=>$request->customer_mobile,
+            'customer_tel'=>$request->customer_tel,
+            'customer_gender'=>$request->customer_gender,
+            'customer_birthday'=>$request->customer_birthday,
+            'customer_blk'=>$request->customer_blk,
+            'customer_street'=>$request->customer_street,
+            'customer_subdivision'=>$request->customer_subdivision,
+            'customer_city'=>$request->customer_city,
+            'customer_zip'=>$request->customer_zip,
+        ));
+        return back()->with('customer_updated','Customer has been updated successfuly');
     }
 
     final function addPatients(Request $request){
