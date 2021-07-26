@@ -1,5 +1,6 @@
 @extends('layoutsvet.app')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> @section('content') @csrf <div class="content-wrapper">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+@section('content') @csrf <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
@@ -33,6 +34,11 @@
   @if(Session::has('success')) 
   <div class="alert alert-success" role="alert" id="messageModal">
    {{ Session::get('success') }}
+ </div>
+ @endif 
+ @if(Session::has('delete')) 
+  <div class="alert alert-danger" role="alert" id="messageModal">
+   {{ Session::get('delete') }}
  </div>
  @endif 
   <div class="card"> @csrf <div class="card-header">
@@ -70,9 +76,9 @@
             <td class="project-actions text-right">
               <a href="/veterinary/viewpatient/" class="btn btn-primary btn-sm">
                 <i class="fas fa-folder"></i> View </a>
-              <a href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
+              <a href="/veterinary/editaccount/{{ $user->user_id }}" class="btn btn-info btn-sm">
                 <i class="fas fa-pencil-alt"></i> Edit </a>
-              <a class="btn btn-danger btn-sm" href="/veterinary/delete-viewvetcustomer/">
+              <a class="btn btn-danger btn-sm" href="/veterinary/user/delete/{{ $user->user_id }}">
                 <i class="fas fa-trash"></i> Delete </a>
                 
               <a class="btn btn-success btn-sm" href="/veterinary/registercustomer/{{ $user->user_id }}">
@@ -83,6 +89,13 @@
 
         </tbody>
       </table>
+      
+         {{ $usersData->links('pagination::bootstrap-4'); }}
+
+ 
+     
+     
+       
           {{-- <!-- edit Modal -->
           <div class="modal fade" id="editModal{{ $customer->customer_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -298,6 +311,7 @@
 </div>
 <!-- /.content-wrapper -->
 </div>
+
 <!-- ./wrapper -->
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->

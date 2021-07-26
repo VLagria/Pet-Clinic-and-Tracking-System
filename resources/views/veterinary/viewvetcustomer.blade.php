@@ -65,6 +65,8 @@
             @else
             <td><span class="badge badge-error">No</span></td>
             @endif
+
+            
             
             <td class="project-actions text-right">
               <a href="/veterinary/viewpatient/{{ $customer->customer_id}}" class="btn btn-primary btn-sm" ">
@@ -383,7 +385,7 @@
           {{-- end add pets modal  --}} @endforeach
         </tbody>
       </table>
-      {{ $customers->links() }}
+      {{ $customers->links('pagination::bootstrap-4') }}
     </div>
   </div>
 </div>

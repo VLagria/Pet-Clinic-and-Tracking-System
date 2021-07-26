@@ -19,7 +19,7 @@ class VeterinariansController extends Controller
         'customer_gender','customer_DP','customer_birthday','customer_blk','customer_street','customer_subdivision','customer_barangay',
         'customer_city','customer_zip', DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
         customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"), 'user_id', 'customer_isActive')
-        ->paginate(15);
+        ->paginate(5);
         $pet_clinics = DB::table('clinic')->get();
 
         $users = DB::table('user_accounts')->where('userType_id','=','3')->get();
@@ -111,23 +111,44 @@ class VeterinariansController extends Controller
         return redirect('veterinary/user')->with('success','Account has been successfully created');
 
     }
+    function editAccount($user_id){
+        $accs = DB::table('user_accounts')->where('user_id','=', $user_id)->first();
+        return view('veterinary.editaccount', compact('accs'));
+    }
+    function saveAccount(Request $request){
+
+        DB::table('user_accounts')
+        ->where('user_id', $request->user_id)
+        ->update(array(
+            'user_name'=>$request->user_name,
+            'user_password'=>$request->user_password,
+            'user_mobile'=>$request->user_mobile,
+            'user_email'=>$request->user_email
+        ));
+        
+        return redirect('veterinary/user')->with('success','Account has been successfully Updated');
+    }
+    function deleteAccount($user_id){
+        DB::table('user_accounts')->where('user_id', $user_id)->delete();
+        return back()->with('delete','account has been deleted sucessfully');
+    }
     function addCustomer(Request $request){
 
-        // $request->validate([
-        //     'customer_fname'=>'required',
-        //     'customer_lname'=>'required',
-        //     'customer_mname'=>'required',
-        //     'customer_mobile'=>'required',
-        //     'customer_tel'=>'required',
-        //     'customer_gender'=>'required',
-        //     'customer_birthday'=>'required',
-        //     'customer_street'=>'required',
-        //     'customer_subdivision'=>'required',
-        //     'customer_barangay'=>'required',
-        //     'customer_city'=>'required',
-        //     'customer_zip'=>'required',
-        //     'customer_isActive'=>'required'
-        // ]);
+        $request->validate([
+            'customer_fname'=>'required',
+            'customer_lname'=>'required'
+            // 'customer_mname'=>'required',
+            // 'customer_mobile'=>'required',
+            // 'customer_tel'=>'required',
+            // 'customer_gender'=>'required',
+            // 'customer_birthday'=>'required',
+            // 'customer_street'=>'required',
+            // 'customer_subdivision'=>'required',
+            // 'customer_barangay'=>'required',
+            // 'customer_city'=>'required',
+            // 'customer_zip'=>'required',
+            // 'customer_isActive'=>'required'
+        ]);
 
   
         DB::table('customers')->insert([
@@ -149,7 +170,7 @@ class VeterinariansController extends Controller
             'customer_isActive'=>$request->isActive
         ]);
 
-       return redirect('/veterinay/user')->with('newCustomer','Customer has been completely added succesfully');
+       return redirect('/veterinary/user')->with('newCustomer','Customer has been completely added succesfully');
     }
 
     final function editCustomer(Request $request, $customer_id){
@@ -227,7 +248,7 @@ class VeterinariansController extends Controller
     }
 
     final function usersRetrieve(){
-        $usersData = DB::table('user_accounts')->where('userType_id','=', '3')->paginate(15);
+        $usersData = DB::table('user_accounts')->where('userType_id','=', '3')->paginate(5);
 
         return view('veterinary.user',compact('usersData'));
     }

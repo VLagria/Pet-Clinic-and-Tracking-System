@@ -103,7 +103,15 @@ Route::get('/veterinary/registercustomer/{user_id}', [VeterinariansController::c
 Route::get('veterinary/addaccount',function(){
     return view('veterinary/addaccount');
 });
+Route::get('veterinary/editaccount',function(){
+    return view('veterinary/editaccount');
+});
+
 Route::post('/veterinary/addaccount',[VeterinariansController::class, 'createAcc'])->name('vet.addaccount');
+
+Route::get('/veterinary/editaccount/{user_id}',[VeterinariansController::class, 'editAccount'])->name('vet.editaccount');
+Route::post('/veterinary/editaccount/save',[VeterinariansController::class, 'saveAccount'])->name('vet.saveaccount');
+Route::get('/veterinary/user/delete/{user_id}',[VeterinariansController::class, 'deleteAccount'])->name('vet.deleteaccount');
 
 Route::get('veterinary/registercustomer',function(){
     return view('veterinary/registercustomer');
