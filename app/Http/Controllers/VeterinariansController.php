@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\user_account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class VeterinariansController extends Controller
 {
@@ -88,7 +88,46 @@ class VeterinariansController extends Controller
         return view('veterinary.vethome', compact('countPet','countCustomers','countClinic'));
     }
 
+    function getUserID($user_id){
+        $get_id = DB::table('user_accounts')->where('user_id','=', $user_id)->first();
+        return view('veterinary.registercustomer', compact('get_id'));
+    }
+    function createAcc(Request $request){
+        $request->validate([
+            'user_name'=>'required',
+            'user_password'=>'required',
+            'user_mobile'=>'required',
+            'user_email'=>'required | email | unique:user_accounts'
+        ]);
+
+        DB::table('user_accounts')->insert([
+            'user_name'=>$request->user_name,
+            'user_password'=>Hash::make($request->user_password),
+            'user_mobile'=>$request->user_mobile,
+            'user_email'=>$request->user_email,
+            'userType_id'=>$request->userType_id
+        ]);
+
+        return redirect('veterinary/user')->with('success','Account has been successfully created');
+
+    }
     function addCustomer(Request $request){
+
+        // $request->validate([
+        //     'customer_fname'=>'required',
+        //     'customer_lname'=>'required',
+        //     'customer_mname'=>'required',
+        //     'customer_mobile'=>'required',
+        //     'customer_tel'=>'required',
+        //     'customer_gender'=>'required',
+        //     'customer_birthday'=>'required',
+        //     'customer_street'=>'required',
+        //     'customer_subdivision'=>'required',
+        //     'customer_barangay'=>'required',
+        //     'customer_city'=>'required',
+        //     'customer_zip'=>'required',
+        //     'customer_isActive'=>'required'
+        // ]);
 
   
         DB::table('customers')->insert([
@@ -106,11 +145,11 @@ class VeterinariansController extends Controller
             'customer_barangay'=>$request->customer_barangay,
             'customer_city'=>$request->customer_city,
             'customer_zip'=>$request->customer_zip,
-            'user_id'=>$request->user_id,
+            'user_id'=>$request->id,
             'customer_isActive'=>$request->isActive
         ]);
 
-        return back()->with('newCustomer','Customer has been completely added succesfully');
+        redirect('/veterinay/user')->with('newCustomer','Customer has been completely added succesfully');
     }
 
     final function editCustomer(Request $request, $customer_id){
@@ -185,6 +224,12 @@ class VeterinariansController extends Controller
         ->where('pets.customer_id','=', $customer_id)->get();
 
         return view('veterinary/viewpatient', ['PatientOwner'=>$PatientOwner]);
+    }
+
+    final function usersRetrieve(){
+        $usersData = DB::table('user_accounts')->where('userType_id','=', '3')->paginate(15);
+
+        return view('veterinary.user',compact('usersData'));
     }
 
     final function QRcode($pet_id){

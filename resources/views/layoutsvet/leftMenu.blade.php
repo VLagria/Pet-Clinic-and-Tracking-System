@@ -78,7 +78,14 @@
                   </p>
                 </a>
               </li>
-              
+              <li class="nav-item">
+                <a href="/veterinary/user" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>
+                   User
+                  </p>
+                </a>
+              </li>
               <br>
               <br>
               
