@@ -149,7 +149,7 @@ class VeterinariansController extends Controller
             'customer_isActive'=>$request->isActive
         ]);
 
-        redirect('/veterinay/user')->with('newCustomer','Customer has been completely added succesfully');
+       return redirect('/veterinay/user')->with('newCustomer','Customer has been completely added succesfully');
     }
 
     final function editCustomer(Request $request, $customer_id){
