@@ -100,6 +100,12 @@ Route::get('veterinary/viewpatient', function () {
 });
 Route::get('/veterinary/viewpatient/{customer_id}',[VeterinariansController::class, 'patientsOwnerView']);
 
+Route::get('veterinary/clinicvet', function () {
+    return view('veterinary/clinicvet');
+});
+Route::get('/veterinary/clinicvet/{clinic_id}',[VeterinariansController::class, 'viewClinicVets']);
+
+
 
 Route::get('veterinary/qrcode', function () {
     return view('veterinary/qrcode');

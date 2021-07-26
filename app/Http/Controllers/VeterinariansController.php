@@ -132,6 +132,16 @@ class VeterinariansController extends Controller
         return back()->with('customer_updated','Customer has been updated successfuly');
     }
 
+    final function viewClinicVets($clinic){
+        $clinicVets = DB::table('veterinary')
+        ->select('vet_id',DB::raw("CONCAT(vet_fname,' ', vet_lname,' ',vet_mname) AS vet_name"),'vet_mobile','vet_tel','vet_birthday','vet_DP',
+        DB::raw("CONCAT(vet_blk,' ', vet_street,' ',vet_subdivision,' ',vet_barangay,' ',vet_city,' ',
+        vet_zip) AS vet_address"),'vet_dateAdded','clinic_id','user_id','vet_isActive')
+        ->paginate(15);
+
+        return view('veterinary/clinicvet', compact('clinicVets'));
+    }
+
     final function addPatients(Request $request){
         DB::table('pets')->insert([
             'pet_name'=>$request->pet_name,

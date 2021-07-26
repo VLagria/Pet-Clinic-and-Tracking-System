@@ -16,12 +16,19 @@
     <!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
-  <a class="btn btn-success btn-sm " data-toggle="modal" data-target="#addModal">
+  <a class="btn btn-success btn-sm " data-toggle="modal" data-target="#addModal" style="margin-left: 10px">
     <i class="fas fa-save"></i> Add Customer </a>
-  <!-- Default box --> @if(Session::has('customer_deleted')) <div class="alert alert-danger" role="alert" id="messageModal">
+    <br>
+    <br>
+  <!-- Default box --> 
+  @if(Session::has('customer_deleted')) 
+  <div class="alert alert-danger" role="alert" id="messageModal">
     {{ Session::get('customer_deleted') }}
-  </div> @endif @if(Session::has('newCustomer')) <div class="alert alert-success" role="alert" id="messageModal">
+  </div>
+   @endif @if(Session::has('newCustomer')) 
+   <div class="alert alert-success" role="alert" id="messageModal">
     {{ Session::get('newCustomer') }}
+    
   </div> @endif <div class="card"> @csrf <div class="card-header">
       <h3 class="header">Customer</h3>
       <br>

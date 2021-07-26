@@ -25,7 +25,12 @@
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-      <h3 class="header">View Clinic</h3>
+        <a class="btn btn-error btn-sm" href="/veterinary/viewvetclinic">
+            <i class="fas fa-arrow-left">
+            </i>
+            Return
+        </a>
+      <h3 class="header">Veterinarians</h3>
       <br>
      
 
@@ -33,33 +38,38 @@
     <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th scope="col">Clinic ID</th>
-      <th scope="col">Clinic Name</th>
-      <th scope="col">Owner name</th>
+      <th width="10%" scope="col">Veterinarian ID</th>
+      <th scope="col">Name</th>
       <th scope="col">Mobile</th>
-      <th scope="col">Email</th>
       <th scope="col">Telephone</th>
-      <th scope="col">Address</th>
+      <th scope="col">Birthday</th>
+      <th width="20%"scope="col">Address</th>
+      <th scope="col">Date Added</th>
       <th scope="col">Status</th>
       <th scope="col">Action</th>
      
     </tr>
   </thead>
   <tbody>
-    @foreach ($clinics as $clinic)
+    @foreach ($clinicVets as $vet)
   <tr>
-    <td>{{ $clinic->clinic_id }}</td>
-    <td>{{ $clinic->clinic_name }}</td>
-    <td>{{ $clinic->owner_name }}</td>
-    <td>{{ $clinic->clinic_mobile}}</td>
-    <td>{{ $clinic->clinic_email}}</td>
-    <td>{{ $clinic->clinic_tel}}</td>
-    <td>{{ $clinic->clinic_address}}</td>
-    <td>{{ $clinic->clinic_isActive}}</td>
+    <td>{{ $vet->vet_id }}</td>
+    <td>{{ $vet->vet_name }}</td>
+    <td>{{ $vet->vet_mobile }}</td>
+    <td>{{ $vet->vet_tel }}</td>
+    <td>{{ $vet->vet_birthday }}</td>
+    <td>{{ $vet->vet_address }}</td>
+    <td>{{ $vet->vet_dateAdded }}</td>
+    @if ($vet->vet_isActive=="1")
+    <td><span class="badge badge-success">Yes</span></td>
+    @else
+    <td><span class="badge badge-error">No </span></td>
+    @endif
+    
 
   
     <td class="project-actions text-right">
-                      <a class="btn btn-primary btn-sm" href="/veterinary/clinicvet/{{ $clinic->clinic_id }}" >
+                      <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal">
                           <i class="fas fa-folder">
                           </i>
                           View
