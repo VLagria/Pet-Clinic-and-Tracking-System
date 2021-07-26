@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
 {
+    // <==============================================Login Controller====================================>
+
     final function recover(){
         return view('auth/recover');
     }
@@ -40,31 +42,31 @@ class MainController extends Controller
             'user_password'=>'required'
         ]);
 
-        $CheckRoleVet = DB::table('user_accounts')->where('userType_id','=', '2');
-        $emailCheck = user_account::where('user_email','=', $request->user_email)->first();
+     
+        $userInfo = user_account::where('user_email','=', $request->user_email)->first();
 
-        if (!$emailCheck) {
+        if (!$userInfo) {
             return back()->with('fail','We do not recognize your email address');
         }else{
 
-                if ($request->user_password == $emailCheck->user_password) {
+                if ($request->user_password == $userInfo->user_password) {
                     
-                    if ($emailCheck->userType_id == 1) {
-                        $request->session()->put('LoggedUser', $emailCheck->user_id);
+                    if ($userInfo->userType_id == 1) {
+                        $request->session()->put('LoggedUser', $userInfo->user_id); //for admin
                         return redirect('admin/index');
-                    }elseif ($emailCheck->userType_id == 3) {
-                        $request->session()->put('LoggedUser', $emailCheck->user_id);
+                    }elseif ($userInfo->userType_id == 3) {
+                        $request->session()->put('LoggedUser', $userInfo->user_id); // for customer
                         return redirect('customer/custhome');
                     }
-                    elseif($emailCheck->userType_id == 2){
-                        $request->session()->put('LoggedUser', $emailCheck->user_id);
+                    elseif($userInfo->userType_id == 2){
+                        $request->session()->put('LoggedUser', $userInfo->user_id); // for veterinary
                         return redirect('veterinary/vethome');
                     }else{
                         return back()->with('fail','Incorrect Password');
                     }
                  
                 }else{
-                    
+                    return back()->with('fail','Incorrect Password');
                 }
         }
 
@@ -77,6 +79,18 @@ class MainController extends Controller
             return redirect('/auth/login');
         }
     }
+    final function adminsDashboard(){
+        $data = ['LoggedUserInfo'=>user_account::where('id','=', session('LoggedUser'))->first()];
+        return view('admin.index', $data);
+    }
+    final function vetDashboard(){
+        $data = ['LoggedUserInfo'=>user_account::where('id','=', session('LoggedUser'))->first()];
+        return view('veterinary.vethome', $data);
+    }
+    final function userDashboard(){
+        $data = ['LoggedUserInfo'=>user_account::where('id','=', session('LoggedUser'))->first()];
+        return view('customer.custhome', $data);
+    }
 
     final function registerValidate(Request $request){
         $request->validate([
@@ -87,6 +101,10 @@ class MainController extends Controller
         ]);
 
     }
+
+    // <==============================================Login Controller====================================>
+
+
     final function adminCustomer(){
         return view('admin/customer/CRUDcustomers');
     }
