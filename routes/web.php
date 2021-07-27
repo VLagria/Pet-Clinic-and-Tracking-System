@@ -113,9 +113,15 @@ Route::get('/veterinary/editaccount/{user_id}',[VeterinariansController::class, 
 Route::post('/veterinary/editaccount/save',[VeterinariansController::class, 'saveAccount'])->name('vet.saveaccount');
 Route::get('/veterinary/user/delete/{user_id}',[VeterinariansController::class, 'deleteAccount'])->name('vet.deleteaccount');
 
+Route::get('/veterinary/usercustomer/{user_id}',[VeterinariansController::class, 'userCustomer'])->name('vet.usercustomer');
+
 Route::get('veterinary/registercustomer',function(){
     return view('veterinary/registercustomer');
 });
+Route::get('veterinary/usercustomer',function(){
+    return view('veterinary/usercustomer');
+});
+
 
 Route::get('/veterinary/user',[VeterinariansController::class, 'usersRetrieve']);
 

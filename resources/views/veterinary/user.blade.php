@@ -74,7 +74,7 @@
             @endif
             
             <td class="project-actions text-right">
-              <a href="/veterinary/viewpatient/" class="btn btn-primary btn-sm">
+              <a href="/veterinary/usercustomer/{{ $user->user_id }}" class="btn btn-primary btn-sm">
                 <i class="fas fa-folder"></i> View </a>
               <a href="/veterinary/editaccount/{{ $user->user_id }}" class="btn btn-info btn-sm">
                 <i class="fas fa-pencil-alt"></i> Edit </a>

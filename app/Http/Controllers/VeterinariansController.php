@@ -132,6 +132,17 @@ class VeterinariansController extends Controller
         DB::table('user_accounts')->where('user_id', $user_id)->delete();
         return back()->with('delete','account has been deleted sucessfully');
     }
+    function userCustomer($user_id){
+        $userCust = DB::table('customers')
+        ->select('customer_id','customer_fname','customer_lname', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 
+        'customer_gender','customer_DP','customer_birthday','customer_blk','customer_street','customer_subdivision','customer_barangay',
+        'customer_city','customer_zip', DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
+        customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"), 'user_id', 'customer_isActive')
+        ->where('user_id', '=', $user_id)
+        ->get();
+
+        return view('veterinary.usercustomer', compact('userCust'));
+    }
     function addCustomer(Request $request){
 
         $request->validate([
