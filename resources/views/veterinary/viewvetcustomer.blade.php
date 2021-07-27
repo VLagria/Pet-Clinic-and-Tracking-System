@@ -63,7 +63,7 @@
             @if ($customer->customer_isActive == 1)
             <td><span class="badge badge-success">Yes</span></td>
             @else
-            <td><span class="badge badge-error">No</span></td>
+            <td><span class="badge badge-danger">No</span></td>
             @endif
 
             

@@ -6,6 +6,7 @@ use App\Models\Customer;
 use App\Models\Pet;
 use App\Models\User;
 use App\Models\user_account;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +19,7 @@ class VeterinariansController extends Controller
         ->select('customer_id','customer_fname','customer_lname', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 
         'customer_gender','customer_DP','customer_birthday','customer_blk','customer_street','customer_subdivision','customer_barangay',
         'customer_city','customer_zip', DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
-        customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"), 'user_id', 'customer_isActive')
+        customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"), 'user_id', 'customer_isActive')->orderBy('customer_id', 'DESC')
         ->paginate(5);
         $pet_clinics = DB::table('clinic')->get();
 
@@ -143,6 +144,19 @@ class VeterinariansController extends Controller
 
         return view('veterinary.usercustomer', compact('userCust'));
     }
+    function userViewPatient($customer_id){
+        $Owners = DB::table('pets')
+        ->join('pet_types','pet_types.type_id','=','pets.pet_type_id')
+        ->join('pet_breeds','pet_breeds.breed_id','=','pets.pet_breed_id')
+        ->join('customers','customers.customer_id','=','pets.customer_id')
+        ->join('clinic','clinic.clinic_id','=','pets.clinic_id')
+        ->select('pets.pet_id','pets.pet_name','pets.pet_gender','pets.pet_birthday','pets.pet_notes','pets.pet_bloodType','pets.pet_registeredDate', 'pet_types.type_name',
+        'pet_breeds.breed_name','pets.pet_isActive','pets.customer_id', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),
+        'clinic.clinic_name')
+        ->where('pets.customer_id','=', $customer_id)->get();
+
+        return view('veterinary/userviewpatient', compact('Owners'));
+    }
     function addCustomer(Request $request){
 
         $request->validate([
@@ -181,13 +195,43 @@ class VeterinariansController extends Controller
             'customer_isActive'=>$request->isActive
         ]);
 
-       return redirect('/veterinary/user')->with('newCustomer','Customer has been completely added succesfully');
+       return redirect('/veterinary/viewvetcustomer')->with('newCustomer','Customer has been completely added succesfully');
     }
+
+   final function editcustomerID($customer_id){
+        $cust_id = DB::table('customers')->where('customer_id','=', $customer_id)->first();
+        return view('veterinary.usereditcustomer', compact('cust_id'));
+   }
+
+   final function saveCustomer(Request $request, $customer_id){
+
+    DB::table('customers')
+    ->where('customer_id', '=', $customer_id)
+    ->update(array(
+        'customer_fname'=>$request->customer_fname,
+        'customer_lname'=>$request->customer_lname,
+        'customer_mname'=>$request->customer_mname,
+        'customer_mobile'=>$request->customer_mobile,
+        'customer_tel'=>$request->customer_tel,
+        'customer_gender'=>$request->customer_gender,
+        'customer_birthday'=>$request->customer_birthday,
+        'customer_blk'=>$request->customer_blk,
+        'customer_street'=>$request->customer_street,
+        'customer_subdivision'=>$request->customer_subdivision,
+        'customer_barangay'=>$request->customer_barangay,
+        'customer_city'=>$request->customer_city,
+        'customer_zip'=>$request->customer_zip,
+        'customer_isActive'=>$request->customer_isActive
+    ));
+    
+    return redirect('veterinary/viewvetcustomer')->with('success','Customer has been updated successfuly');
+
+   }
 
     final function editCustomer(Request $request, $customer_id){
         DB::table('customers')
         ->where('customer_id', $customer_id)
-        ->update(array(
+        ->update([
             'customer_fname'=>$request->customer_fname,
             'customer_lname'=>$request->customer_lname,
             'customer_mobile'=>$request->customer_mobile,
@@ -199,7 +243,7 @@ class VeterinariansController extends Controller
             'customer_subdivision'=>$request->customer_subdivision,
             'customer_city'=>$request->customer_city,
             'customer_zip'=>$request->customer_zip,
-        ));
+        ]);
         return back()->with('customer_updated','Customer has been updated successfuly');
     }
 
@@ -259,7 +303,8 @@ class VeterinariansController extends Controller
     }
 
     final function usersRetrieve(){
-        $usersData = DB::table('user_accounts')->where('userType_id','=', '3')->paginate(5);
+        $usersData = DB::table('user_accounts')->where('userType_id','=', '3')->orderBy('user_id', 'DESC')
+        ->paginate(5);
 
         return view('veterinary.user',compact('usersData'));
     }
@@ -285,4 +330,10 @@ class VeterinariansController extends Controller
 
     }
 
+    public function search(Request $request){
+        
+        $search = $request->get('search');
+        $usersData = DB::table('user_accounts')->where('userType_id','=','3', 'AND','user_name', 'like', '%'.$search.'%')->paginate('5');
+        return view('veterinary.user', compact('usersData'));
+    }
 }

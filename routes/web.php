@@ -121,9 +121,20 @@ Route::get('veterinary/registercustomer',function(){
 Route::get('veterinary/usercustomer',function(){
     return view('veterinary/usercustomer');
 });
+Route::get('veterinary/userviewpatient',function(){
+    return view('veterinary/userviewpatient');
+});
+Route::get('veterinary/usereditpatient',function(){
+    return view('veterinary/usereditpatient');
+});
+Route::get('/veterinary/usereditpatient/{customer_id}',[VeterinariansController::class, 'editcustomerID']);
 
+Route::post('/veterinary/save_customer/{customer_id}',[VeterinariansController::class, 'saveCustomer'])->name('vet.savecust');
 
 Route::get('/veterinary/user',[VeterinariansController::class, 'usersRetrieve']);
+
+Route::get('/search',[VeterinariansController::class, 'search'])->name('vet.usersearch');
+
 
 Route::post('/veterinary/registercustomer', [VeterinariansController::class, 'addCustomer'])->name('vet.addcustomer');
 Route::get('/veterinary/viewvetcustomer',[VeterinariansController::class, 'getAllCustomer'])->name('vet.getallcustomer');
@@ -140,7 +151,7 @@ Route::get('veterinary/viewpatient', function () {
     return view('veterinary/viewpatient');
 });
 Route::get('/veterinary/viewpatient/{customer_id}',[VeterinariansController::class, 'patientsOwnerView']);
-
+Route::get('/veterinary/userviewpatient/{customer_id}',[VeterinariansController::class, 'userViewPatient']);
 Route::get('veterinary/clinicvet', function () {
     return view('veterinary/clinicvet');
 });
