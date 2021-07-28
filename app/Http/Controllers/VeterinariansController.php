@@ -295,6 +295,20 @@ class VeterinariansController extends Controller
     }
 
     final function addPatients(Request $request){
+
+        $request->validate([
+            "pet_name"=>'required',
+            "pet_gender"=>'required',
+            "pet_birthday"=>'required',
+            "pet_notes"=>'required',
+            "pet_bloodType"=>'required',
+            "pet_registeredDate"=>'required',
+            "pet_type_id"=>'required',
+            "pet_breed_id"=>'required',
+            "pet_isActive"=>'required'
+
+        ]);
+
         DB::table('pets')->insert([
             'pet_name'=>$request->pet_name,
             'pet_gender'=>$request->pet_gender,
@@ -372,5 +386,16 @@ class VeterinariansController extends Controller
         $search = $request->get('search');
         $usersData = DB::table('user_accounts')->where('userType_id','=','3', 'AND','user_name', 'like', '%'.$search.'%')->paginate('5');
         return view('veterinary.user', compact('usersData'));
+    }
+
+    public function custSearch(Request $request){
+        $search = $request->get('custsearch');
+        $customers = DB::table('customers')
+        ->select('customer_id','customer_fname','customer_lname', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 
+        'customer_gender','customer_DP','customer_birthday','customer_blk','customer_street','customer_subdivision','customer_barangay',
+        'customer_city','customer_zip', DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
+        customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"), 'user_id', 'customer_isActive')
+        -> where('customer_fname', 'like', '%'.$search.'%')->paginate('5');
+        return view('veterinary.viewvetcustomer', compact('customers'));
     }
 }

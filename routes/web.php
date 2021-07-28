@@ -147,6 +147,7 @@ Route::post('/veterinary/save_customer/{customer_id}',[VeterinariansController::
 Route::get('/veterinary/user',[VeterinariansController::class, 'usersRetrieve']);
 
 Route::get('/search',[VeterinariansController::class, 'search'])->name('vet.usersearch');
+Route::get('/custsearch',[VeterinariansController::class, 'custSearch'])->name('vet.custsearch');
 
 
 Route::post('/veterinary/registercustomer', [VeterinariansController::class, 'addCustomer'])->name('vet.addcustomer');
