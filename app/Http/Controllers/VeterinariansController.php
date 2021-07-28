@@ -82,6 +82,17 @@ class VeterinariansController extends Controller
 
         return view('veterinary.viewvetpatient', compact('pet_customers','petInfoDatas','pet_types','pet_breeds','pet_clinics'));
     }
+    final function petClassification($customer_id){
+        $pet_types = DB::table('pet_types')->get();
+        
+        $pet_breeds = DB::table('pet_breeds')->get();
+
+        $pet_clinics = DB::table('clinic')->get();
+
+        $custInfo = DB::table('customers')->where('customer_id', '=', $customer_id)->first();
+
+        return view('veterinary.registerpet', compact('custInfo','pet_types','pet_breeds','pet_clinics'));
+    }
     public function countData(){
         $countPet = DB::table('pets')->count();
         $countCustomers = DB::table('customers')->count();
@@ -93,6 +104,10 @@ class VeterinariansController extends Controller
         $get_id = DB::table('user_accounts')->where('user_id','=', $user_id)->first();
         return view('veterinary.registercustomer', compact('get_id'));
     }
+    // function getCustID($customer_id){
+        
+    //     return view('veterinary.registerpet', compact('custInfo'));
+    // }
     function createAcc(Request $request){
         $request->validate([
             'user_name'=>'required',
@@ -161,18 +176,20 @@ class VeterinariansController extends Controller
 
         $request->validate([
             'customer_fname'=>'required',
-            'customer_lname'=>'required'
-            // 'customer_mname'=>'required',
-            // 'customer_mobile'=>'required',
-            // 'customer_tel'=>'required',
-            // 'customer_gender'=>'required',
-            // 'customer_birthday'=>'required',
-            // 'customer_street'=>'required',
-            // 'customer_subdivision'=>'required',
-            // 'customer_barangay'=>'required',
-            // 'customer_city'=>'required',
-            // 'customer_zip'=>'required',
-            // 'customer_isActive'=>'required'
+            'customer_lname'=>'required',
+            'id'=>'required | unique:customers,user_id',
+            'customer_mname'=>'required',
+            'customer_mobile'=>'required',
+            'customer_tel'=>'required',
+            'customer_gender'=>'required',
+            'customer_birthday'=>'required',
+            'customer_blk'=>'required',
+            'customer_street'=>'required',
+            'customer_subdivision'=>'required',
+            'customer_barangay'=>'required',
+            'customer_city'=>'required',
+            'customer_zip'=>'required',
+            'isActive'=>'required'
         ]);
 
   
@@ -202,8 +219,28 @@ class VeterinariansController extends Controller
         $cust_id = DB::table('customers')->where('customer_id','=', $customer_id)->first();
         return view('veterinary.usereditcustomer', compact('cust_id'));
    }
+   final function veteditcustomerID($customer_id){
+    $vetcust_id = DB::table('customers')->where('customer_id','=', $customer_id)->first();
+    return view('veterinary.veteditcustomer', compact('vetcust_id'));
+}
 
    final function saveCustomer(Request $request, $customer_id){
+    $request->validate([
+        'customer_fname'=>'required',
+        'customer_lname'=>'required',
+        'customer_mname'=>'required',
+        'customer_mobile'=>'required',
+        'customer_tel'=>'required',
+        'customer_gender'=>'required',
+        'customer_birthday'=>'required',
+        'customer_blk'=>'required',
+        'customer_street'=>'required',
+        'customer_subdivision'=>'required',
+        'customer_barangay'=>'required',
+        'customer_city'=>'required',
+        'customer_zip'=>'required',
+        'isActive'=>'required'
+    ]);
 
     DB::table('customers')
     ->where('customer_id', '=', $customer_id)
@@ -221,7 +258,7 @@ class VeterinariansController extends Controller
         'customer_barangay'=>$request->customer_barangay,
         'customer_city'=>$request->customer_city,
         'customer_zip'=>$request->customer_zip,
-        'customer_isActive'=>$request->customer_isActive
+        'customer_isActive'=>$request->isActive
     ));
     
     return redirect('veterinary/viewvetcustomer')->with('success','Customer has been updated successfuly');

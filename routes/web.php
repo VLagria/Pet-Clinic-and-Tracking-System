@@ -100,6 +100,7 @@ Route::get('/veterinary/registercustomer/{user_id}', [VeterinariansController::c
 
 
 
+
 Route::get('veterinary/addaccount',function(){
     return view('veterinary/addaccount');
 });
@@ -127,7 +128,19 @@ Route::get('veterinary/userviewpatient',function(){
 Route::get('veterinary/usereditpatient',function(){
     return view('veterinary/usereditpatient');
 });
-Route::get('/veterinary/usereditpatient/{customer_id}',[VeterinariansController::class, 'editcustomerID']);
+Route::get('veterinary/veteditcustomer',function(){
+    return view('veterinary/veteditcustomer');
+});
+Route::get('veterinary/registerpet',function(){
+    return view('veterinary/registerpet');
+});
+// Route::get('/veterinary/registerpet/{customer_id}', [VeterinariansController::class, 'getCustID']);
+
+Route::get('/veterinary/registerpet/{customer_id}',[VeterinariansController::class, 'petClassification']);
+
+Route::get('/veterinary/veteditcustomer/{customer_id}',[VeterinariansController::class, 'veteditcustomerID']);
+
+Route::get('/veterinary/usereditcustomer/{customer_id}',[VeterinariansController::class, 'editcustomerID']);
 
 Route::post('/veterinary/save_customer/{customer_id}',[VeterinariansController::class, 'saveCustomer'])->name('vet.savecust');
 
@@ -140,7 +153,7 @@ Route::post('/veterinary/registercustomer', [VeterinariansController::class, 'ad
 Route::get('/veterinary/viewvetcustomer',[VeterinariansController::class, 'getAllCustomer'])->name('vet.getallcustomer');
 Route::get('/veterinary/viewvetpatient',[VeterinariansController::class, 'retrieveInfo'])->name('vet.retrieveInfo');
 Route::post('/veterinary/viewvetpatient',[VeterinariansController::class, 'addPatients'])->name('vet.addpatient');
-Route::get('/veterinary/delete-viewvetpatient/{pet_id}',[VeterinariansController::class, 'deletePatients'])->name('vet.deletepatients');
+Route::post('/veterinary/delete-viewvetpatient/{pet_id}',[VeterinariansController::class, 'deletePatients'])->name('vet.deletepatients');
 // Route::get('patients_detail/{pet_id}',[VeterinariansController::class, 'patients_detail']);
 Route::post('/veterinary/registercustomer/{user_id}', [VeterinariansController::class, 'addCustomer'])->name('cust.vetaddcustomer');
 Route::post('/veterinary/edit-viewvetcustomer/{customer_id}', [VeterinariansController::class, 'editCustomer'])->name('vet.editcust');

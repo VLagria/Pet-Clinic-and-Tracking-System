@@ -51,10 +51,8 @@
  </div>
  @endif 
   <div class="card"> @csrf <div class="card-header">
-      <h3 class="header">Customer</h3>
+      <h3 class="header">Account</h3>
     
-     
-      
       <br>
       <!-- Main content -->
       <table class="table  table-striped table-hover">

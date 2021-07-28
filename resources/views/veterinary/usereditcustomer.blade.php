@@ -30,10 +30,9 @@
             </i>
             Return
         </a>
-      <h3 class="header">Register Customer</h3>
+      <h3 class="header">Update Customer</h3>
       <br>
      
-
     <!-- Main content -->
     <form action="/veterinary/save_customer/{{ $cust_id->customer_id }}" method="post">
 @csrf
