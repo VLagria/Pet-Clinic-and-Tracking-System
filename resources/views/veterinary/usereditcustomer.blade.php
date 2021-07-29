@@ -30,20 +30,22 @@
             </i>
             Return
         </a>
-      <h3 class="header">Register Customer</h3>
+      <h3 class="header">Update Customer</h3>
       <br>
      
-
     <!-- Main content -->
-    <form action="{{ route('vet.addcustomer') }}" method="post">
+    <form action="/veterinary/save_customer/{{ $cust_id->customer_id }}" method="post">
 @csrf
     <table class="table table-striped table-hover">
   <thead>
+      @if ($cust_id)
+          
+      <input type="hidden" value="{{ $cust_id->customer_id }}">
     <tr>
         <td >
             <div class="form-group">
                 <label for="exampleInputEmail1">First Name</label>
-                <input type="text" style="width: 300px" class="form-control" id="customer_fname" name="customer_fname"  placeholder="Enter First Name">
+                <input type="text" style="width: 300px" class="form-control" value="{{ $cust_id->customer_fname }}" id="customer_fname" name="customer_fname"  placeholder="Enter First Name">
                 <span class="text-danger error-text customer_fname_error">@error('customer_fname'){{ $message }}@enderror</span>
             </div>
         </td>
@@ -51,7 +53,7 @@
             <td >
                 <div class="form-group">
                     <label for="exampleInputEmail1">Last Name</label>
-                    <input type="text" style="width: 300px" class="form-control" id="customer_lname" name="customer_lname"  placeholder="Enter Last Name">
+                    <input type="text" style="width: 300px" value="{{ $cust_id->customer_lname }}" class="form-control" id="customer_lname" name="customer_lname"  placeholder="Enter Last Name">
                     <span class="text-danger error-text customer_lname_error">@error('customer_lname'){{ $message }}@enderror</span>
                 </div>
             </td>
@@ -59,14 +61,14 @@
             <td>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Middle Name</label>
-                    <input type="text" style="width: 300px" class="form-control" id="customer_mname" name="customer_mname" aria-describedby="emailHelp" placeholder="Enter Middle Name">
+                    <input type="text" style="width: 300px" value="{{ $cust_id->customer_mname }}" class="form-control" id="customer_mname" name="customer_mname" aria-describedby="emailHelp" placeholder="Enter Middle Name">
                     <span class="text-danger error-text customer_mname_error">@error('customer_mname'){{ $message }}@enderror</span>
                 </div>
             </td>
             <td>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Mobile</label>
-                    <input type="number" class="form-control" style="width: 300px" id="customer_mobile" name="customer_mobile" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                    <input type="number" class="form-control" value="{{ $cust_id->customer_mobile }}" style="width: 300px" id="customer_mobile" name="customer_mobile" aria-describedby="emailHelp" placeholder="Enter Mobile No">
                     <span class="text-danger error-text customer_mobile_error">@error('customer_mobile'){{ $message }}@enderror</span>
                 </div>
             </td>
@@ -76,7 +78,7 @@
         <td>
             <div class="form-group">
                 <label for="exampleInputEmail1">Telephone</label>
-                <input type="number" class="form-control" style="width: 300px" id="customer_tel" name="customer_tel" placeholder="Enter Telephone">
+                <input type="number" class="form-control" value="{{ $cust_id->customer_tel }}" style="width: 300px" id="customer_tel" name="customer_tel" placeholder="Enter Telephone">
                 <span class="text-danger error-text customer_tel_error">@error('customer_tel'){{ $message }}@enderror</span>
             </div>
         </td>
@@ -84,9 +86,15 @@
             <div class="form-group" style="width: 300px">
                 <label for="inputStatus">Gender</label>
                 <select id="customer_gender" class="form-control custom-select" name="customer_gender">
-                  <option selected disabled>--</option>
+                  @if ($cust_id->customer_gender=="Male")
+                  <option value="Male" selected>Male</option>
                   <option value="Female">Female</option>
+                  @elseif ($cust_id->customer_gender=="Female")
+                  <option value="Female" selected>Female</option>
                   <option value="Male">Male</option>
+                  @endif
+                  
+                  
                 </select>
                 <span class="text-danger error-text customer_gender_error">@error('customer_gender'){{ $message }}@enderror</span>
               </div>
@@ -96,7 +104,7 @@
                 <label for="date" required class="form-label">Birthdate</label>
                 <br>
                 <div class="">
-                  <input type="date" class="form-control" id="customer_birthday" name="customer_birthday">
+                  <input type="date" class="form-control" value="{{ $cust_id->customer_birthday }}" id="customer_birthday" name="customer_birthday">
                   <span class="text-danger error-text customer_birthday_error">@error('customer_birthday'){{ $message }}@enderror</span>
                 </div>
               </div>
@@ -104,7 +112,7 @@
         <td>
             <div class="form-group" style="width: 300px">
                 <label for="exampleInputEmail1">House Block/Building/Floor No.</label>
-                <input type="text" class="form-control" name="customer_blk" id="customer_blk"  placeholder="Enter Address">
+                <input type="text" class="form-control" value="{{ $cust_id->customer_blk }}" name="customer_blk" id="customer_blk"  placeholder="Enter Address">
                 <span class="text-danger error-text customer_blk_error">@error('customer_blk'){{ $message }}@enderror</span>
             </div>
         </td>
@@ -114,28 +122,28 @@
         <td>
             <div class="form-group" style="width: 300px">
                 <label for="exampleInputEmail1">Street/Highway</label>
-                <input type="text" class="form-control" name="customer_street" id="customer_street" placeholder="Enter Address">
+                <input type="text" class="form-control" value="{{ $cust_id->customer_street }}" name="customer_street" id="customer_street" placeholder="Enter Address">
                 <span class="text-danger error-text customer_street_error">@error('customer_street'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
             <div class="form-group" style="width: 300px">
                 <label for="exampleInputEmail1">Subdivision</label>
-                <input type="text" class="form-control" name="customer_subdivision" id="customer_subdivision"  placeholder="Enter Address">
+                <input type="text" class="form-control" value="{{ $cust_id->customer_subdivision }}" name="customer_subdivision" id="customer_subdivision"  placeholder="Enter Address">
                 <span class="text-danger error-text customer_subdivision_error">@error('customer_subdivision'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
             <div class="form-group" style="width: 300px">
                 <label for="exampleInputEmail1">Barangay</label>
-                <input type="text" class="form-control" name="customer_barangay" id="customer_barangay" placeholder="Enter Address">
+                <input type="text" class="form-control" value="{{ $cust_id->customer_barangay }}" name="customer_barangay" id="customer_barangay" placeholder="Enter Address">
                 <span class="text-danger error-text customer_barangay_error">@error('customer_barangay'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
             <div class="form-group" style="width: 300px">
                 <label for="exampleInputEmail1">City</label>
-                <input type="text" class="form-control" name="customer_city" id="customer_city"  placeholder="Enter Address">
+                <input type="text" class="form-control" value="{{ $cust_id->customer_city }}" name="customer_city" id="customer_city"  placeholder="Enter Address">
                 <span class="text-danger error-text customer_city_error">@error('customer_city'){{ $message }}@enderror</span>
             </div>
         </td>
@@ -145,7 +153,7 @@
         <td>
             <div class="form-group" style="width: 300px">
                 <label for="exampleInputEmail1">Zip Code</label>
-                <input type="text" class="form-control" name="customer_zip" id="customer_zip" placeholder="Enter Addres">
+                <input type="text" class="form-control" value="{{ $cust_id->customer_zip }}" name="customer_zip" id="customer_zip" placeholder="Enter Addres">
                 <span class="text-danger error-text customer_zip_error">@error('customer_zip'){{ $message }}@enderror</span>
             </div>
         </td>
@@ -154,37 +162,44 @@
                 <label for="inputStatus">User</label>
                 
                 <select id="isActive" class="form-control custom-select" name="id">
-                    <option value="{{ $get_id->user_id }}">{{ $get_id->user_id }}</option>
+                    <option value="{{ $cust_id->user_id }}">{{ $cust_id->user_id }}</option>
                   </select>
                       
               </div>
-              <span class="text-danger error-text user_id_error">@error('id'){{ $message }}@enderror</span>
+              <span class="text-danger error-text user_id_error">@error('user_id'){{ $message }}@enderror</span>
         </td>
         <td>
             <div class="form-group" style="width: 300px">
                 <label for="inputStatus">Active</label>
                 <select id="isActive" class="form-control custom-select" name="isActive">
-                  <option selected disabled>--</option>
-                  <option value="1">Yes</option>
+                  @if ($cust_id->customer_isActive == 1)
+                  <option value="1" selected>Yes</option>
                   <option value="0">No</option>
+                  @else
+                  <option value="0" selected>No</option>
+                  <option value="1">Yes</option>
+                  @endif
+                  
+                  
                 </select>
                 <span class="text-danger error-text isActive_error">@error('isActive'){{ $message }}@enderror</span>
               </div>
         </td>
-        <td>
+        {{-- <td>
             <div class="form-group" style="width: 300px">
                 <label for="inputdp"> Profile Picture</label>
                 <br>
                 <form action="/action_page.php">
                   <input type="file" id="customer_DP" name="filename" name="customer_DP">
               </div>
-        </td>
+        </td> --}}
     </tr>
+    @endif
   </thead>
 </table>
 
 <div style="text-align: right; height: 100; padding-top: 20px">
-    <button type="submit" class="btn btn-success btn-sm" style=" height: 40%;"> <i class="fas fa-user"></i> Register Customer </a></button>
+    <button type="submit" class="btn btn-success btn-sm" style=" height: 40%;"> <i class="fas fa-user"></i> Update Customer </a></button>
 
    
 </div>
@@ -192,32 +207,6 @@
 </form>   
 
 </div>
-{{-- View  modal  --}}
-{{-- 
-  <div class="modal" id="viewModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">View Clinic</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <h5>Clinic Name: Hannah Ramirez.</h5>
-          <h5>Gender: male.</h5>
-          <h5>Birthday: 09-15-2000.</h5>
-          <h5>Notes: Vincent Lagria.</h5>
-          <h5>Bloodtype: A</h5>
-          <h5>Registered Date: 06-14-2021</h5>
-        </div>
-        <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div> --}}
- 
 
 <!-- REQUIRED SCRIPTS -->
 
