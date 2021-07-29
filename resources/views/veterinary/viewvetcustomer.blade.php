@@ -20,6 +20,7 @@
     <i class="fas fa-save"></i> Add Customer </a>
     <br> --}}
     <br>
+    
    <form action="{{ route('vet.custsearch') }}" method="get">
   <div class="input-group" style="width: 400px; margin-left: 500px" >
     <input type="search" class="form-control rounded" placeholder="Search...." aria-label="Search"
@@ -27,6 +28,10 @@
   <button type="submit" class="btn btn-outline-primary">search</button><br>
   </div>
 </form>
+<a class="btn btn-success btn-sm" style="margin-left: 20px" href="/veterinary/registercustomer">
+  <i class="fas fa-user"></i> Register Customer</a>
+  <br>
+  <br>
   <!-- Default box --> 
   @if(Session::has('customer_deleted')) 
   <div class="alert alert-danger" role="alert" id="messageModal">

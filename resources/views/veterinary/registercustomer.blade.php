@@ -40,6 +40,44 @@
     <table class="table table-striped table-hover">
   <thead>
     <tr>
+        <input type="text" disabled style="width: 50px; border-color: white; background-color: white" class="form-control" name="id" value="{{ $add_id->user_id+1}}">
+        <input type="hidden" disabled style="width: 50px; border-color: white; background-color: white" class="form-control" name="userType_id" value="3">
+        
+        <td>
+            <div class="form-group" style="">
+                <label for="exampleInputEmail1">Username</label>
+                <input type="text" style="width: 300px" class="form-control" id="user_name" name="user_name" value="{{ old('user_name')}}" placeholder="Enter username">
+                <span class="text-danger error-text user_name_error">@error('user_name'){{ $message }}@enderror</span>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Password</label>
+                <input type="text" style="width: 300px;" class="form-control" id="user_password" name="user_password" value="{{ old('user_password')}}" placeholder="Enter password">
+                <span class="text-danger error-text user_password_error">@error('user_password'){{ $message }}@enderror</span>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Account Mobile</label>
+                <input type="text" style="width: 300px" value="{{ old('user_mobile')}}" class="form-control" id="user_mobile" name="user_mobile" aria-describedby="emailHelp" placeholder="Enter mobile">
+                <span class="text-danger error-text user_mobile_error">@error('user_mobile'){{ $message }}@enderror</span>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <input type="email" class="form-control" value="{{ old('user_email')}}" style="width: 300px" id="user_email" name="user_email" placeholder="Enter email">
+                <span class="text-danger error-text user_email_error">@error('user_email'){{ $message }}@enderror</span>
+            </div>
+        </td>
+      
+            <div class="form-group" style="width: 300px">
+                <input type="hidden" name="userType_id" value="3">
+              </div>
+       
+    </tr>
+    <tr>
         <td >
             <div class="form-group">
                 <label for="exampleInputEmail1">First Name</label>
@@ -153,12 +191,12 @@
             <div class="form-group" style="width: 300px">
                 <label for="inputStatus">User</label>
                 
-                <select id="isActive" class="form-control custom-select" name="id">
-                    <option value="{{ $get_id->user_id }}">{{ $get_id->user_id }}</option>
+                <select id="isActive" class="form-control custom-select" name="user_id">
+                    <option value="{{ $add_id->user_id+1}}">{{ $add_id->user_id+1}}</option>
                   </select>
                       
               </div>
-              <span class="text-danger error-text user_id_error">@error('id'){{ $message }}@enderror</span>
+              <span class="text-danger error-text user_id_error">@error('user_id'){{ $message }}@enderror</span>
         </td>
         <td>
             <div class="form-group" style="width: 300px">

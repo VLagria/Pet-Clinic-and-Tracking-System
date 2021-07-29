@@ -100,18 +100,12 @@ class VeterinariansController extends Controller
         return view('veterinary.vethome', compact('countPet','countCustomers','countClinic'));
     }
 
-    function getUserID($user_id){
-        $get_id = DB::table('user_accounts')->where('user_id','=', $user_id)->first();
-        return view('veterinary.registercustomer', compact('get_id'));
+    final function addCustID(){
+        $add_id = DB::table('user_accounts')->select('user_id')->orderBy('user_id', 'desc')->first();
+        return view('veterinary.registercustomer', compact('add_id'));
     }
-<<<<<<< HEAD
     
-=======
-    // function getCustID($customer_id){
-        
-    //     return view('veterinary.registerpet', compact('custInfo'));
-    // }
->>>>>>> 8b0cdebcc72f2f1041a09cde3cad4c9d9943b907
+
     function createAcc(Request $request){
         $request->validate([
             'user_name'=>'required',
@@ -178,11 +172,15 @@ class VeterinariansController extends Controller
         return view('veterinary/userviewpatient', compact('Owners'));
     }
     function addCustomer(Request $request){
-
+ 
         $request->validate([
+            'user_name'=>'required',
+            'user_password'=>'required',
+            'user_mobile'=>'required',
+            'user_email'=>'required | email | unique:user_accounts',
             'customer_fname'=>'required',
             'customer_lname'=>'required',
-            'id'=>'required | unique:customers,user_id',
+            'user_id'=>'required | unique:customers,user_id',
             'customer_mname'=>'required',
             'customer_mobile'=>'required',
             'customer_tel'=>'required',
@@ -197,7 +195,15 @@ class VeterinariansController extends Controller
             'isActive'=>'required'
         ]);
 
-  
+        DB::table('user_accounts')->insert([
+            'user_id'=>$request->id,
+            'user_name'=>$request->user_name,
+            'user_password'=>Hash::make($request->user_password),
+            'user_mobile'=>$request->user_mobile,
+            'user_email'=>$request->user_email,
+            'userType_id'=>$request->userType_id
+        ]);
+
         DB::table('customers')->insert([
             'customer_fname'=>$request->customer_fname,
             'customer_lname'=>$request->customer_lname,
@@ -213,12 +219,16 @@ class VeterinariansController extends Controller
             'customer_barangay'=>$request->customer_barangay,
             'customer_city'=>$request->customer_city,
             'customer_zip'=>$request->customer_zip,
-            'user_id'=>$request->id,
+            'user_id'=>$request->user_id,
             'customer_isActive'=>$request->isActive
         ]);
 
        return redirect('/veterinary/viewvetcustomer')->with('newCustomer','Customer has been completely added succesfully');
     }
+    // public function addGetId(){
+    //     $userID = DB::table('user_accounts')->orderBy('user_id', 'desc')->first();
+    //     return view('veterinary.registercustomer', compact('userID'));
+    // }
 
    final function editcustomerID($customer_id){
         $cust_id = DB::table('customers')->where('customer_id','=', $customer_id)->first();

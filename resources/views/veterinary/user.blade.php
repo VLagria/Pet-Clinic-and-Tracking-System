@@ -91,7 +91,7 @@
               <a class="btn btn-danger btn-sm" href="/veterinary/user/delete/{{ $user->user_id }}">
                 <i class="fas fa-trash"></i> Delete </a>
                 
-              <a class="btn btn-success btn-sm" href="/veterinary/registercustomer/{{ $user->user_id }}">
+              <a class="btn btn-success btn-sm" href="/veterinary/registercustomer">
                 <i class="fas fa-user"></i> Register Customer </a>
             </td>
           </tr>
