@@ -264,6 +264,6 @@ Route::post('/admin/clinic/registerClinic',[MainController::class,'addClinicSubm
 
 Route::get('/admin/clinic/editClinic/{clinic_id}',[MainController::class, 'editClinic'])->name('clin.editclinic');
 
-Route::post('/admin/clinic/editClinic/save/',[MainController::class,'editClinicSubmit'])->name('clin.editclinicsubmit');
+Route::post('/admin/clinic/editClinic/{clinic_id}',[MainController::class,'editClinicSubmit'])->name('clin.editclinicsubmit');
 });
 

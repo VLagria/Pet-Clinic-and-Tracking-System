@@ -40,7 +40,7 @@
         <h3>Edit Clinic</h3>
       </div>
 
-      <form action="" method="POST"> 
+      <form action="/admin/clinic/editClinic/{{ $clinics->clinic_id }}" method="POST"> 
         @csrf 
         <table class="table table-striped table-hover">
         <thead>
@@ -136,7 +136,7 @@
             <td>
               <div class="form-group">
                 <label>ID #: </label>
-                <input type="number" class="form-control form-control-lg" name="clinic_zip" id="clinic_zip" value="{{ $clinics->clinic_id }}" disabled="">
+                <input type="number" class="form-control form-control-lg" name="clinic_id" id="clinic_id" value="{{ $clinics->clinic_id }}" disabled="">
               </div>
             </td>
             <br>

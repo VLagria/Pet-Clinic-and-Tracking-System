@@ -166,9 +166,9 @@ class MainController extends Controller
         return back()->with('clinic_created', 'Clinic successfully registered!');
     }
 
-    public function editClinicSubmit(Request $request){
+    public function editClinicSubmit(Request $request, $clinic_id){
         DB::table('clinic')
-            ->where('clinic_id', $request->clinic_id)
+            ->where('clinic_id', '=',$clinic_id)
             ->update(array(
             'clinic_name' => $request->clinic_name,
             'owner_name' => $request->owner_name,
