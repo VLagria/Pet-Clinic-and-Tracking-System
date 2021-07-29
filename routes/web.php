@@ -49,6 +49,8 @@ Route::get('/admin/users/CRUDusers', [MainController::class, 'showUserTypes']);
 Route::get('/admin/users/CRUDusers/user_details/{user_id}', 'App\Http\Controllers\MainController@user_details');
 Route::get('/admin/users/CRUDusers/delete/{user_id}',[MainController::class, 'deleteUsers'])->name('post.deleteusers');
 
+Route::get('/admin/users/viewCustomerDetails/delete/{customer_id}',[MainController::class, 'deleteCustomer'])->name('cust.deletecustomer');
+
 
 Route::get('customer/contactus',function(){
     return view('customer/contactus');
@@ -109,8 +111,13 @@ Route::get('veterinary/editaccount',function(){
 
 Route::post('/veterinary/addaccount',[VeterinariansController::class, 'createAcc'])->name('vet.addaccount');
 
-Route::get('/veterinary/editaccount/{user_id}',[VeterinariansController::class, 'editAccount'])->name('vet.editaccount');
+Route::get('/veterinary/editaccount/',[VeterinariansController::class, 'editAccount'])->name('vet.editaccount');
+
+
+
+
 Route::post('/veterinary/editaccount/save',[VeterinariansController::class, 'saveAccount'])->name('vet.saveaccount');
+
 Route::get('/veterinary/user/delete/{user_id}',[VeterinariansController::class, 'deleteAccount'])->name('vet.deleteaccount');
 
 Route::get('/veterinary/usercustomer/{user_id}',[VeterinariansController::class, 'userCustomer'])->name('vet.usercustomer');
@@ -192,9 +199,22 @@ Route::get('veterinary/assignvet',function() {
     return view('veterinary/assignvet');
 });
 
+Route::get('admin/users/registerUser',function() {
+    return view('admin/users/registerUser');
+});
 
+Route::get('admin/clinic/registerClinic',function() {
+    return view('admin/clinic/registerClinic');
+});
 
-Route::post('/admin/users/CRUDusers/save',[MainController::class,'addAdminSubmit'])->name('post.addadminsubmit');
+Route::get('admin/users/editUser',function() {
+    return view('admin/users/editUser');
+});
+
+Route::post('/admin/users/registerUser',[MainController::class,'addAdminSubmit'])->name('post.addadminsubmit');
+
+Route::get('/veterinary/editaccount/{user_id}',[VeterinariansController::class, 'editAccount'])->name('vet.editaccount');
+
 
 Route::post('/admin/clinic/CRUDclinic',[MainController::class,'addClinicSubmit'])->name('post.addclinicsubmit');
 
@@ -202,13 +222,22 @@ Route::get('/admin/users/CRUDusers',[MainController::class,'getAllUsers'])->name
 
 Route::get('/admin/users/CRUDusers',[MainController::class,'showUserInfo'])->name('post.showuserinfo');
 
-Route::post('/admin/users/CRUDusers/edit',[MainController::class,'editUserSubmit'])->name('post.editusersubmit');
+Route::post('/admin/users/editUserDetails/save/',[MainController::class,'editUserDetails'])->name('post.edituserdetails');
 
 Route::get('/admin/clinic/CRUDclinic',[MainController::class,'getAllClinic'])->name('post.getallclinic');
 
-Route::post('/CRUDusers/update/{user_id}', [MainController::class,'editUserSubmit'])->name('post.editusersubmit');
+Route::get('/admin/users/editUser/{user_id}/',[MainController::class,'getUsers'])->name('post.getusers');
 
-Route::post('/CRUDclinic/update/{clinic_id}',[MainController::class,'editClinicSubmit'])->name('post.editclinicsubmit');
+Route::get('/admin/users/viewCustomerDetails/{user_id}',[MainController::class, 'userCustomerDetails'])->name('post.usercustomerdetails');
 
+Route::get('/admin/users/inputUser/{user_id}', [MainController::class, 'getUserID'])->name('post.getuserid');
+
+Route::post('/admin/users/inputUser/save/', [MainController::class, 'addCustomer'])->name('post.adminaddcustomer');
+
+Route::post('/admin/clinic/registerClinic',[MainController::class,'addClinicSubmit'])->name('clin.addclinicsubmit');
+
+Route::get('/admin/clinic/editClinic/{clinic_id}',[MainController::class, 'editClinic'])->name('clin.editclinic');
+
+Route::post('/admin/clinic/editClinic/save/',[MainController::class,'editClinicSubmit'])->name('clin.editclinicsubmit');
 });
 

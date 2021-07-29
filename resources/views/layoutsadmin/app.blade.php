@@ -29,7 +29,6 @@
       @yield('content')
 
       </section>
-
   </div>
 
 

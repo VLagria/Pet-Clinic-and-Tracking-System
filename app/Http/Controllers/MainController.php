@@ -116,7 +116,17 @@ class MainController extends Controller
         return view('admin/users/CRUDusers');
     }
 
+    final function registerUser(){
+        return view('admin/users/registerUser');
+    }
+
     public function addAdminSubmit(Request $request){
+        $request->validate([
+            'user_name'=>'required | unique:user_accounts',
+            'user_password'=>'required',
+            'user_mobile'=>'required | numeric ',
+            'user_email'=>'required | email | unique:user_accounts'
+        ]);
         DB::table('user_accounts')->insert([
             'user_name' => $request->user_name,
             'user_password' => $request->user_password,
@@ -128,6 +138,18 @@ class MainController extends Controller
     }
 
     public function addClinicSubmit(Request $request){
+        $request->validate([
+            'clinic_name'=>'required | unique:clinic',
+            'owner_name'=>'required',
+            'clinic_mobile'=>'required | numeric',
+            'clinic_tel'=>'required',
+            'clinic_email'=>'required | unique:clinic',
+            'clinic_blk'=>'required',
+            'clinic_street'=>'required',
+            'clinic_barangay'=>'required',
+            'clinic_city'=>'required',
+            'clinic_zip'=>'required | numeric',
+        ]);
         DB::table('clinic')->insert([
             'clinic_name' => $request->clinic_name,
             'owner_name' => $request->owner_name,
@@ -139,35 +161,40 @@ class MainController extends Controller
             'clinic_barangay' => $request->clinic_barangay,
             'clinic_city' => $request->clinic_city,
             'clinic_zip' => $request->clinic_zip,
-            'admin_clinic_id' => $request->admin_clinic_id,
             'clinic_isActive' => $request->clinic_isActive
         ]);
-        return back()->with('clinic_created');
+        return back()->with('clinic_created', 'Clinic successfully registered!');
     }
 
-    public function editClinicSubmit(Request $request, $clinic_id){
+    public function editClinicSubmit(Request $request){
         DB::table('clinic')
-            ->where('clinic_id', $clinic_id)
+            ->where('clinic_id', $request->clinic_id)
             ->update(array(
-            'clinic_name' => $request -> clinic_name,
-            'owner_name' => $request -> owner_name,
-            'clinic_mobile' => $request -> clinic_mobile,
-            'clinic_tel' => $request -> clinic_tel,
-            'clinic_email' => $request -> clinic_email,
-            'clinic_blk' => $request -> clinic_blk,
-            'clinic_street' => $request -> clinic_street,
-            'clinic_barangay' => $request -> clinic_barangay,
-            'clinic_city' => $request -> clinic_city,
-            'clinic_zip' => $request -> clinic_zip,
-            'admin_clinic_id' => $request -> admin_clinic_id,
-            'clinic_isActive' => $request -> clinic_isActive
+            'clinic_name' => $request->clinic_name,
+            'owner_name' => $request->owner_name,
+            'clinic_mobile' => $request->clinic_mobile,
+            'clinic_tel' => $request->clinic_tel,
+            'clinic_email' => $request->clinic_email,
+            'clinic_blk' => $request->clinic_blk,
+            'clinic_street' => $request->clinic_street,
+            'clinic_barangay' => $request->clinic_barangay,
+            'clinic_city' => $request->clinic_city,
+            'clinic_zip' => $request->clinic_zip,
+            'clinic_isActive' => $request->clinic_isActive
         ));
-            return back()->with('clinic_updated','Clinic successfully updated');
+            return redirect('/admin/clinic/CRUDclinic')->with('clinic_updated','Clinic has been successfully Updated');
         }
 
-    public function editUserSubmit(Request $request, $user_id){
+    public function editUserDetails(Request $request){
+        $request->validate([
+            'user_name'=>'required | unique:user_accounts',
+            'user_password'=>'required',
+            'user_mobile'=>'required | numeric ',
+            'user_email'=>'required | email | unique:user_accounts'
+        ]);
+
         DB::table('user_accounts')
-            ->where('user_id', $user_id)
+            ->where('user_id', $request->user_id)
             ->update(array(
             'user_name' => $request -> user_name,
             'user_password' => $request -> user_password,
@@ -177,7 +204,17 @@ class MainController extends Controller
         ));
 
         // return redirect('/admin/users/CRUDusers/')->with('user_updated', true);
-        return back()->with('user_updated','user successfully updated');
+        return redirect('/admin/users/CRUDusers')->with('user_updated','Account has been successfully Updated');
+    }
+
+    function getUsers($user_id){
+        $users = DB::table('user_accounts')->where('user_id','=', $user_id)->first();
+        return view('admin.users.editUser', compact('users'));
+    }
+
+    function editClinic($clinic_id){
+        $clinics = DB::table('clinic')->where('clinic_id','=', $clinic_id)->first();
+        return view('admin.clinic.editClinic', compact('clinics'));
     }
 
     
@@ -214,5 +251,66 @@ class MainController extends Controller
         DB::table('user_accounts')->where('user_id', $user_id)->delete();
         return back()->with('user_deleted','user successfully deleted');
     }
+
+    final function deleteCustomer($customer_id){
+        DB::table('customers')->where('customer_id', $customer_id)->delete();
+        return back()->with('customer_deleted','customer successfully deleted');
+    }
+
+    function userCustomerDetails($user_id){
+        $userCustomer = DB::table('customers')
+        ->select('customer_id','customer_fname','customer_lname',
+            DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 'customer_gender','customer_DP','customer_birthday','customer_blk','customer_street','customer_subdivision','customer_barangay','customer_city','customer_zip', 
+            DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ', customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"), 'user_id', 'customer_isActive')
+        ->where('user_id', '=', $user_id)
+        ->get();
+
+        return view('admin.users.viewCustomerDetails', compact('userCustomer'));
+    }
+
+    function getUserID($user_id){
+        $get_id = DB::table('user_accounts')->where('user_id','=', $user_id)->first();
+        return view('admin.users.inputUser', compact('get_id'));
+    }
    
+   function addCustomer(Request $request){
+
+        $request->validate([
+            'customer_fname'=>'required',
+            'customer_lname'=>'required'
+            // 'customer_mname'=>'required',
+            // 'customer_mobile'=>'required',
+            // 'customer_tel'=>'required',
+            // 'customer_gender'=>'required',
+            // 'customer_birthday'=>'required',
+            // 'customer_street'=>'required',
+            // 'customer_subdivision'=>'required',
+            // 'customer_barangay'=>'required',
+            // 'customer_city'=>'required',
+            // 'customer_zip'=>'required',
+            // 'customer_isActive'=>'required'
+        ]);
+
+  
+        DB::table('customers')->insert([
+            'customer_fname'=>$request->customer_fname,
+            'customer_lname'=>$request->customer_lname,
+            'customer_mname'=>$request->customer_mname,
+            'customer_mobile'=>$request->customer_mobile,
+            'customer_tel'=>$request->customer_tel,
+            'customer_gender'=>$request->customer_gender,
+            'customer_birthday'=>$request->customer_birthday,
+            'customer_DP'=>$request->customer_DP,
+            'customer_blk'=>$request->customer_blk,
+            'customer_street'=>$request->customer_street,
+            'customer_subdivision'=>$request->customer_subdivision,
+            'customer_barangay'=>$request->customer_barangay,
+            'customer_city'=>$request->customer_city,
+            'customer_zip'=>$request->customer_zip,
+            'user_id'=>$request->id,
+            'customer_isActive'=>$request->isActive
+        ]);
+
+       return redirect('/admin/users/CRUDusers')->with('newCustomer','Customer has been completely added succesfully');
+    }
 }

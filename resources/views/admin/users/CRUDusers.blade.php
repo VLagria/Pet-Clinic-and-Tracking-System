@@ -20,7 +20,6 @@
     <!-- /.content-header -->
 
 
-
 <!-- Default box -->
   @if(Session::has('user_deleted')) 
     <div class="alert alert-danger" id="messageModal" data-toggle="modal" role="alert">
@@ -28,17 +27,9 @@
     </div> 
   @endif
 
-  @if(Session::has('user_updated')) 
-    <div class="alert alert-success" id="messageModal" role="alert">
-      {{ Session::get('user_updated') }}
-    </div> 
-  @endif
+  
 
-  @if(Session::has('user_created')) 
-    <div class="alert alert-success" id="messageModal" role="alert">
-      {{ Session::get('user_created') }}
-    </div> 
-  @endif
+  
 
 <div class="card">
     <div class="card-header">
@@ -63,7 +54,7 @@
           <th>Email</th>
           <th>User Type</th>
             
-        <th style="width: 25%" class="text-left">Action</th>
+        <th style="width: 35%" class="text-left">Action</th>
           
         </tr>
         </thead>
@@ -75,11 +66,15 @@
            <td>{{ $userAccounts->user_email }}</td>
            <td>{{ $userAccounts->userType_name }}</td>
           
-            <td class="project-actions">
-              <button type="button" class="btn btn-primary btn-sm view-btn" id="view" data-toggle="modal" data-target="#viewModal{{ $userAccounts->user_id }}">View</button>
-              
-              <button type="button" class="btn btn-info btn-sm editbtn" id="edit" data-toggle="modal" data-target="#editModal{{ $userAccounts->user_id }}"><i class="fas fa-pencil-alt">
-                  </i>Edit</button>
+            <td class="project-actions">  
+                <a class="btn btn-warning btn-sm editbt" href="/admin/users/inputUser/{{$userAccounts->user_id}}"><i class="far fa-address-card"></i>
+                  Input Details </a>
+
+                <a class="btn btn-primary btn-sm editbt" href="/admin/users/viewCustomerDetails/{{ $userAccounts->user_id }}"> <i class="fas fa-folder"></i>
+                View </a>
+
+                <a class="btn btn-info btn-sm editbt" href="/admin/users/editUser/{{ $userAccounts->user_id }}"><i class="fas fa-pencil-alt"></i>
+                   Edit User </a>
               
               <button class="btn btn-danger btn-sm" id="delete" lass="btn btn-danger btn-sm" data-toggle="modal"  data-target="#deleteModal{{ $userAccounts->user_id }}">
                   <i class="fas fa-trash"></i>
@@ -259,66 +254,9 @@
 
   <!-- ----------------------- start add modal  ------------------------------>
     <div class="float-right">
-      <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addModal">
-        <i class="fas fa-save"> Create </i>
-      </button>
+      <a class="btn btn-success btn-sm" href="/admin/users/registerUser">
+                <i class="fas fa-user"></i> Create User </a>
     </div>
-
-    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">User Accounts</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-  
-          <form action="{{ route('post.addadminsubmit') }}" method="POST">  
-            
-          @csrf
-          <div class="modal-body">
-                  <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" name="user_name" class="form-control" placeholder="Enter Username">
-                  </div>
-               
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Password</label>
-                    <input type="password" name="user_password" class="form-control" placeholder="Enter Password">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Mobile No</label>
-                    <input type="text" name="user_mobile" class="form-control"  placeholder="Enter Mobile No">
-                    
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" name="user_email" class="form-control" placeholder="Enter Email">
-                  </div>
-  
-            <div class="form-group">
-              <label for="inputStatus">Usertype</label>
-              <select name="userType_id" class="form-control custom-select">
-                  @foreach ($userOptions as $user_types)
-                    <option value="{{$user_types->userType_id}}"  > {{$user_types->userType_name}}</option>
-                  @endforeach
-              </select>
-            </div>
-          </div>
-    
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" value ="submit" class="btn btn-primary">Save Changes</button>
-          </div>
-        </div>
-      </form>
-      </div>
-    </div>
-  <!-- {{-- end add modal  --}} -->
       
 <!-- START DELETE -->
 
@@ -328,9 +266,9 @@
 <!-- END DELETE -->
 
 
+  </div>
   </section>
   <!-- /.content -->
-  </div>
   <!-- /.content-wrapper -->
 
 

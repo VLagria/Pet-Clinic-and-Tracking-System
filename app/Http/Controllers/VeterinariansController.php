@@ -92,6 +92,7 @@ class VeterinariansController extends Controller
         $get_id = DB::table('user_accounts')->where('user_id','=', $user_id)->first();
         return view('veterinary.registercustomer', compact('get_id'));
     }
+    
     function createAcc(Request $request){
         $request->validate([
             'user_name'=>'required',
@@ -115,6 +116,7 @@ class VeterinariansController extends Controller
         $accs = DB::table('user_accounts')->where('user_id','=', $user_id)->first();
         return view('veterinary.editaccount', compact('accs'));
     }
+    
     function saveAccount(Request $request){
 
         DB::table('user_accounts')
