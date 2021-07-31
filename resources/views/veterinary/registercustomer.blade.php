@@ -53,7 +53,7 @@
         <td>
             <div class="form-group">
                 <label for="exampleInputEmail1">Password</label>
-                <input type="text" style="width: 300px;" class="form-control" id="user_password" name="user_password" value="{{ old('user_password')}}" placeholder="Enter password">
+                <input type="password" style="width: 300px;" class="form-control" id="user_password" name="user_password" value="{{ old('user_password')}}" placeholder="Enter password">
                 <span class="text-danger error-text user_password_error">@error('user_password'){{ $message }}@enderror</span>
             </div>
         </td>

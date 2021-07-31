@@ -73,7 +73,7 @@
                           </i>
                           View
                       </a>  
-                      <a href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
+                      <a href="/veterinary/vieweditpatient/{{ $owner->pet_id }}" class="btn btn-info btn-sm">
                           <i class="fas fa-pencil-alt">
                           </i>
                           Edit

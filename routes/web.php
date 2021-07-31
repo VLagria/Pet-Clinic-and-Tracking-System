@@ -142,6 +142,15 @@ Route::get('veterinary/veteditcustomer',function(){
 Route::get('veterinary/registerpet',function(){
     return view('veterinary/registerpet');
 });
+
+Route::get('veterinary/vieweditpatient',function(){
+    return view('veterinary/vieweditpatient');
+});
+
+Route::get('/veterinary/vieweditpatient/{pet_id}',[VeterinariansController::class, 'getPetID']);
+Route::post('/veterinary/vieweditpatient-save/{pet_id}',[VeterinariansController::class, 'savePet']);
+
+
 // Route::get('/veterinary/registerpet/{customer_id}', [VeterinariansController::class, 'getCustID']);
 
 Route::get('/veterinary/registerpet/{customer_id}',[VeterinariansController::class, 'petClassification']);

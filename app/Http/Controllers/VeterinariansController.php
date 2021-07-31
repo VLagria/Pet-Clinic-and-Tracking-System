@@ -308,7 +308,7 @@ class VeterinariansController extends Controller
 
         return view('veterinary/clinicvet', compact('clinicVets'));
     }
-
+    
     final function addPatients(Request $request){
 
         $request->validate([
@@ -340,8 +340,38 @@ class VeterinariansController extends Controller
             
         ]);
 
-        return back()->with('newPatients', 'Patient has been added succesfully');
+        return redirect('/veterinary/viewvetcustomer')->with('newPatients', 'Patient has been added succesfully');
 
+    }
+    function getPetID($pet_id){
+
+        $editPet = DB::table('pets')->where('pet_id', '=', $pet_id)->first();
+        $getTypePet = DB::table('pet_types')->get();
+        $getBreedPet = DB::table('pet_breeds')->get();
+        $getClinicPet = DB::table('clinic')->get();
+        $getOwnerPet = DB::table('customers')->get();
+        
+        return view('veterinary.vieweditpatient', compact('editPet', 'getTypePet', 'getBreedPet','getClinicPet','getOwnerPet'));
+    }
+    function savePet(Request $request, $pet_id){
+        $customer_id = DB::table('pets')->select('customer_id')->where('pet_id', '=', $pet_id);
+        DB::table('pets')
+        ->where('pet_id', $pet_id)
+        ->update([
+            'pet_name'=>$request->pet_name,
+            'pet_gender'=>$request->pet_gender,
+            'pet_birthday'=>$request->pet_birthday,
+            'pet_notes'=>$request->pet_notes,
+            'pet_bloodType'=>$request->pet_bloodType,
+            'pet_registeredDate'=>$request->pet_registeredDate,
+            'pet_type_id'=>$request->pet_type_id,
+            'pet_breed_id'=>$request->pet_breed_id,
+            'customer_id'=>$request->customer_id,
+            'clinic_id'=>$request->clinic_id,
+            'pet_isActive'=>$request->pet_isActive
+        ]);
+
+        return redirect('veterinary/viewvetpatient')->with('success','Patients has been updated sucessfully');
     }
 
     final function deletePatients($pet_id){
