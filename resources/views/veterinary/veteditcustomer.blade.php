@@ -201,7 +201,7 @@
 </table>
 
 <div style="text-align: right; height: 100; padding-top: 20px">
-    <button type="submit" class="btn btn-success btn-sm" style=" height: 40%;"> <i class="fas fa-user"></i> Update Customer </a></button>
+    <button type="submit" class="btn btn-primary btn-sm" style=" height: 50%;"> <i class="fas fa-user"></i> Save Changes </a></button>
 
    
 </div>

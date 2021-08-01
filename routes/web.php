@@ -181,7 +181,7 @@ Route::get('/veterinary/delete-viewvetcustomer/{customer_id}',[VeterinariansCont
 Route::get('veterinary/viewpatient', function () {
     return view('veterinary/viewpatient');
 });
-Route::get('/veterinary/viewpatient/{customer_id}',[VeterinariansController::class, 'patientsOwnerView']);
+Route::get('/veterinary/viewpatient/{customer_id}',[VeterinariansController::class, 'patientsOwnerView'])->name('custownerpatient');
 Route::get('/veterinary/userviewpatient/{customer_id}',[VeterinariansController::class, 'userViewPatient']);
 Route::get('veterinary/clinicvet', function () {
     return view('veterinary/clinicvet');

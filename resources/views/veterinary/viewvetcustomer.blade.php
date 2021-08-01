@@ -43,6 +43,7 @@
     {{ Session::get('newCustomer') }}
   </div>
   @endif 
+  
   <div class="card"> @csrf <div class="card-header">
       <h3 class="header">Customer</h3>
       <br>

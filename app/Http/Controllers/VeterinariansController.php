@@ -172,57 +172,68 @@ class VeterinariansController extends Controller
         return view('veterinary/userviewpatient', compact('Owners'));
     }
     function addCustomer(Request $request){
- 
-        $request->validate([
-            'user_name'=>'required',
-            'user_password'=>'required',
-            'user_mobile'=>'required',
-            'user_email'=>'required | email | unique:user_accounts',
-            'customer_fname'=>'required',
-            'customer_lname'=>'required',
-            'user_id'=>'required | unique:customers,user_id',
-            'customer_mname'=>'required',
-            'customer_mobile'=>'required',
-            'customer_tel'=>'required',
-            'customer_gender'=>'required',
-            'customer_birthday'=>'required',
-            'customer_blk'=>'required',
-            'customer_street'=>'required',
-            'customer_subdivision'=>'required',
-            'customer_barangay'=>'required',
-            'customer_city'=>'required',
-            'customer_zip'=>'required',
-            'isActive'=>'required'
-        ]);
 
-        DB::table('user_accounts')->insert([
-            'user_id'=>$request->id,
-            'user_name'=>$request->user_name,
-            'user_password'=>Hash::make($request->user_password),
-            'user_mobile'=>$request->user_mobile,
-            'user_email'=>$request->user_email,
-            'userType_id'=>$request->userType_id
-        ]);
+        $fname = $request->customer_fname;
+        $lname = $request->customer_lname;
+        $mname = $request->customer_mname;
 
-        DB::table('customers')->insert([
-            'customer_fname'=>$request->customer_fname,
-            'customer_lname'=>$request->customer_lname,
-            'customer_mname'=>$request->customer_mname,
-            'customer_mobile'=>$request->customer_mobile,
-            'customer_tel'=>$request->customer_tel,
-            'customer_gender'=>$request->customer_gender,
-            'customer_birthday'=>$request->customer_birthday,
-            'customer_DP'=>$request->customer_DP,
-            'customer_blk'=>$request->customer_blk,
-            'customer_street'=>$request->customer_street,
-            'customer_subdivision'=>$request->customer_subdivision,
-            'customer_barangay'=>$request->customer_barangay,
-            'customer_city'=>$request->customer_city,
-            'customer_zip'=>$request->customer_zip,
-            'user_id'=>$request->user_id,
-            'customer_isActive'=>$request->isActive
-        ]);
+        $checkQuery = DB::table('customers')->where('customer_fname','=', $fname, 'AND', 'customer_lname','=', $lname, 'AND', 'customer_mname','=', $mname)->first();
 
+        if ($checkQuery) {
+            return redirect('/veterinary/registercustomer')->with('existing','The customer is Already Exist');
+        }else{
+
+            $request->validate([
+                'user_name'=>'required',
+                'user_password'=>'required',
+                'user_mobile'=>'required',
+                'user_email'=>'required | email | unique:user_accounts',
+                'customer_fname'=>'required',
+                'customer_lname'=>'required',
+                'user_id'=>'required | unique:customers,user_id',
+                'customer_mname'=>'required',
+                'customer_mobile'=>'required',
+                'customer_tel'=>'required',
+                'customer_gender'=>'required',
+                'customer_birthday'=>'required',
+                'customer_blk'=>'required',
+                'customer_street'=>'required',
+                'customer_subdivision'=>'required',
+                'customer_barangay'=>'required',
+                'customer_city'=>'required',
+                'customer_zip'=>'required',
+                'isActive'=>'required'
+            ]);
+        
+
+            DB::table('user_accounts')->insert([
+                'user_id'=>$request->id,
+                'user_name'=>$request->user_name,
+                'user_password'=>Hash::make($request->user_password),
+                'user_mobile'=>$request->user_mobile,
+                'user_email'=>$request->user_email,
+                'userType_id'=>$request->userType_id
+            ]);
+
+            DB::table('customers')->insert([
+                'customer_fname'=>$request->customer_fname,
+                'customer_lname'=>$request->customer_lname,
+                'customer_mname'=>$request->customer_mname,
+                'customer_mobile'=>$request->customer_mobile,
+                'customer_tel'=>$request->customer_tel,
+                'customer_gender'=>$request->customer_gender,
+                'customer_birthday'=>$request->customer_birthday,
+                'customer_DP'=>$request->customer_DP,
+                'customer_blk'=>$request->customer_blk,
+                'customer_street'=>$request->customer_street,
+                'customer_subdivision'=>$request->customer_subdivision,
+                'customer_barangay'=>$request->customer_barangay,
+                'customer_city'=>$request->customer_city,
+                'customer_zip'=>$request->customer_zip,
+                'user_id'=>$request->user_id,
+                'customer_isActive'=>$request->isActive
+            ]);
+    }
        return redirect('/veterinary/viewvetcustomer')->with('newCustomer','Customer has been completely added succesfully');
     }
     // public function addGetId(){
@@ -354,7 +365,7 @@ class VeterinariansController extends Controller
         return view('veterinary.vieweditpatient', compact('editPet', 'getTypePet', 'getBreedPet','getClinicPet','getOwnerPet'));
     }
     function savePet(Request $request, $pet_id){
-        $customer_id = DB::table('pets')->select('customer_id')->where('pet_id', '=', $pet_id);
+       
         DB::table('pets')
         ->where('pet_id', $pet_id)
         ->update([
@@ -371,7 +382,9 @@ class VeterinariansController extends Controller
             'pet_isActive'=>$request->pet_isActive
         ]);
 
-        return redirect('veterinary/viewvetpatient')->with('success','Patients has been updated sucessfully');
+        $customer_id = $request->customer_id;
+
+        return redirect()->route('custownerpatient', ['customer_id'=> $customer_id])->with('success','Patients has been updated sucessfully');
     }
 
     final function deletePatients($pet_id){

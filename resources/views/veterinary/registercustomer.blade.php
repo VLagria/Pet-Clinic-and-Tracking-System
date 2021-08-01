@@ -33,7 +33,11 @@
       <h3 class="header">Register Customer</h3>
       <br>
      
-
+      @if(Session::has('existing')) 
+      <div class="alert alert-warning" role="alert" id="messageModal">
+       {{ Session::get('existing') }}
+     </div>
+     @endif 
     <!-- Main content -->
     <form action="{{ route('vet.addcustomer') }}" method="post">
 @csrf

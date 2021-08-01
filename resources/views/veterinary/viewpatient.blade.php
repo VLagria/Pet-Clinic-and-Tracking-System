@@ -29,6 +29,11 @@
     <div class="card-header">
       <h3 class="header">Pets</h3>
       <br>
+      @if(Session::has('success')) 
+      <div class="alert alert-success" role="alert" id="messageModal">
+      {{ Session::get('success') }}
+      </div>
+       @endif
       <!-- Main content -->
       <table class="table  table-striped table-hover">
         <thead>
@@ -240,4 +245,17 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script> 
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+               integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+               crossorigin="anonymous">
+      </script>
+      <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>
+  $("document").ready(function() {
+    setTimeout(function() {
+      $("#messageModal").remove();
+    }, 2000);
+  });
+</script> 
 @endsection
