@@ -38,6 +38,7 @@
        {{ Session::get('existing') }}
      </div>
      @endif 
+     
     <!-- Main content -->
     <form action="{{ route('vet.addcustomer') }}" method="post">
 @csrf

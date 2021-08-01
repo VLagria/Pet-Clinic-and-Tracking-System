@@ -321,37 +321,48 @@ class VeterinariansController extends Controller
     }
     
     final function addPatients(Request $request){
+        $breed = $request->pet_breed_id;
+        $type = $request->pet_type_id;
+        $name = $request->pet_name;
 
-        $request->validate([
-            "pet_name"=>'required',
-            "pet_gender"=>'required',
-            "pet_birthday"=>'required',
-            "pet_notes"=>'required',
-            "pet_bloodType"=>'required',
-            "pet_registeredDate"=>'required',
-            "pet_type_id"=>'required',
-            "pet_breed_id"=>'required',
-            "pet_isActive"=>'required'
+        $checkQuery = DB::table('pets')->where('pet_name','=', $name, 'AND', 'pet_type_id','=', $type, 'pet_breed_id','=', $breed)->first();
+        if ($checkQuery) {
+            return back()->with('fail', 'Pet is Already Registered');
+        }else{
 
-        ]);
 
-        DB::table('pets')->insert([
-            'pet_name'=>$request->pet_name,
-            'pet_gender'=>$request->pet_gender,
-            'pet_birthday'=>$request->pet_birthday,
-            'pet_notes'=>$request->pet_notes,
-            'pet_bloodType'=>$request->pet_bloodType,
-            'pet_DP'=>$request->pet_DP,
-            'pet_registeredDate'=>$request->pet_registeredDate,
-            'pet_type_id'=>$request->pet_type_id,
-            'pet_breed_id'=>$request->pet_breed_id,
-            'customer_id'=>$request->customer_id,
-            'clinic_id'=>$request->clinic_id,
-            'pet_isActive'=>$request->pet_isActive,
-            
-        ]);
+            $request->validate([
+                "pet_name"=>'required',
+                "pet_gender"=>'required',
+                "pet_birthday"=>'required',
+                "pet_notes"=>'required',
+                "pet_bloodType"=>'required',
+                "pet_registeredDate"=>'required',
+                "pet_type_id"=>'required',
+                "pet_breed_id"=>'required',
+                "pet_isActive"=>'required'
 
-        return redirect('/veterinary/viewvetcustomer')->with('newPatients', 'Patient has been added succesfully');
+            ]);
+
+            DB::table('pets')->insert([
+                'pet_name'=>$request->pet_name,
+                'pet_gender'=>$request->pet_gender,
+                'pet_birthday'=>$request->pet_birthday,
+                'pet_notes'=>$request->pet_notes,
+                'pet_bloodType'=>$request->pet_bloodType,
+                'pet_DP'=>$request->pet_DP,
+                'pet_registeredDate'=>$request->pet_registeredDate,
+                'pet_type_id'=>$request->pet_type_id,
+                'pet_breed_id'=>$request->pet_breed_id,
+                'customer_id'=>$request->customer_id,
+                'clinic_id'=>$request->clinic_id,
+                'pet_isActive'=>$request->pet_isActive,
+                
+            ]);
+            $customer_id = $request->customer_id;
+            return redirect()->route('custownerpatient', ['customer_id'=> $customer_id])->with('success', 'Patient has been added succesfully');
+        }
+       
 
     }
     function getPetID($pet_id){
@@ -365,8 +376,29 @@ class VeterinariansController extends Controller
         return view('veterinary.vieweditpatient', compact('editPet', 'getTypePet', 'getBreedPet','getClinicPet','getOwnerPet'));
     }
     function savePet(Request $request, $pet_id){
-       
-        DB::table('pets')
+        $breed = $request->pet_breed_id;
+        $gender = $request->pet_gender;
+        $birthday = $request->ppet_birthday;
+        $notes = $request->pet_notes;
+        $bloodtype = $request->pet_bloodType;
+        $regDate = $request->pet_registeredDate;
+        $type = $request->pet_type_id;
+        $name = $request->pet_name;
+        $customer = $request->customer_id;
+        $clinic = $request->clinic_id;
+        $status = $request->pet_isActive;
+
+        $checkQuery = DB::table('pets')->where('pet_name','=', $name,'AND',
+            'pet_gender','=', $gender, 'AND', 'pet_birthday','=', $birthday, 'AND',
+            'pet_notes','=', $notes, 'AND', 'pet_bloodType','=', $bloodtype, 'AND',
+            'pet_registeredDate','=', $regDate, 'AND', 'pet_type_id','=', $type, 'AND',
+            'pet_breed_id','=', $breed, 'AND', 'customer_id', '=', $customer, 'AND',
+            'clinic_id','=', $clinic, 'AND', 'pet_isActive','=', $status)->first();
+
+        if ($checkQuery) {
+            return redirect()->route('custownerpatient', ['customer_id'=> $customer])->with('warning','Nothing Changes');
+        }else{
+            DB::table('pets')
         ->where('pet_id', $pet_id)
         ->update([
             'pet_name'=>$request->pet_name,
@@ -382,9 +414,10 @@ class VeterinariansController extends Controller
             'pet_isActive'=>$request->pet_isActive
         ]);
 
-        $customer_id = $request->customer_id;
+            $customer_id = $request->customer_id;
 
-        return redirect()->route('custownerpatient', ['customer_id'=> $customer_id])->with('success','Patients has been updated sucessfully');
+            return redirect()->route('custownerpatient', ['customer_id'=> $customer_id])->with('success','Patients has been updated sucessfully');
+        }
     }
 
     final function deletePatients($pet_id){

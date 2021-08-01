@@ -32,7 +32,11 @@
         </a>
       <h3 class="header">Register Pet</h3>
       <br>
-
+      @if(Session::has('fail')) 
+      <div class="alert alert-danger" role="alert" id="messageModal">
+        {{ Session::get('fail') }}
+      </div>
+       @endif
 
     <!-- Main content -->
     <form action="{{ route('vet.addpatient') }}" method="post">

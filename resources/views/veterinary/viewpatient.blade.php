@@ -34,6 +34,11 @@
       {{ Session::get('success') }}
       </div>
        @endif
+       @if(Session::has('warning')) 
+      <div class="alert alert-warning" role="alert" id="messageModal">
+      {{ Session::get('warning') }}
+      </div>
+       @endif
       <!-- Main content -->
       <table class="table  table-striped table-hover">
         <thead>
