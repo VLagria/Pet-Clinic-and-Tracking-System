@@ -41,7 +41,8 @@ Route::get('/auth/login', [MainController::class, 'logIn'])->name('auth.login');
 
 Route::get('/auth/logout', [MainController::class, 'logout'])->name('auth.logout');
 
-
+Route::get('/admin/pets/CRUDpettype', [MainController::class, 'pettype']);
+Route::get('/admin/pets/CRUDaddtype', [MainController::class, 'addtype']);
 
 Route::get('/admin/index', [MainController::class, 'adminDashboard']);
 Route::get('/admin/pets/CRUDpet', [MainController::class, 'adminPet']);
