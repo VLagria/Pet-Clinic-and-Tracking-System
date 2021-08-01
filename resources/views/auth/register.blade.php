@@ -24,9 +24,9 @@
     <div class="card-body">
       <p class="login-box-msg">Register a new account</p>
 
-      <form action="../../index.html" method="post">
+      <form action="{{ route('auth.registerUser') }}" method="post">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="First name">
+          <input type="text" class="form-control" name="user_name" placeholder="Username">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -35,17 +35,17 @@
         </div>
 
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Last Name">
+            <input type="password" class="form-control" name="user_password" placeholder="Password">
             <div class="input-group-append">
               <div class="input-group-text">
-                <span class="fas fa-user"></span>
+                <span class="fas fa-lock"></span>
               </div>
             </div>
           </div>
   
 
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" class="form-control" name="user_email" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="number" class="form-control" name="user_mobile" placeholder="Account Mobile">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>

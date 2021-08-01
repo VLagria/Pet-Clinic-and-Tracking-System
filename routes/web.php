@@ -3,6 +3,7 @@
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\VeterinariansController;
 use App\Http\Controllers\PetTypeController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\VeterinaryController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,8 @@ Route::get('/auth/register', [MainController::class, 'register'])->name('auth.re
 Route::post('/auth/registerValidate', [MainController::class, 'registerValidate'])->name('auth.registerValidate');
 Route::get('/auth/recover', [MainController::class, 'recover'])->name('auth.recover');
 Route::post('/auth/checkAdmin', [MainController::class, 'checkAdmin'])->name('auth.checkAdmin');
+Route::post('/auth/registerAcc', [RegisterController::class, 'registerUser'])->name('auth.registerUser');
+
 
 
 
