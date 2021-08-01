@@ -149,7 +149,12 @@ Route::get('veterinary/registerpet',function(){
 Route::get('veterinary/vieweditpatient',function(){
     return view('veterinary/vieweditpatient');
 });
+Route::get('veterinary/viewveteditpatient',function(){
+    return view('veterinary/viewveteditpatient');
+});
 
+Route::get('/veterinary/viewveteditpatient/{pet_id}',[VeterinariansController::class, 'getPetIDVet']);
+Route::post('/veterinary/viewveteditpatient-save/{pet_id}',[VeterinariansController::class, 'savePetVet']);
 Route::get('/veterinary/vieweditpatient/{pet_id}',[VeterinariansController::class, 'getPetID']);
 Route::post('/veterinary/vieweditpatient-save/{pet_id}',[VeterinariansController::class, 'savePet']);
 

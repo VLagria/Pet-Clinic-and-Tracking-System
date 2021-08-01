@@ -30,11 +30,16 @@
               </div>
         @endif
 <div class="card">
-  @if(Session::has('newPatients'))
+  @if(Session::has('success'))
              <div class="alert alert-success" role="alert">
-              {{ Session::get('newPatients') }}
+              {{ Session::get('success') }}
               </div>
         @endif
+        @if(Session::has('warning'))
+        <div class="alert alert-success" role="alert">
+         {{ Session::get('warning') }}
+         </div>
+   @endif
 <div class="card">
   @csrf
     <div class="card-header">
@@ -99,7 +104,7 @@
                           </i>
                           View
                       </a>  
-                      <a href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal{{ $info->pet_id }}">
+                      <a href="/veterinary/viewveteditpatient/{{ $info->pet_id }}" class="btn btn-info btn-sm">
                           <i class="fas fa-pencil-alt">
                           </i>
                           Edit
@@ -112,7 +117,9 @@
                   </td> 
                 </tr>
  
- 
+                @endforeach
+              </tbody> 
+              </table> 
 
 
   <!-- /.card -->
@@ -161,298 +168,6 @@
     </div>
   </div>
 
-
- 
-
-  <!-- {{-- end view modal --}} -->
-   
-    <!-- edit Modal -->
-  <div class="modal fade" id="editModal{{ $info->pet_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Update Patients</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-        <form action="" method="POST">
-          @csrf
-        <div class="modal-body">
-
-      
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Pet Name</label>
-                  <input type="email" class="form-control" name="pet_name" aria-describedby="emailHelp" value="{{ $info->pet_name }}">
-                  
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Gender</label>
-                  <select id="inputStatus" class="form-control custom-select" name="pet_gender">
-                  
-                  @if ($info->pet_gender == "Male")
-                  <option value="Female">Female</option>
-                  <option value="Male" selected>Male</option>
-                  
-                  @else
-                  <option value="Female" selected>Female</option>
-                  <option value="Male">Male</option>
-                  @endif
-                  
-                  
-                </select>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Birthday</label>
-                  <input type="date" class="form-control" value = "{{ $info->pet_birthday }}"id="date" name="pet_birthday">
-             
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Notes</label>
-                  <textarea placeholder="Enter Description and Health Conditions" class="form-control" id="inputnotes"  name="pet_notes" >{{ $info->pet_notes }}</textarea>
-                </div>
-              
-                 
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Bloodtype</label>
-                  <input type="email" class="form-control" value="{{ $info->pet_bloodType }}" name ="pet_bloodType" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Optional">
-                  
-                </div>
-    
-             
-              <div class="form-group">
-                <label for="exampleInputEmail1">Registered Date</label>
-                <input type="date" class="form-control" value="{{ $info->pet_registeredDate }}" id="date" name="pet_registeredDate">
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Type</label>
-                <select id="inputStatus" class="form-control custom-select" name="pet_type_id">
-                  @foreach ($pet_types as $type)
-                  @if ($type->type_id == $info->pet_type_id)
-                  <option value="{{ $type->type_id }}" selected>{{ $type->type_name }}</option>
-                  @else
-                  <option value="{{ $type->type_id }}">{{ $type->type_name }}</option>
-                  @endif
-                  @endforeach
- 
-                </select>
-                
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Breed</label>
-                <select id="inputStatus" class="form-control custom-select" name="pet_breeds">
-                  @foreach ($pet_breeds as $breed)
-                  @if ($breed->breed_id == $info->pet_breed_id)
-                  <option value="{{ $breed->breed_id }}">{{ $breed->breed_name }}</option>
-                  @else
-                  <option value="{{ $breed->breed_id }}">{{ $breed->breed_name }}</option>
-                  @endif
-                    
-                  @endforeach
-             
-                  
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Customer</label>
-                <select id="inputStatus" class="form-control custom-select">
-                  <option selected disabled>Choose...</option>
-                  <option>...</option>
-                  <option>...</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Clinic</label>
-                <select id="inputStatus" class="form-control custom-select">
-                  <option selected disabled>Choose...</option>
-                  <option>...</option>
-                  <option>...</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Status</label>
-                <select id="inputStatus" class="form-control custom-select">
-                  <option selected disabled>is Pet Active?</option>
-                  <option>Yes</option>
-                  <option>No</option>
-                </select>
-                
-              </div>
-
-              <div class="form-group">
-                <label for="inputStatus">Pet Profile Picture</label>
-                <br>
-                <form action="/action_page.php">
-               <input type="file" id="myFile" name="filename">
-              </div> 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Update</button>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  @endforeach
-</tbody> 
-</table> 
-</div>
-<!-- /.card-body -->
-</div>
-
-  {{-- end edit modal  --}}
-  
-  
- <!-- Button add modal -->
- <!-- <div class = " float-right">
-    
-      
-
-  <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#addModal">
-  <i class="fas fa-save">  Register </i>
-    </button>
-    </div> -->
-
-
-  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Register Pet</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-        <form action="{{ route('vet.addpatient') }}" method="POST" id="add_form">
-        @CSRF
-        <div class="modal-body">
-        @CSRF
-                <div class="form-group">
-                  <label for="inputname" class="form-label"> Name</label>
-                  <input type="name" class="form-control" name="pet_name" value="{{ old('pet_name')}}" aria-describedby="nameHelp" placeholder="Enter Pet Name">
-                  <span class="text-danger error-text pet_name_error"></span>
-                </div>
-
-                <div class="form-group">
-                  <label for="inputGender">Gender</label>
-                    <select id="inputStatus" class="form-control custom-select" name="pet_gender">
-                      <option selected disabled>Choose...</option>
-                      <option>Male</option>
-                      <option>Female</option>
-                    </select>
-                    <span class="text-danger error-text pet_gender_error"></span>
-                </div>
-
-                <div class="form-group">
-                  <label for="inputnotes"  class="form-label"> Notes</label>
-                    <textarea placeholder="Enter Description and Health Conditions" class="form-control"aria-describedby="namelHelp"id="inputnotes"  name="pet_notes" >
-                  </textarea>
-                  <span class="text-danger error-text pet_notes_error"></span>
-                </div>
-
-                <div class="form-group">
-                  <label for="inputBloodtype" class="form-label"> BloodType</label>
-                  <input type="bloodtype" class="form-control" name="pet_bloodType" id="exampleInputBloodtype" aria-describedby="emailHelp" placeholder="Optional">
-                  <span class="text-danger error-text pet_bloodType_error"></span>
-                  <br>
-
-                  <div class="form-group">
-                    <label for="date" required class="form-label"> Birthday</label>
-                    <br>
-                      <div class="col-sm-12">
-                        <input type="date" class="form-control" id="date" name="pet_birthday" >
-                        <span class="text-danger error-text pet_bloodType_error"></span>
-                      </div>
-                  </div>
-
-                <div class="form-group">
-                  <label for="date" required class="form-label"> Registered Date</label>
-                  <br>
-                    <div class="col-sm-12">
-                      <input type="date" class="form-control" id="date" name="pet_registeredDate" >
-                      <span class="text-danger error-text pet_registeredDate_error"></span>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="inputType">Type</label>
-                    <select id="inputType" class="form-control custom-select" name="pet_type_id">
-                      <option selected disabled>Choose pet Type</option>
-                      @foreach ($pet_types as $pet_type)
-                      <option value="{{ $pet_type->type_id }}">{{  $pet_type->type_name }}</option>
-                      @endforeach
-                    </select>
-                    <span class="text-danger error-text pet_type_id_error"></span>
-                </div>
-
-                <div class="form-group">
-                      <label for="inputBreed">Breed</label>
-                      <select id="inputBreed" class="form-control custom-select" name="pet_breed_id">
-                        <option selected disabled>Choose Breed</option>
-                        @foreach ($pet_breeds as $pet_breed)
-                        <option value="{{ $pet_breed->breed_id }}">{{ $pet_breed->breed_name }}</option>
-                      @endforeach
-                      </select>
-                      <span class="text-danger error-text pet_breed_id_error"></span>
-                </div>
-
-                <div class="form-group">
-                  <label for="inputCustomer">Customer</label>
-                    <select id="inputCustomer" class="form-control custom-select" name="customer_id">
-                      <option selected disabled>Choose Customer</option>
-                      @foreach ($pet_customers as $owner)
-                      <option value="{{ $owner->customer_id }}">{{ $owner->customer_name }}</option>
-                      @endforeach
-                    </select>
-                    <span class="text-danger error-text customer_id_error"></span>
-                </div>
-
-                <div class="form-group">
-                  <label for="inputClinic">Clinic</label>
-                    <select id="inputClinic" class="form-control custom-select" name="clinic_id">
-                      <option selected disabled>Choose Clinic</option>
-                      @foreach ($pet_clinics as $clinic)
-                      <option value="{{ $clinic->clinic_id }}">{{ $clinic->clinic_name }}</option>
-                    @endforeach
-                    </select>
-                    <span class="text-danger error-text clinic_id_error"></span>
-                </div>
-
-              <div class="form-group">
-                  <label for="inputStatus">Status</label>
-                    <select id="inputStatus" class="form-control custom-select" name="pet_isActive">
-                      <option selected disabled>is Pet Active?</option>
-                      <option value="1">Yes</option>
-                      <option value="0">No</option>
-                    </select>
-                    <span class="text-danger error-text pet_isActive_error"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="inputdp" > Profile Picture</label>
-                <br>
-                <input type="file" id="myFile" name="pet_DP">
-                <span class="text-danger error-text pet_isActive_error"></span>
-              </div>
-         </div>
-        
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" value ="submit" class="btn btn-primary">Save Changes</button>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
-{{-- end add modal  --}}
 
   {{-- </section> --}}
   <!-- /.content -->

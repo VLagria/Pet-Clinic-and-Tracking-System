@@ -365,6 +365,15 @@ class VeterinariansController extends Controller
        
 
     }
+    function getPetIDVet($pet_id){
+        $editPet = DB::table('pets')->where('pet_id', '=', $pet_id)->first();
+        $getTypePet = DB::table('pet_types')->get();
+        $getBreedPet = DB::table('pet_breeds')->get();
+        $getClinicPet = DB::table('clinic')->get();
+        $getOwnerPet = DB::table('customers')->get();
+        
+        return view('veterinary.vieweditpatient', compact('editPet', 'getTypePet', 'getBreedPet','getClinicPet','getOwnerPet'));
+    }
     function getPetID($pet_id){
 
         $editPet = DB::table('pets')->where('pet_id', '=', $pet_id)->first();
@@ -374,6 +383,50 @@ class VeterinariansController extends Controller
         $getOwnerPet = DB::table('customers')->get();
         
         return view('veterinary.vieweditpatient', compact('editPet', 'getTypePet', 'getBreedPet','getClinicPet','getOwnerPet'));
+    }
+    function savePetVet(Request $request, $pet_id){
+        $breed = $request->pet_breed_id;
+        $gender = $request->pet_gender;
+        $birthday = $request->ppet_birthday;
+        $notes = $request->pet_notes;
+        $bloodtype = $request->pet_bloodType;
+        $regDate = $request->pet_registeredDate;
+        $type = $request->pet_type_id;
+        $name = $request->pet_name;
+        $customer = $request->customer_id;
+        $clinic = $request->clinic_id;
+        $status = $request->pet_isActive;
+
+        $checkQuery = DB::table('pets')->where('pet_name','=', $name,'AND',
+            'pet_gender','=', $gender, 'AND', 'pet_birthday','=', $birthday, 'AND',
+            'pet_notes','=', $notes, 'AND', 'pet_bloodType','=', $bloodtype, 'AND',
+            'pet_registeredDate','=', $regDate, 'AND', 'pet_type_id','=', $type, 'AND',
+            'pet_breed_id','=', $breed, 'AND', 'customer_id', '=', $customer, 'AND',
+            'clinic_id','=', $clinic, 'AND', 'pet_isActive','=', $status)->first();
+
+        if ($checkQuery) {
+            return redirect('veterinary/viewvetpatient')->with('warning','Nothing Changes');
+        }else{
+            DB::table('pets')
+        ->where('pet_id', $pet_id)
+        ->update([
+            'pet_name'=>$request->pet_name,
+            'pet_gender'=>$request->pet_gender,
+            'pet_birthday'=>$request->pet_birthday,
+            'pet_notes'=>$request->pet_notes,
+            'pet_bloodType'=>$request->pet_bloodType,
+            'pet_registeredDate'=>$request->pet_registeredDate,
+            'pet_type_id'=>$request->pet_type_id,
+            'pet_breed_id'=>$request->pet_breed_id,
+            'customer_id'=>$request->customer_id,
+            'clinic_id'=>$request->clinic_id,
+            'pet_isActive'=>$request->pet_isActive
+        ]);
+
+            $customer_id = $request->customer_id;
+
+            return redirect('veterinary/viewvetpatient')->with('success','Patients has been updated sucessfully');
+        }
     }
     function savePet(Request $request, $pet_id){
         $breed = $request->pet_breed_id;
