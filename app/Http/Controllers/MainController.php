@@ -36,6 +36,18 @@ class MainController extends Controller
     final function adminClinic(){
         return view('admin/clinic/CRUDclinic');
     }
+
+    final function pettype(){
+        return view ('admin/pets/CRUDpettype');
+    }
+
+    final function addtype(){
+        return view ('admin/pets/CRUDaddtype');
+    }
+
+
+
+
     final function checkAdmin(Request $request){
         $request->validate([
             'user_email'=>'required',   

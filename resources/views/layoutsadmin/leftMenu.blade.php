@@ -70,6 +70,25 @@
                   </p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="/admin/pets/CRUDpettype" class="nav-link">
+                  <i class="nav-icon fas fa-paw"></i>
+                  <p>
+                   Pet Type
+                  </p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/admin/pets/CRUDpet" class="nav-link">
+                  <i class="nav-icon fas fa-paw"></i>
+                  <p>
+                   Pet Breed
+                  </p>
+                </a>
+              </li>
+
               <li class="nav-item">
                 <a href="/admin/customer/CRUDcustomers" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
