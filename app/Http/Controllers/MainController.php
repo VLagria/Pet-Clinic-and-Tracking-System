@@ -326,3 +326,5 @@ class MainController extends Controller
        return redirect('/admin/users/CRUDusers')->with('newCustomer','Customer has been completely added succesfully');
     }
 }
+
+

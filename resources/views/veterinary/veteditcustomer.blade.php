@@ -174,7 +174,7 @@
                 <select id="isActive" class="form-control custom-select" name="isActive">
                   @if ($vetcust_id->customer_isActive == 1)
                   <option value="1" selected>Yes</option>
-                  <option value="0">Yes</option>
+                  <option value="0">No</option>
                   @elseif ($vetcust_id->customer_isActive == 0)
                   <option value="0" selected>No</option>
                   <option value="1">Yes</option>

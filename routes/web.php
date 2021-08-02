@@ -119,7 +119,9 @@ Route::post('/veterinary/addaccount',[VeterinariansController::class, 'createAcc
 Route::get('/veterinary/editaccount/',[VeterinariansController::class, 'editAccount'])->name('vet.editaccount');
 
 
-
+Route::get('admin/vet/registerVet',function(){
+    return view('admin/vet/registerVet');
+});
 
 Route::post('/veterinary/editaccount/save',[VeterinariansController::class, 'saveAccount'])->name('vet.saveaccount');
 
@@ -131,6 +133,9 @@ Route::get('veterinary/registercustomer',function(){
     return view('veterinary/registercustomer');
 });
 Route::get('/veterinary/registercustomer', [VeterinariansController::class, 'addCustID']);
+
+
+
 Route::get('veterinary/usercustomer',function(){
     return view('veterinary/usercustomer');
 });
@@ -177,6 +182,7 @@ Route::get('/custsearch',[VeterinariansController::class, 'custSearch'])->name('
 
 
 Route::post('/veterinary/registercustomer', [VeterinariansController::class, 'addCustomer'])->name('vet.addcustomer');
+
 Route::get('/veterinary/viewvetcustomer',[VeterinariansController::class, 'getAllCustomer'])->name('vet.getallcustomer');
 Route::get('/veterinary/viewvetpatient',[VeterinariansController::class, 'retrieveInfo'])->name('vet.retrieveInfo');
 Route::post('/veterinary/viewvetpatient',[VeterinariansController::class, 'addPatients'])->name('vet.addpatient');
@@ -259,7 +265,6 @@ Route::post('/admin/users/registerUser',[MainController::class,'addAdminSubmit']
 
 Route::get('/veterinary/editaccount/{user_id}',[VeterinariansController::class, 'editAccount'])->name('vet.editaccount');
 
-
 Route::post('/admin/clinic/CRUDclinic',[MainController::class,'addClinicSubmit'])->name('post.addclinicsubmit');
 
 Route::get('/admin/users/CRUDusers',[MainController::class,'getAllUsers'])->name('post.getallusers');
@@ -283,5 +288,13 @@ Route::post('/admin/clinic/registerClinic',[MainController::class,'addClinicSubm
 Route::get('/admin/clinic/editClinic/{clinic_id}',[MainController::class, 'editClinic'])->name('clin.editclinic');
 
 Route::post('/admin/clinic/editClinic/{clinic_id}',[MainController::class,'editClinicSubmit'])->name('clin.editclinicsubmit');
+
+Route::post('/admin/vet/registerVet', [VeterinaryController::class, 'addveterinarian'])->name('vet.addveterinarian');
+
+Route::get('/admin/vet/registerVet/{clinic_id}', [VeterinaryController::class, 'addVetID'])->name('display');
+
+// $str = '';
+Route::get('/admin/vet/viewVetDetails/{clinic_id}',[VeterinaryController::class, 'viewVetDetails'])->name('clinicvet');
+
 });
 

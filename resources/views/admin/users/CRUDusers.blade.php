@@ -54,7 +54,7 @@
           <th>Email</th>
           <th>User Type</th>
             
-        <th style="width: 35%" class="text-left">Action</th>
+        <th>Action</th>
           
         </tr>
         </thead>
@@ -66,9 +66,7 @@
            <td>{{ $userAccounts->user_email }}</td>
            <td>{{ $userAccounts->userType_name }}</td>
           
-            <td class="project-actions">  
-                <a class="btn btn-warning btn-sm editbt" href="/admin/users/inputUser/{{$userAccounts->user_id}}"><i class="far fa-address-card"></i>
-                  Input Details </a>
+            <td class="project-actions">
 
                 <a class="btn btn-primary btn-sm editbt" href="/admin/users/viewCustomerDetails/{{ $userAccounts->user_id }}"> <i class="fas fa-folder"></i>
                 View </a>

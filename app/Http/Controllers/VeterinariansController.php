@@ -255,7 +255,7 @@ class VeterinariansController extends Controller
         'customer_fname'=>'required',
         'customer_lname'=>'required',
         'customer_mname'=>'required',
-        'customer_mobile'=>'required',
+        'customer_mobile'=>'required|numeric',
         'customer_tel'=>'required',
         'customer_gender'=>'required',
         'customer_birthday'=>'required',
@@ -441,14 +441,10 @@ class VeterinariansController extends Controller
         $clinic = $request->clinic_id;
         $status = $request->pet_isActive;
 
-        $checkQuery = DB::table('pets')->where('pet_name','=', $name,'AND',
-            'pet_gender','=', $gender, 'AND', 'pet_birthday','=', $birthday, 'AND',
-            'pet_notes','=', $notes, 'AND', 'pet_bloodType','=', $bloodtype, 'AND',
-            'pet_registeredDate','=', $regDate, 'AND', 'pet_type_id','=', $type, 'AND',
-            'pet_breed_id','=', $breed, 'AND', 'customer_id', '=', $customer, 'AND',
-            'clinic_id','=', $clinic, 'AND', 'pet_isActive','=', $status)->first();
+        $checkQuery = DB::table('pets')->where('pet_id','=', $pet_id, 'AND', 'pet_name','=', $name,'AND', 'pet_type_id','=', $type, 'AND',
+            'pet_breed_id','=', $breed)->first();
 
-        if ($checkQuery) {
+        if (!$checkQuery) {
             return redirect()->route('custownerpatient', ['customer_id'=> $customer])->with('warning','Nothing Changes');
         }else{
             DB::table('pets')

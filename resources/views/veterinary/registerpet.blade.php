@@ -139,7 +139,7 @@
 
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="inputClinic">Clinic</label>
+                <label for="inputClinic">Clinic: </label>
                 <select id="inputClinic" class="form-control custom-select" name="clinic_id">
                   @foreach ($pet_clinics as $clinic) 
                   <option value="{{ $clinic->clinic_id }}">{{ $clinic->clinic_name }}</option> @endforeach

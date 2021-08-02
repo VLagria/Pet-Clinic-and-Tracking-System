@@ -52,7 +52,6 @@
                 <span class="text-danger error-text customer_fname_error">@error('customer_fname'){{ $message }}@enderror</span>
             </div>
         </td>
-
             <td >
                 <div class="form-group">
                     <label for="exampleInputEmail1">Last Name</label>
