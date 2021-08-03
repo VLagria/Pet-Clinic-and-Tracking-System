@@ -7,6 +7,7 @@ use App\Models\Pet;
 use App\Models\User;
 use App\Models\user_account;
 use Doctrine\DBAL\Schema\Index;
+use Doctrine\DBAL\Types\StringType;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -192,7 +193,6 @@ class VeterinariansController extends Controller
                 'user_email'=>'required | email | unique:user_accounts',
                 'customer_fname'=>'required',
                 'customer_lname'=>'required',
-                'user_id'=>'required | unique:customers,user_id',
                 'customer_mname'=>'required',
                 'customer_mobile'=>'required',
                 'customer_tel'=>'required',
@@ -208,8 +208,7 @@ class VeterinariansController extends Controller
             ]);
         
 
-            DB::table('user_accounts')->insert([
-                'user_id'=>$request->id,
+            $insAccQuery = DB::table('user_accounts')->insert([
                 'user_name'=>$request->user_name,
                 'user_password'=>Hash::make($request->user_password),
                 'user_mobile'=>$request->user_mobile,
@@ -217,26 +216,47 @@ class VeterinariansController extends Controller
                 'userType_id'=>$request->userType_id
             ]);
 
-            DB::table('customers')->insert([
-                'customer_fname'=>$request->customer_fname,
-                'customer_lname'=>$request->customer_lname,
-                'customer_mname'=>$request->customer_mname,
-                'customer_mobile'=>$request->customer_mobile,
-                'customer_tel'=>$request->customer_tel,
-                'customer_gender'=>$request->customer_gender,
-                'customer_birthday'=>$request->customer_birthday,
-                'customer_DP'=>$request->customer_DP,
-                'customer_blk'=>$request->customer_blk,
-                'customer_street'=>$request->customer_street,
-                'customer_subdivision'=>$request->customer_subdivision,
-                'customer_barangay'=>$request->customer_barangay,
-                'customer_city'=>$request->customer_city,
-                'customer_zip'=>$request->customer_zip,
-                'user_id'=>$request->user_id,
-                'customer_isActive'=>$request->isActive
-            ]);
+            if ($insAccQuery) {
+                
+                $getid = DB::table('user_accounts')->select('user_id')->where('user_email','=', $request->user_email)->first();
+                
+               
+                if (is_object($getid)) {
+                    
+                    $toArray = (array)$getid;
+                    $convert = implode($toArray);
+
+
+                    DB::table('customers')->insert([
+                        'customer_fname'=>$request->customer_fname,
+                        'customer_lname'=>$request->customer_lname,
+                        'customer_mname'=>$request->customer_mname,
+                        'customer_mobile'=>$request->customer_mobile,
+                        'customer_tel'=>$request->customer_tel,
+                        'customer_gender'=>$request->customer_gender,
+                        'customer_birthday'=>$request->customer_birthday,
+                        'customer_DP'=>$request->customer_DP,
+                        'customer_blk'=>$request->customer_blk,
+                        'customer_street'=>$request->customer_street,
+                        'customer_subdivision'=>$request->customer_subdivision,
+                        'customer_barangay'=>$request->customer_barangay,
+                        'customer_city'=>$request->customer_city,
+                        'customer_zip'=>$request->customer_zip,
+                        'user_id'=>$convert ,
+                        'customer_isActive'=>$request->isActive
+                    ]);
+                    return redirect('/veterinary/viewvetcustomer')->with('newCustomer','Customer has been completely added succesfully');
+                   
+                }
+                
+               
+
+            }
+            
+
+           
     }
-       return redirect('/veterinary/viewvetcustomer')->with('newCustomer','Customer has been completely added succesfully');
+       
     }
     // public function addGetId(){
     //     $userID = DB::table('user_accounts')->orderBy('user_id', 'desc')->first();

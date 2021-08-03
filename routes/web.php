@@ -296,13 +296,11 @@ Route::get('/admin/vet/registerVet/{clinic_id}', [VeterinaryController::class, '
 
 Route::get('/admin/vet/viewVetDetails/{clinic_id}',[VeterinaryController::class, 'viewVetDetails'])->name('clinicvet');
 
-<<<<<<< HEAD
 Route::get('/admin/vet/viewVetDetails/delete/{vet_id}',[VeterinaryController::class, 'deleteVets'])->name('post.deletevets');
 
 Route::get('/admin/vet/editVet/{vet_id}',[VeterinaryController::class, 'getVet'])->name('post.getvet');
 
 Route::POST('/admin/vet/editVet/saveUpdate/{vet_id}',[VeterinaryController::class,'editVetDetails'])->name('post.editvetdetails');
-=======
 
 Route::get('admin/pets/CRUDaddtype',function() {
     return view('/admin/pets/CRUDaddtype');
@@ -316,7 +314,6 @@ Route::get('/admin/pets/CRUDedittype/{type_id}',[PetTypeController::class,'getTy
 Route::post('/admin/pets/CRUDedittype/{type_id}',[PetTypeController::class,'saveType'])->name('savetype');
 Route::get('/admin/pets/delete/{type_id}',[PetTypeController::class,'deleteType'])->name('deletetype');
 Route::get('/veterinary/vetclinic',[PetTypeController::class,'widgetClinic']);
->>>>>>> f75a16479720702fa87aef5b4940d6e0b1421ce9
 
 });
 
