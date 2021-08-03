@@ -21,28 +21,6 @@ class VeterinaryController extends Controller
             return redirect('/admin/vet/registerVet')->with('existing','The Veterinarian Already Exist');
         }else{
 
-            // $request->validate([
-            //     'user_name'=>'required',
-            //     'user_password'=>'required',
-            //     'user_mobile'=>'required',
-            //     'user_email'=>'required | email | unique:user_accounts',
-            //     'vet_fname'=>'required',
-            //     'vet_lname'=>'required',
-            //     'user_id'=>'required | unique:customers,user_id',
-            //     'vet_mname'=>'required',
-            //     'vet_mobile'=>'required',
-            //     'vet_tel'=>'required',
-            //     'vet_birthday'=>'required',
-            //     'vet_blk'=>'required',
-            //     'vet_street'=>'required',
-            //     'vet_subdivision'=>'required',
-            //     'vet_barangay'=>'required',
-            //     'vet_city'=>'required',
-            //     'vet_zip'=>'required',
-            //     'vet_isActive'=>'required',
-            //     'vet_dateAdded'=>'required'
-            // ]);
-        
   
             DB::table('user_accounts')->insert([
                 'user_id'=>$request->id,
