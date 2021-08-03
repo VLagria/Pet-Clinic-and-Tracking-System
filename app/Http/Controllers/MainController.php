@@ -45,9 +45,11 @@ class MainController extends Controller
         return view ('admin/pets/CRUDaddtype');
     }
 
-
-
-
+    final function typeEdit(){
+        return view('admin/pets/CRUDedittype');
+    }
+    
+    
     final function checkAdmin(Request $request){
         $request->validate([
             'user_email'=>'required',   

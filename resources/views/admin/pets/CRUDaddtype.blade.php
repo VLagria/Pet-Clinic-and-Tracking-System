@@ -35,26 +35,20 @@
     
  
     <!-- Main content -->
-    <form action="{{ route('vet.addcustomer') }}" method="post">
+    <form action="{{ route('addtype') }}" method="post">
 @csrf
     <table class="table table-striped table-hover">
   <thead>
     <tr>
-        <input type="text" disabled style="width: 50px; border-color: white; background-color: white" class="form-control" name="id">
-        <input type="hidden" disabled style="width: 50px; border-color: white; background-color: white" class="form-control" name="userType_id">
-        
-        <td>
+          <td>
             <div class="form-group" style="">
                 <label for="exampleInputEmail1">Pet Type</label>
-                <input type="text" style="width: 300px" class="form-control" id="user_name" name="user_name" value="{{ old('user_name')}}" placeholder="Pet Type">
-                <span class="text-danger error-text user_name_error">@error('user_name'){{ $message }}@enderror</span>
+                <input type="text" style="width: 300px" class="form-control" id="pettype" name="type_name" value="{{ old('pettype')}}" placeholder="Pet Type">
+                <span class="text-danger error-text pet_type_error">@error('pettype'){{ $message }}@enderror</span>
             </div>
         </td>
-      
-
-      
             <div class="form-group" style="width: 300px">
-                <input type="hidden" name="userType_id" value="3">
+                <input type="hidden" name="pettype" value="3">
               </div>
        
     </tr>

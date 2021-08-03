@@ -32,7 +32,6 @@ Route::post('/auth/registerAcc', [RegisterController::class, 'registerUser'])->n
 
 
 
-
 Route::group(['middleware'=>['AuthCheck']], function(){
 
 
@@ -41,8 +40,9 @@ Route::get('/auth/login', [MainController::class, 'logIn'])->name('auth.login');
 
 Route::get('/auth/logout', [MainController::class, 'logout'])->name('auth.logout');
 
-Route::get('/admin/pets/CRUDpettype', [MainController::class, 'pettype']);
-Route::get('/admin/pets/CRUDaddtype', [MainController::class, 'addtype']);
+Route::get('admin/pets/CRUDedittype',function() {
+    return view('admin/pets/CRUDedittype');
+});
 
 Route::get('/admin/index', [MainController::class, 'adminDashboard']);
 Route::get('/admin/pets/CRUDpet', [MainController::class, 'adminPet']);
@@ -242,6 +242,7 @@ Route::get('/veterinary/viewvet', [VeterinariansController::class, 'veterinaries
 Route::get('veterinary/vetcustomer',function() {
     return view('veterinary/vetcustomer');
 });
+
 // Route::get('veterinary/viewvetcustomer',function() {
 //     return view('veterinary/viewvetcustomer');
 // });
@@ -295,11 +296,27 @@ Route::get('/admin/vet/registerVet/{clinic_id}', [VeterinaryController::class, '
 
 Route::get('/admin/vet/viewVetDetails/{clinic_id}',[VeterinaryController::class, 'viewVetDetails'])->name('clinicvet');
 
+<<<<<<< HEAD
 Route::get('/admin/vet/viewVetDetails/delete/{vet_id}',[VeterinaryController::class, 'deleteVets'])->name('post.deletevets');
 
 Route::get('/admin/vet/editVet/{vet_id}',[VeterinaryController::class, 'getVet'])->name('post.getvet');
 
 Route::POST('/admin/vet/editVet/saveUpdate/{vet_id}',[VeterinaryController::class,'editVetDetails'])->name('post.editvetdetails');
+=======
+
+Route::get('admin/pets/CRUDaddtype',function() {
+    return view('/admin/pets/CRUDaddtype');
+});
+
+// PET CRUD
+
+Route::get('/admin/pets/CRUDpettype',[PetTypeController::class,'retrieveType']);
+Route::post('/admin/pets/CRUDaddtype',[PetTypeController::class,'addType'])->name('addtype');
+Route::get('/admin/pets/CRUDedittype/{type_id}',[PetTypeController::class,'getTypeID']);
+Route::post('/admin/pets/CRUDedittype/{type_id}',[PetTypeController::class,'saveType'])->name('savetype');
+Route::get('/admin/pets/delete/{type_id}',[PetTypeController::class,'deleteType'])->name('deletetype');
+Route::get('/veterinary/vetclinic',[PetTypeController::class,'widgetClinic']);
+>>>>>>> f75a16479720702fa87aef5b4940d6e0b1421ce9
 
 });
 

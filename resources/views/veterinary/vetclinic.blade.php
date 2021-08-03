@@ -5,135 +5,72 @@
 
 @section('content')
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    
+    <h3 class="mt-4 mb-4">Clinic Information</h3>
+    <div class="row">
+
+      @foreach ($widgetClinic as $clinic)
         
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+      
+      <div class="col-md-4">
+        <!-- Widget: user widget style 1 -->
+        <div class="card card-widget widget-user">
+          <!-- Add the bg color to the header using any of the bg-* classes -->
+          <div class="widget-user-header bg-info">
+            <h3 class="widget-user-username">{{ $clinic->clinic_name }}</h3>
+            <h5 class="widget-user-desc">The best vet clinic Eveerrr!!</h5>
+          </div>
+        
+          <div class="card-footer p-0">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link">
+                  Clinic Owner: <span class="float-right">{{ $clinic->owner_name }}</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">
+                  Mobile #:<span class="float-right ">{{ $clinic->clinic_mobile }}</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">
+                  Tel #: <span class="float-right ">{{ $clinic->clinic_tel }}</span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link">
+                  Email: <span class="float-right ">{{ $clinic->clinic_email }}</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">
+                  Address: <span class="float-right ">{{ $clinic->clinic_blk}},{{ $clinic->clinic_street}}, {{ $clinic->clinic_barangay}}, {{ $clinic->clinic_city}},{{ $clinic->clinic_zip}}</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- /.widget-user -->
+      </div>
+      @endforeach
+      <!-- /.col -->
+
+
+
     </div>
-    <!-- /.content-header -->
+    <!-- /.row -->
 
-   
-<!-- Default box -->
-<h1 class="mb-2 mt-5 px-5 "><b>VETERINARIAN / CLINIC </b></h1>
-<br>
 
-        <!-- <h5 class="mb-2">VIEW A VETERINARIAN OR CLINIC</h5> -->
-        <div class="row" >
-        <div class="col-lg-3 col-6 px-5 " >
-            <div class="card card-danger collapsed-card">
-              <div class="card-header">
-                <h3 class="card-title">VETERINARIANS </h3>
-          
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
-                  </button>
-                </div>
-                <!-- /.card-tools -->
-              </div>
-              <br>
-              <!-- /.card-header -->
-              <div class="card-body">
-              <a class ="btn btn-danger" href="viewvet" role="button">View A Veterinarian </a>
-              
-                
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-           <!-- /.col -->
-           <div class="col-lg-3 col-6 px-3">
-            <div class="card card-warning">
-              <div class="card-header">
-                <h3 class="card-title">Assign a Veterinary to your Pet</h3>
-
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                  </button>
-                </div>
-                <!-- /.card-tools -->
-              </div>
-              <br>
-              <!-- /.card-header -->
-              <div class="card-body">
-              <a class ="btn btn-warning" href="assignvet" role="button">Assign a Veterinarian</a>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-          <div class="col-lg-3 col-6 px-5">
-            <div class="card card-success">
-              <div class="card-header">
-                <h3 class="card-title">CLINIC </h3>
-
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                  </button>
-                </div>
-                <!-- /.card-tools -->
-              </div>
-              <br>
-              <!-- /.card-header -->
-              <div class="card-body">
-              <a class ="btn btn-success" href="viewvetclinic" role="button">View Clinic </a>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
+  </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+  
 </div>
-        <!-- /.row -->
-        <BR>
-        <h3 class="mb-2 mt-5 px-5"><b>WE PROVIDE THE BEST SERVICES  </b></h3>
-        <div class="card card-success">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-12 col-lg-6 col-xl-4">
-                <div class="card mb-2 bg-gradient-dark">
-                  <img class="card-img-top" src="{{ asset('vendors/dist/img/vet1.jpg') }}" alt="User Avatar" class="img-size-60 img-square mr-3">
-                  
-                </div>
-              </div>
-              <div class="col-md-12 col-lg-6 col-xl-4">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="{{ asset('vendors/dist/img/vet2.jpg') }}" alt="User Avatar" class="img-size-60 img-square mr-3">
-                </div>
-              </div>
-              <div class="col-md-12 col-lg-6 col-xl-4">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="{{ asset('vendors/dist/img/vet4.jpg') }}"alt="User Avatar" class="img-size-60 img-square mr-3">
-                 
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div><
-
-
- 
-           
-          </div>
-          
-          <!-- /.col-md-6 -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
   <!-- /.content-wrapper -->
 
  

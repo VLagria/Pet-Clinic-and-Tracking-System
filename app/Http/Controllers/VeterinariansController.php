@@ -31,8 +31,6 @@ class VeterinariansController extends Controller
 
         $pet_clinics = DB::table('clinic')->get();
 
-
-
         return view('veterinary/viewvetcustomer', compact('customers','users','pet_clinics','pet_breeds', 'pet_types'));
     }
 
