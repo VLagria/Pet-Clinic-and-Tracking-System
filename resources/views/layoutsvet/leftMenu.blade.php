@@ -40,7 +40,7 @@
                with font-awesome or any other icon font library -->
                <li class="nav-item">
 
-                <a href="vethome" class="nav-link">
+                <a href="/veterinary/vethome" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>
                    Dashboard
@@ -54,7 +54,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                <a href="viewvetpatient" class="nav-link">
+                <a href="/veterinary/viewvetpatient" class="nav-link">
                 <i class="nav-icon fas fa-paw"></i>
                   <p>
                    Pets
@@ -71,7 +71,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="vetclinic" class="nav-link">
+                <a href="/veterinary/vetclinic" class="nav-link">
                 <i class="nav-icon fas fa-clinic-medical"></i>
                   <p>
                    Clinic

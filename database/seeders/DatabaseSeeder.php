@@ -32,5 +32,14 @@ class DatabaseSeeder extends Seeder
                 'user_email'=>'user12@gmail.com',
                 'userType_id'=>'3'),
         ));
+
+        DB::table('pet_type')->insert(array(
+            array('pet_name'=>'Cat'),
+            array('pet_name'=>'Dog'),
+            array('pet_name'=>'Reptile'),
+            array('pet_name'=>'Bird'),
+            array('pet_name'=>'Rodent'),
+
+        ));
     }
 }

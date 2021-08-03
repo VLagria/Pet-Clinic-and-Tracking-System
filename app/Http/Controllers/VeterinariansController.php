@@ -6,10 +6,14 @@ use App\Models\Customer;
 use App\Models\Pet;
 use App\Models\User;
 use App\Models\user_account;
+use Doctrine\DBAL\Schema\Index;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+
+use function PHPUnit\Framework\isFalse;
+use function PHPUnit\Framework\isTrue;
 
 class VeterinariansController extends Controller
 {
@@ -180,7 +184,7 @@ class VeterinariansController extends Controller
         $checkQuery = DB::table('customers')->where('customer_fname','=', $fname, 'AND', 'customer_lname','=', $lname, 'AND', 'customer_mname','=', $mname)->first();
 
         if ($checkQuery) {
-            return redirect('/veterinary/registercustomer')->with('existing','The customer is Already Exist');
+            return back()->with('existing','The customer is Already Exist');
         }else{
 
             $request->validate([
@@ -429,23 +433,25 @@ class VeterinariansController extends Controller
         }
     }
     function savePet(Request $request, $pet_id){
-        $breed = $request->pet_breed_id;
-        $gender = $request->pet_gender;
-        $birthday = $request->ppet_birthday;
-        $notes = $request->pet_notes;
-        $bloodtype = $request->pet_bloodType;
-        $regDate = $request->pet_registeredDate;
-        $type = $request->pet_type_id;
-        $name = $request->pet_name;
+        // $breed = $request->pet_breed_id;
+        // $gender = $request->pet_gender;
+        // $birthday = $request->pet_birthday;
+        // $notes = $request->pet_notes;
+        // $bloodtype = $request->pet_bloodType;
+        // $regDate = $request->pet_registeredDate;
+        // $type = $request->pet_type_id;
+        // $name = $request->pet_name;
+        // $clinic = $request->clinic_id;
+        // $status = $request->pet_isActive;
         $customer = $request->customer_id;
-        $clinic = $request->clinic_id;
-        $status = $request->pet_isActive;
+       
 
-        $checkQuery = DB::table('pets')->where('pet_id','=', $pet_id, 'AND', 'pet_name','=', $name,'AND', 'pet_type_id','=', $type, 'AND',
-            'pet_breed_id','=', $breed)->first();
+        $checkQuery = DB::table('pets')->where('pet_name','=', $request->pet_name)->first();
 
-        if (!$checkQuery) {
-            return redirect()->route('custownerpatient', ['customer_id'=> $customer])->with('warning','Nothing Changes');
+        // $noChangeQuery = DB::select('select * from users where active = ?', [1])
+
+        if ($checkQuery) {
+            return redirect()->route('custownerpatient', ['customer_id'=> base64_encode($customer)])->with('warning','Nothing Changes');
         }else{
             DB::table('pets')
         ->where('pet_id', $pet_id)
@@ -465,7 +471,7 @@ class VeterinariansController extends Controller
 
             $customer_id = $request->customer_id;
 
-            return redirect()->route('custownerpatient', ['customer_id'=> $customer_id])->with('success','Patients has been updated sucessfully');
+            return redirect()->route('custownerpatient', ['customer_id'=> base64_encode($customer_id)])->with('success','Patients has been updated sucessfully');
         }
     }
 
@@ -486,9 +492,9 @@ class VeterinariansController extends Controller
         ->join('customers','customers.customer_id','=','pets.customer_id')
         ->join('clinic','clinic.clinic_id','=','pets.clinic_id')
         ->select('pets.pet_id','pets.pet_name','pets.pet_gender','pets.pet_birthday','pets.pet_notes','pets.pet_bloodType','pets.pet_registeredDate', 'pet_types.type_name',
-        'pet_breeds.breed_name','pets.pet_isActive','pets.customer_id', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),
-        'clinic.clinic_name')
-        ->where('pets.customer_id','=', $customer_id)->get();
+        'pet_breeds.breed_name','pets.pet_isActive','pets.customer_id', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name",),DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
+        customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"),'clinic.clinic_name')
+        ->where('pets.customer_id','=', base64_decode($customer_id))->get();
 
         return view('veterinary/viewpatient', ['PatientOwner'=>$PatientOwner]);
     }

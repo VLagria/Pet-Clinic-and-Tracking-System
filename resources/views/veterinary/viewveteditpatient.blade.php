@@ -140,8 +140,7 @@
                 <input type="text" disabled class="form-control" id="date" name="customer_name" value="{{ $petowner->customer_fname }} {{ $petowner->customer_lname}}">
                 <span class="text-danger error-text customer_blk_error">@error('customer_name'){{ $message }}@enderror</span>
                     
-                @endif
-                    
+                @endif     
                 @endforeach
                 
               </div>

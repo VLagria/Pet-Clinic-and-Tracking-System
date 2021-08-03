@@ -27,6 +27,11 @@
   <div class="card"> 
     @csrf
     <div class="card-header">
+      <a class="btn btn-error btn-sm" href="/veterinary/viewvetcustomer">
+        <i class="fas fa-arrow-left">
+        </i>
+        Return
+    </a>
       <h3 class="header">Pets</h3>
       <br>
       @if(Session::has('success')) 
@@ -78,7 +83,7 @@
                 @endif
     
             <td class="project-actions text-right">
-                      <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal">
+                      <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal{{ $owner->pet_id }}">
                           <i class="fas fa-folder">
                           </i>
                           View
@@ -88,7 +93,7 @@
                           </i>
                           Edit
                       </a>
-                      <a class="btn btn-danger btn-sm" >
+                      <a class="btn btn-danger btn-sm" href="/veterinary/delete-viewvetpatient/{{ $owner->pet_id }}">
                           <i class="fas fa-trash">
                           </i>
                           Delete
@@ -97,7 +102,7 @@
               </tr>
 
   {{-- View  modal  --}}
-  <div class="modal" id="viewModal" tabindex="-1" role="dialog">
+  <div class="modal" id="viewModal{{ $owner->pet_id }}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -107,14 +112,31 @@
           </button>
         </div>
         <div class="modal-body">
-          <h5 id="pet_name">Customer Name: George Tilap </h5>
-          <h5 id="pet_name">Mobile number: 9774112284 </h5>
-          <h5 id="pet_name">Telephone number: 111177 </h5>
-          <h5 id="pet_gender">Gender: female.</h5>
-          <h5>Birthday: 07-12-2021.</h5>
-          <h5>Address: Blk 14 Silicon Street Warzone Village Laravel Grands Davao City 800</h5>
-          <h5>User ID: 3</h5>
-          <h5>Status : Active</h5>
+          <h5>Pet name: <strong> {{ $owner->pet_name }} </strong></h5>
+          <h5>Type: <strong> {{ $owner->type_name }} </strong></h5>
+          <h5>Breed: <strong>{{ $owner->breed_name }}</strong> </h5>
+          <h5>Gender: <strong> {{ $owner->pet_gender }} </strong></h5>
+          <h5>Registered date: <strong> {{ $owner->pet_registeredDate }} </strong></h5>
+          <h5>Address: <strong> {{ $owner->customer_address }} </strong> </h5>
+          <h5>Owner: <strong> {{ $owner->customer_name }} </strong></h5>
+          @if ($owner->pet_isActive == "1")
+          <h5>Status : <strong> YES </strong></h5>
+          @else
+          <h5>Status : <strong> NO </strong></h5>
+          @endif
+          
+
+          <h5 style="text-align: center">
+            {!! QrCode::size(150)->eyeColor(0, 255, 255, 255, 0, 0, 0)->generate('name: '.$owner->pet_name.
+              ' Gender: '.$owner->pet_gender.
+              ' Type: '.$owner->type_name.
+              ' Breed: '.$owner->breed_name.
+              ' Registered Date: '. $owner->pet_registeredDate.
+              ' Owner: '.$owner->clinic_name .
+              ' Address: '.$owner->customer_address); !!}
+              <br><strong>Scan Me</strong>
+            </h5> 
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -123,107 +145,9 @@
     </div>
   </div>
   {{-- end view modal --}}
-  <!-- edit Modal -->
-  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Update Pets</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form action="" method="POST">
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="exampleInputEmail1">ID</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ID">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Name</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Mobile </label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile Number">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Telephone </label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Telephone Number">
-            </div>
-            <div class="form-group">
-              <label for="inputStatus">Gender</label>
-              <select id="inputStatus" class="form-control custom-select">
-                <option selected disabled>Choose Gender</option>
-                <option>Female</option>
-                <option>Male</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="date" required class="form-label">Birthdate</label>
-              <br>
-              <div class="">
-                <input type="date" class="form-control" id="date">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputEmail1">House Block/Building/Floor No.</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Street/Highway</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Barangay</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">City</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Zip Code</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Addres">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Street/Highway</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Street">
-            </div>
-            <div class="form-group">
-              <label for="inputStatus">User</label>
-              <select id="inputStatus" class="form-control custom-select">
-                <option selected disabled>Choose User</option>
-                <option>..</option>
-                <option>..</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="inputStatus">Active</label>
-              <select id="inputStatus" class="form-control custom-select">
-                <option selected disabled>is Customer active?</option>
-                <option>Yes</option>
-                <option>No</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="inputdp"> Profile Picture</label>
-              <br>
-              
-                <input type="file" id="myFile" name="filename">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save Changes</button>
-          </div>
-      </div>
     </form>
-   
-    </div>
 
+    </div>
   </div>
 
   @endforeach    

@@ -81,6 +81,7 @@
             @endif
           
             <td class="project-actions" style="margin-left: 30px;">
+
               <h4><a class="btn btn-primary view-btn" style="margin-left: 15px;" href="/admin/vet/viewVetDetails/{{ $cAccounts->clinic_id }}">
                 <i class="fas fa-folder"></i>
               </a>

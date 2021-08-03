@@ -81,7 +81,7 @@
             
             
             <td class="project-actions text-right">
-              <a href="/veterinary/viewpatient/{{ $customer->customer_id}}" class="btn btn-primary btn-sm">
+              <a href="/veterinary/viewpatient/{{ base64_encode($customer->customer_id)}}" class="btn btn-primary btn-sm">
                 <i class="fas fa-folder"></i> View </a>
               <a href="/veterinary/veteditcustomer/{{ $customer->customer_id}}" class="btn btn-info btn-sm" >
                 <i class="fas fa-pencil-alt"></i> Edit </a>
