@@ -121,15 +121,16 @@
             <td>
               <div class="form-group">
                 <label>Clinic Active: </label>
-                <select name="clinic_isActive" id="clinic_isActive" class="form-control custom-select">
+                <select name="clinic_isActive" id="clinic_isActive" class="form-control-lg custom-select">
                   <option selected disabled>--</option>
-                  @if($clinics -> clinic_isActive == 1 )
+                  @if($clinics->clinic_isActive == 1 )
                   <option value=1 selected> Yes </option>
+                  <option value=0 > No </option>
                   @else
-                  <option value=0> No </option>
+                  <option value=0 selected> No </option>
+                  <option value=1 > Yes </option>
                   @endif
 
-                  <option value=0> No </option>
                 </select>
               </div>
             </td>

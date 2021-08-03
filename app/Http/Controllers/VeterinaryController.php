@@ -21,28 +21,6 @@ class VeterinaryController extends Controller
             return redirect('/admin/vet/registerVet')->with('existing','The Veterinarian Already Exist');
         }else{
 
-            // $request->validate([
-            //     'user_name'=>'required',
-            //     'user_password'=>'required',
-            //     'user_mobile'=>'required',
-            //     'user_email'=>'required | email | unique:user_accounts',
-            //     'vet_fname'=>'required',
-            //     'vet_lname'=>'required',
-            //     'user_id'=>'required | unique:customers,user_id',
-            //     'vet_mname'=>'required',
-            //     'vet_mobile'=>'required',
-            //     'vet_tel'=>'required',
-            //     'vet_birthday'=>'required',
-            //     'vet_blk'=>'required',
-            //     'vet_street'=>'required',
-            //     'vet_subdivision'=>'required',
-            //     'vet_barangay'=>'required',
-            //     'vet_city'=>'required',
-            //     'vet_zip'=>'required',
-            //     'vet_isActive'=>'required',
-            //     'vet_dateAdded'=>'required'
-            // ]);
-        
   
             DB::table('user_accounts')->insert([
                 'user_id'=>$request->id,
@@ -97,5 +75,47 @@ class VeterinaryController extends Controller
 
         return view('admin.vet.viewVetDetails', compact('vetDetails'));
     }
+
+    final function deleteVets($vet_id){
+        DB::table('veterinary')->where('vet_id', $vet_id)->delete();
+        return back()->with('vet_deleted','Veterinarian Deleted Succesfully');
+    }
+
+    function getVet($vet_id){
+        $vets = DB::table('veterinary')->where('vet_id','=', $vet_id)->first();
+
+        $userVetID = DB::table('user_accounts')->get();
+
+        $vetInfo = DB::table('clinic')->get();
+
+        return view('admin.vet.editVet', compact('vets', 'userVetID', 'vetInfo'));
+    }
+
+    function editVetDetails(Request $request, $vet_id){
+        
+        DB::table('veterinary')
+            ->where('vet_id', $vet_id)
+            ->update(array(
+                'vet_fname'=>$request->vet_fname,
+                'vet_lname'=>$request->vet_lname,
+                'vet_mname'=>$request->vet_mname,
+                'vet_mobile'=>$request->vet_mobile,
+                'vet_tel'=>$request->vet_tel,
+                'vet_birthday'=>$request->vet_birthday,
+                'vet_blk'=>$request->vet_blk,
+                'vet_street'=>$request->vet_street,
+                'vet_subdivision'=>$request->vet_subdivision,
+                'vet_barangay'=>$request->vet_barangay,
+                'vet_city'=>$request->vet_city,
+                'vet_zip'=>$request->vet_zip,
+                'clinic_id'=>$request->clinic_id,
+                'vet_isActive'=>$request->vet_isActive,
+        ));
+            $id=$request->clinic_id;
+        
+        return redirect()->route('clinicvet', ['clinic_id' => $id])->with('vet_updated','Veterinary has been successfully Updated');
+    }
+
+
 }
    

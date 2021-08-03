@@ -75,7 +75,7 @@
   </tbody>
 </table>
 </div>
-{{-- View  modal  --}}
+{{-- View  modal  --}}<!-- 
 
   <div class="modal" id="viewModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -99,7 +99,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->

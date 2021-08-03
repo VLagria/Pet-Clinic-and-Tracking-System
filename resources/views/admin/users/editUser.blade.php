@@ -19,9 +19,10 @@
   <!-- /.content-header -->
 
   <!-- Default box --> 
-    @if(Session::has('user_updated')) 
-    <div class="alert alert-success" id="messageModal" role="alert">
-      {{ Session::get('user_updated') }}
+    
+    @if(Session::has('fail')) 
+    <div class="alert alert-warning" id="messageModal" role="alert">
+      {{ Session::get('fail') }}
     </div> 
     @endif
 
@@ -33,36 +34,36 @@
         <h3 class="header">Edit User</h3>
       </div>
       <br>
-      <form action="{{ route('post.edituserdetails') }}" method="POST"> 
+      <form action="{{ route('post.edituserdetails') }}" method="POST" id="editFormID"> 
         @csrf 
         <table class="table table-striped table-hover">
           <thead>
             <input type="hidden" name="user_id" value="{{ $users->user_id }}">
             <tr>
               <td>
-                <div class="form-group">
-                  <div class="form-group ">
+                <div class="form-group feet">
+    <div class="form-group feet">
             <tr>
               <label>Username: </label>
               <input type="text" style="width: 300px" name="user_name" id="user_name" class="form-control border border-info bg bg-light rounded" placeholder="Enter Username" value="{{ $users->user_name }}">
               <span class="text-danger error-text customer_fname_error">@error('user_name'){{ $message }}@enderror</span>
             </tr>
     </div>
-    <div class="form-group">
+    <div class="form-group feet">
       <tr>
         <label for="exampleInputEmail1">Password: </label>
         <input type="password" style="width: 300px" name="user_password" id="user_password" class="form-control border border-info bg bg-light rounded" placeholder="Enter Password" value="{{ $users->user_password }}">
         <span class="text-danger error-text customer_fname_error">@error('user_password'){{ $message }}@enderror</span>
       </tr>
     </div>
-    <div class="form-group">
+    <div class="form-group feet">
       <tr>
         <label for="exampleInputEmail1">Mobile No: </label>
         <input type="text" style="width: 300px" name="user_mobile" id="user_mobile" class="form-control border border-info bg bg-light rounded" placeholder="Enter Mobile No" value="{{ $users->user_mobile }}">
         <span class="text-danger error-text customer_fname_error">@error('user_mobile'){{ $message }}@enderror</span>
       </tr>
     </div>
-    <div class="form-group">
+    <div class="form-group feet">
       <tr>
         <label for="exampleInputEmail1">Email: </label>
         <input type="email" style="width: 300px" name="user_email" id="user_email" class="form-control border border-info bg bg-light rounded" placeholder="Enter Email" value="{{ $users->user_email }}">
@@ -87,7 +88,7 @@
   </thead>
 
   <div class="modal-footer">
-    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <button type="submit" class="btn btn-primary formSubmit" id="formSubmit">Save Changes</button>
   </div>
 
   </table>
@@ -116,4 +117,12 @@
       }, 3000 );
     });
   </script>
+  
+  <script>
+    $('.feet').on('click', function(e){
+        e.preventDefault();
+        $(#formSubmit).on('submit', function())
+    });
+  </script>
+
 @endsection

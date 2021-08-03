@@ -89,7 +89,7 @@
               <a href="/admin/clinic/editClinic/{{ $cAccounts->clinic_id }}" class="btn btn-info" >
                   <i class="fas fa-pencil-alt"></i>
               </a>
-              <a class="btn btn-danger">
+              <a class="btn btn-danger" data-toggle="modal"  data-target="#deleteModal{{ $cAccounts->clinic_id }}">
                   <i class="fas fa-trash"></i>
                   </a>
 
@@ -97,7 +97,30 @@
             </a>
           </td> 
 
-  
+  <!---------------------------- delete modal -------------------------------->
+  <div class="modal fade" id="deleteModal{{ $cAccounts->clinic_id }}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Clinic</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action=" " method="GET">
+                {{ csrf_field() }}
+                <div class="modal-body">
+                    <h3>Confirm deletion of Clinic?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger waves-effect remove-data-from-delete-form">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+<!---------------------------- end delete modal -------------------------------->
         @endforeach
         </tbody>
       </table>
