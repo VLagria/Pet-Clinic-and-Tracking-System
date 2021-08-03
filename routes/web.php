@@ -309,6 +309,7 @@ Route::post('/admin/pets/CRUDaddtype',[PetTypeController::class,'addType'])->nam
 Route::get('/admin/pets/CRUDedittype/{type_id}',[PetTypeController::class,'getTypeID']);
 Route::post('/admin/pets/CRUDedittype/{type_id}',[PetTypeController::class,'saveType'])->name('savetype');
 Route::get('/admin/pets/delete/{type_id}',[PetTypeController::class,'deleteType'])->name('deletetype');
+Route::get('/veterinary/vetclinic',[PetTypeController::class,'widgetClinic']);
 
 });
 

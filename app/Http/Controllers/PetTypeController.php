@@ -58,12 +58,16 @@ function addType(Request $request){
 
     }
 
-    
     public function search(Request $request){
         
         $search = $request->get('search');
         $usersData = DB::table('pet_types')->where('type_id','=','3', 'AND','type_name', 'like', '%'.$search.'%')->paginate('5');
         return view('/admin/pets/CRUDpettype', compact('typePet'));
+    }
+
+    public function widgetClinic(){
+        $widgetClinic = DB::table('clinic')->get();
+        return view('/veterinary/vetclinic', compact('widgetClinic'));
     }
 }
 
