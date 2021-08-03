@@ -27,7 +27,11 @@
     </div> 
   @endif
 
-  
+  @if(Session::has('user_updated')) 
+    <div class="alert alert-success" id="messageModal" role="alert">
+      {{ Session::get('user_updated') }}
+    </div> 
+    @endif
 
   
 
@@ -74,7 +78,7 @@
                 <a class="btn btn-info btn-sm editbt" href="/admin/users/editUser/{{ $userAccounts->user_id }}"><i class="fas fa-pencil-alt"></i>
                    Edit User </a>
               
-              <button class="btn btn-danger btn-sm" id="delete" lass="btn btn-danger btn-sm" data-toggle="modal"  data-target="#deleteModal{{ $userAccounts->user_id }}">
+              <button class="btn btn-danger btn-sm" id="delete" data-toggle="modal"  data-target="#deleteModal{{ $userAccounts->user_id }}">
                   <i class="fas fa-trash"></i>
                   Delete
                   </button>

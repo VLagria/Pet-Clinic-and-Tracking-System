@@ -22,9 +22,9 @@
   </div>
   <!-- /.content-header -->
   <!-- Default box --> 
-  @if(Session::has('customer_deleted')) 
+  @if(Session::has('vet_deleted')) 
     <div class="alert alert-danger" role="alert" id="messageModal">
-        {{ Session::get('customer_deleted') }}
+        {{ Session::get('vet_deleted') }}
     </div> 
   @endif 
 
@@ -46,23 +46,24 @@
         <thead>
           <tr>
             <th scope="col" style="width:5%">ID #:</th>
-            <th scope="col" style="width:8%">Name:</th>
-            <th scope="col" style="width:5%">Mobile:</th>
-            <th scope="col" style="width:5%">Telephone:</th>
-            <th scope="col" style="width:5%">Birthday:</th>
+            <th scope="col" style="width:10%">Name:</th>
+            <th scope="col" style="width:7%">Mobile:</th>
+            <th scope="col" style="width:7%">Telephone:</th>
+            <th scope="col" style="width:10%">Birthday:</th>
             <!-- <th scope="col"style="width:10%">Customer Profile:</th> -->
-            <th scope="col" style="width:15%">Address:</th>
-            <th scope="col" style="width:15%">Date Added:</th>
-            <th scope="col" style="width:5%">Clinic ID:</th>
-            <th scope="col" style="width:5%">User ID:</th>
+            <th scope="col" style="width:20%">Address:</th>
+            <th scope="col" style="width:10%">Date Added:</th>
+            <th scope="col" style="width:10%">Clinic ID:</th>
+            <th scope="col" style="width:10%">User ID:</th>
             <th scope="col" style="width:20%">Status:</th>
+            <th scope="col" style="width:20%">Action:</th>
           </tr>
         </thead>
         <tbody> 
           @foreach ($vetDetails as $vdetails) 
           <tr>
-              <td>{{ $vdetails->vet_id}}</td>
-              <td>{{ $vdetails->vet_fname }}, {{ $vdetails->vet_lname }} {{ $vdetails->vet_mname }}</td>
+              <td>{{ $vdetails->vet_id }}</td>
+              <td>{{ $vdetails->vet_lname }}, {{ $vdetails->vet_fname }} {{ $vdetails->vet_mname }}</td>
               <td>{{ $vdetails->vet_mobile}}</td>
               <td>{{ $vdetails->vet_tel}}</td>
               <td>{{ $vdetails->vet_birthday}}</td>
@@ -82,20 +83,43 @@
               @endif
 
               <td class="project-actions text-right">
-                <a href="#" class="btn btn-primary btn-sm">
-                  <i class="fas fa-folder"></i> View </a>
+               <h4><a class="btn btn-primary view-btn" style="margin-left: 15px;" href="#">
+                <i class="fas fa-folder"></i>
+              </a>
 
-                <a href="" class="btn btn-info btn-sm">
-                  <i class="fas fa-pencil-alt"></i> Edit </a>
-
-                  <a class="btn btn-danger btn-sm">
-                  <i class="fas fa-trash"></i> Delete </a>
+              <a class="btn btn-info" href="/admin/vet/editVet/{{ $vdetails->vet_id }}">
+                  <i class="fas fa-pencil-alt"></i>
+              </a>
+              <a class="btn btn-danger" data-toggle="modal"  data-target="#deleteModal{{ $vdetails->vet_id }}">
+                  <i class="fas fa-trash"></i>
+                  </a>
 
               </td>
           </tr> 
 
           <!---------------------------- delete modal -------------------------------->
- 
+  <div class="modal fade" id="deleteModal{{ $vdetails->vet_id }}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Vet</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/admin/vet/viewVetDetails/delete/{{ $vdetails->vet_id }}" method="GET">
+                @csrf
+                <div class="modal-body">
+                    <h3>Confirm deletion of Veterinarian?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger waves-effect remove-data-from-delete-form">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
 <!---------------------------- end delete modal -------------------------------->
 
           @endforeach 

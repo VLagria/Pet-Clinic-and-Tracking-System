@@ -271,7 +271,7 @@ Route::get('/admin/users/CRUDusers',[MainController::class,'getAllUsers'])->name
 
 Route::get('/admin/users/CRUDusers',[MainController::class,'showUserInfo'])->name('post.showuserinfo');
 
-Route::post('/admin/users/editUserDetails/save/',[MainController::class,'editUserDetails'])->name('post.edituserdetails');
+Route::POST('/admin/users/editUserDetails/save/',[MainController::class,'editUserDetails'])->name('post.edituserdetails');
 
 Route::get('/admin/clinic/CRUDclinic',[MainController::class,'getAllClinic'])->name('post.getallclinic');
 
@@ -293,8 +293,13 @@ Route::post('/admin/vet/registerVet', [VeterinaryController::class, 'addveterina
 
 Route::get('/admin/vet/registerVet/{clinic_id}', [VeterinaryController::class, 'addVetID'])->name('display');
 
-// $str = '';
 Route::get('/admin/vet/viewVetDetails/{clinic_id}',[VeterinaryController::class, 'viewVetDetails'])->name('clinicvet');
+
+Route::get('/admin/vet/viewVetDetails/delete/{vet_id}',[VeterinaryController::class, 'deleteVets'])->name('post.deletevets');
+
+Route::get('/admin/vet/editVet/{vet_id}',[VeterinaryController::class, 'getVet'])->name('post.getvet');
+
+Route::POST('/admin/vet/editVet/saveUpdate/{vet_id}',[VeterinaryController::class,'editVetDetails'])->name('post.editvetdetails');
 
 });
 

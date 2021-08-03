@@ -198,12 +198,17 @@ class MainController extends Controller
         }
 
     public function editUserDetails(Request $request){
-        $request->validate([
-            'user_name'=>'required | unique:user_accounts',
-            'user_password'=>'required',
-            'user_mobile'=>'required | numeric ',
-            'user_email'=>'required | email | unique:user_accounts'
-        ]);
+
+        $username = $request->user_name;
+        $password = $request->user_password;
+        $mobile = $request->user_mobile;
+        $email = $request->user_email;
+        $usertype = $request->userType_id;
+
+        $checkQuery = DB::table('user_accounts')->where('user_name','=', $username, 'AND', 'user_password','=', $password, 'user_mobile','=', $mobile, 'user_email','=', $email, 'userType_id','=', $usertype)->first();
+        if ($checkQuery) {
+            return back()->with('fail', 'No changes / all are the same');
+        }else{
 
         DB::table('user_accounts')
             ->where('user_id', $request->user_id)
@@ -214,7 +219,7 @@ class MainController extends Controller
             'user_email' => $request -> user_email,
             'userType_id' => $request -> userType_id
         ));
-
+}
         // return redirect('/admin/users/CRUDusers/')->with('user_updated', true);
         return redirect('/admin/users/CRUDusers')->with('user_updated','Account has been successfully Updated');
     }
