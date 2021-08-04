@@ -305,6 +305,11 @@ Route::POST('/admin/vet/editVet/saveUpdate/{vet_id}',[VeterinaryController::clas
 Route::get('admin/pets/CRUDaddtype',function() {
     return view('/admin/pets/CRUDaddtype');
 });
+Route::get('admin/pets/CRUDaddbreed',function() {
+    return view('/admin/pets/CRUDaddbreed');
+});
+
+
 
 // PET CRUD
 
@@ -314,6 +319,13 @@ Route::get('/admin/pets/CRUDedittype/{type_id}',[PetTypeController::class,'getTy
 Route::post('/admin/pets/CRUDedittype/{type_id}',[PetTypeController::class,'saveType'])->name('savetype');
 Route::get('/admin/pets/delete/{type_id}',[PetTypeController::class,'deleteType'])->name('deletetype');
 Route::get('/veterinary/vetclinic',[PetTypeController::class,'widgetClinic']);
+// PET BREED CRUD
+Route::get('/admin/pets/CRUDpetbreed',[PetBreedController::class,'retrieveBreed']);
+Route::post('/admin/pets/CRUDaddbreed',[PetBreedController::class,'addBreed'])->name('addbreed');
+Route::get('/admin/pets/CRUDeditbreed/{breed_id}',[PetBreedController::class,'getBreedID']);
+Route::post('/admin/pets/CRUDeditbreed/{breed_id}',[PetBreedController::class,'saveBreed'])->name('savebreed');
+Route::get('/admin/pets/delete/{breed_id}',[PetBreedController::class,'deleteBreed'])->name('breed_deleted');
+
 
 });
 
