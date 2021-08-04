@@ -108,7 +108,7 @@
         <td>
             <div class="form-group" style="width: 300px">
                 <label for="inputBloodtype" class="form-label"> BloodType</label>
-                <input type="bloodtype" class="form-control" value="{{ $editPet->pet_bloodType }}" name="pet_bloodType" placeholder="Optional">
+                <input type="text" class="form-control" value="{{ $editPet->pet_bloodType }}" name="pet_bloodType" placeholder="Optional">
                 <span class="text-danger error-text customer_blk_error">@error('pet_bloodType'){{ $message }}@enderror</span>
                 </div>
         </td>
@@ -176,9 +176,11 @@
         </td>
 
         <td>
-            <div class="form-group" style="width: 300px;>
+            <div class="form-group" style="width: 300px;">
+                
                 <label for="inputStatus">Status</label>
-                <select id="inputStatus" class="form-control custom-select" name="pet_isActive">
+                <select id="pet_isActive" class="form-control custom-select" name="pet_isActive">
+                    
                   @if ($editPet->pet_isActive == "1")
                   <option value="1" selected>Yes</option>
                   <option value="0">No</option>

@@ -3,6 +3,159 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+<script src="https://jqueryvalidation.org/files/lib/jquery.js"></script>
+<script src="https://jqueryvalidation.org/files/lib/jquery-1.11.1.js"></script>
+<script src="https://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+
+
+<script>
+
+    $().ready(function() {
+
+        $("#addForm").validate({
+            rules: {
+                user_name: {
+                    required: true,
+                    maxlength: 20
+                },
+                user_password:{
+                    required: true
+                },
+                user_mobile:{
+                    required: true,
+                    number: true,
+                    minlength: 11,
+                    maxlength: 11
+                },
+                user_email: {
+                    required: true,
+                    email: true
+                },
+                customer_fname: {
+                    required: true
+                },
+                customer_lname: {
+                    required: true
+                },
+                customer_mname: {
+                    required: true
+                },
+                customer_mobile: {
+                    required: true,
+                    number: true,
+                    minlength: 11,
+                    maxlength: 11
+                },
+                customer_tel: {
+                    required: true
+                },
+                customer_birthday: {
+                    required: true
+                },
+                customer_gender: {
+                    required: true
+                },
+                customer_blk: {
+                    required: true
+                },
+                customer_street: {
+                    required: true
+                },
+                customer_subdivision: {
+                    required: true
+
+                },
+                customer_barangay: {
+                    required: true
+
+                },
+                customer_city: {
+                    required: true
+
+                },
+                customer_zip: {
+                    required: true,
+                    number: true
+
+                },
+                isActive: {
+                    required: true
+
+                }
+            },
+            messages: {
+                user_name: {
+                    required: "First name is required"
+         
+                },
+                user_password: {
+                    required: "Password is required"
+                },
+                user_mobile: {
+                    required: "Phone number is required",
+                    minlength: "Phone number must be of 11 digits"
+                },
+                user_email: {
+                    required: "Email is required",
+                    email: "Email must be a valid email address"
+                },
+                customer_fname: {
+                    required: "first name is required"
+                },
+                customer_lname: {
+                    required:  "Last name is required"
+                },
+                customer_mname: {
+                    required:  "Middle name is required"
+                },
+                customer_mobile: {
+                    required: "Phone number is required",
+                    minlength: "Phone number must be of 11 digits"
+                },
+                customer_tel: {
+                    required: "Address is required",
+                    maxlength: "Telephone number must be of 11 digits"
+                },
+                customer_gender: {
+                    required: "Gender is required"
+                },
+                customer_birthday: {
+                    required: "Birthday is required"
+                },
+                customer_blk: {
+                    required: "Blk is required"
+                },
+                customer_street: {
+                    required: "Street is required"
+                },
+                customer_subdivision: {
+                    required: "Subdivision is required"
+                },
+                customer_barangay: {
+                    required: "Barangay is required"
+                },
+                customer_city: {
+                    required: "City is required"
+                },
+                customer_zip: {
+                    required: "Zip Code is required"
+                },
+                isActive: {
+                    required: "Status is required"
+                }
+
+            }
+        });
+    });
+</script>
+<style>
+    label.error{
+        color: #dc3545;
+        font-size: 14px;
+    }
+</style>
+
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -40,77 +193,72 @@
      @endif 
      
     <!-- Main content -->
-    <form action="{{ route('vet.addcustomer') }}" method="post">
+    <form class="cmxform" action="{{ route('vet.addcustomer') }}" method="POST" id="addForm">
 @csrf
     <table class="table table-striped table-hover">
   <thead>
     <tr>
-        <input type="text" disabled style="width: 50px; border-color: white; background-color: white" class="form-control" name="id" value="{{ $add_id->user_id+1}}">
+    
         <input type="hidden" disabled style="width: 50px; border-color: white; background-color: white" class="form-control" name="userType_id" value="3">
         
         <td>
             <div class="form-group" style="">
-                <label for="exampleInputEmail1">Username</label>
-                <input type="text" style="width: 300px" class="form-control" id="user_name" name="user_name" value="{{ old('user_name')}}" placeholder="Enter username">
-                <span class="text-danger error-text user_name_error">@error('user_name'){{ $message }}@enderror</span>
+                <label for="user_name">Username</label>
+                <input type="text" style="width: 300px" class="form-control" id="user_name" name="user_name" placeholder="Enter username">
+
             </div>
         </td>
         <td>
             <div class="form-group">
-                <label for="exampleInputEmail1">Password</label>
+                <label style="red" for="user_password">Password</label>
                 <input type="password" style="width: 300px;" class="form-control" id="user_password" name="user_password" value="{{ old('user_password')}}" placeholder="Enter password">
-                <span class="text-danger error-text user_password_error">@error('user_password'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
             <div class="form-group">
-                <label for="exampleInputEmail1">Account Mobile</label>
+                <label for="user_mobile">Account Mobile</label>
                 <input type="text" style="width: 300px" value="{{ old('user_mobile')}}" class="form-control" id="user_mobile" name="user_mobile" aria-describedby="emailHelp" placeholder="Enter mobile">
-                <span class="text-danger error-text user_mobile_error">@error('user_mobile'){{ $message }}@enderror</span>
+            
             </div>
         </td>
         <td>
             <div class="form-group">
-                <label for="exampleInputEmail1">Email</label>
+                <label for="user_email">Email</label>
                 <input type="email" class="form-control" value="{{ old('user_email')}}" style="width: 300px" id="user_email" name="user_email" placeholder="Enter email">
-                <span class="text-danger error-text user_email_error">@error('user_email'){{ $message }}@enderror</span>
+           
             </div>
         </td>
       
-            <div class="form-group" style="width: 300px">
-                <input type="hidden" name="userType_id" value="3">
-              </div>
-       
     </tr>
     <tr>
         <td >
             <div class="form-group">
-                <label for="exampleInputEmail1">First Name</label>
+                <label for="customer_fname">First Name</label>
                 <input type="text" style="width: 300px" class="form-control" id="customer_fname" name="customer_fname"  placeholder="Enter First Name">
-                <span class="text-danger error-text customer_fname_error">@error('customer_fname'){{ $message }}@enderror</span>
+               
             </div>
         </td>
 
             <td >
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Last Name</label>
+                    <label for="customer_lname">Last Name</label>
                     <input type="text" style="width: 300px" class="form-control" id="customer_lname" name="customer_lname"  placeholder="Enter Last Name">
-                    <span class="text-danger error-text customer_lname_error">@error('customer_lname'){{ $message }}@enderror</span>
+                 
                 </div>
             </td>
 
             <td>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Middle Name</label>
+                    <label for="customer_mname">Middle Name</label>
                     <input type="text" style="width: 300px" class="form-control" id="customer_mname" name="customer_mname" aria-describedby="emailHelp" placeholder="Enter Middle Name">
-                    <span class="text-danger error-text customer_mname_error">@error('customer_mname'){{ $message }}@enderror</span>
+                 
                 </div>
             </td>
             <td>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Mobile</label>
+                    <label for="customer_mobile">Mobile</label>
                     <input type="number" class="form-control" style="width: 300px" id="customer_mobile" name="customer_mobile" aria-describedby="emailHelp" placeholder="Enter Mobile No">
-                    <span class="text-danger error-text customer_mobile_error">@error('customer_mobile'){{ $message }}@enderror</span>
+             
                 </div>
             </td>
         
@@ -118,37 +266,39 @@
     <tr>
         <td>
             <div class="form-group">
-                <label for="exampleInputEmail1">Telephone</label>
+                <label for="customer_tel">Telephone</label>
                 <input type="number" class="form-control" style="width: 300px" id="customer_tel" name="customer_tel" placeholder="Enter Telephone">
-                <span class="text-danger error-text customer_tel_error">@error('customer_tel'){{ $message }}@enderror</span>
+            
             </div>
         </td>
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="inputStatus">Gender</label>
-                <select id="customer_gender" class="form-control custom-select" name="customer_gender">
+                <label for="customer_gender">Gender</label>
+                <select id="customer_gender" class="form-control custom-select" id="customer_gender" name="customer_gender">
                   <option selected disabled>--</option>
                   <option value="Female">Female</option>
                   <option value="Male">Male</option>
                 </select>
-                <span class="text-danger error-text customer_gender_error">@error('customer_gender'){{ $message }}@enderror</span>
+         
               </div>
         </td>
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="date" required class="form-label">Birthdate</label>
+                <label for="customer_birthday" class="form-label">Birthdate</label>
                 <br>
                 <div class="">
                   <input type="date" class="form-control" id="customer_birthday" name="customer_birthday">
-                  <span class="text-danger error-text customer_birthday_error">@error('customer_birthday'){{ $message }}@enderror</span>
+                  
                 </div>
+
+                
               </div>
         </td>
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="exampleInputEmail1">House Block/Building/Floor No.</label>
+                <label for="customer_blk">House Block/Building/Floor No.</label>
                 <input type="text" class="form-control" name="customer_blk" id="customer_blk"  placeholder="Enter Address">
-                <span class="text-danger error-text customer_blk_error">@error('customer_blk'){{ $message }}@enderror</span>
+         
             </div>
         </td>
     </tr>
@@ -156,30 +306,30 @@
         
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="exampleInputEmail1">Street/Highway</label>
+                <label for="customer_street">Street/Highway</label>
                 <input type="text" class="form-control" name="customer_street" id="customer_street" placeholder="Enter Address">
-                <span class="text-danger error-text customer_street_error">@error('customer_street'){{ $message }}@enderror</span>
+         
             </div>
         </td>
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="exampleInputEmail1">Subdivision</label>
+                <label for="customer_subdivision">Subdivision</label>
                 <input type="text" class="form-control" name="customer_subdivision" id="customer_subdivision"  placeholder="Enter Address">
-                <span class="text-danger error-text customer_subdivision_error">@error('customer_subdivision'){{ $message }}@enderror</span>
+         
             </div>
         </td>
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="exampleInputEmail1">Barangay</label>
+                <label for="">Barangay</label>
                 <input type="text" class="form-control" name="customer_barangay" id="customer_barangay" placeholder="Enter Address">
-                <span class="text-danger error-text customer_barangay_error">@error('customer_barangay'){{ $message }}@enderror</span>
+       
             </div>
         </td>
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="exampleInputEmail1">City</label>
+                <label for="customer_city">City</label>
                 <input type="text" class="form-control" name="customer_city" id="customer_city"  placeholder="Enter Address">
-                <span class="text-danger error-text customer_city_error">@error('customer_city'){{ $message }}@enderror</span>
+
             </div>
         </td>
     </tr>
@@ -187,21 +337,21 @@
     <tr>
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="exampleInputEmail1">Zip Code</label>
+                <label for="customer_zip">Zip Code</label>
                 <input type="text" class="form-control" name="customer_zip" id="customer_zip" placeholder="Enter Addres">
-                <span class="text-danger error-text customer_zip_error">@error('customer_zip'){{ $message }}@enderror</span>
+    
             </div>
         </td>
 
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="inputStatus">Active</label>
-                <select id="isActive" class="form-control custom-select" name="isActive">
+                <label for="isActive">Active</label>
+                <select id="isActive" class="form-control custom-select" id="isActive" name="isActive">
                   <option selected disabled>--</option>
                   <option value="1">Yes</option>
                   <option value="0">No</option>
                 </select>
-                <span class="text-danger error-text isActive_error">@error('isActive'){{ $message }}@enderror</span>
+
               </div>
         </td>
         <td>
@@ -225,32 +375,7 @@
 </form>   
 
 </div>
-{{-- View  modal  --}}
-{{-- 
-  <div class="modal" id="viewModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">View Clinic</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <h5>Clinic Name: Hannah Ramirez.</h5>
-          <h5>Gender: male.</h5>
-          <h5>Birthday: 09-15-2000.</h5>
-          <h5>Notes: Vincent Lagria.</h5>
-          <h5>Bloodtype: A</h5>
-          <h5>Registered Date: 06-14-2021</h5>
-        </div>
-        <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div> --}}
- 
+
 
 <!-- REQUIRED SCRIPTS -->
 
@@ -262,4 +387,7 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
+
+
 @endsection
