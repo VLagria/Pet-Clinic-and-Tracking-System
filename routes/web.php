@@ -349,7 +349,6 @@ Route::get('/admin/pets/delete-breed/{breed_id}',[PetBreedController::class,'del
 
 //PET CRUD
 
-<<<<<<< HEAD
 
 Route::get('/admin/customer/CRUDcustomers',[VeterinaryController::class, 'getAllCustomer'])->name('vet.getallcustomer');
 
@@ -363,9 +362,7 @@ Route::get('/admin/customer/viewPatient/{customer_id}',[VeterinaryController::cl
 Route::get('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'veteditcustomerID']);
 
 Route::post('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'saveCustomer'])->name('vet.savecust');
-=======
 Route::get('/customer/custhome',[Customercontroller::class,'widgetPets']);
 Route::get('/customer/custhome{pet_id}',[Customercontroller::class,'getPetID']);
->>>>>>> a02d2894adc887fc6b7a8a9e5cabf57566e5bbe2
 });
 
