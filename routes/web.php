@@ -313,6 +313,15 @@ Route::get('admin/pets/CRUDaddbreed',function() {
     return view('/admin/pets/CRUDaddbreed');
 });
 
+//customerrrrr page
+Route::get('/customer/custProfile',function() {
+    return view('/customer/custProfile');
+});
+Route::get('/customer/custeditProfile',function() {
+    return view('/customer/custeditProfile');
+});
+
+
 // PETSSS CRUD
 Route::get('/admin/pets/CRUDpet',[PetsController::class,'retrievePet']);
 Route::get('/admin/pets/CRUDeditpet/{pet_id}',[PetsController::class,'getPetID']);

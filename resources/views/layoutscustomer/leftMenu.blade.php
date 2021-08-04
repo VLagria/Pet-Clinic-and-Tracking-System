@@ -40,7 +40,7 @@
                with font-awesome or any other icon font library -->
 
                <li class="nav-item">
-                <a href="custprofile" class="nav-link">
+                <a href="custProfile" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
                   <p>
                   Profile
