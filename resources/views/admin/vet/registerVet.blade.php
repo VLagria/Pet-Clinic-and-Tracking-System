@@ -3,6 +3,63 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+<script src="../lib/jquery.js"></script>
+<script src="https://jqueryvalidation.org/files/lib/jquery-1.11.1.js"></script>
+<script src="../dist/jquery.validate.js"></script>
+
+<script>
+  $().ready(function() {
+    // validate signup form on keyup and submit
+    $("#regVet").validate({
+      rules: {
+        user_name: { required: true, minlength: 2 },
+        user_mobile: { required: true},
+        user_password: { required: true, minlength: 5 },
+        user_email: { required: true, email: true },
+        vet_fname: { required: true, minlength: 2 },
+        vet_lname: { required: true, minlength: 2 },
+        vet_mname: { required: true, minlength: 2 },
+        vet_mobile: { required: true},
+        vet_tel: { required: true },
+        vet_birthday: { required: true },
+        vet_blk: { required: true },
+        vet_street: { required: true },
+        vet_subdivision: { required: true },
+        vet_barangay: { required: true },
+        vet_city: { required: true },
+        vet_zip: { required: true},
+        vet_dateAdded: { required: true }
+      },
+      messages: {
+        user_name: { required: "Please enter a username", minlength: "Your username must consist of at least 2 characters"},
+        user_mobile: { required: "Please provide a mobile #"},
+        user_password: { required: "Please provide a password", minlength: "Your password must be at least 5 characters long" },
+        vet_fname: { required: "Please provide a First Name", minlength: "Name must be at least 2 characters long" },
+        vet_lname: { required: "Please provide a Last Name", minlength: "Name must be at least 2 characters long" },
+        vet_mname: { required: "Please provide a Middle Name", minlength: "Name must be at least 2 characters long" },
+        vet_mobile: { required: "Please provide Mobile #"},
+        vet_tel: { required: "Please provide Tel. #"},
+        vet_birthday: { required: "Please provide Birthday"},
+        vet_blk: { required: "Please provide Blk. Address"},
+        vet_street: { required: "Please provide Address"},
+        vet_subdivision: { required: "Please provide Address"},
+        vet_barangay: { required: "Please provide Address"},
+        vet_city: { required: "Please provide Address"},
+        vet_zip: { required: "Please provide ZIP"},
+        vet_dateAdded: { required: "Please pick a date"},
+        user_email: "Please enter a valid email address"
+      }
+    });
+  });
+  </script>
+
+  <style>
+    label.error{
+      color: #dc3545;
+      font-size: 14px;
+    }
+  </style>
+
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -46,7 +103,7 @@
      @endif 
      
     <!-- Main content -->
-    <form action="{{ route('vet.addveterinarian') }}" method="POST">
+    <form action="{{ route('vet.addveterinarian') }}" method="POST" id="regVet">
         @csrf
     <table class="table table-striped table-hover">
   <thead>
@@ -56,30 +113,30 @@
         
         <td>
             <div class="form-group" style="">
-                <label for="exampleInputEmail1">Username: </label>
+                <label>Username: </label>
                 <input type="text" style="width: 300px" class="form-control" id="user_name" name="user_name" value="{{ old('user_name')}}" placeholder="Enter username">
-                <span class="text-danger error-text user_name_error">@error('user_name'){{ $message }}@enderror</span>
+                <div >
+                    <span class="text-danger error-text user_name_error" id="messageModal">@error('user_name'){{ $message }}@enderror</span>
+                </div>
             </div>
         </td>
         <td>
             <div class="form-group">
-                <label for="exampleInputEmail1">Password: </label>
+                <label>Password: </label>
                 <input type="password" style="width: 300px;" class="form-control" id="user_password" name="user_password" value="{{ old('user_password')}}" placeholder="Enter password">
-                <span class="text-danger error-text user_password_error">@error('user_password'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
             <div class="form-group">
-                <label for="exampleInputEmail1">Account Mobile: </label>
+                <label>Account Mobile: </label>
                 <input type="text" style="width: 300px" value="{{ old('user_mobile')}}" class="form-control" id="user_mobile" name="user_mobile" aria-describedby="emailHelp" placeholder="Enter mobile">
-                <span class="text-danger error-text user_mobile_error">@error('user_mobile'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
             <div class="form-group">
-                <label for="exampleInputEmail1">Email: </label>
+                <label>Email: </label>
                 <input type="email" class="form-control" value="{{ old('user_email')}}" style="width: 300px" id="user_email" name="user_email" placeholder="Enter email">
-                <span class="text-danger error-text user_email_error">@error('user_email'){{ $message }}@enderror</span>
+                <span class="text-danger error-text user_email_error" id="messageModal">@error('user_email'){{ $message }}@enderror</span>
             </div>
         </td>
       
@@ -91,7 +148,7 @@
     <tr>
         <td >
             <div class="form-group">
-                <label for="exampleInputEmail1">First Name:</label>
+                <label>First Name:</label>
                 <input type="text" style="width: 300px" class="form-control" id="vet_fname" name="vet_fname"  placeholder="Enter First Name">
                 <span class="text-danger error-text customer_fname_error">@error('vet_fname'){{ $message }}@enderror</span>
             </div>
@@ -99,7 +156,7 @@
 
             <td >
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Last Name:</label>
+                    <label>Last Name:</label>
                     <input type="text" style="width: 300px" class="form-control" id="vet_lname" name="vet_lname"  placeholder="Enter Last Name">
                     <span class="text-danger error-text customer_lname_error">@error('vet_lname'){{ $message }}@enderror</span>
                 </div>
@@ -107,14 +164,14 @@
 
             <td>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Middle Name:</label>
+                    <label>Middle Name:</label>
                     <input type="text" style="width: 300px" class="form-control" id="vet_mname" name="vet_mname" aria-describedby="emailHelp" placeholder="Enter Middle Name">
                     <span class="text-danger error-text customer_mname_error">@error('vet_mname'){{ $message }}@enderror</span>
                 </div>
             </td>
             <td>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Mobile:</label>
+                    <label>Mobile:</label>
                     <input type="number" class="form-control" style="width: 300px" id="vet_mobile" name="vet_mobile" aria-describedby="emailHelp" placeholder="Enter Mobile No">
                     <span class="text-danger error-text customer_mobile_error">@error('vet_mobile'){{ $message }}@enderror</span>
                 </div>
@@ -124,7 +181,7 @@
     <tr>
         <td>
             <div class="form-group">
-                <label for="exampleInputEmail1">Telephone:</label>
+                <label>Telephone:</label>
                 <input type="number" class="form-control" style="width: 300px" id="vet_tel" name="vet_tel" placeholder="Enter Telephone">
                 <span class="text-danger error-text customer_tel_error">@error('vet_tel'){{ $message }}@enderror</span>
             </div>
@@ -148,7 +205,7 @@
         </td>
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="exampleInputEmail1">Street/Highway:</label>
+                <label>Street/Highway:</label>
                 <input type="text" class="form-control" name="vet_street" id="vet_street" placeholder="Enter Address">
                 <span class="text-danger error-text customer_street_error">@error('vet_street'){{ $message }}@enderror</span>
             </div>
@@ -157,28 +214,28 @@
     <tr>
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="exampleInputEmail1">Subdivision:</label>
+                <label>Subdivision:</label>
                 <input type="text" class="form-control" name="vet_subdivision" id="vet_subdivision"  placeholder="Enter Address">
                 <span class="text-danger error-text customer_subdivision_error">@error('vet_subdivision'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="exampleInputEmail1">Barangay:</label>
+                <label>Barangay:</label>
                 <input type="text" class="form-control" name="vet_barangay" id="vet_barangay" placeholder="Enter Address">
                 <span class="text-danger error-text customer_barangay_error">@error('vet_barangay'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="exampleInputEmail1">City:</label>
+                <label>City:</label>
                 <input type="text" class="form-control" name="vet_city" id="vet_city"  placeholder="Enter Address">
                 <span class="text-danger error-text customer_city_error">@error('vet_city'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="exampleInputEmail1">Zip Code: </label>
+                <label>Zip Code: </label>
                 <input type="text" class="form-control" name="vet_zip" id="vet_zip" placeholder="Enter Addres">
                 <span class="text-danger error-text customer_zip_error">@error('vet_zip'){{ $message }}@enderror</span>
             </div>
@@ -206,17 +263,6 @@
                       
               </div>
               <span class="text-danger error-text user_id_error">@error('clinic_id'){{ $message }}@enderror</span>
-        </td>
-        <td>
-            <div class="form-group" style="width: 300px">
-                <label for="inputStatus">User:</label>
-                
-                <select id="user_id" class="form-control custom-select" name="user_id">
-                    <option value="{{ $userVetID->user_id+1}}">{{ $userVetID->user_id+1}}</option>
-                  </select>
-                      
-              </div>
-              <span class="text-danger error-text user_id_error">@error('user_id'){{ $message }}@enderror</span>
         </td>
         <td>
             <div class="form-group" style="width: 300px">
@@ -250,7 +296,14 @@
 </form>   
 
 </div>
- 
+
+ <script>
+  $("document").ready(function() {
+    setTimeout(function() {
+      $("#messageModal").remove();
+    }, 3000);
+  });
+</script>
 
 <!-- REQUIRED SCRIPTS -->
 

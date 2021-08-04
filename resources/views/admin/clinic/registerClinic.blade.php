@@ -1,7 +1,63 @@
 @extends('layoutsadmin.app')
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+
+<script src="https://jqueryvalidation.org/files/lib/jquery.js"></script>
+<script src="https://jqueryvalidation.org/files/lib/jquery-1.11.1.js"></script>
+<script src="https://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+
+
+<script>
+
+  $().ready(function() {
+
+    // validate signup form on keyup and submit
+    $("#regForm").validate({
+      rules: {
+        clinic_name: {
+          required: true,
+          minlength: 2
+        },
+        user_mobile: {
+          required: true,
+        },
+        user_password: {
+          required: true,
+          minlength: 5
+        },
+        user_email: {
+          required: true,
+          email: true
+        }
+      },
+      messages: {
+        user_name: {
+          required: "Please enter a username",
+          minlength: "Your username must consist of at least 2 characters"
+        },
+        user_mobile: {
+          required: "Please provide a mobile #"
+        },
+        user_password: {
+          required: "Please provide a password",
+          minlength: "Your password must be at least 5 characters long"
+        },
+        user_email: "Please enter a valid email address"
+      }
+    });
+  });
+  </script>
+
+  <style>
+    label.error{
+      color: #dc3545;
+      font-size: 14px;
+    }
+  </style>
+  
 @section('content') 
+
+
 <div class="content-wrapper">
 
   <!-- Content Header (Page header) -->
@@ -43,84 +99,60 @@
         <table class="table table-striped table-hover">
         <thead>
           <tr>
-            <div class="form-group">
               <td>
                 <label>Clinic Name: </label>
-                <input type="text" class="form-control form-control-lg" name="clinic_name" id="clinic_name" placeholder="Enter Clinic Name" style="width: 300px">
-                <span class="text-danger error-text customer_fname_error">@error('clinic_name'){{ $message }}@enderror</span>
+                <input type="text" class="form-control form-control-lg" name="clinic_name" id="clinic_name" placeholder="Enter Clinic Name" style="width: 370px">
               </td>
-            </div>
-            <div class="form-group">
               <td>
                 <label>Owner Name: </label>
-                <input type="text" class="form-control form-control-lg" name="owner_name" id="owner_name" placeholder="Enter Owner Name" style="width: 300px">
-                <span class="text-danger error-text customer_fname_error">@error('owner_name'){{ $message }}@enderror</span>
+                <input type="text" class="form-control form-control-lg" name="owner_name" id="owner_name" placeholder="Enter Owner Name" style="width: 370px">
               </td>
-            </div>
-            <div class="form-group">
               <td>
                 <label>Mobile No: </label>
-                <input type="number" class="form-control form-control-lg" name="clinic_mobile" id="clinic_mobile" placeholder="Enter Mobile No" style="width: 300px">
-                <span class="text-danger error-text customer_fname_error">@error('user_mobile'){{ $message }}@enderror</span>
+                <input type="number" class="form-control form-control-lg" name="clinic_mobile" id="clinic_mobile" placeholder="Enter Mobile No" style="width: 370px">
               </td>
-            </div>
           </tr>
           <tr>
             <td>
-              <div class="form-group">
                 <label>Telephone: </label>
-                <input type="number" class="form-control form-control-lg" name="clinic_tel" id="clinic_tel" placeholder="Enter Telephone">
-                <span class="text-danger error-text customer_fname_error">@error('user_email'){{ $message }}@enderror</span>
+                <input type="number" class="form-control form-control-lg" name="clinic_tel" id="clinic_tel" placeholder="Enter Telephone" style="width: 370px">
               </div>
             </td>
             <td>
-              <div class="form-group">
                 <label>Email: </label>
-                <input type="email" class="form-control form-control-lg" name="clinic_email" id="clinic_email" placeholder="Enter Email">
-              </div>
+                <input type="email" class="form-control form-control-lg" name="clinic_email" id="clinic_email" placeholder="Enter Email" style="width: 370px">
             </td>
             <td>
-              <div class="form-group">
                 <label>House Block/Building/Floor No.: </label>
-                <input type="text" class="form-control form-control-lg" name="clinic_blk" id="clinic_blk" placeholder="House Block/Building/Floor No.">
-              </div>
+                <input type="text" class="form-control form-control-lg" name="clinic_blk" id="clinic_blk" placeholder="House Block/Building/Floor No." style="width: 370px">
             </td>
           <tr>
             <td>
-              <div class="form-group">
                 <label>Street/Highway: </label>
-                <input type="text" class="form-control form-control-lg" name="clinic_street" id="clinic_street" placeholder="House Block/Building/Floor No.">
-              </div>
+                <input type="text" class="form-control form-control-lg" name="clinic_street" id="clinic_street" placeholder="House Block/Building/Floor No." style="width: 370px">
             </td>
             <td>
-              <div class="form-group">
                 <label>Barangay: </label>
-                <input type="text" class="form-control form-control-lg" name="clinic_barangay" id="clinic_barangay" placeholder="Barangay">
-              </div>
+                <input type="text" class="form-control form-control-lg" name="clinic_barangay" id="clinic_barangay" placeholder="Barangay" style="width: 370px">
             </td>
             <td>
-              <div class="form-group">
                 <label>City: </label>
-                <input type="text" class="form-control form-control-lg" name="clinic_city" id="clinic_city" placeholder="City">
-              </div>
+                <input type="text" class="form-control form-control-lg" name="clinic_city" id="clinic_city" placeholder="City" style="width: 370px">
             </td>
           </tr>
           <tr>
             <td>
               <div class="form-group">
                 <label>Zip Code: </label>
-                <input type="number" class="form-control form-control-lg" name="clinic_zip" id="clinic_zip" placeholder="Zip Code">
-              </div>
+                <input type="number" class="form-control form-control-lg" name="clinic_zip" id="clinic_zip" placeholder="Zip Code" style="width: 370px">
             </td>
             <td>
-              <div class="form-group">
                 <label>Clinic Active: </label>
-                <select name="clinic_isActive" id="clinic_isActive" class="form-control custom-select">
+                <select name="clinic_isActive" id="clinic_isActive" class="form-control custom-select" >
                   <option selected disabled>--</option>
                   <option value=1> Yes </option>
                   <option value=0> No </option>
                 </select>
-              </div>
             </td>
             <br>
           </tr>

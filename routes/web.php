@@ -196,6 +196,9 @@ Route::get('/veterinary/delete-viewvetcustomer/{customer_id}',[VeterinariansCont
 Route::get('veterinary/viewpatient', function () {
     return view('veterinary/viewpatient');
 });
+
+
+
 Route::get('/veterinary/viewpatient/{customer_id}',[VeterinariansController::class, 'patientsOwnerView'])->name('custownerpatient');
 Route::get('/veterinary/userviewpatient/{customer_id}',[VeterinariansController::class, 'userViewPatient']);
 Route::get('veterinary/clinicvet', function () {
@@ -315,5 +318,18 @@ Route::post('/admin/pets/CRUDedittype/{type_id}',[PetTypeController::class,'save
 Route::get('/admin/pets/delete/{type_id}',[PetTypeController::class,'deleteType'])->name('deletetype');
 Route::get('/veterinary/vetclinic',[PetTypeController::class,'widgetClinic']);
 
+
+Route::get('/admin/customer/CRUDcustomers',[VeterinaryController::class, 'getAllCustomer'])->name('vet.getallcustomer');
+
+
+Route::get('admin/customer/viewPatient', function () {
+    return view('admin/customer/viewPatient');
+});
+
+Route::get('/admin/customer/viewPatient/{customer_id}',[VeterinaryController::class, 'patientsOwnerView'])->name('custownerpatient');
+
+Route::get('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'veteditcustomerID']);
+
+Route::post('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'saveCustomer'])->name('vet.savecust');
 });
 

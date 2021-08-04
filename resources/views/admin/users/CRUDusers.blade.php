@@ -27,6 +27,12 @@
     </div> 
   @endif
 
+  @if(Session::has('deleteFail')) 
+    <div class="alert alert-danger" id="messageModal" data-toggle="modal" role="alert">
+      {{ Session::get('deleteFail') }}
+    </div> 
+  @endif
+
   @if(Session::has('user_updated')) 
     <div class="alert alert-success" id="messageModal" role="alert">
       {{ Session::get('user_updated') }}
@@ -72,7 +78,7 @@
           
             <td class="project-actions">
 
-                <a class="btn btn-primary btn-sm editbt" href="/admin/users/viewCustomerDetails/{{ $userAccounts->user_id }}"> <i class="fas fa-folder"></i>
+                <a class="btn btn-primary btn-sm editbt" data-toggle="modal" data-target="#viewModal{{$userAccounts->user_id}}"> <i class="fas fa-folder"></i>
                 View </a>
 
                 <a class="btn btn-info btn-sm editbt" href="/admin/users/editUser/{{ $userAccounts->user_id }}"><i class="fas fa-pencil-alt"></i>
@@ -122,8 +128,8 @@
     </div>
     <form action="" method="get">
       <div class="modal-body" style="font-weight: bold;">
-        <h5 style="font-weight: bold;">User ID: {{ $userAccounts->user_id }}
-        <br>Username: {{ $userAccounts->user_name }} 
+        <h3 style="font-weight: bold;">User ID: {{ $userAccounts->user_id }}
+        <h5>Username: {{ $userAccounts->user_name }} 
         <br>Password: {{ $userAccounts->user_password }}
         <br>Mobile No.: {{ $userAccounts->user_mobile }}
         <br>Email: {{ $userAccounts->user_email }}
@@ -206,17 +212,23 @@
       </div>
 
   <!-- -------------------------------------------------------------------------------{{-- end edit modal  --}} --------------------------------------------------------------------------------->
-  
-
 
           @endforeach
+
         </tbody>      
       </table>
       
     </div>
+
   </div>
+
   <!-- /.card -->
-  
+  <div class="float-right">
+      <a class="btn btn-success btn-lg" style="margin-right: 50px;" href="/admin/users/registerUser">
+                <i class="fas fa-user"></i> Create User </a>
+    </div>
+
+      {{ $userTypes_name->links('pagination::bootstrap-4') }}
 
 
 
@@ -255,10 +267,7 @@
 
 
   <!-- ----------------------- start add modal  ------------------------------>
-    <div class="float-right">
-      <a class="btn btn-success btn-sm" href="/admin/users/registerUser">
-                <i class="fas fa-user"></i> Create User </a>
-    </div>
+    
       
 <!-- START DELETE -->
 
