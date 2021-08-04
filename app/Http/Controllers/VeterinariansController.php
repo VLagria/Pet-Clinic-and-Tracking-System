@@ -186,34 +186,14 @@ class VeterinariansController extends Controller
             return back()->with('existing','The customer is Already Exist');
         }else{
 
-            $request->validate([
-                'user_name'=>'required',
-                'user_password'=>'required',
-                'user_mobile'=>'required',
-                'user_email'=>'required | email | unique:user_accounts',
-                'customer_fname'=>'required',
-                'customer_lname'=>'required',
-                'customer_mname'=>'required',
-                'customer_mobile'=>'required',
-                'customer_tel'=>'required',
-                'customer_gender'=>'required',
-                'customer_birthday'=>'required',
-                'customer_blk'=>'required',
-                'customer_street'=>'required',
-                'customer_subdivision'=>'required',
-                'customer_barangay'=>'required',
-                'customer_city'=>'required',
-                'customer_zip'=>'required',
-                'isActive'=>'required'
-            ]);
         
-
+            $type = 3;
             $insAccQuery = DB::table('user_accounts')->insert([
                 'user_name'=>$request->user_name,
                 'user_password'=>Hash::make($request->user_password),
                 'user_mobile'=>$request->user_mobile,
                 'user_email'=>$request->user_email,
-                'userType_id'=>$request->userType_id
+                'userType_id'=>$type
             ]);
 
             if ($insAccQuery) {
@@ -409,7 +389,7 @@ class VeterinariansController extends Controller
     function savePetVet(Request $request, $pet_id){
         $breed = $request->pet_breed_id;
         $gender = $request->pet_gender;
-        $birthday = $request->ppet_birthday;
+        $birthday = $request->pet_birthday;
         $notes = $request->pet_notes;
         $bloodtype = $request->pet_bloodType;
         $regDate = $request->pet_registeredDate;
@@ -419,14 +399,22 @@ class VeterinariansController extends Controller
         $clinic = $request->clinic_id;
         $status = $request->pet_isActive;
 
-        $checkQuery = DB::table('pets')->where('pet_name','=', $name,'AND',
-            'pet_gender','=', $gender, 'AND', 'pet_birthday','=', $birthday, 'AND',
-            'pet_notes','=', $notes, 'AND', 'pet_bloodType','=', $bloodtype, 'AND',
-            'pet_registeredDate','=', $regDate, 'AND', 'pet_type_id','=', $type, 'AND',
-            'pet_breed_id','=', $breed, 'AND', 'customer_id', '=', $customer, 'AND',
-            'clinic_id','=', $clinic, 'AND', 'pet_isActive','=', $status)->first();
 
-        if ($checkQuery) {
+        $NoActionQuery = DB::table('pets')
+        ->where('pet_name','=', $request->pet_name)
+        ->where('pet_gender','=', $request->pet_gender)
+        ->where('pet_birthday','=', $request->pet_birthday)
+        ->where('pet_notes','=', $request->pet_notes)
+        ->where('pet_bloodType','=', $$request->pet_bloodType)
+        ->where('pet_registeredDate','=',$request->pet_registeredDate)
+        ->where('pet_type_id','=', $request->pet_type_id)
+        ->where('pet_breed_id','=', $request->pet_breed_id)
+        ->where('customer_id', '=', $$request->customer_id)
+        ->where('clinic_id','=', $request->clinic_id)
+        ->where('pet_isActive','=', $request->pet_isActive)->first();
+
+
+        if ($NoActionQuery) {
             return redirect('veterinary/viewvetpatient')->with('warning','Nothing Changes');
         }else{
             DB::table('pets')
@@ -462,13 +450,20 @@ class VeterinariansController extends Controller
         // $clinic = $request->clinic_id;
         // $status = $request->pet_isActive;
         $customer = $request->customer_id;
-       
+        $NoActionQuery = DB::table('pets')
+        ->where('pet_name','=', $request->pet_name)
+        ->where('pet_gender','=', $request->pet_gender)
+        ->where('pet_birthday','=', $request->pet_birthday)
+        ->where('pet_notes','=', $request->pet_notes)
+        ->where('pet_bloodType','=', $request->pet_bloodType)
+        ->where('pet_registeredDate','=',$request->pet_registeredDate)
+        ->where('pet_type_id','=', $request->pet_type_id)
+        ->where('pet_breed_id','=', $request->pet_breed_id)
+        ->where('customer_id', '=', $request->customer_id)
+        ->where('clinic_id','=', $request->clinic_id)
+        ->where('pet_isActive','=', $request->pet_isActive)->first();
 
-        $checkQuery = DB::table('pets')->where('pet_name','=', $request->pet_name)->first();
-
-        // $noChangeQuery = DB::select('select * from users where active = ?', [1])
-
-        if ($checkQuery) {
+        if ($NoActionQuery) {
             return redirect()->route('custownerpatient', ['customer_id'=> base64_encode($customer)])->with('warning','Nothing Changes');
         }else{
             DB::table('pets')
