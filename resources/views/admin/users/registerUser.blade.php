@@ -1,5 +1,60 @@
 @extends('layoutsadmin.app')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> @section('content') <div class="content-wrapper">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+<script src="https://jqueryvalidation.org/files/lib/jquery.js"></script>
+<script src="https://jqueryvalidation.org/files/lib/jquery-1.11.1.js"></script>
+<script src="https://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+
+<script>
+
+  $().ready(function() {
+
+    // validate signup form on keyup and submit
+    $("#regForm").validate({
+      rules: {
+        user_name: {
+          required: true,
+          minlength: 2
+        },
+        user_mobile: {
+          required: true,
+        },
+        user_password: {
+          required: true,
+          minlength: 5
+        },
+        user_email: {
+          required: true,
+          email: true
+        }
+      },
+      messages: {
+        user_name: {
+          required: "Please enter a username",
+          minlength: "Your username must consist of at least 2 characters"
+        },
+        user_mobile: {
+          required: "Please provide a mobile #"
+        },
+        user_password: {
+          required: "Please provide a password",
+          minlength: "Your password must be at least 5 characters long"
+        },
+        user_email: "Please enter a valid email address"
+      }
+    });
+  });
+  </script>
+
+  <style>
+    label.error{
+      color: #dc3545;
+      font-size: 14px;
+    }
+  </style>
+
+@section('content') 
+
+<div class="content-wrapper">
 
   <!-- Content Header (Page header) -->
   <div class="content-header">
@@ -33,37 +88,39 @@
         <h3 class="header">Register User</h3>
       </div>
       <br>
-      <form action="{{ route('post.addadminsubmit') }}" method="POST"> @csrf <table class="table table-striped table-hover">
+      <form action="{{ route('post.addadminsubmit') }}" method="POST" id="regForm" > 
+        @csrf 
+        <table class="table table-striped table-hover">
           <thead>
             <tr>
               <td>
                 <div class="form-group">
                   <div class="form-group ">
             <tr>
-              <label>Username: </label>
-              <input type="text" style="width: 300px" name="user_name" id="user_name" class="form-control border border-info bg bg-light rounded" placeholder="Enter Username">
-              <span class="text-danger error-text customer_fname_error">@error('user_name'){{ $message }}@enderror</span>
+              <label for="user_name">Username: </label>
+              <input type="text" style="width: 300px" name="user_name" id="user_name" class="form-control border border-info bg bg-light rounded" placeholder="Enter Username" value="{{ old('user_name')}}">
+              <span class="text-danger error-text user_name_error">@error('user_name'){{ $message }}@enderror</span>
             </tr>
     </div>
     <div class="form-group">
       <tr>
-        <label for="exampleInputEmail1">Password: </label>
-        <input type="password" style="width: 300px" name="user_password" id="user_password" class="form-control border border-info bg bg-light rounded" placeholder="Enter Password">
-        <span class="text-danger error-text customer_fname_error">@error('user_password'){{ $message }}@enderror</span>
+        <label for="user_password">Password: </label>
+        <input type="password" style="width: 300px;" name="user_password" id="user_password" class="form-control border border-info bg bg-light rounded" placeholder="Enter Password" value="{{ old('user_password')}}">
+      </tr>
+    </div>
+
+
+    <div class="form-group">
+      <tr>
+        <label for="user_mobile">Mobile No: </label>
+        <input type="text" style="width: 300px" name="user_mobile" id="user_mobile" class="form-control border border-info bg bg-light rounded" placeholder="Enter Mobile No" value="{{ old('user_mobile')}}">
       </tr>
     </div>
     <div class="form-group">
       <tr>
-        <label for="exampleInputEmail1">Mobile No: </label>
-        <input type="text" style="width: 300px" name="user_mobile" id="user_mobile" class="form-control border border-info bg bg-light rounded" placeholder="Enter Mobile No">
-        <span class="text-danger error-text customer_fname_error">@error('user_mobile'){{ $message }}@enderror</span>
-      </tr>
-    </div>
-    <div class="form-group">
-      <tr>
-        <label for="exampleInputEmail1">Email: </label>
-        <input type="email" style="width: 300px" name="user_email" id="user_email" class="form-control border border-info bg bg-light rounded" placeholder="Enter Email">
-        <span class="text-danger error-text customer_fname_error">@error('user_email'){{ $message }}@enderror</span>
+        <label for="user_email">Email: </label>
+        <input type="email" style="width: 300px" name="user_email" id="user_email" class="form-control border border-info bg bg-light rounded" placeholder="Enter Email" value="{{ old('user_email')}}">
+              <span class="text-danger error-text user_name_error">@error('user_email'){{ $message }}@enderror</span>
       </tr>
     </div>
     <div class="form-group">
@@ -84,7 +141,7 @@
   </thead>
 
   <div class="modal-footer">
-    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
   </div>
 
   </table>

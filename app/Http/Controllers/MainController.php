@@ -207,7 +207,12 @@ class MainController extends Controller
         $email = $request->user_email;
         $usertype = $request->userType_id;
 
-        $checkQuery = DB::table('user_accounts')->where('user_name','=', $username, 'AND', 'user_password','=', $password, 'user_mobile','=', $mobile, 'user_email','=', $email, 'userType_id','=', $usertype)->first();
+        $checkQuery = DB::table('user_accounts')
+                ->where('user_name','=', $username)
+                ->where('user_password','=', $password)
+                ->where('user_mobile','=', $mobile)
+                ->where('user_email','=', $email)
+                ->where('userType_id','=', $usertype)->first();
         if ($checkQuery) {
             return back()->with('fail', 'No changes / all are the same');
         }else{
@@ -247,7 +252,7 @@ class MainController extends Controller
         $userTypes_name = DB::table('usertypes')
         ->join('user_accounts', 'usertypes.userType_id', '=', 'user_accounts.userType_id')
         ->select('user_accounts.*','usertypes.*')
-        ->get();
+        ->paginate(10);
 
         $userOptions = DB::table('usertypes')->get();
 
@@ -267,8 +272,18 @@ class MainController extends Controller
     }
 
     final function deleteUsers($user_id){
-        DB::table('user_accounts')->where('user_id', $user_id)->delete();
-        return back()->with('user_deleted','user successfully deleted');
+        $custQuery = DB::table('customers')->where('user_id', $user_id)->first();
+        $vetQuery = DB::table('veterinary')->where('user_id', $user_id)->first();
+        $adminQuery = DB::table('user_accounts')->where('user_id', $user_id)->first();
+        if (!$custQuery) {
+            return back()->with('deleteFail','Account is registered. Cannot be deleted.');
+        }elseif(!$vetQuery){
+            return back()->with('deleteFail','Account is registered. Cannot be deleted.');
+        }elseif(!$adminQuery){
+        }
+        
+            DB::table('user_accounts')->where('user_id', $user_id)->delete();
+            return back()->with('user_deleted','user successfully deleted');
     }
 
     final function deleteCustomer($customer_id){
@@ -331,6 +346,37 @@ class MainController extends Controller
         ]);
 
        return redirect('/admin/users/CRUDusers')->with('newCustomer','Customer has been completely added succesfully');
+    }
+
+    function getAllCustomer(){
+        $customers = DB::table('customers')
+        ->select('customer_id','customer_fname','customer_lname', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 
+        'customer_gender','customer_DP','customer_birthday','customer_blk','customer_street','customer_subdivision','customer_barangay',
+        'customer_city','customer_zip', DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
+        customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"), 'user_id', 'customer_isActive')->orderBy('customer_id', 'DESC')
+        ->paginate(5);
+        $pet_clinics = DB::table('clinic')->get();
+
+        $users = DB::table('user_accounts')->where('userType_id','=','3')->get();
+
+        $pet_types = DB::table('pet_types')->get();
+
+        $pet_breeds = DB::table('pet_breeds')->get();
+
+        $pet_clinics = DB::table('clinic')->get();
+
+        return view('veterinary/viewvetcustomer', compact('customers','users','pet_clinics','pet_breeds', 'pet_types'));
+    }
+
+    public function custSearch(Request $request){
+        $search = $request->get('custsearch');
+        $customers = DB::table('customers')
+        ->select('customer_id','customer_fname','customer_lname', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 
+        'customer_gender','customer_DP','customer_birthday','customer_blk','customer_street','customer_subdivision','customer_barangay',
+        'customer_city','customer_zip', DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
+        customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"), 'user_id', 'customer_isActive')
+        -> where('customer_fname', 'like', '%'.$search.'%')->paginate('5');
+        return view('veterinary.viewvetcustomer', compact('customers'));
     }
 }
 
