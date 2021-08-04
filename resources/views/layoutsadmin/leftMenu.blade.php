@@ -81,7 +81,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="/admin/pets/CRUDpet" class="nav-link">
+                <a href="/admin/pets/CRUDpetbreed" class="nav-link">
                   <i class="nav-icon fas fa-paw"></i>
                   <p>
                    Pet Breed
