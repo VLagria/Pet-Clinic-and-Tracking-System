@@ -7,6 +7,8 @@ use App\Http\Controllers\PetTypeController;
 use App\Http\Controllers\PetBreedController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\VeterinaryController;
+use App\Http\Controllers\Customercontroller;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -333,7 +335,9 @@ Route::get('/admin/pets/CRUDeditbreed/{breed_id}',[PetBreedController::class,'ge
 Route::post('/admin/pets/CRUDeditbreed/{breed_id}',[PetBreedController::class,'saveBreed'])->name('savebreed');
 Route::get('/admin/pets/delete-breed/{breed_id}',[PetBreedController::class,'deleteBreed'])->name('breed_deleted');
 
+//PET CRUD
 
-
+Route::get('/customer/custhome',[Customercontroller::class,'widgetPets']);
+Route::get('/customer/custhome{pet_id}',[Customercontroller::class,'getPetID']);
 });
 

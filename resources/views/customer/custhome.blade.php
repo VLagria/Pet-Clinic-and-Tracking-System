@@ -13,110 +13,80 @@
   <div class="card card-solid">
     <div class="card-body pb-0">
       <div class="row">
-        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-          <div class="card bg-light d-flex flex-fill">
-            <div class="card-header text-muted border-bottom-0">
-              SOYSKIE
-            </div>
-            <div class="card-body pt-0">
-              <div class="row">
-                <div class="col-7">
-                  <h2 class="lead"><b>Soysoy</b></h2>
-                  <p class="text-muted text-sm"><b>Note: </b> NAGKASAKIT KAY WAY LABLAYP </p>
-                  <ul class="ml-4 mb-0 fa-ul text-muted">
 
-                  </ul>
-                </div>
-                
-              </div>
+
+        @foreach ($widgetPets as $Pets)
+		
+        <div class="col-md-4">
+          <!-- Widget: user widget style 1 -->
+          <div class="card card-widget widget-user">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-grey">
+              <h3 class="widget-user-username">{{ $Pets->pet_name }}</h3>
+              
             </div>
-            <div class="card-footer">
-              <div class="text-right">
+  
+            
+            <div class="card-footer p-0">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link">
+                    Gender: <span class="float-right">{{ $Pets->pet_gender }}</span>
+                  </a>
+                </li>
                 
-                <a href="#" class="btn btn-sm btn-primary">
-                  <i class="fas fa-user"></i> update
-                </a>
+                <li class="nav-item">
+                  <a class="nav-link">
+                    Birthday:<span class="float-right ">{{ $Pets->pet_birthday }}</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link">
+                    Blood Type: <span class="float-right ">{{ $Pets->pet_bloodType }}</span>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link">
+                    Date Registered: <span class="float-right">{{ $Pets->pet_registeredDate }}</span>
+                  </a>
+                </li>
+  
+                <li class="nav-item">
+                  <a class="nav-link">
+                    Notes: <span class="float-right ">{{ $Pets->pet_notes }}</span>
+                  </a>
+                </li>
+
+                
+                <li class="nav-item">
+                  <a class="nav-link">
+                    Status: <span class="float-right ">{{ $Pets->pet_isActive }}</span>
+                  </a>
+                </li>
+          
               </div>
-            </div>
+              
           </div>
+          <!-- /.widget-user -->
+          
         </div>
-        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-          <div class="card bg-light d-flex flex-fill">
-            <div class="card-header text-muted border-bottom-0">
-              SOYSKIE
-            </div>
-            <div class="card-body pt-0">
-              <div class="row">
-                <div class="col-7">
-                  <h2 class="lead"><b>Soysoy</b></h2>
-                  <p class="text-muted text-sm"><b>Note: </b> NAGKASAKIT KAY WAY LABLAYP </p>
-                  <ul class="ml-4 mb-0 fa-ul text-muted">
-
-                  </ul>
-                </div>
-                
-              </div>
-            </div>
-            <div class="card-footer">
-              <div class="text-right">
-                
-                <a href="#" class="btn btn-sm btn-primary">
-                  <i class="fas fa-user"></i> update
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-          <div class="card bg-light d-flex flex-fill">
-            <div class="card-header text-muted border-bottom-0">
-              SOYSKIE
-            </div>
-            <div class="card-body pt-0">
-              <div class="row">
-                <div class="col-7">
-                  <h2 class="lead"><b>Soysoy</b></h2>
-                  <p class="text-muted text-sm"><b>Note: </b> NAGKASAKIT KAY WAY LABLAYP </p>
-                  <ul class="ml-4 mb-0 fa-ul text-muted">
-
-                  </ul>
-                </div>
-                
-              </div>
-            </div>
-            <div class="card-footer">
-              <div class="text-right">
-                
-                <a href="#" class="btn btn-sm btn-primary">
-                  <i class="fas fa-user"></i> update
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        @endforeach
+        <!-- /.col -->
+        
       </div>
-    </div>
-    <!-- /.card-body -->
-    <div class="card-footer">
-      <nav aria-label="Contacts Page Navigation">
-        <ul class="pagination justify-content-center m-0">
-          <li class="page-item active"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">4</a></li>
-
-        </ul>
-      </nav>
-    </div>
-    <!-- /.card-footer -->
-  </div>
-  <!-- /.card -->
-
-</section>
-<!-- /.content -->
+      <div class="card-footer">
+        <nav aria-label="Contacts Page Navigation">
+          <ul class="pagination justify-content-center m-0">
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+  
+          </ul>
+        </nav>
       </div>
+      <!-- /.card-footer -->
       <!-- /.row -->
 
 
