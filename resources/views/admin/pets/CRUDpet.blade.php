@@ -24,18 +24,19 @@
 
 
 <!-- Default box -->
+@if(Session::has('pets_deleted'))
+<div class="alert alert-danger"role="alert"id="messageModal">
+  {{ Session::get('pets_deleted') }}
+</div>
+@endif
+@if(Session::has('newPet'))
+<div class="alert alert-success" role="alert"id="messageModal">
+  {{ Session::get('newPet')}}
+</div>
+@endif
 <div class="card">
     <div class="card-header">
       <h3 class="card-title">Pets</h3>
-  
-      <div class="card-tools">
-        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-          <i class="fas fa-minus"></i>
-        </button>
-        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
     </div>
     <div class="card-body table-responsive p-0">
       <table class="table table-striped table-valign-middle">
@@ -45,15 +46,16 @@
           <th>ID</th>
           <th>Name</th>
           <th>Gender</th>
+          <th>Birthdate</th>
+          <th>Pet Notes</th>
+          <th>Blood Type</th>
+          <th>Pet Profile</th>
+          <th>Date of Registration </th>
           <th>Pet Type</th>
           <th>Pet Breed</th>
-          <th>Birthdate</th>
-          <th>Blood Type</th>
-          <th>Status</th>
-          <th>Date of Registration </th>
-          <th>Owner</th>
-          <th>Clinic</th>
-            
+          <th>Customer ID </th>
+          <th>Clinic ID</th>
+          <th>Status</th>            
         <th style="width: 14%" class="text-center">
                   Action
                 </th>
@@ -61,338 +63,36 @@
         </tr>
         </thead>
         <tbody>
+          @foreach ($Pet as $pet)
         <tr>
-          <td>ID</td>
-
-          <td>
-            <img src="{{asset('vendors/dist/img/askal.jpg') }}" class="img-circle img-size-32 mr-2">
-            Vincent
-       
-          </td>
-          <td>Male</td>
-          <td>
-            <small class="text-success mr-1">
-              
-            </small>
-            Askal
-          </td>
-          <td>Askal</td>
-          <td>11/15/2020</td>
-          <td>B</td>
-          <td class="project-state">
-            <span class="badge badge-success">Yes</span>
-        </td> 
-        <td>11/15/2021>
-          <td>A21</td>
-          <th>A34</td>
-          
-            <td class="project-actions">
-              <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
-                  <i class="fas fa-pencil-alt">
-                  </i>
-                  Edit
-              </a>
-              <a class="btn btn-danger btn-sm" >
-                  <i class="fas fa-trash">
-                  </i>
-                  Delete
-              </a>
-          </td> 
-        
+          <td> {{ $pet->pet_id}}</td>
+          <td> {{ $pet->pet_name}}</td>
+          <td> {{ $pet->pet_gender}}</td>
+          <td> {{ $pet->pet_birthday}}</td>
+          <td> {{ $pet->pet_notes}}</td>
+          <td> {{ $pet->pet_bloodType}}</td>
+          <td> {{ $pet->pet_DP}}</td>
+          <td> {{ $pet->pet_registeredDate}}</td>
+          <td> {{ $pet->pet_type_id}}</td>
+          <td> {{ $pet->pet_breed_id}}</td>
+          <td> {{ $pet->customer_id}}</td>
+          <td> {{ $pet->clinic_id}}</td>
+          <td> {{ $pet->pet_isActive}}</td>
+          <td class="project-actions text-right">
+              <a href="/admin/pets/CRUDeditpet/{{$pet->pet_id}}" class="btn btn-info btn-sm">
+                <i class="fas fa-pencil-alt"></i> Edit </a>
+              <a class="btn btn-danger btn-sm" href="/admin/pets/delete-pets/{{$pet->pet_id}}">
+                <i class="fas fa-trash"></i> Delete </a>
+              </td>
+            </tr>
+            @endforeach 
         </tbody>
-  
-        
       </table>
       
     </div>
   </div>
-  <!-- /.card -->
+</div>
   
-
-
-
-  {{-- View  modal  --}}
-
-  <div class="modal" id="viewModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">View Customers</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <h5>Name:   Hannah Ramirez.</h5>
-          <h5>Birthday:    12/105/1999.</h5>
-          <h5>Gender: Bayot.</h5>
-          <h5>Mobile:        09129837823.</h5>
-        </div>
-        <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  {{-- end view modal --}}
-   
-    <!-- edit Modal -->
-  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Update Pet</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-        <form action="" method="POST">
-        <div class="modal-body">
-
-          <div class="form-group">
-            <label for="exampleInputEmail1">ID</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ID">
-            
-          </div>
-
-      
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Pet Name">
-                  
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Gender</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Gender">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Pet Type</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Pet Type">
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Pet Breed</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Pet Breed">
-                </div>
-                
-                
-                <div class="form-group">
-                  <label for="date" required class="form-label">Birthdate</label>
-                  <br>
-                  <div class="">
-                  <input type="date" class="form-control" id="date" >
-                </div>
-                </div>
-                
-                
-          <div class="form-group">
-            <label for="inputStatus">Blood Type</label>
-            <select id="inputStatus" class="form-control custom-select">
-              <option selected disabled>--</option>
-              <option>A</option>
-              <option>B</option>  
-            </select>
-          </div>
-
-        
-
-          <div class="form-group">
-            <label for="inputStatus">Active</label>
-            <select id="inputStatus" class="form-control custom-select">
-              <option selected disabled>--</option>
-              <option>Yes</option>
-              <option>No</option>  
-            </select>
-
-            
-  
-            <div class="form-group">
-              <label for="date" required class="form-label">Registration Date</label>
-        
-              <div class="">
-              <input type="date" class="form-control" id="date" >
-            </div>
-            </div>
-              
-            <div class="form-group">
-            <label for="inputStatus">Owner</label>
-            <select id="inputStatus" class="form-control custom-select">
-              <option selected disabled>--</option>
-              <option>--</option>
-              <option>--</option>  
-            </select>
-            </div>
-
-
-            <div class="form-group">
-              <label for="inputStatus">Clinic</label>
-              <select id="inputStatus" class="form-control custom-select">
-                <option selected disabled>--</option>
-                <option>--</option>
-                <option>--</option>  
-              </select>
-              </div>
-  
-
-
-              <div class="form-group">
-                <label for="inputdp" > Profile Picture</label>
-                <br>
-                <form action="/action_page.php">
-              <input type="file" id="myFile" name="filename">
-      
-      
-      
-            </div>
-
-
-          </div>
-        </div>
-  
-              
-      
-    
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save Changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  {{-- end edit modal  --}}
-
-  <!-- Add Modal -->
-  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Update Pet</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-        <form action="" method="POST">
-        <div class="modal-body">
-
-
-          <div class="form-group">
-            <label for="exampleInputEmail1">ID</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ID">
-            
-          </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Pet Name">
-                  
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Gender</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Gender">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Pet Type</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Pet Type">
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Pet Breed</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Pet Breed">
-                </div>
-                
-                
-                <div class="form-group">
-                  <label for="date" required class="form-label">Birthdate</label>
-                  <br>
-                  <div class="">
-                  <input type="date" class="form-control" id="date" >
-                </div>
-                </div>
-                
-                
-          <div class="form-group">
-            <label for="inputStatus">Blood Type</label>
-            <select id="inputStatus" class="form-control custom-select">
-              <option selected disabled>--</option>
-              <option>A</option>
-              <option>B</option>  
-            </select>
-          </div>
-
-        
-
-          <div class="form-group">
-            <label for="inputStatus">Active</label>
-            <select id="inputStatus" class="form-control custom-select">
-              <option selected disabled>--</option>
-              <option>Yes</option>
-              <option>No</option>  
-            </select>
-
-            
-  
-            <div class="form-group">
-              <label for="date" required class="form-label">Registration Date</label>
-        
-              <div class="">
-              <input type="date" class="form-control" id="date" >
-            </div>
-            </div>
-              
-            <div class="form-group">
-            <label for="inputStatus">Owner</label>
-            <select id="inputStatus" class="form-control custom-select">
-              <option selected disabled>--</option>
-              <option>--</option>
-              <option>--</option>  
-            </select>
-            </div>
-
-
-            <div class="form-group">
-              <label for="inputStatus">Clinic</label>
-              <select id="inputStatus" class="form-control custom-select">
-                <option selected disabled>--</option>
-                <option>--</option>
-                <option>--</option>  
-              </select>
-              </div>
-  
-
-
-              <div class="form-group">
-                <label for="inputdp" > Profile Picture</label>
-                <br>
-                <form action="/action_page.php">
-              <input type="file" id="myFile" name="filename">
-      
-      
-      
-            </div>
-
-
-          </div>
-        </div>
-  
-              
-      
-    
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save Changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  {{-- end add modal  --}}
-      
-      
-
   </section>
   <!-- /.content -->
   </div>
