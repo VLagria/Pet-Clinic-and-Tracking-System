@@ -29,10 +29,14 @@
         </a>
       <h3 class="header">Create Pet Breed</h3>
       <br>
-    
- 
+      @if(Session::has('existing')) 
+      <div class="alert alert-error" role="alert" id="messageModal">
+       {{ Session::get('existing') }}
+     </div>
+     @endif 
+     
     <!-- Main content -->
-    <form action="{{ route('addbreed') }}" method="post">
+    <form action="{{ route('pets.addbreed') }}" method="post">
 @csrf
     <table class="table table-striped table-hover">
   <thead>
@@ -40,14 +44,11 @@
           <td>
             <div class="form-group" style="">
                 <label for="exampleInputEmail1">Pet Breed</label>
-                <input type="text" style="width: 300px" class="form-control" id="petbreed" name="type_name" value="{{ old('petbreed')}}" placeholder="Pet Breed">
+                <input type="text" style="width: 300px" class="form-control" id="petbreed" name="breed_name" value="{{ old('petbreed')}}" placeholder="Pet Breed">
                 <span class="text-danger error-text pet_breed_error">@error('petbreed'){{ $message }}@enderror</span>
             </div>
         </td>
-            <div class="form-group" style="width: 300px">
-                <input type="hidden" name="petbreed" value="3">
-              </div>
-       
+           
     </tr>
    
   </thead>

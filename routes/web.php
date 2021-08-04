@@ -3,6 +3,7 @@
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\VeterinariansController;
 use App\Http\Controllers\PetTypeController;
+use App\Http\Controllers\PetBreedController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\VeterinaryController;
 use Illuminate\Support\Facades\Route;
@@ -321,10 +322,10 @@ Route::get('/admin/pets/delete/{type_id}',[PetTypeController::class,'deleteType'
 Route::get('/veterinary/vetclinic',[PetTypeController::class,'widgetClinic']);
 // PET BREED CRUD
 Route::get('/admin/pets/CRUDpetbreed',[PetBreedController::class,'retrieveBreed']);
-Route::post('/admin/pets/CRUDaddbreed',[PetBreedController::class,'addBreed'])->name('addbreed');
+Route::post('/admin/pets/CRUDaddbreed',[PetBreedController::class,'addBreed'])->name('pets.addbreed');
 Route::get('/admin/pets/CRUDeditbreed/{breed_id}',[PetBreedController::class,'getBreedID']);
 Route::post('/admin/pets/CRUDeditbreed/{breed_id}',[PetBreedController::class,'saveBreed'])->name('savebreed');
-Route::get('/admin/pets/delete/{breed_id}',[PetBreedController::class,'deleteBreed'])->name('breed_deleted');
+Route::get('/admin/pets/delete-breed/{breed_id}',[PetBreedController::class,'deleteBreed'])->name('breed_deleted');
 
 
 });

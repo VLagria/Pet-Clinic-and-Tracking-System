@@ -4,29 +4,29 @@ namespace App\Http\Controllers;
 use App\Models\Breed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 class PetBreedController extends Controller
 {
   function addBreed(Request $request) {
-      $breed_name = $request->breed_name;
+    $breed_name= $request->breed_name;
 
-      $checkQuery = DB::table(pet_breeds)->where('breed_name','=' ,$breed_name)->first();
-      
-      if ($checkQuery) {
-          return redirect('/admin/pets/CRUDaddbreed')->with ('existing','Pet Breed is Already Exist');
+    $checkQuery = DB::table('pet_breeds')->where('breed_name','=', $breed_name)->first();
 
-      } else {
+    if ($checkQuery) {
+        return redirect('/admin/pets/CRUDaddbreed')->with('existing','Pet breed has Already Exist');
+    }else{
 
         $request->validate([
             'breed_name'=>'required',
         ]);
-            DB::table('pet_breeds')->insert([
-                'breed_name'=>$request->breed_name
-            ]);
-      }
-      return redirect('/admin/pets/CRUDpetbreed')->with('newPetbreed','Pet breed added successfully');
-  }
-    function retrieveBreed(){
+        DB::table('pet_breeds')->insert([
+            'breed_name'=>$request->breed_name
+        ]);
+        return redirect('/admin/pets/CRUDpetbreed')->with('newPetbreed','Pet breed added succesfully');
+}
+
+
+}
+      function retrieveBreed(){
         $typeBreed = DB::table('pet_breeds')->get();
 
         return view('/admin/pets/CRUDpetbreed',compact('typeBreed'));

@@ -50,9 +50,9 @@
         <thead>
         <tr>
   
-        <th scope="col" style="width:8%">ID</th>
-        <th scope="col" style="width:8%">Pet Breed</th>
-        <th scope="col" style="width:30%">Action</th>
+        <th scope="col" style="width:20%">ID</th>
+        <th scope="col" style="width:65%">Pet Breed</th>
+        <th scope="col" style="width:45%">Action</th>
           
           
         </tr>
@@ -64,14 +64,14 @@
           <td class="project-actions text-right">
               <a href="/admin/pets/CRUDeditbreed/{{$petbreed->breed_id}}" class="btn btn-info btn-sm">
                 <i class="fas fa-pencil-alt"></i> Edit </a>
-              <a class="btn btn-danger btn-sm" href="/admin/pets/delete/{{$petbreed->breed_id}}">
+              <a class="btn btn-danger btn-sm" href="/admin/pets/delete-breed/{{$petbreed->breed_id}}">
                 <i class="fas fa-trash"></i> Delete </a>
               </td>
             </tr>
             @endforeach 
         </tbody>
       </table>
-      
+      {{-- {{ $pet_breeds->links('pagination::bootstrap-4') }} --}}
     </div>  
   </div>
 </div>
@@ -115,10 +115,10 @@
            }
        });
         jQuery.ajax({
-           url: "{{ url('/admin/pets/CRUDpet') }}",
+           url: "{{ url('/admin/pets/CRUDpetbreed') }}",
            method: 'post',
            data: {
-           type_name: jQuery('#type_name').val(),
+           type_name: jQuery('#breed_name').val(),
 
            },
            success: function(result){
