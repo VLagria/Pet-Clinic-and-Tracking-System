@@ -29,19 +29,15 @@ class Customercontroller extends Controller
         ]);
         return redirect('/customer/custhome')->with('Success','Successfully Updated!');
 }
+//    function edit() {
+//         if (Auth:: user()){
+//             $user = User::find(Auth::user()->user_id);
 
-    function getProfile($user_id){
-        $getID = DB::table('user_accounts')->where('user_id','=',$user_id)->first();
-        return view('customer/custeditProfile',compact('getID'));
-    }
-    function saveProfile(Request $request,$user_id){
-        DB::table('user_accounts')
-        ->where('user_id',$breed_id)
-        ->update([
-            'user_name'=>$request->user_name,
-            'user_password'=>$request->user_password,
-            'user_mobile'=>$request->user_mobile,
-            'user_email'=>$request->user_email,
-        ]);
-        return redirect('customer/custProfile')->with('Success','Successfully Updated!');
-    }
+//             if ($user ) {
+
+//             return view ('customer/custProfile')->withUser($user);
+//             } else {
+//                 return redirect()->back();
+//             }
+//         }
+//     }
