@@ -18,11 +18,6 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
-
-
-
-
 <!-- Default box -->
 @if(Session::has('pets_deleted'))
 <div class="alert alert-danger"role="alert"id="messageModal">

@@ -1,206 +1,205 @@
 <!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Pet Clinic</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link rel="stylesheet" href="{{asset('vendors/dist/css/styles.css') }}">
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-            <div class="container px-4">
-                <a class="navbar-brand" href="#page-top">Media One Pet Clinic</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Header-->
-        <header class="bg-primary bg-gradient text-white">
-            <div class="container px-4 text-center">
-                <h1 class="fw-bolder">Media One Pet Clinic</h1>
-                <p class="lead">Your Pet , Our Care </p>
-                <a class="btn btn-lg btn-light" href="#">Set Appointment</a>
-            </div>
-        </header>
-        <!-- About section-->
-        <section id="about">
-            <div class="container px-4">
-                <div class="row gx-4 justify-content-center">
-                    <div class="col-lg-8">
-                    <p class="fs-2"><b> About This Page</b> </p>
-                    </div>
-                    <div class="col-lg-8">
-                         <!-- Control Sidebar -->
- <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-    <div class="p-6">
-    <p><i>Providing our patients with the most complete range of services and the highest quality in veterinary care has always been our top priority at MediaOne Clinic</i> </p>
-        <br>
-        <p class="fs-2"><b> Our Staffs:</b> </p>
-        <div class="card card-success">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-12 col-lg-6 col-xl-4">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Top Navigation</title>
 
-                <div class="card mb-2 bg-gradient-dark">
-                  <img class="card-img-top" src="{{ asset('vendors/dist/img/soy.jpg') }}" alt="Dist Photo 1">
-                </div>
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+ 
+  <link rel="stylesheet" href="{{asset('vendors/plugins/fontawesome-free/css/all.min.css') }}">
+  
+  <link rel="stylesheet" href="{{asset('vendors/dist/css/adminlte.min.css') }}">
+</head>
+<body class="hold-transition layout-top-nav">
+<div class="wrapper">
 
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+    <div class="container">
+      <a href="../../index3.html" class="navbar-brand">
+        <span class="brand-text font-weight-light">Hi! Hannah</span>
+      </a>
+
+      <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+            </ul>
+          </li>
+        </ul>
+
+      
+
+      <!-- Right navbar links -->
+      <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="fas fa-comments"></i>
+            
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <a href="#" class="dropdown-item">
+             
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <!-- Message Start -->
+              <div class="media">
+                <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <div class="media-body">
+                  <h3 class="dropdown-item-title">
+                    John Pierce
+                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                  </h3>
+                  <p class="text-sm">I got your message bro</p>
+                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                </div>
               </div>
-              <div class="col-md-12 col-lg-6 col-xl-4">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="{{ asset('vendors/dist/img/shayn.jpg') }}" alt="Dist Photo 2">
-                 
-                </div>
-
-              </div>
-              <div class="col-md-12 col-lg-6 col-xl-4">
-
-                <div class="card mb-2">
-                  <img class="card-img-top" src="{{ asset('vendors/dist/img/kang.jpg') }}" alt="Dist Photo 3">
-                </div>
-                
-              </div>
-                <div class="col-md-12 col-lg-6 col-xl-4">
-
-                <div class="card mb-2">
-                  <img class="card-img-top" src="{{ asset('vendors/dist/img/rus.jpg') }}" alt="Dist Photo 3">
-                </div>
-                
-              </div>
-                <div class="col-md-12 col-lg-6 col-xl-4">
-
-                <div class="card mb-2">
-                  <img class="card-img-top" src="{{ asset('vendors/dist/img/han.jpg') }}" alt="Dist Photo 3">
-                </div>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+              <!-- Message End -->
+            </a>
+            <div class="dropdown-divider"></div>
+      
+        </li>
+        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="far fa-bell"></i>
+     
+          </a>
+          
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+            <i class="fas fa-th-large"></i>
+          </a>
+        </li>
+      </ul>
     </div>
-    
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0"> Top Navigation <small>Example 3.0</small></h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Layout</a></li>
+              <li class="breadcrumb-item active">Top Navigation</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-body">
+            <!-- Profile Image -->
+         
+              <div class="card-body box-profile c">
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle"
+                  img src="{{asset('vendors/dist/img/soy.jpg')}}"
+                       alt="User profile picture">
+                </div>
+
+                <h3 class="profile-username text-center">Vincent Lagria</h3>
+
+
+                <ul class="list-group list-group-unbordered mb-3">
+                  <li class="list-group-item">
+                    <b>Mobile No:</b> <a class="float-right">1213322</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Tel No:</b> <a class="float-right">542133</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Address</b> <a class="float-right">Purok 25 Davao City</a>
+                  </li>
+                </ul>
+
+                <a href="#" class="btn btn-primary btn-block"><b>Update Profile</b></a>
+              </div>
+              <!-- /.card-body -->
+            
+              </div>
+            </div>
+
+            <div class="card card-primary card-outline">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk of the card's
+                  content.
+                </p>
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
+            </div><!-- /.card -->
+          </div>
+          
+          <!-- /.col-md-6 -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
-</div>
-                </div>
-            </div>
-        </section>
-        <!-- Services section-->
-        <section class="bg-light" id="services">
-            <div class="container px-4">
-                <div class="row gx-4 justify-content-center">
-                    <div class="col-lg-8">
-                    <p class="fs-2"><b> Services we Offer</b> </p>
-                      
-                    </div>
-                </div>
-                <div class="card card-success">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-12 col-lg-6 col-xl-4">
 
-                <div class="card mb-2 bg-gradient-dark">
-                  <img class="card-img-top" src="{{ asset('vendors/dist/img/vet1.jpg') }}" alt="Dist Photo 1">
-                </div>
-
-              </div>
-              <div class="col-md-12 col-lg-6 col-xl-4">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="{{ asset('vendors/dist/img/vet2.jpg') }}" alt="Dist Photo 2">
-                 
-                </div>
-
-              </div>
-              <div class="col-md-12 col-lg-6 col-xl-4">
-
-                <div class="card mb-2">
-                  <img class="card-img-top" src="{{ asset('vendors/dist/img/vet4.jpg') }}" alt="Dist Photo 3">
-                </div>
-                
-              </div>
-               
-                
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+    <div class="float-right d-none d-sm-inline">
+      Anything you want
     </div>
-            </div>
-        </section>
-        <!-- Contact section-->
-        <section id="contact">
-            <div class="container px-4">
-                <div class="row gx-4 justify-content-center">
-                    <div class="col-lg-8">
-                    <p class="fs-2"><b> Contact Us</b> </p>
-                    </div>
-                </div>
-                <div class="card">
-        <div class="card-body row">
-          <div class="col-5 text-center d-flex align-items-center justify-content-center">
-            <div class="">
-              <h2>MediaOne<strong>Pet Clinic</strong></h2>
-              <p class="lead mb-5">NHA Bangkal, Ground Floor Cordillera, corner Waling-Waling, Davao City, 8000<br>
-                Phone: (082) 315-1908
-              </p>
-            </div>
-          </div>
-          <div class="col-7">
-            <div class="form-group">
-              <label for="inputName">Name</label>
-              <input type="text" id="inputName" class="form-control" />
-            </div>
-            <div class="form-group">
-              <label for="inputEmail">E-Mail</label>
-              <input type="email" id="inputEmail" class="form-control" />
-            </div>
-            <div class="form-group">
-              <label for="inputSubject">Subject</label>
-              <input type="text" id="inputSubject" class="form-control" />
-            </div>
-            <div class="form-group">
-              <label for="inputMessage">Purpose</label>
-              <textarea id="inputMessage" class="form-control" rows="4"></textarea>
-            </div>
-            <div class="form-group">
-              <input type="submit" class="btn btn-primary" value="Send message">
-            </div>
-          </div>
-        </div>
-      </div>
-            </div>
-        </section>
-        
-  
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
 
 
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container px-4"><p class="m-0 text-center text-white"><strong>Copyright &copy; 2021-2022 <a href="http://mediaoneph.com">MediaOne.io</a>.</strong> All rights reserved.</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="dist/js/scripts.js"></script>
-        <script src="{{asset('vendors/src/js/script.js') }}"></script>
+<!-- jQuery -->
 
-    </body>
+<script src="{{asset('"vendors/plugins/jquery/jquery.min.js') }}"></script>
+
+<!-- Bootstrap 4 -->
+<script src="{{asset('vendors/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+<!-- AdminLTE App -->
+
+<!-- AdminLTE for demo purposes -->
+<script src="{{asset('vendors/dist/js/adminlte.min.js') }}"></script>
+
+<script src="{{asset('vendors/dist/js/demo.js') }}"></script>
+</body>
 </html>
-
-

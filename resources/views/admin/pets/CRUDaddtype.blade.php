@@ -33,6 +33,11 @@
       <h3 class="header">Create Pet Type</h3>
       <br>
     
+      @if(Session::has('existing')) 
+      <div class="alert alert-error" role="alert">
+       {{ Session::get('existing') }}
+     </div>
+     @endif 
  
     <!-- Main content -->
     <form action="{{ route('addtype') }}" method="post">
@@ -48,7 +53,7 @@
             </div>
         </td>
             <div class="form-group" style="width: 300px">
-                <input type="hidden" name="pettype" value="3">
+                <input type="hidden" name="pettype">
               </div>
        
     </tr>

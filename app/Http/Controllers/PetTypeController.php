@@ -24,8 +24,12 @@ function addType(Request $request){
         ]);
         return redirect('/admin/pets/CRUDpettype')->with('newPettype','Pet type added succesfully');
 }
+<<<<<<< Updated upstream
 
 
+=======
+   return redirect('/admin/pets/CRUDpettype')->with('newPettype','Pet type added succesfully');
+>>>>>>> Stashed changes
 }
 
     function retrieveType(){
@@ -41,7 +45,6 @@ function addType(Request $request){
         return view('/admin/pets/CRUDedittype',compact('getID'));
     }
 
-
     function saveType(Request $request,$type_id){
 
         DB::table('pet_types')
@@ -53,7 +56,7 @@ function addType(Request $request){
     }
     function deleteType($type_id){
         DB::table('pet_types')->where('type_id', $type_id)->delete();
-        return redirect('/admin/pets/CRUDpettype')->with('type_deleted','Sucessfully Deleted!!!!!');
+        return redirect('/admin/pets/CRUDpettype')->with('type_deleted','Sucessfully Deleted!');
 
     }
 

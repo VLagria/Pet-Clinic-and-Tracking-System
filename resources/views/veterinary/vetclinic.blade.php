@@ -59,9 +59,6 @@
       </div>
       @endforeach
       <!-- /.col -->
-
-
-
     </div>
     <!-- /.row -->
 
