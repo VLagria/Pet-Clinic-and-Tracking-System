@@ -22,9 +22,8 @@ function addType(Request $request){
         DB::table('pet_types')->insert([
             'type_name'=>$request->type_name
         ]);
-
+        return redirect('/admin/pets/CRUDpettype')->with('newPettype','Pet type added succesfully');
 }
-   return redirect('/admin/pets/CRUDpettype')->with('newPettype','Pet type added succesfully');
 
 
 }

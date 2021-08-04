@@ -1,4 +1,3 @@
-
 @extends('layoutsadmin.app')
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -20,42 +19,36 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
-   
-<!-- Default box -->
+   <!-- Default box -->
 <div class="card">
     <div class="card-header">
-        <a class="btn btn-error btn-sm" href="/admin/pets/CRUDpettype">
+        <a class="btn btn-error btn-sm" href="/admin/pets/CRUDpetbreed">
             <i class="fas fa-arrow-left">
             </i>
             Return
         </a>
-      <h3 class="header">Create Pet Type</h3>
+      <h3 class="header">Create Pet Breed</h3>
       <br>
-    
       @if(Session::has('existing')) 
-      <div class="alert alert-error" role="alert">
+      <div class="alert alert-error" role="alert" id="messageModal">
        {{ Session::get('existing') }}
      </div>
      @endif 
- 
+     
     <!-- Main content -->
-    <form action="{{ route('addtype') }}" method="post">
+    <form action="{{ route('pets.addbreed') }}" method="post">
 @csrf
     <table class="table table-striped table-hover">
   <thead>
     <tr>
           <td>
             <div class="form-group" style="">
-                <label for="exampleInputEmail1">Pet Type</label>
-                <input type="text" style="width: 300px" class="form-control" id="pettype" name="type_name" value="{{ old('pettype')}}" placeholder="Pet Type">
-                <span class="text-danger error-text pet_type_error">@error('pettype'){{ $message }}@enderror</span>
+                <label for="exampleInputEmail1">Pet Breed</label>
+                <input type="text" style="width: 300px" class="form-control" id="petbreed" name="breed_name" value="{{ old('petbreed')}}" placeholder="Pet Breed">
+                <span class="text-danger error-text pet_breed_error">@error('petbreed'){{ $message }}@enderror</span>
             </div>
         </td>
-            <div class="form-group" style="width: 300px">
-                <input type="hidden" name="pettype">
-              </div>
-       
+           
     </tr>
    
   </thead>
@@ -70,34 +63,10 @@
 </form>   
 
 </div>
-{{-- View  modal  --}}
-{{-- 
-  <div class="modal" id="viewModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">View Clinic</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <h5>Clinic Name: Hannah Ramirez.</h5>
-          <h5>Gender: male.</h5>
-          <h5>Birthday: 09-15-2000.</h5>
-          <h5>Notes: Vincent Lagria.</h5>
-          <h5>Bloodtype: A</h5>
-          <h5>Registered Date: 06-14-2021</h5>
-        </div>
-        <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div> --}}
- 
 
-<!-- REQUIRED SCRIPTS -->
+
+
+
 
 <!-- jQuery -->
 <script src="../../plugins/jquery/jquery.min.js"></script>
@@ -107,4 +76,4 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-@endsection
+@endsection 

@@ -38,12 +38,23 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+
+               <li class="nav-item">
+                <a href="custprofile" class="nav-link">
+                  <i class="nav-icon fas fa-user"></i>
+                  <p>
+                  Profile
+                  </p>
+                </a>
+              </li>
+
+
                <li class="nav-item">
 
                 <a href="custhome" class="nav-link">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <i class="nav-icon fas fa-paw"></i>
                   <p>
-                   Dashboard
+                   Pets
                   </p>
                 </a>
               </li>
@@ -53,48 +64,24 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-               <li class="nav-item">
-                <a href="custVet" class="nav-link">
-                <i class="nav-icon fas fa-ambulance"></i>
-                  <p>
-                   Veterinary
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="custpet" class="nav-link">
-                  <i class="nav-icon fas fa-paw"></i>
-                  <p>
-                   Patients
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-calendar-alt"></i>
-                  <p>
-                   Appointment
-                  </p>
-                </a>
-              </li>
+              
+             
+             
 
-              <li class="nav-item">
-                <a href="contactus" class="nav-link">
-              <i class="nav-icon fas fa-address-book"></i>
-                  <p>
-                   Contact Us
-                  </p>
-                </a>
-              </li>
-
+            
+              
               <li class="nav-item">
                 <a href="custprofile" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
                   <p>
-                  Account Settings
+                 Account Settings
                   </p>
                 </a>
               </li>
+
+              
+
+
 
               
               <br>

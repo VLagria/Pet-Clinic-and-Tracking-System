@@ -44,6 +44,18 @@
     {{ Session::get('newPettype') }}
   </div>
   @endif 
+
+  @if(Session::has('Success')) 
+  <div class="alert alert-success" role="alert" id="messageModal">
+   {{ Session::get('Success') }}
+ </div>
+ @endif 
+
+
+  
+
+
+
 <div class="card">
     <div class="card-header">
       <h3 class="card-title">Pets</h3>
@@ -104,50 +116,18 @@
                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
                crossorigin="anonymous">
       </script>
-      <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+<script src="../../plugins/jquery/jquery.min.js"></script>
+
 <script>
-  $("document").ready(function() {
-    setTimeout(function() {
+  $("document").ready(function(){
+    setTimeout(function(){
       $("#messageModal").remove();
-    }, 2000);
+    }, 3000 );
   });
-</script> 
-<script>
-  jQuery(document).ready(function(){
-     jQuery('#addSubmit').click(function(e){
-        e.preventDefault();
-        $.ajaxSetup({
-           headers: {
-               'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-           }
-       });
-        jQuery.ajax({
-           url: "{{ url('/admin/pets/CRUDpettype') }}",
-           method: 'post',
-           data: {
-           type_name: jQuery('#type_name').val(),
-
-           },
-           success: function(result){
-             if(result.errors)
-             {
-               jQuery('.alert-danger').html('');
-
-               jQuery.each(result.errors, function(key, value){
-                 jQuery('.alert-danger').show();
-                 jQuery('.alert-danger').append('<li>'+value+'</li>');
-               });
-             }
-             else
-             {
-               jQuery('.alert-danger').hide();
-               $('#open').hide();
-               $('#myModal').modal('hide');
-             }
-           }});
-        });
-     });
 </script>
 
 

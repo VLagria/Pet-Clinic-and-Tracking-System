@@ -2,9 +2,13 @@
 
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\VeterinariansController;
+use App\Http\Controllers\PetsController;
 use App\Http\Controllers\PetTypeController;
+use App\Http\Controllers\PetBreedController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\VeterinaryController;
+use App\Http\Controllers\Customercontroller;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -308,6 +312,16 @@ Route::POST('/admin/vet/editVet/saveUpdate/{vet_id}',[VeterinaryController::clas
 Route::get('admin/pets/CRUDaddtype',function() {
     return view('/admin/pets/CRUDaddtype');
 });
+Route::get('admin/pets/CRUDaddbreed',function() {
+    return view('/admin/pets/CRUDaddbreed');
+});
+
+// PETSSS CRUD
+Route::get('/admin/pets/CRUDpet',[PetsController::class,'retrievePet']);
+Route::get('/admin/pets/CRUDeditpet/{pet_id}',[PetsController::class,'getPetID']);
+Route::post('/admin/pets/CRUDeditbreed/{pet_id}',[PetsController::class,'savePet'])->name('savepet');
+Route::get('/admin/pets/delete-pets/{pet_id}',[PetsController::class,'deleteBreed'])->name('pet_deleted');
+
 
 // PET CRUD
 
@@ -317,7 +331,16 @@ Route::get('/admin/pets/CRUDedittype/{type_id}',[PetTypeController::class,'getTy
 Route::post('/admin/pets/CRUDedittype/{type_id}',[PetTypeController::class,'saveType'])->name('savetype');
 Route::get('/admin/pets/delete/{type_id}',[PetTypeController::class,'deleteType'])->name('deletetype');
 Route::get('/veterinary/vetclinic',[PetTypeController::class,'widgetClinic']);
+// PET BREED CRUD
+Route::get('/admin/pets/CRUDpetbreed',[PetBreedController::class,'retrieveBreed']);
+Route::post('/admin/pets/CRUDaddbreed',[PetBreedController::class,'addBreed'])->name('pets.addbreed');
+Route::get('/admin/pets/CRUDeditbreed/{breed_id}',[PetBreedController::class,'getBreedID']);
+Route::post('/admin/pets/CRUDeditbreed/{breed_id}',[PetBreedController::class,'saveBreed'])->name('savebreed');
+Route::get('/admin/pets/delete-breed/{breed_id}',[PetBreedController::class,'deleteBreed'])->name('breed_deleted');
 
+//PET CRUD
+
+<<<<<<< HEAD
 
 Route::get('/admin/customer/CRUDcustomers',[VeterinaryController::class, 'getAllCustomer'])->name('vet.getallcustomer');
 
@@ -331,5 +354,9 @@ Route::get('/admin/customer/viewPatient/{customer_id}',[VeterinaryController::cl
 Route::get('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'veteditcustomerID']);
 
 Route::post('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'saveCustomer'])->name('vet.savecust');
+=======
+Route::get('/customer/custhome',[Customercontroller::class,'widgetPets']);
+Route::get('/customer/custhome{pet_id}',[Customercontroller::class,'getPetID']);
+>>>>>>> a02d2894adc887fc6b7a8a9e5cabf57566e5bbe2
 });
 
