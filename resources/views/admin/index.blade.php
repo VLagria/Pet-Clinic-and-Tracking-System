@@ -78,7 +78,7 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>150</h3>
+                  <h3>{{$countVeterinarians}}</h3>
   
                   <p>Veterinarians</p>
                 </div>
@@ -93,7 +93,7 @@
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px"></sup></h3>
+                  <h3>{{ $countPet }}<sup style="font-size: 20px"></sup></h3>
   
                   <p>Pets</p>
                 </div>
@@ -108,7 +108,7 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>44</h3>
+                  <h3>{{$countCustomers}}</h3>
   
                   <p>Customers</p>
                 </div>
@@ -123,7 +123,7 @@
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>65</h3>
+                  <h3>{{ $countClinic }}</h3>
   
                   <p>Clinic</p>
                 </div>

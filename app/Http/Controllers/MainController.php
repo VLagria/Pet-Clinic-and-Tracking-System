@@ -367,6 +367,13 @@ class MainController extends Controller
 
         return view('veterinary/viewvetcustomer', compact('customers','users','pet_clinics','pet_breeds', 'pet_types'));
     }
+    public function countData(){
+        $countVeterinarians = DB::table('veterinary')->count();
+        $countPet = DB::table('pets')->count();
+        $countCustomers = DB::table('customers')->count();
+        $countClinic = DB::table('clinic')->count();
+        return view('/admin/index', compact('countVeterinarians','countPet','countCustomers','countClinic'));
+    }
 
     public function custSearch(Request $request){
         $search = $request->get('custsearch');
