@@ -178,7 +178,7 @@
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-        <a class="btn btn-error btn-sm" href="/veterinary/user">
+        <a class="btn btn-error btn-sm" href="/veterinary/viewvetcustomer">
             <i class="fas fa-arrow-left">
             </i>
             Return
