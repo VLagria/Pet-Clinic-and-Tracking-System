@@ -71,7 +71,7 @@
             
               
               <li class="nav-item">
-                <a href="custprofile" class="nav-link">
+                <a href="custAcc" class="nav-link" class="active">
                   <i class="nav-icon fas fa-user"></i>
                   <p>
                  Account Settings

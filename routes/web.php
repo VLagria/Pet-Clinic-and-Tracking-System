@@ -323,6 +323,13 @@ Route::get('/customer/custProfile',function() {
 Route::get('/customer/custeditProfile',function() {
     return view('/customer/custeditProfile');
 });
+Route::get('/customer/custAcc',function() {
+    return view('/customer/custAcc');
+});
+// Route::get('/customer/custProfile/{user_id}',[Customercontroller::class, 'usereditcustomerID']);
+
+
+
 
 
 // PETSSS CRUD
