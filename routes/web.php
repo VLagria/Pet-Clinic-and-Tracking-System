@@ -366,5 +366,7 @@ Route::get('/customer/custhome',[Customercontroller::class,'widgetPets']);
 Route::get('/customer/custhome{pet_id}',[Customercontroller::class,'getPetID']);
 Route::get('customer/custProfile{user_id}',[Customercontroller::class,'retrieveProfile']);
 
+Route::get('/admin/clinic/CRUDclinic/delete/{clinic_id}',[MainController::class, 'deleteClinic'])->name('post.deleteclinic');
+
 });
 

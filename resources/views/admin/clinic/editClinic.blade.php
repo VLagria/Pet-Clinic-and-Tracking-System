@@ -2,6 +2,48 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
 
+<script src="../lib/jquery.js"></script>
+<script src="https://jqueryvalidation.org/files/lib/jquery-1.11.1.js"></script>
+<script src="../dist/jquery.validate.js"></script>
+
+<script>
+  $().ready(function() {
+    // validate signup form on keyup and submit
+    $("#editClinicForm").validate({
+      rules: {
+        clinic_name: { required: true, minlength: 2 },
+        owner_name: { required: true},
+        clinic_mobile: { required: true, minlength: 9 },
+        clinic_tel: { required: true },
+        clinic_email: { required: true, email: true },
+        clinic_blk: { required: true},
+        clinic_street: { required: true},
+        clinic_barangay: { required: true},
+        clinic_city: { required: true},
+        clinic_zip: { required: true, minlength: 4 }},
+      messages: {
+        clinic_name: { required: "Please provide Clinic Name", minlength: "Your clinic must consist of at least 2 characters"},
+        owner_name: { required: "Please provide Clinic owner name"},
+        clinic_mobile: { required: "Please provide Mobile No.", minlength: "Your Mobile No. must be at least 9 characters long" },
+        clinic_tel: { required: "Please provide Tel No."},
+        clinic_blk: { required: "Please provide Address"},
+        clinic_street: { required: "Please provide Address"},
+        clinic_barangay: { required: "Please provide Address"},
+        clinic_city: { required: "Please provide City Address"},
+        clinic_zip: { required: "Please provide ZIP address", minlength: "ZIP address must be at least 4 characters long" },
+        clinic_email: { email: "Please enter a valid email address", required: "please provide email"}
+      }
+    });
+  });
+  </script>
+
+  <style>
+    label.error{
+      color: #dc3545;
+      font-size: 14px;
+    }
+  </style>
+
 @section('content') 
 
 <div class="content-wrapper">
@@ -30,6 +72,12 @@
     </div> 
   @endif 
 
+  @if(Session::has('fail')) 
+    <div class="alert alert-warning" id="messageModal" role="alert">
+      {{ Session::get('fail') }}
+    </div> 
+    @endif
+
   <div class="card">
     <div class="card-header">
       <a class="btn btn-error btn-sm" href="/admin/clinic/CRUDclinic">
@@ -40,7 +88,7 @@
         <h3>Edit Clinic</h3>
       </div>
 
-      <form action="/admin/clinic/editClinic/{{ $clinics->clinic_id }}" method="POST"> 
+      <form action="/admin/clinic/editClinic/{{$clinics->clinic_id}}" method="POST" id="editClinicForm"> 
         @csrf 
         <table class="table table-striped table-hover">
         <thead>
@@ -49,25 +97,18 @@
               <td>
                 <label>Clinic Name: </label>
                 <input type="text" class="form-control form-control-lg" name="clinic_name" id="clinic_name" placeholder="Enter Clinic Name" style="width: 300px" value="{{$clinics->clinic_name}}">
-                <span class="text-danger error-text customer_fname_error">
-                    @error('clinic_name')
-                        {{ $message }}
-                    @enderror
-                </span>
               </td>
             </div>
             <div class="form-group">
               <td>
                 <label>Owner Name: </label>
                 <input type="text" class="form-control form-control-lg" name="owner_name" id="owner_name" placeholder="Enter Owner Name" style="width: 300px" value="{{$clinics->owner_name}}">
-                <span class="text-danger error-text customer_fname_error">@error('owner_name'){{ $message }}@enderror</span>
               </td>
             </div>
             <div class="form-group">
               <td>
                 <label>Mobile No: </label>
                 <input type="number" class="form-control form-control-lg" name="clinic_mobile" id="clinic_mobile" placeholder="Enter Mobile No" style="width: 300px" value="{{$clinics->clinic_mobile}}">
-                <span class="text-danger error-text customer_fname_error">@error('user_mobile'){{ $message }}@enderror</span>
               </td>
             </div>
           </tr>
@@ -76,7 +117,6 @@
               <div class="form-group">
                 <label>Telephone: </label>
                 <input type="number" class="form-control form-control-lg" name="clinic_tel" id="clinic_tel" placeholder="Enter Telephone" value="{{$clinics->clinic_tel}}">
-                <span class="text-danger error-text customer_fname_error">@error('user_email'){{ $message }}@enderror</span>
               </div>
             </td>
             <td>

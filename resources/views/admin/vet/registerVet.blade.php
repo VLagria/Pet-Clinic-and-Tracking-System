@@ -172,7 +172,7 @@
             <td>
                 <div class="form-group">
                     <label>Mobile:</label>
-                    <input type="number" class="form-control" style="width: 300px" id="vet_mobile" name="vet_mobile" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                    <input type="text" class="form-control" style="width: 300px" id="vet_mobile" name="vet_mobile" aria-describedby="emailHelp" placeholder="Enter Mobile No">
                     <span class="text-danger error-text customer_mobile_error">@error('vet_mobile'){{ $message }}@enderror</span>
                 </div>
             </td>

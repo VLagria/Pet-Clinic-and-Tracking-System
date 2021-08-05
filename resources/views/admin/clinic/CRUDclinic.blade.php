@@ -30,6 +30,19 @@
       {{ Session::get('clinic_updated') }}
     </div> 
   @endif
+
+  @if(Session::has('clinic_deleted')) 
+    <div class="alert alert-danger" id="messageModal" data-toggle="modal" role="alert">
+      {{ Session::get('clinic_deleted') }}
+    </div> 
+  @endif
+
+  @if(Session::has('clinicDeleteFail')) 
+    <div class="alert alert-danger" id="messageModal" data-toggle="modal" role="alert">
+      {{ Session::get('clinicDeleteFail') }}
+    </div> 
+  @endif
+
 <div class="card">
     <div class="card-header">
       <h3 class="card-title">Clinic</h3>
@@ -107,7 +120,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action=" " method="GET">
+            <form action="/admin/clinic/CRUDclinic/delete/{{ $cAccounts->clinic_id }}" method="GET">
                 {{ csrf_field() }}
                 <div class="modal-body">
                     <h3>Confirm deletion of Clinic?</h3>

@@ -122,15 +122,17 @@
         <span class="text-danger error-text customer_fname_error" id="messageModal">@error('user_email'){{ $message }}@enderror</span>
       </tr>
     </div>
-    <div class="form-group">
+
+    @foreach($userOptions as $user_types)
+      @if($users->userType_id == $user_types->userType_id)
+    <div class="form-group feet">
       <tr>
-        <label for="inputStatus">Usertype:</label>
-        <br>
-        <select disabled name="userType_id" name="userType_id" style="width: 300px" class="form-control custom-select border border-info bg bg-light rounded">
-          <option value="1" selected >ADMIN</option>
-        </select>
+        <label>Usertype: </label>
+        <input style="width: 300px" name="userType_id" id="userType_id" class="form-control border border-info bg bg-light rounded" placeholder="Enter Email" value="{{ $user_types->userType_name }}" disabled>
       </tr>
     </div>
+      @endif
+    @endforeach
   </div>
   <br>
   </td>

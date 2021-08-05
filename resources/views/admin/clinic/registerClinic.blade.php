@@ -8,41 +8,31 @@
 
 
 <script>
-
   $().ready(function() {
-
     // validate signup form on keyup and submit
-    $("#regForm").validate({
+    $("#addClinicForm").validate({
       rules: {
-        clinic_name: {
-          required: true,
-          minlength: 2
-        },
-        user_mobile: {
-          required: true,
-        },
-        user_password: {
-          required: true,
-          minlength: 5
-        },
-        user_email: {
-          required: true,
-          email: true
-        }
-      },
+        clinic_name: { required: true, minlength: 2 },
+        owner_name: { required: true},
+        clinic_mobile: { required: true, minlength: 9 },
+        clinic_tel: { required: true },
+        clinic_email: { required: true, email: true },
+        clinic_blk: { required: true},
+        clinic_street: { required: true},
+        clinic_barangay: { required: true},
+        clinic_city: { required: true},
+        clinic_zip: { required: true, minlength: 4 }},
       messages: {
-        user_name: {
-          required: "Please enter a username",
-          minlength: "Your username must consist of at least 2 characters"
-        },
-        user_mobile: {
-          required: "Please provide a mobile #"
-        },
-        user_password: {
-          required: "Please provide a password",
-          minlength: "Your password must be at least 5 characters long"
-        },
-        user_email: "Please enter a valid email address"
+        clinic_name: { required: "Please provide Clinic Name", minlength: "Your clinic must consist of at least 2 characters"},
+        owner_name: { required: "Please provide Clinic owner name"},
+        clinic_mobile: { required: "Please provide Mobile No.", minlength: "Your Mobile No. must be at least 9 characters long" },
+        clinic_tel: { required: "Please provide Tel No."},
+        clinic_blk: { required: "Please provide Address"},
+        clinic_street: { required: "Please provide Address"},
+        clinic_barangay: { required: "Please provide Address"},
+        clinic_city: { required: "Please provide City Address"},
+        clinic_zip: { required: "Please provide ZIP address", minlength: "ZIP address must be at least 4 characters long" },
+        clinic_email: { email: "Please enter a valid email address", required: "please provide email"}
       }
     });
   });
@@ -94,7 +84,7 @@
         <h3>Register Clinic</h3>
       </div>
 
-      <form action="{{ route('clin.addclinicsubmit') }}" method="POST"> 
+      <form action="{{ route('clin.addclinicsubmit') }}" method="POST" id="addClinicForm"> 
         @csrf 
         <table class="table table-striped table-hover">
         <thead>

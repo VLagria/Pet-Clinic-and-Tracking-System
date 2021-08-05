@@ -9,6 +9,10 @@
         <div class="row mb-2">
           <div class="col-sm-6">
         
+  <div class="float-left">
+      <a class="btn btn-success btn-lg" style="margin-right: 50px;" href="/admin/users/registerUser">
+                <i class="fas fa-user"></i> Create User </a>
+    </div>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -39,7 +43,7 @@
     </div> 
     @endif
 
-  
+
 
 <div class="card">
     <div class="card-header">
@@ -223,11 +227,7 @@
   </div>
 
   <!-- /.card -->
-  <div class="float-right">
-      <a class="btn btn-success btn-lg" style="margin-right: 50px;" href="/admin/users/registerUser">
-                <i class="fas fa-user"></i> Create User </a>
-    </div>
-
+  
       {{ $userTypes_name->links('pagination::bootstrap-4') }}
 
 

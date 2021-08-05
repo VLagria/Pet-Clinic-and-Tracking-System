@@ -181,8 +181,36 @@ class MainController extends Controller
     }
 
     public function editClinicSubmit(Request $request, $clinic_id){
-        DB::table('clinic')
-            ->where('clinic_id', '=',$clinic_id)
+        $clic_name = $request->clinic_name;
+        $owner_name = $request->owner_name;
+        $clinic_mobile = $request->clinic_mobile;
+        $clinic_tel = $request->clinic_tel;
+        $clinic_email = $request->clinic_email;
+        $clinic_blk = $request->clinic_blk;
+        $clinic_street = $request->clinic_street;
+        $clinic_barangay = $request->clinic_barangay;
+        $clinic_city = $request->clinic_city;
+        $clinic_zip = $request->clinic_zip;
+        $clinic_isActive = $request->clinic_isActive;
+
+        $checkClinicQuery = DB::table('clinic')
+            ->where('clinic_name', '=', $clic_name)
+            ->where('owner_name', '=', $owner_name)
+            ->where('clinic_mobile', '=', $clinic_mobile)
+            ->where('clinic_tel', '=', $clinic_tel)
+            ->where('clinic_email', '=', $clinic_email)
+            ->where('clinic_blk', '=', $clinic_blk)
+            ->where('clinic_street', '=', $clinic_street)
+            ->where('clinic_barangay', '=', $clinic_barangay)
+            ->where('clinic_city', '=', $clinic_city)
+            ->where('clinic_zip', '=', $clinic_zip)
+            ->where('clinic_isActive', '=', $clinic_isActive)->first();
+
+            if ($checkClinicQuery) {
+                return back()->with('fail', 'No changes / all are the same');
+            }else{
+                DB::table('clinic')
+            ->where('clinic_id', '=', $clinic_id)
             ->update(array(
             'clinic_name' => $request->clinic_name,
             'owner_name' => $request->owner_name,
@@ -196,23 +224,22 @@ class MainController extends Controller
             'clinic_zip' => $request->clinic_zip,
             'clinic_isActive' => $request->clinic_isActive
         ));
+        }
+
             return redirect('/admin/clinic/CRUDclinic')->with('clinic_updated','Clinic has been successfully Updated');
         }
 
     public function editUserDetails(Request $request){
-
         $username = $request->user_name;
         $password = $request->user_password;
         $mobile = $request->user_mobile;
         $email = $request->user_email;
-        $usertype = $request->userType_id;
 
         $checkQuery = DB::table('user_accounts')
                 ->where('user_name','=', $username)
                 ->where('user_password','=', $password)
                 ->where('user_mobile','=', $mobile)
-                ->where('user_email','=', $email)
-                ->where('userType_id','=', $usertype)->first();
+                ->where('user_email','=', $email)->first();
         if ($checkQuery) {
             return back()->with('fail', 'No changes / all are the same');
         }else{
@@ -223,8 +250,7 @@ class MainController extends Controller
             'user_name' => $request -> user_name,
             'user_password' => $request -> user_password,
             'user_mobile' => $request -> user_mobile,
-            'user_email' => $request -> user_email,
-            'userType_id' => $request -> userType_id
+            'user_email' => $request -> user_email
         ));
 }
         // return redirect('/admin/users/CRUDusers/')->with('user_updated', true);
@@ -233,7 +259,10 @@ class MainController extends Controller
 
     function getUsers($user_id){
         $users = DB::table('user_accounts')->where('user_id','=', $user_id)->first();
-        return view('admin.users.editUser', compact('users'));
+
+        $userOptions = DB::table('usertypes')->get();
+
+        return view('admin.users.editUser', compact('users','userOptions'));
     }
 
     function editClinic($clinic_id){
@@ -272,18 +301,43 @@ class MainController extends Controller
     }
 
     final function deleteUsers($user_id){
-        $custQuery = DB::table('customers')->where('user_id', $user_id)->first();
-        $vetQuery = DB::table('veterinary')->where('user_id', $user_id)->first();
-        $adminQuery = DB::table('user_accounts')->where('user_id', $user_id)->first();
-        if (!$custQuery) {
-            return back()->with('deleteFail','Account is registered. Cannot be deleted.');
-        }elseif(!$vetQuery){
-            return back()->with('deleteFail','Account is registered. Cannot be deleted.');
-        }elseif(!$adminQuery){
+        $getType = DB::table('user_accounts')->where('user_id', $user_id)->pluck('userType_id')->first();
+        $custID = DB::table('customers')->where('user_id', $user_id)->pluck('customer_id')->first();
+        $custQuery = DB::table('pets')->where('customer_id', $custID)->first();
+        $countAdmin = DB::table('user_accounts')->select(DB::raw('COUNT(*) as count'))->where('userType_id', 1)->pluck('count')->first();
+
+        if ($custQuery) {
+            return back()->with('deleteFail', 'Customer has pets. Cannot be deleted.');
+        }else{
+            if ($getType = 3) {
+                DB::table('customers')->where('user_id', $user_id)->delete();
+                DB::table('user_accounts')->where('user_id', $user_id)->delete();
+            }elseif($getType = 2){
+                DB::table('veterinary')->where('user_id', $user_id)->delete();
+                DB::table('user_accounts')->where('user_id', $user_id)->delete();
+            }else{
+                if ($countAdmin>1) {
+                    DB::table('user_accounts')->where('user_id', $user_id)->delete();
+                }else{
+                    return back()->with('deleteFail2','Need 1 Administrator.');
+                }
+            }
         }
+                
+                return back()->with('user_deleted','user successfully deleted');
+            }
+
         
-            DB::table('user_accounts')->where('user_id', $user_id)->delete();
-            return back()->with('user_deleted','user successfully deleted');
+    final function deleteClinic($clinic_id){
+        $clinicID = DB::table('veterinary')->where('clinic_id', $clinic_id)->pluck('clinic_id')->first();
+        $clinicQuery = DB::table('veterinary')->where('clinic_id', $clinicID)->first();
+
+        if($clinicQuery){
+            return back()->with('clinicDeleteFail', 'Clinic contains Veterinarians');
+        }else{
+            DB::table('clinic')->where('clinic_id', $clinic_id)->delete();
+            return back()->with('clinic_deleted','clinic successfully deleted');
+        }
     }
 
     final function deleteCustomer($customer_id){
@@ -378,6 +432,7 @@ class MainController extends Controller
         -> where('customer_fname', 'like', '%'.$search.'%')->paginate('5');
         return view('veterinary.viewvetcustomer', compact('customers'));
     }
+
 }
 
 
