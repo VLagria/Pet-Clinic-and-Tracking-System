@@ -2,7 +2,102 @@
 @extends('layoutsvet.app')
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://jqueryvalidation.org/files/lib/jquery.js"></script>
+<script src="https://jqueryvalidation.org/files/lib/jquery-1.11.1.js"></script>
+<script src="https://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
 
+
+<script>
+
+    $().ready(function() {
+
+        $("#editPet").validate({
+            rules: {
+                pet_name: {
+                    required: true
+                },
+                pet_gender:{
+                    required: true
+                },
+                pet_type_id:{
+                    required: true
+                },
+                pet_breed_id: {
+                    required: true
+                },
+                pet_bloodType: {
+                    required: true
+                },
+                pet_registeredDate: {
+                    required: true,
+                    date: true
+                },
+                pet_birthday: {
+                    required: true,
+                    date: true
+                },
+                customer_name: {
+                    required: true
+                },
+                pet_notes: {
+                    required: true
+                },
+                clinic_id: {
+                    required: true
+                },
+                pet_isActive: {
+                    required: true
+                }
+            },
+            messages: {
+                pet_name: {
+                    required: "Pet name is required"
+         
+                },
+                pet_gender: {
+                    required: "Gender is required"
+                },
+                pet_type_id: {
+                    required: "Pet type is required"
+                },
+                pet_breed_id: {
+                    required: "Breed is required"
+                },
+                pet_bloodType: {
+                    required: "Bloodtype is required"
+                },
+                pet_registeredDate: {
+                    required:  "Register date is required",
+                    date: "Please enter a date"
+                },
+                pet_birthday: {
+                    required:  "Birthday is required",
+                    date: "Please enter a date"
+                },
+                customer_name: {
+                    required: "Phone number is required"
+                },
+                pet_notes: {
+                    required: "Notes is required"
+                },
+                clinic_id: {
+                    required: "Clinic is required"
+                },
+                pet_isActive: {
+                    required: "Status is required"
+                }
+
+            }
+        });
+    });
+</script>
+<style>
+    label.error{
+        color: #dc3545;
+        font-size: 14px;
+    }
+</style>
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -35,23 +130,23 @@
 
 
     <!-- Main content -->
-    <form action="/veterinary/vieweditpatient-save/{{ $editPet->pet_id }}" method="post">
+    <form action="/veterinary/vieweditpatient-save/{{ $editPet->pet_id }}" method="post" class="cmxform" id="editPet">
 @csrf
     <table class="table table-striped table-hover">
   <thead>
     <tr>
         <td >
             <div class="form-group" style="width: 300px">
-                <label for="exampleInputEmail1">Pet Name</label>
-                <input type="name" class="form-control" value="{{ $editPet->pet_name }}" name="pet_name" placeholder="Enter Pet Name">
+                <label for="pet_name">Pet Name</label>
+                <input type="name" class="form-control" value="{{ $editPet->pet_name }}" name="pet_name" placeholder="Enter Pet Name" id="pet_name">
                 <span class="text-danger error-text customer_fname_error">@error('pet_name'){{ $message }}@enderror</span>
             </div>
         </td>
 
             <td >
                 <div class="form-group" style="width: 300px">
-                    <label for="inputGender">Gender</label>
-                      <select id="inputStatus" class="form-control custom-select" name="pet_gender">
+                    <label for="pet_gender">Gender</label>
+                      <select id="pet_gender" class="form-control custom-select" name="pet_gender">
                        @if ($editPet->pet_gender == "Male")
 
                        <option value="Male" selected>Male</option>
@@ -70,8 +165,8 @@
 
             <td>
                 <div class="form-group" style="width: 300px">
-                    <label for="inputType">Type</label>
-                    <select id="inputType" class="form-control custom-select" name="pet_type_id">
+                    <label for="pet_type_id">Type</label>
+                    <select id="pet_type_id" class="form-control custom-select" name="pet_type_id">
                        @foreach ($getTypePet as $type) 
                        @if ($type->type_id == $editPet->pet_type_id )
                        <option value="{{ $type->type_id }}" selected>{{ $type->type_name }}</option> 
@@ -86,8 +181,8 @@
             </td>
             <td>
                 <div class="form-group" style="width: 300px">
-                    <label for="inputBreed">Breed</label>
-                    <select id="inputBreed" class="form-control custom-select" name="pet_breed_id">
+                    <label for="pet_breed_id">Breed</label>
+                    <select id="pet_breed_id" class="form-control custom-select" name="pet_breed_id">
                      @foreach ($getBreedPet as $breed) 
                      @if ($breed->breed_id == $editPet->pet_breed_id)
                      <option value="{{ $breed->breed_id }}" selected>{{ $breed->breed_name }}</option>   
@@ -107,32 +202,32 @@
     <tr>
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="inputBloodtype" class="form-label"> BloodType</label>
-                <input type="text" class="form-control" value="{{ $editPet->pet_bloodType }}" name="pet_bloodType" placeholder="Optional">
+                <label for="pet_bloodType" class="form-label"> BloodType</label>
+                <input type="text" class="form-control" value="{{ $editPet->pet_bloodType }}" name="pet_bloodType" placeholder="Optional" id="pet_bloodType">
                 <span class="text-danger error-text customer_blk_error">@error('pet_bloodType'){{ $message }}@enderror</span>
                 </div>
         </td>
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="date" required class="form-label"> Registered Date</label>
+                <label for="pet_registeredDate" required class="form-label"> Registered Date</label>
                 <br>
-                  <input type="date" class="form-control" value="{{ $editPet->pet_registeredDate }}" id="date" name="pet_registeredDate">
+                  <input type="date" class="form-control" value="{{ $editPet->pet_registeredDate }}" id="date" name="pet_registeredDate" id="pet_registeredDate">
                   <span class="text-danger error-text customer_blk_error">@error('pet_registeredDate'){{ $message }}@enderror</span>
               </div>
         </td>
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="date" required class="form-label"> Birthday</label>
+                <label for="pet_birthday" required class="form-label"> Birthday</label>
                 <br>
                 
-                  <input type="date" class="form-control" value="{{ $editPet->pet_birthday }}" id="date" name="pet_birthday">
+                  <input type="date" class="form-control" value="{{ $editPet->pet_birthday }}" id="date" name="pet_birthday" id="pet_birthday">
                   <span class="text-danger error-text customer_blk_error">@error('pet_birthday'){{ $message }}@enderror</span>
               
               </div>
         </td>
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="inputCustomer">Owner</label>
+                <label for="customer_id">Owner</label>
                 @foreach ($getOwnerPet as $petowner)
                 @if ($petowner->customer_id == $editPet->customer_id)
 
@@ -153,8 +248,8 @@
         
         <td>
             <div class="form-group" style="width: 300px;" >
-                <label for="inputnotes" class="form-label"> Notes</label>
-                <textarea placeholder="Enter Description and Health Conditions" class="form-control" name="pet_notes">{{ $editPet->pet_notes }}</textarea>
+                <label for="pet_notes" class="form-label"> Notes</label>
+                <textarea placeholder="Enter Description and Health Conditions" class="form-control" name="pet_notes" id="pet_notes">{{ $editPet->pet_notes }}</textarea>
                 <span class="text-danger error-text customer_street_error">@error('pet_notes'){{ $message }}@enderror</span>
             </div>
         </td>
@@ -162,7 +257,7 @@
         <td>
             <div class="form-group" style="width: 300px">
                 <label for="inputClinic">Clinic</label>
-                <select id="inputClinic" class="form-control custom-select" name="clinic_id">
+                <select id="inputClinic" class="form-control custom-select" id="clinic_id" name="clinic_id">
                   @foreach ($getClinicPet as $clinic) 
                   @if ($clinic->clinic_id == $editPet->clinic_id)
                   <option value="{{ $clinic->clinic_id }}" selected>{{ $clinic->clinic_name }}</option> 
@@ -178,8 +273,8 @@
         <td>
             <div class="form-group" style="width: 300px;">
                 
-                <label for="inputStatus">Status</label>
-                <select id="pet_isActive" class="form-control custom-select" name="pet_isActive">
+                <label for="pet_isActive">Status</label>
+                <select id="pet_isActive" class="form-control custom-select" id="pet_isActive" name="pet_isActive">
                     
                   @if ($editPet->pet_isActive == "1")
                   <option value="1" selected>Yes</option>
