@@ -275,7 +275,7 @@
             <div class="form-group" style="width: 300px">
                 <label for="customer_gender">Gender</label>
                 <select id="customer_gender" class="form-control custom-select" id="customer_gender" name="customer_gender">
-                  <option selected disabled>--</option>
+                  <option selected disabled>Choose Gender:</option>
                   <option value="Female">Female</option>
                   <option value="Male">Male</option>
                 </select>
@@ -347,7 +347,7 @@
             <div class="form-group" style="width: 300px">
                 <label for="isActive">Active</label>
                 <select id="isActive" class="form-control custom-select" id="isActive" name="isActive">
-                  <option selected disabled>--</option>
+                  <option selected disabled>is Customer active?</option>
                   <option value="1">Yes</option>
                   <option value="0">No</option>
                 </select>

@@ -268,7 +268,7 @@
             <div class="form-group" style="width: 300px">
                 <label for="inputStatus">Active</label>
                 <select id="vet_isActive" class="form-control custom-select" name="vet_isActive">
-                  <option selected disabled>--</option>
+                  <option selected disabled>is this Veterinarian Active?</option>
                   <option value="1">Yes</option>
                   <option value="0">No</option>
                 </select>

@@ -162,7 +162,7 @@
               <div class="form-group">
                 <label>Clinic Active: </label>
                 <select name="clinic_isActive" id="clinic_isActive" class="form-control-lg custom-select">
-                  <option selected disabled>--</option>
+                  <option selected disabled>is this Clinic active?</option>
                   @if($clinics->clinic_isActive == 1 )
                   <option value=1 selected> Yes </option>
                   <option value=0 > No </option>

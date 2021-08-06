@@ -74,25 +74,25 @@
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">UserName</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputName" placeholder="Enter userName">
+                          <input type="email" class="form-control" id="inputName" placeholder="Enter userName"readonly>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputpass" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputName" placeholder="Enter password">
+                          <input type="email" class="form-control" id="inputName" placeholder="Enter password"readonly>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">Mobile Number</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputEmail" placeholder="Enter mobile number">
+                          <input type="email" class="form-control" id="inputEmail" placeholder="Enter mobile number"readonly>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputName2" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName2" placeholder="Enter Email">
+                          <input type="text" class="form-control" id="inputName2" placeholder="Enter Email"readonly>
                         </div>
                       </div>
                       <div class="form-group row">
@@ -101,7 +101,7 @@
                           <input type="text" class="form-control" id="inputName2" placeholder="Usertype" readonly>
                         </div>
                       </div>
-                      <div class="form-group row">
+                      <!-- <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
                           <div class="checkbox">
                             <label>
@@ -114,7 +114,7 @@
                         <div class="offset-sm-2 col-sm-10">
                           <button type="submit" class="btn btn-danger">Save Changes</button>
                         </div>
-                      </div>
+                      </div> -->
                     </form>
                   </div>
                   <!-- /.tab-pane -->
