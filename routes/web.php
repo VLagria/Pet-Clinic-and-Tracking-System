@@ -331,7 +331,7 @@ Route::get('/customer/custAcc',function() {
 
 
 
-
+Route::get('/customer/custProfile',[CustProfileController::class, 'countPet']);
 Route::get('/admin/index',[MainController::class, 'countData']);
 
 // PETSSS CRUD

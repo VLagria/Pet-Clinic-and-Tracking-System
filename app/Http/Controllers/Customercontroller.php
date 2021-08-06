@@ -31,9 +31,7 @@ class Customercontroller extends Controller
         ]);
         return redirect('/customer/custhome')->with('Success','Successfully Updated!');
 }
-
-
-
+     
 function usereditcustomerID($user_id){
     $usercust_id = DB::table('user_accounts')->where('user_id','=',$user_id)->first();
     return view('customer.custeditProfile', compact('usercust_id'));
@@ -49,19 +47,6 @@ function editCustSubmit(Request $request, $user_id){
             // 'userType_id' => $request -> userType_id
         ));
   
-    return redirect('/customer/custeditProfile')->with('success','Customer has been updated successfuly');
+    return redirect('/customer/custProfile')->with('success','Customer has been updated successfuly');
 }
 
-
-//    function edit() {
-//         if (Auth:: user()){
-//             $user = User::find(Auth::user()->user_id);
-
-//             if ($user ) {
-
-//             return view ('customer/custProfile')->withUser($user);
-//             } else {
-//                 return redirect()->back();
-//             }
-//         }
-//     }
