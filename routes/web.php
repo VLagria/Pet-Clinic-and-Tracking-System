@@ -327,7 +327,7 @@ Route::get('/customer/custeditProfile',function() {
 Route::get('/customer/custAcc',function() {
     return view('/customer/custAcc');
 });
-// Route::get('/customer/custProfile/{user_id}',[Customercontroller::class, 'usereditcustomerID']);
+// Route::get('/customer/custeditProfile/{user_id}',[Customercontroller::class, 'usereditcustomerID']);
 
 
 

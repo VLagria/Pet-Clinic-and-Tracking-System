@@ -27,38 +27,51 @@
             </i>
             Return
         </a>
-      <h3 class="header">Edit UserProfile</h3>
+      <h3 class="header">Edit User Profile</h3>
       <br>
       
-<div class="tab-pane" id="settings">
+    <!-- Main content -->
+    <form action="/customer/custeditProfile/{{ $usercust_id->user_id }}" method="post">
+      @csrf
+          <table class="table table-striped table-hover">
+        <thead>
+            @foreach ($usercust_id)
+                              
+            <input type="hidden" value="{{ $usercust_id->user_id }}">
+          <tr>
+            <td>
+              <td>
+        <div class="tab-pane" id="settings">
                     <form class="form-horizontal">
                       <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">User Name</label>
-                        <div class="col-sm-6">
-                          <input type="email" class="form-control" id="userName" placeholder=" Update userName">
-                        </div>
+                        
+                          <label for="inputusername">User Name</label>
+                          <input type="text" style="width: 300px" class="form-control" value="{{ $usercust_id->user_name }}" id="user_name" name="user_name"  placeholder="Input username">
+                          <span class="text-danger error-text user_name_error">@error('user_name'){{ $message }}@enderror</span>
                       </div>
-                      <div class="form-group row">
-                        <label for="inputpassword" class="col-sm-2 col-form-label">Password</label>
-                        <div class="col-sm-6">
-                          <input type="password" class="form-control" id="inputpassword" placeholder=" UpdatePassword">
-                        </div>
                       </div>
-                      <div class="form-group row">
-                        <label for="inputmobile" class="col-sm-2 col-form-label">User Mobile</label>
-                        <div class="col-sm-6">
-                          <input type="text" class="form-control" id="inputmobile" placeholder="Update Mobile">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputemail" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-6">
-                          <textarea class="form-control" id="inputExperience" placeholder="Update Email"></textarea>
-                        </div>
-                      </div>
+                    </td>
+                  </td>
+
                      
+                      <td>
+                        <div class="form-group row">
+                            <label for="mobile">Mobile</label>
+                            <input type="number" class="form-control" value="{{ $usercust_id->user_mobile }}" style="width: 300px" id="user_mobile" name="user_mobile" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                            <span class="text-danger error-text user_mobile_error">@error('user_mobile'){{ $message }}@enderror</span>
+                        </div>
+                    </td>
+                      </div>
                       <div class="form-group row">
-                        <div class="offset-sm-2 col-sm-6">
+                        
+                        <label for="inputemail">Email</label>
+                        <input type="text" style="width: 300px" class="form-control" value="{{ $usercust_id->user_email }}" id="user_email" name="user_email"  placeholder="Input email">
+                        <span class="text-danger error-text user_fname_error">@error('user_email'){{ $message }}@enderror</span>
+                    </div>
+                    
+                  
+                      <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
                           <div class="checkbox">
                             <label>
                               <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
@@ -66,6 +79,8 @@
                           </div>
                         </div>
                       </div>
+                    
+                  @endforeach 
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
                           <button type="submit" class="btn btn-danger">Submit</button>
@@ -73,8 +88,6 @@
                       </div>
                     </form>
                   </div>
-
-
 
 @endsection
 
