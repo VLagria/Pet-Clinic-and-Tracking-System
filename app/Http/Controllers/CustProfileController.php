@@ -3,15 +3,20 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 class CustProfileController extends Controller
 {
  
-    public function userprofileID($user_id){
+     function countPet(){
+    
+        $countPet = DB::table('pets')->count();
+        
+        return view('/customer/custProfile', compact('countPet'));
+    }
+    function userprofileID($user_id){
         $userprofile_id = DB::table('user_accounts')->where('user_id','=','$user_id')->first();
         return view('customer/custProf',compact('userprofile_id'));
     }
-}
+
     function saveUser(Request $request,$user_id){
     $request->validate([
         'user_name'=>'required',
@@ -30,11 +35,5 @@ class CustProfileController extends Controller
     ));
     return redirect('customer/custProf')->with('success','User has been updated successfully');
 }
-     function countPet(){
-    
-        $countPet = DB::table('pets')->count();
-        
-        return view('/customer/custProfile', compact('countPet'));
-    }
-   
 
+}
