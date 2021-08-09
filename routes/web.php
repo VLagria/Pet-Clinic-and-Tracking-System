@@ -331,14 +331,21 @@ Route::get('/customer/custeditProfile',function() {
 Route::get('/customer/custAcc',function() {
     return view('/customer/custAcc');
 });
-// Route::get('/customer/custeditProfile/{user_id}',[Customercontroller::class, 'usereditcustomerID']);
+Route::get('/customer/custProfile',[CustProfileController::class, 'countPet']);
+Route::get('/admin/index',[MainController::class, 'countData']);
 
 
+<<<<<<< Updated upstream
 // customer profile
 Route::get('/customer/custProfile',[CustProfileController::class, 'countPet']);
 
 
 Route::get('/admin/index',[MainController::class, 'countData']);
+=======
+
+// Route::get('/customer/custeditProfile/{user_id}',[Customercontroller::class, 'usereditcustomerID']);
+// Route::get('/customer/custAcc',[Customercontroller::class,'updateInfo'])->name('UpdateInfo');
+>>>>>>> Stashed changes
 
 // PETSSS CRUD
 Route::get('/admin/pets/CRUDpet',[PetsController::class,'retrievePet']);
