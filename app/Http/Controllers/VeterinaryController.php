@@ -150,7 +150,7 @@ class VeterinaryController extends Controller
         return redirect()->route('clinicvet', ['clinic_id' => $id])->with('vet_updated','Veterinary has been successfully Updated');
     }
 
-    function getAllCustomer(){
+    function getAllCustomers(){
         $customers = DB::table('customers')
         ->select('customer_id','customer_fname','customer_lname', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 
         'customer_gender','customer_DP','customer_birthday','customer_blk','customer_street','customer_subdivision','customer_barangay',
@@ -170,7 +170,7 @@ class VeterinaryController extends Controller
         return view('admin/customer/CRUDcustomers', compact('customers','users','pet_clinics','pet_breeds', 'pet_types'));
     }
 
-    public function custSearch(Request $request){
+    public function customerSearch(Request $request){
         $search = $request->get('custsearch');
         $customers = DB::table('customers')
         ->select('customer_id','customer_fname','customer_lname', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 
@@ -181,7 +181,7 @@ class VeterinaryController extends Controller
         return view('admin.customer.CRUDcustomers', compact('customers'));
     }
 
-    final function patientsOwnerView($customer_id){
+    final function patientsOwnerViews($customer_id){
        $PatientOwner = DB::table('pets')
         ->join('pet_types','pet_types.type_id','=','pets.pet_type_id')
         ->join('pet_breeds','pet_breeds.breed_id','=','pets.pet_breed_id')
@@ -195,12 +195,12 @@ class VeterinaryController extends Controller
         return view('admin/customer/viewPatient', ['PatientOwner'=>$PatientOwner]);
     }
 
-    final function veteditcustomerID($customer_id){
+    final function veteditcustomersID($customer_id){
     $vetcust_id = DB::table('customers')->where('customer_id','=', $customer_id)->first();
     return view('admin.customer.customerEdit', compact('vetcust_id'));
     }
 
-    final function saveCustomer(Request $request, $customer_id){
+    final function saveCustomers(Request $request, $customer_id){
     $request->validate([
         'customer_fname'=>'required',
         'customer_lname'=>'required',

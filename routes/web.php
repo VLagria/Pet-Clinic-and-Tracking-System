@@ -291,7 +291,7 @@ Route::get('/admin/users/viewCustomerDetails/{user_id}',[MainController::class, 
 
 Route::get('/admin/users/inputUser/{user_id}', [MainController::class, 'getUserID'])->name('post.getuserid');
 
-Route::post('/admin/users/inputUser/save/', [MainController::class, 'addCustomer'])->name('post.adminaddcustomer');
+Route::post('/admin/users/inputUser/save/', [MainController::class, 'addCustomers'])->name('post.adminaddcustomers');
 
 Route::post('/admin/clinic/registerClinic',[MainController::class,'addClinicSubmit'])->name('clin.addclinicsubmit');
 
@@ -332,12 +332,11 @@ Route::get('/customer/custAcc',function() {
     return view('/customer/custAcc');
 });
 Route::get('/customer/custProfile',[CustProfileController::class, 'countPet']);
-Route::get('/admin/index',[MainController::class, 'countData']);
 
 
 // customer profile
 Route::get('/customer/custProfile',[CustProfileController::class, 'countPet']);
-Route::get('/admin/index',[MainController::class, 'countData']);
+Route::get('/admin/index',[MainController::class, 'countData2']);
 
 // PETSSS CRUD
 Route::get('/admin/pets/CRUDpet',[PetsController::class,'retrievePet']);
@@ -364,18 +363,18 @@ Route::get('/admin/pets/delete-breed/{breed_id}',[PetBreedController::class,'del
 //PET CRUD
 
 
-Route::get('/admin/customer/CRUDcustomers',[VeterinaryController::class, 'getAllCustomer'])->name('vet.getallcustomer');
+Route::get('/admin/customer/CRUDcustomers',[VeterinaryController::class, 'getAllCustomers'])->name('vet.getallcustomers');
 
 
 Route::get('admin/customer/viewPatient', function () {
     return view('admin/customer/viewPatient');
 });
 
-Route::get('/admin/customer/viewPatient/{customer_id}',[VeterinaryController::class, 'patientsOwnerView'])->name('custownerpatient');
+Route::get('/admin/customer/viewPatient/{customer_id}',[VeterinaryController::class, 'patientsOwnerViews'])->name('custownerpatient');
 
-Route::get('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'veteditcustomerID']);
+Route::get('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'veteditcustomersID']);
 
-Route::post('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'saveCustomer'])->name('vet.savecust');
+Route::post('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'saveCustomers'])->name('vet.savecusts');
 Route::get('/customer/custhome',[Customercontroller::class,'widgetPets']);
 Route::get('/customer/custhome{pet_id}',[Customercontroller::class,'getPetID']);
 

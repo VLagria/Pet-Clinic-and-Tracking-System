@@ -361,7 +361,7 @@ class MainController extends Controller
         return view('admin.users.inputUser', compact('get_id'));
     }
    
-   function addCustomer(Request $request){
+   function addCustomers(Request $request){
 
         $request->validate([
             'customer_fname'=>'required',
@@ -402,7 +402,7 @@ class MainController extends Controller
        return redirect('/admin/users/CRUDusers')->with('newCustomer','Customer has been completely added succesfully');
     }
 
-    function getAllCustomer(){
+    function getAllCustomers(){
         $customers = DB::table('customers')
         ->select('customer_id','customer_fname','customer_lname', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 
         'customer_gender','customer_DP','customer_birthday','customer_blk','customer_street','customer_subdivision','customer_barangay',
@@ -421,7 +421,7 @@ class MainController extends Controller
 
         return view('veterinary/viewvetcustomer', compact('customers','users','pet_clinics','pet_breeds', 'pet_types'));
     }
-    public function countData(){
+    public function countData2(){
         $countVeterinarians = DB::table('veterinary')->count();
         $countPet = DB::table('pets')->count();
         $countCustomers = DB::table('customers')->count();
@@ -429,7 +429,7 @@ class MainController extends Controller
         return view('/admin/index', compact('countVeterinarians','countPet','countCustomers','countClinic'));
     }
 
-    public function custSearch(Request $request){
+    public function customerSearch(Request $request){
         $search = $request->get('custsearch');
         $customers = DB::table('customers')
         ->select('customer_id','customer_fname','customer_lname', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 
