@@ -14,8 +14,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">User Profile</li>
+              <li class="breadcrumb-item"><a href="custProfile">Profile</a></li>
+              <li class="breadcrumb-item active">Settings</li>
             </ol>
           </div>
         </div>
@@ -48,7 +48,7 @@
                 <b><center>Number of Pets:</b>
                 <h3><center>{{ $countPet }}</center></h3>
                 <br>
-                <a href="custeditProfile" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
+                <a href="custProf" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
               </div>
 
               <!-- /.card-body -->
@@ -74,8 +74,8 @@
       <!-- Widget: user widget style 1 -->
       <div class="card card-widget widget-user">
         <!-- Add the bg color to the header using any of the bg-* classes -->
-        <div class="widget-user-header bg-grey">
-          <h3 class="widget-user-username"></h3>
+        <div class="widget-user-header bg-warning">
+          <h3 class="widget-user-username"><b></b></h3>
           
         </div>
 

@@ -322,6 +322,9 @@ Route::get('admin/pets/CRUDaddbreed',function() {
 Route::get('/customer/custProfile',function() {
     return view('/customer/custProfile');
 });
+Route::get('/customer/custProf',function() {
+    return view('/customer/custProf');
+});
 Route::get('/customer/custeditProfile',function() {
     return view('/customer/custeditProfile');
 });
