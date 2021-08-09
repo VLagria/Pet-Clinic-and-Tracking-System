@@ -78,8 +78,6 @@
           <h3 class="widget-user-username"><b></b></h3>
           
         </div>
-
-        
         <div class="card-footer p-0">
           <ul class="nav flex-column">
             <li class="nav-item">

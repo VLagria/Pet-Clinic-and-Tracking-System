@@ -9,7 +9,6 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\VeterinaryController;
 use App\Http\Controllers\Customercontroller;
 use App\Http\Controllers\CustProfilecontroller;
-use App\Http\Controllers\PetListController;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Route;
 
@@ -334,9 +333,12 @@ Route::get('/customer/custAcc',function() {
 Route::get('/customer/custProfile',[CustProfileController::class, 'countPet']);
 
 
+
 // customer profile
 Route::get('/customer/custProfile',[CustProfileController::class, 'countPet']);
-Route::get('/admin/index',[MainController::class, 'countData2']);
+Route::get('/customer/custProf/{user_id}',[CustProfileController::class,'userprofileID']);
+Route::get('/customer/custProf/{user_id}',[CustProfileController::class,'saveUser']);
+
 
 // PETSSS CRUD
 Route::get('/admin/pets/CRUDpet',[PetsController::class,'retrievePet']);
