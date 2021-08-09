@@ -71,7 +71,11 @@
                       <div class="form-group row">
                         <label for="inputName2" class="col-sm-2 col-form-label">User Type:</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName2" placeholder="Usertype" >
+                        <select name="usertype" id="usertype" class="form-control-lg custom-select">
+                        <option selected disabled>Choose Usertype</option>
+                       <option value=1 selected> .. </option>
+                        <option value=0 >.. </option>
+                </select>
                         </div>
                       </div>
                       <!-- <div class="form-group row">
