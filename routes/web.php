@@ -103,34 +103,10 @@ Route::get('admin/pets/CRUDpet', function () {
 Route::get('admin/vet/CRUDvet', function () {
     return view('admin/vet/CRUDvet');
 });
-Route::get('veterinary/user',function(){
-    return view('veterinary/user');
-});
-
-
-
-
-
-
-Route::get('veterinary/addaccount',function(){
-    return view('veterinary/addaccount');
-});
-Route::get('veterinary/editaccount',function(){
-    return view('veterinary/editaccount');
-});
-
-Route::post('/veterinary/addaccount',[VeterinariansController::class, 'createAcc'])->name('vet.addaccount');
-
-Route::get('/veterinary/editaccount/',[VeterinariansController::class, 'editAccount'])->name('vet.editaccount');
-
 
 Route::get('admin/vet/registerVet',function(){
     return view('admin/vet/registerVet');
 });
-
-Route::post('/veterinary/editaccount/save',[VeterinariansController::class, 'saveAccount'])->name('vet.saveaccount');
-
-Route::get('/veterinary/user/delete/{user_id}',[VeterinariansController::class, 'deleteAccount'])->name('vet.deleteaccount');
 
 Route::get('/veterinary/usercustomer/{user_id}',[VeterinariansController::class, 'userCustomer'])->name('vet.usercustomer');
 
@@ -138,8 +114,6 @@ Route::get('veterinary/registercustomer',function(){
     return view('veterinary/registercustomer');
 });
 Route::get('/veterinary/registercustomer', [VeterinariansController::class, 'addCustID']);
-
-
 
 Route::get('veterinary/usercustomer',function(){
     return view('veterinary/usercustomer');
@@ -180,7 +154,6 @@ Route::get('/veterinary/usereditcustomer/{customer_id}',[VeterinariansController
 
 Route::post('/veterinary/save_customer/{customer_id}',[VeterinariansController::class, 'saveCustomer'])->name('vet.savecust');
 
-Route::get('/veterinary/user',[VeterinariansController::class, 'usersRetrieve']);
 
 Route::get('/search',[VeterinariansController::class, 'search'])->name('vet.usersearch');
 Route::get('/custsearch',[VeterinariansController::class, 'custSearch'])->name('vet.custsearch');
