@@ -62,90 +62,84 @@
             <div class="card">
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#personal_info" data-toggle="tab">Personal Information</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="#listofpets" data-toggle="tab">List of Pets</a></li>
                   <!-- <li class="nav-item"><a class="nav-link" href="#change_password" data-toggle="tab">Change Password </a></li> -->
                  
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content">
-                  <div class="active tab-pane" id="personal_info">
-                    <form class="form-horizontal">
-                      <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">UserName</label>
-                        <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputName" placeholder="Enter userName"readonly>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputpass" class="col-sm-2 col-form-label">Password</label>
-                        <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputName" placeholder="Enter password"readonly>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputEmail" class="col-sm-2 col-form-label">Mobile Number</label>
-                        <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputEmail" placeholder="Enter mobile number"readonly>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputName2" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName2" placeholder="Enter Email"readonly>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputName2" class="col-sm-2 col-form-label">User Type:</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName2" placeholder="Usertype" readonly>
-                        </div>
-                      </div>
-                      <!-- <div class="form-group row">
-                        <div class="offset-sm-2 col-sm-10">
-                          <div class="checkbox">
-                            <label>
-                              <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <div class="offset-sm-2 col-sm-10">
-                          <button type="submit" class="btn btn-danger">Save Changes</button>
-                        </div>
-                      </div> -->
-                    </form>
-                  </div>
-                  <!-- /.tab-pane -->
-                  <!-- <div class="active tab-pane" id="change_password">
-                    <form class="form-horizontal">
-                      <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Old Password</label>
-                        <div class="col-sm-10">
-                          <input type="password" class="form-control" id="inputName" placeholder="Old Password">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputEmail" class="col-sm-2 col-form-label">New Password</label>
-                        <div class="col-sm-10">
-                          <input type="password" class="form-control" id="inputEmail" placeholder="New Password">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputName2" class="col-sm-2 col-form-label">Confirm Password</label>
-                        <div class="col-sm-10">
-                          <input type="password" class="form-control" id="inputName2" placeholder="Confirm New Password">
-                        </div>
-                      </div>
-                      
-                      <div class="form-group row">
-                        <div class="offset-sm-2 col-sm-10">
-                          <button type="submit" class="btn btn-danger">Save Changes</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div> -->
+                  <!--  -->
+             <div class="col-md-4">
+      <!-- Widget: user widget style 1 -->
+      <div class="card card-widget widget-user">
+        <!-- Add the bg color to the header using any of the bg-* classes -->
+        <div class="widget-user-header bg-grey">
+          <h3 class="widget-user-username"></h3>
+          
+        </div>
+
+        
+        <div class="card-footer p-0">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link">
+                Gender: <span class="float-right"></span>
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link">
+                Birthday:<span class="float-right "></span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">
+                Blood Type: <span class="float-right "></span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link">
+                Date Registered: <span class="float-right"></span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link">
+                Notes: <span class="float-right "></span>
+              </a>
+            </li>
+
+            
+            <li class="nav-item">
+              <a class="nav-link">
+                Status: <span class="float-right "></span>
+              </a>
+            </li>
+      
+          </div>
+          
+      </div>
+      <!-- /.widget-user -->
+      
+    </div>
+
+    <!-- /.col -->
+    
+  </div>
+  <div class="card-footer">
+    <nav aria-label="Contacts Page Navigation">
+      <ul class="pagination justify-content-center m-0">
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+
+      </ul>
+    </nav>
+  </div>
+  <!-- /.card-footer -->
                 </div>
                 <!-- /.tab-content -->
               </div><!-- /.card-body -->
