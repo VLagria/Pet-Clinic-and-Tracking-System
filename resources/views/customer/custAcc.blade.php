@@ -1,5 +1,6 @@
 @extends('layoutscustomer.app')
 
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 @section('content')
@@ -35,17 +36,23 @@
             @endif
             <!-- Profile Image -->
           
-            <div class="card card-primary card-outline">
-              <div class="card-body box-profile">
+            <div class="card card-primary card-outline ">
+              <div class="card-body  box-profile card text-center">
+                <div class="card text-center"> 
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
                        src="{{asset('vendors/dist/img/han.jpg') }}"
-                       alt="hannah">
+                       alt="Profile Picture">
                 </div>
 
-                <h3 class="profile-username text-center"> </h3>
+                <h3 class="profile-username text-center"> Owner</h3>
 
-                <a href="custeditProfile" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
+                {{-- <h3 class="profile-username text-center"> {{ Auth::user()->name}}</h3> --}}
+
+                <a href="custeditProfile" id="change_dp" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
+
+    </div>
+    <!-- /.row -->
               </div>
 
               <!-- /.card-body -->
@@ -66,37 +73,37 @@
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content">
-                  <div class="active tab-pane" id="personal_info">
-                   
-                    <form class="form-horizontal">
+                  <div class=" active tab-pane" id="personal_info"> 
+                    <form class="form-horizontal" method="POST" action="#" id="InfoForm">
+                      @csrf
+                      @method('PUT')
+
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">UserName</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputName" placeholder="Enter userName">
+                          <input type="text" class="form-control" id="inputName" placeholder="Enter User Name" 
+                           name="name">
+                          <span class="text-danger error-text name_error"></span>
+
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="inputEmail" class="col-sm-2 col-form-label">Mobile Number</label>
+                        <label for="inputName2" class="col-sm-2 col-form-label">Mobile Number</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputEmail" placeholder="Enter mobile number">
+                          <input type="text" class="form-control" id="mobile" placeholder="Enter mobile number"name="mobile">
+                          <span class="text-danger error-text mobile_error"></span>
+
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="inputName2" class="col-sm-2 col-form-label">Email</label>
+                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName2" placeholder="Enter Email">
+                          <input type="email" class="form-control" id="inputEmail" placeholder="Enter Email"name="email">
+                          <span class="text-danger error-text email_error"></span>
                         </div>
                       </div>
                      
-                      <div class="form-group row">
-                        <div class="offset-sm-2 col-sm-10">
-                          <div class="checkbox">
-                            <label>
-                              <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                            </label>
-                          </div>
-                        </div>
-                      </div>
+                     
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
                           <button type="submit" class="btn btn-danger">Save Changes</button>
@@ -108,27 +115,27 @@
                   <div class="tab-pane fade" id="change_password">
                     <form class="form-horizontal">
                       <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Old Password</label>
+                        <label for="oldpass" class="col-sm-2 col-form-label">Old Password</label>
                         <div class="col-sm-10">
-                          <input type="password" class="form-control" id="inputName" placeholder="Old Password">
+                          <input type="password" class="form-control" id="oldpass" placeholder="Old Password">
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="inputEmail" class="col-sm-2 col-form-label">New Password</label>
+                        <label for="newpass" class="col-sm-2 col-form-label">New Password</label>
                         <div class="col-sm-10">
-                          <input type="password" class="form-control" id="inputEmail" placeholder="New Password">
+                          <input type="password" class="form-control" id="newpass" placeholder="New Password">
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="inputName2" class="col-sm-2 col-form-label">Confirm Password</label>
+                        <label for="cnewpass" class="col-sm-2 col-form-label">Confirm Password</label>
                         <div class="col-sm-10">
-                          <input type="password" class="form-control" id="inputName2" placeholder="Confirm New Password">
+                          <input type="password" class="form-control" id="cnewpass" placeholder="Confirm New Password">
                         </div>
                       </div>
                       
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
-                          <button type="submit" class="btn btn-danger">Save Changes</button>
+                          <button type="submit" class="btn btn-danger">Update Password</button>
                         </div>
                       </div>
                     </form>
@@ -159,5 +166,7 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
+
 </body>
 </html>

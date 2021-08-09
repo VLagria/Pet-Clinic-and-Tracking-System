@@ -12,5 +12,6 @@ class CustProfileController extends Controller
         return view('/customer/custProfile', compact('countPet'));
     }
     
+    
 }
 
