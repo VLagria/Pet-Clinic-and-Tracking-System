@@ -64,13 +64,12 @@
             <th scope="col" style="width:8%"> Name</th>
             <th scope="col" style="width:5%">Mobile</th>
             <th scope="col" style="width:5%">Telephone</th>
-            <th scope="col" style="width:10%">Gender</th>
+            <th scope="col" style="width:5%">Gender</th>
             <th scope="col" style="width:5%">Birthday</th>
             {{-- <th scope="col"style="width:10%">Customer Profile</th> --}}
             <th scope="col" style="width:20%">Address</th>
-            <th scope="col" style="width:6%">User ID</th>
             <th scope="col" style="width:8%">Status</th>
-            <th scope="col" style="width:30%">Action</th>
+            <th scope="col" style="width:18%">Action</th>
           </tr>
         </thead>
         <tbody> @foreach ($customers as $customer) <tr>
@@ -81,7 +80,6 @@
             <td>{{ $customer->customer_gender}}</td>
             <td>{{ $customer->customer_birthday}}</td>
             <td>{{ $customer->customer_address}}</td>
-            <td>{{ $customer->user_id}}</td>
             @if ($customer->customer_isActive == 1)
             <td><span class="badge badge-success">Yes</span></td>
             @else
@@ -90,8 +88,8 @@
 
             
             
-            <td class="project-actions text-right">
-              <a href="/veterinary/viewpatient/{{ base64_encode($customer->customer_id)}}" class="btn btn-primary btn-sm">
+            <td class="project-actions text-right" >
+              <a href="/veterinary/viewpatient/{{ base64_encode($customer->customer_id)}}"  class="btn btn-primary btn-sm">
                 <i class="fas fa-folder"></i> View </a>
               <a href="/veterinary/veteditcustomer/{{ $customer->customer_id}}" class="btn btn-info btn-sm" >
                 <i class="fas fa-pencil-alt"></i> Edit </a>

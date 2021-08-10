@@ -187,7 +187,7 @@
       <br>
      
       @if(Session::has('existing')) 
-      <div class="alert alert-error" role="alert" id="messageModal">
+      <div class="alert alert-warning" role="alert" id="messageModal">
        {{ Session::get('existing') }}
      </div>
      @endif 

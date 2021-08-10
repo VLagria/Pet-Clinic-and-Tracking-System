@@ -113,7 +113,7 @@ Route::get('/veterinary/usercustomer/{user_id}',[VeterinariansController::class,
 Route::get('veterinary/registercustomer',function(){
     return view('veterinary/registercustomer');
 });
-Route::get('/veterinary/registercustomer', [VeterinariansController::class, 'addCustID']);
+// Route::get('/veterinary/registercustomer', [VeterinariansController::class, 'addCustID']);
 
 Route::get('veterinary/usercustomer',function(){
     return view('veterinary/usercustomer');
@@ -200,33 +200,22 @@ Route::get('veterinary/vetpatient',function() {
     return view('veterinary/vetpatient');
 });
 
-Route::get('veterinary/vetclinic',function() {
-    return view('veterinary/vetclinic');
-});
 Route::get('veterinary/petregistration',function() {
     return view('veterinary/petregistration');
 });
-Route::get('/veterinary/viewvetclinic', [VeterinariansController:: class, 'clinicInfo']);
-
-// Route::get('veterinary/viewvetclinic',function() {
-//     return view('veterinary/viewvetclinic');
-// });
-
-Route::get('/veterinary/viewvet', [VeterinariansController::class, 'veterinariesInfo']);
 
 
-// Route::get('veterinary/viewvet',function() {
-//     return view('veterinary/viewvet');
-// });
+// Route::get('/veterinary/dd/getid',[MainController::class, 'getVetClinic']);  
+
+// Route::get('/customer/custProfile/getSession',[MainController::class, 'userDashboard']);
+
+
 
 
 Route::get('veterinary/vetcustomer',function() {
     return view('veterinary/vetcustomer');
 });
 
-// Route::get('veterinary/viewvetcustomer',function() {
-//     return view('veterinary/viewvetcustomer');
-// });
 Route::get('veterinary/assignvet',function() {
     return view('veterinary/assignvet');
 });
@@ -303,14 +292,14 @@ Route::get('/customer/custeditProfile',function() {
 Route::get('/customer/custAcc',function() {
     return view('/customer/custAcc');
 });
-Route::get('/customer/custProfile',[CustProfileController::class, 'countPet']);
+// Route::get('/customer/custProfile',[CustProfileController::class, 'countPet']);
 
 
 
-// customer profile
-Route::get('/customer/custProfile',[CustProfileController::class, 'countPet']);
-Route::get('/customer/custProf/{user_id}',[CustProfileController::class,'userprofileID']);
-Route::get('/customer/custProf/{user_id}',[CustProfileController::class,'saveUser']);
+// // customer profile
+// Route::get('/customer/custProfile',[CustProfileController::class, 'countPet']);
+// Route::get('/customer/custProf/{user_id}',[CustProfileController::class,'userprofileID']);
+// Route::get('/customer/custProf/{user_id}',[CustProfileController::class,'saveUser']);
 
 
 // PETSSS CRUD

@@ -47,7 +47,7 @@
 
                 <h3 class="profile-username text-center"> Owner</h3>
 
-                {{-- <h3 class="profile-username text-center"> {{ Auth::user()->name}}</h3> --}}
+                 <h3 class="profile-username text-center">  </h3>
 
                 <a href="custeditProfile" id="change_dp" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
 

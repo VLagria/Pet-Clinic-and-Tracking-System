@@ -97,18 +97,7 @@ class VeterinariansController extends Controller
         return view('veterinary.vethome', compact('countPet','countCustomers','countClinic'));
     }
 
-    function userCustomer($user_id){
 
-        $userCust = DB::table('customers')
-        ->select('customer_id','customer_fname','customer_lname', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 
-        'customer_gender','customer_DP','customer_birthday','customer_blk','customer_street','customer_subdivision','customer_barangay',
-        'customer_city','customer_zip', DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
-        customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"), 'user_id', 'customer_isActive')
-        ->where('user_id', '=', $user_id)
-        ->get(); // RETRIEVE DATA 
-
-        return view('veterinary.usercustomer', compact('userCust'));
-    }
     function userViewPatient($customer_id){
         $Owners = DB::table('pets')
         ->join('pet_types','pet_types.type_id','=','pets.pet_type_id')
@@ -312,7 +301,7 @@ class VeterinariansController extends Controller
             //INSERT PET -END
 
             $customer_id = $request->customer_id;
-            return redirect()->route('custownerpatient', ['customer_id'=> $customer_id])->with('success', 'Patient has been added succesfully');
+            return redirect()->route('custownerpatient', ['customer_id'=> base64_encode($customer_id)])->with('success', 'Patient has been added succesfully');
         }
 
     }
