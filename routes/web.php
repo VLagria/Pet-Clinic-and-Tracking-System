@@ -300,6 +300,10 @@ Route::get('/customer/custAcc',function() {
 // Route::get('/customer/custProf/{user_id}',[CustProfileController::class,'userprofileID']);
 // Route::get('/customer/custProf/{user_id}',[CustProfileController::class,'saveUser']);
 
+// customer profile
+Route::get('/customer/custProfile',[CustProfileController::class, 'countPet']);
+Route::get('/customer/custProf/{user_id}',[CustProfileController::class,'userprofileID']);
+Route::get('/customer/custProf/{user_id}',[CustProfileController::class,'saveUser']);
 
 // PETSSS CRUD
 Route::get('/admin/pets/CRUDpet',[PetsController::class,'retrievePet']);
