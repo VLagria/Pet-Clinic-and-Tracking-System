@@ -148,10 +148,10 @@ class MainController extends Controller
             'user_email' => $request->user_email,
             'userType_id' => $request->userType_id
         ]);
-        return back()->with('user_created', 'User Created successfully!');
+        return redirect('/admin/users/CRUDusers')->with('user_created', 'User Created successfully!');
     }
 
-    public function addClinicSubmit(Request $request){
+    public function admin_AddClinicSubmit(Request $request){
         $request->validate([
             'clinic_name'=>'required | unique:clinic',
             'owner_name'=>'required',
@@ -177,10 +177,10 @@ class MainController extends Controller
             'clinic_zip' => $request->clinic_zip,
             'clinic_isActive' => $request->clinic_isActive
         ]);
-        return back()->with('clinic_created', 'Clinic successfully registered!');
+        return redirect('/admin/clinic/CRUDclinic/home')->with('clinic_created', 'Clinic successfully registered!');
     }
 
-    public function editClinicSubmit(Request $request, $clinic_id){
+    public function admin_EditClinicSubmit(Request $request, $clinic_id){
         $clic_name = $request->clinic_name;
         $owner_name = $request->owner_name;
         $clinic_mobile = $request->clinic_mobile;
@@ -226,7 +226,7 @@ class MainController extends Controller
         ));
         }
 
-            return redirect('/admin/clinic/CRUDclinic')->with('clinic_updated','Clinic has been successfully Updated');
+            return redirect('/admin/clinic/CRUDclinic/home')->with('clinic_updated','Clinic has been successfully Updated');
         }
 
     public function editUserDetails(Request $request){
@@ -257,7 +257,7 @@ class MainController extends Controller
         return redirect('/admin/users/CRUDusers')->with('user_updated','Account has been successfully Updated');
     }
 
-    function getUsers($user_id){
+    function admin_GetUsers($user_id){
         $users = DB::table('user_accounts')->where('user_id','=', $user_id)->first();
 
         $userOptions = DB::table('usertypes')->get();
@@ -265,7 +265,7 @@ class MainController extends Controller
         return view('admin.users.editUser', compact('users','userOptions'));
     }
 
-    function editClinic($clinic_id){
+    function admin_EditClinic($clinic_id){
         $clinics = DB::table('clinic')->where('clinic_id','=', $clinic_id)->first();
         return view('admin.clinic.editClinic', compact('clinics'));
     }
@@ -288,10 +288,9 @@ class MainController extends Controller
         return view('admin.users.CRUDusers', compact('userTypes_name','userOptions'));
     }
 
-    public function getAllClinic(){
-        $clinic = DB::table('clinic')->get();
-
-        return view('admin.clinic.CRUDclinic', compact('clinic'));
+    function getAllClinic(){
+        $getClinicInfo = DB::table('clinic')->get();
+        return view('admin.clinic.CRUDclinic', compact('getClinicInfo'));
     }
 
     public function user_details($user_id) {
@@ -300,7 +299,7 @@ class MainController extends Controller
         // return DB::table('user_accounts')::findOrFail($user_id);
     }
 
-    final function deleteUsers($user_id){
+    final function admin_DeleteUsers($user_id){
         $getType = DB::table('user_accounts')->where('user_id', $user_id)->pluck('userType_id')->first();
         $custID = DB::table('customers')->where('user_id', $user_id)->pluck('customer_id')->first();
         $custQuery = DB::table('pets')->where('customer_id', $custID)->first();
@@ -314,7 +313,6 @@ class MainController extends Controller
                 DB::table('user_accounts')->where('user_id', $user_id)->delete();
             }elseif($getType = 2){
                 DB::table('veterinary')->where('user_id', $user_id)->delete();
-                DB::table('user_accounts')->where('user_id', $user_id)->delete();
             }else{
                 if ($countAdmin>1) {
                     DB::table('user_accounts')->where('user_id', $user_id)->delete();
@@ -340,12 +338,12 @@ class MainController extends Controller
         }
     }
 
-    final function deleteCustomer($customer_id){
+    final function admin_DeleteCustomer($customer_id){
         DB::table('customers')->where('customer_id', $customer_id)->delete();
         return back()->with('customer_deleted','customer successfully deleted');
     }
 
-    function userCustomerDetails($user_id){
+    function admin_UserCustomerDetails($user_id){
         $userCustomer = DB::table('customers')
         ->select('customer_id','customer_fname','customer_lname',
             DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 'customer_gender','customer_DP','customer_birthday','customer_blk','customer_street','customer_subdivision','customer_barangay','customer_city','customer_zip', 
@@ -356,12 +354,12 @@ class MainController extends Controller
         return view('admin.users.viewCustomerDetails', compact('userCustomer'));
     }
 
-    function getUserID($user_id){
+    function admin_GetUserID($user_id){
         $get_id = DB::table('user_accounts')->where('user_id','=', $user_id)->first();
         return view('admin.users.inputUser', compact('get_id'));
     }
    
-   function addCustomers(Request $request){
+   function admin_addCustomers(Request $request){
 
         $request->validate([
             'customer_fname'=>'required',

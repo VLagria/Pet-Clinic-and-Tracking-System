@@ -42,7 +42,12 @@
       {{ Session::get('user_updated') }}
     </div> 
     @endif
-
+    
+@if(Session::has('user_created')) 
+      <div class="alert alert-success" id="messageModal" role="alert">
+          {{ Session::get('user_created') }}
+      </div> 
+    @endif 
 
 
 <div class="card">
@@ -245,36 +250,7 @@
     });
   </script>
 
-  <!-- <script>
-    jQuery('#viewModal').modal('hide');
 
-    $('.view-btn').on('click',function(){ 
-       alert('i was clicked'); 
-      const id = $(this).attr('data-id');
-      console.log(id);
-      $.ajax({
-        url:"/user_details/"+id,
-        type:'GET',
-        data: {
-          "id":id
-        },
-        success:function(data){
-          console.log(data);
-        }
-      });
-    });
-  </script> -->
-
-
-  <!-- ----------------------- start add modal  ------------------------------>
-    
-      
-<!-- START DELETE -->
-
-
-
-
-<!-- END DELETE -->
 
 
   </div>

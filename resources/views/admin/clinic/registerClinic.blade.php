@@ -76,7 +76,7 @@
 
   <div class="card">
     <div class="card-header">
-      <a class="btn btn-error btn-sm" href="/admin/clinic/CRUDclinic">
+      <a class="btn btn-error btn-sm" href="/admin/clinic/CRUDclinic/home">
         <i class="fas fa-arrow-left"></i> Return </a>
 
       <div class="bg bg-light rounded" style="width: 300px">

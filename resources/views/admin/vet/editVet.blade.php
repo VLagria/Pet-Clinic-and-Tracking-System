@@ -165,17 +165,6 @@
         </td>
         <td>
             <div class="form-group" style="width: 300px">
-                <label for="inputStatus">User:</label>
-                
-                <select id="user_id" class="form-control custom-select" name="user_id">
-                    <option value="{{ $vets->user_id+1}}">{{ $vets->user_id+1}}</option>
-                  </select>
-                      
-              </div>
-              <span class="text-danger error-text user_id_error">@error('user_id'){{ $message }}@enderror</span>
-        </td>
-        <td>
-            <div class="form-group" style="width: 300px">
                 <label for="inputStatus">Active</label>
                 <select id="vet_isActive" class="form-control custom-select" name="vet_isActive" >
                  @if( $vets->vet_isActive  == 1)

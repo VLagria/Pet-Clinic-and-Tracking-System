@@ -49,16 +49,42 @@ Route::get('admin/pets/CRUDedittype',function() {
     return view('admin/pets/CRUDedittype');
 });
 
+//ADMIN USERS
+
+Route::get('/admin/users/CRUDusers', [MainController::class, 'adminUsers']); //view users
+Route::get('/admin/users/CRUDusers/user_details/{user_id}', 'App\Http\Controllers\MainController@user_details');
+Route::get('/admin/users/CRUDusers/delete/{user_id}',[MainController::class, 'admin_DeleteUsers'])->name('post.deleteusers');
+Route::get('/admin/users/viewCustomerDetails/delete/{customer_id}',[MainController::class, 'admin_DeleteCustomer'])->name('cust.deletecustomer');
+Route::get('/admin/users/CRUDusers/',[MainController::class,'getAllUsers'])->name('post.getallusers');
+Route::get('/admin/users/CRUDusers/',[MainController::class,'showUserInfo'])->name('post.showuserinfo');
+Route::get('/admin/users/editUser/{user_id}/',[MainController::class,'admin_GetUsers'])->name('post.getusers');
+Route::get('/admin/users/viewCustomerDetails/{user_id}',[MainController::class, 'admin_UserCustomerDetails'])->name('post.usercustomerdetails');
+Route::get('/admin/users/inputUser/{user_id}', [MainController::class, 'admin_GetUserID'])->name('post.getuserid');
+Route::post('/admin/users/inputUser/save/', [MainController::class, 'admin_addCustomers'])->name('post.adminaddcustomers');
+Route::POST('/admin/users/registerUser',[MainController::class,'addAdminSubmit'])->name('post.addadminsubmit');
+Route::POST('/admin/users/editUserDetails/save/',[MainController::class,'editUserDetails'])->name('post.edituserdetails');
+
+Route::get('/veterinary/editaccount/{user_id}',[VeterinariansController::class, 'editAccount'])->name('vet.editaccount');
+
+//ADMIN VETERINARY
+Route::post('/admin/vet/registerVet/save', [VeterinaryController::class, 'admin_AddVeterinarian'])->name('vet.addveterinarian');
+Route::POST('/admin/vet/editVet/saveUpdate/{vet_id}',[VeterinaryController::class,'admin_EditVetDetails'])->name('post.editvetdetails');
+
+
+//ADMIN CLINIC
+Route::post('/admin/clinic/CRUDclinic/addClinic',[MainController::class,'admin_AddClinicSubmit'])->name('post.addclinicsubmit');
+Route::get('/admin/clinic/CRUDclinic/home',[MainController::class,'getAllClinic'])->name('post.getallclinic');
+Route::get('/admin/clinic/editClinic/{clinic_id}',[MainController::class, 'admin_EditClinic'])->name('clin.editclinic');
+Route::post('/admin/clinic/editClinic/{clinic_id}',[MainController::class,'admin_EditClinicSubmit'])->name('clin.editclinicsubmit');
+Route::post('/admin/clinic/registerClinic',[MainController::class,'admin_AddClinicSubmit'])->name('clin.addclinicsubmit');
+//ADMIN CUSTOMER
+//ADMIN PETS
+
 Route::get('/admin/index', [MainController::class, 'adminDashboard']);
 Route::get('/admin/pets/CRUDpet', [MainController::class, 'adminPet']);
 Route::get('/admin/customer/CRUDcustomers', [MainController::class, 'adminCustomer']);
 Route::get('/admin/vet/CRUDvet', [MainController::class, 'adminVet']);
-Route::get('/admin/users/CRUDusers', [MainController::class, 'adminUsers']);
-Route::get('/admin/users/CRUDusers', [MainController::class, 'showUserTypes']);
-Route::get('/admin/users/CRUDusers/user_details/{user_id}', 'App\Http\Controllers\MainController@user_details');
-Route::get('/admin/users/CRUDusers/delete/{user_id}',[MainController::class, 'deleteUsers'])->name('post.deleteusers');
 
-Route::get('/admin/users/viewCustomerDetails/delete/{customer_id}',[MainController::class, 'deleteCustomer'])->name('cust.deletecustomer');
 
 
 Route::get('customer/contactus',function(){
@@ -243,45 +269,18 @@ Route::get('admin/users/editUser',function() {
     return view('admin/users/editUser');
 });
 
-Route::post('/admin/users/registerUser',[MainController::class,'addAdminSubmit'])->name('post.addadminsubmit');
 
-Route::get('/veterinary/editaccount/{user_id}',[VeterinariansController::class, 'editAccount'])->name('vet.editaccount');
 
-Route::post('/admin/clinic/CRUDclinic',[MainController::class,'addClinicSubmit'])->name('post.addclinicsubmit');
 
-Route::get('/admin/users/CRUDusers',[MainController::class,'getAllUsers'])->name('post.getallusers');
 
-Route::get('/admin/users/CRUDusers',[MainController::class,'showUserInfo'])->name('post.showuserinfo');
+Route::get('/admin/vet/registerVet/{clinic_id}', [VeterinaryController::class, 'admin_AddVetID'])->name('display');
 
-Route::POST('/admin/users/editUserDetails/save/',[MainController::class,'editUserDetails'])->name('post.edituserdetails');
+Route::get('/admin/vet/viewVetDetails/{clinic_id}',[VeterinaryController::class, 'admin_viewVetDetails'])->name('clinicvet');
 
-Route::get('/admin/clinic/CRUDclinic',[MainController::class,'getAllClinic'])->name('post.getallclinic');
+Route::get('/admin/vet/viewVetDetails/delete/{vet_id}',[VeterinaryController::class, 'admin_DeleteVets'])->name('post.deletevets');
 
-Route::get('/admin/users/editUser/{user_id}/',[MainController::class,'getUsers'])->name('post.getusers');
+Route::get('/admin/vet/editVet/{vet_id}',[VeterinaryController::class, 'admin_GetVet'])->name('post.getvet');
 
-Route::get('/admin/users/viewCustomerDetails/{user_id}',[MainController::class, 'userCustomerDetails'])->name('post.usercustomerdetails');
-
-Route::get('/admin/users/inputUser/{user_id}', [MainController::class, 'getUserID'])->name('post.getuserid');
-
-Route::post('/admin/users/inputUser/save/', [MainController::class, 'addCustomers'])->name('post.adminaddcustomers');
-
-Route::post('/admin/clinic/registerClinic',[MainController::class,'addClinicSubmit'])->name('clin.addclinicsubmit');
-
-Route::get('/admin/clinic/editClinic/{clinic_id}',[MainController::class, 'editClinic'])->name('clin.editclinic');
-
-Route::post('/admin/clinic/editClinic/{clinic_id}',[MainController::class,'editClinicSubmit'])->name('clin.editclinicsubmit');
-
-Route::post('/admin/vet/registerVet', [VeterinaryController::class, 'addveterinarian'])->name('vet.addveterinarian');
-
-Route::get('/admin/vet/registerVet/{clinic_id}', [VeterinaryController::class, 'addVetID'])->name('display');
-
-Route::get('/admin/vet/viewVetDetails/{clinic_id}',[VeterinaryController::class, 'viewVetDetails'])->name('clinicvet');
-
-Route::get('/admin/vet/viewVetDetails/delete/{vet_id}',[VeterinaryController::class, 'deleteVets'])->name('post.deletevets');
-
-Route::get('/admin/vet/editVet/{vet_id}',[VeterinaryController::class, 'getVet'])->name('post.getvet');
-
-Route::POST('/admin/vet/editVet/saveUpdate/{vet_id}',[VeterinaryController::class,'editVetDetails'])->name('post.editvetdetails');
 
 Route::get('admin/pets/CRUDaddtype',function() {
     return view('/admin/pets/CRUDaddtype');
@@ -338,18 +337,18 @@ Route::get('/admin/pets/delete-breed/{breed_id}',[PetBreedController::class,'del
 //PET CRUD
 
 
-Route::get('/admin/customer/CRUDcustomers',[VeterinaryController::class, 'getAllCustomers'])->name('vet.getallcustomers');
+Route::get('/admin/customer/CRUDcustomers',[VeterinaryController::class, 'admin_GetAllCustomer'])->name('vet.getallcustomers');
 
 
 Route::get('admin/customer/viewPatient', function () {
     return view('admin/customer/viewPatient');
 });
 
-// Route::get('/admin/customer/viewPatient/{customer_id}',[VeterinaryController::class, 'patientsOwnerViews'])->name('custownerpatient');
+Route::get('/admin/customer/viewPatient/{customer_id}',[VeterinaryController::class, 'admin_PatientsOwnerViews'])->name('custownerpatients');
 
-Route::get('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'veteditcustomersID']);
+Route::get('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'admin_veteditcustomersID']);
 
-Route::post('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'saveCustomers'])->name('vet.savecusts');
+Route::post('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'admin_SaveCustomers'])->name('adminVet.savecusts');
 Route::get('/customer/custhome',[Customercontroller::class,'widgetPets']);
 Route::get('/customer/custhome{pet_id}',[Customercontroller::class,'getPetID']);
 

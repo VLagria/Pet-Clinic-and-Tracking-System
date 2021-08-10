@@ -80,7 +80,7 @@
 
   <div class="card">
     <div class="card-header">
-      <a class="btn btn-error btn-sm" href="/admin/clinic/CRUDclinic">
+      <a class="btn btn-error btn-sm" href="/admin/clinic/CRUDclinic/home">
         <i class="fas fa-arrow-left"></i> Return </a>
 
       <div class="bg bg-light rounded" style="width: 300px">
@@ -175,10 +175,6 @@
               </div>
             </td>
             <td>
-              <div class="form-group">
-                <label>ID #: </label>
-                <input type="number" class="form-control form-control-lg" name="clinic_id" id="clinic_id" value="{{ $clinics->clinic_id }}" disabled="">
-              </div>
             </td>
             <br>
           </tr>

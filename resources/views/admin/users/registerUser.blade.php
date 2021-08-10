@@ -78,7 +78,9 @@
       <div class="alert alert-success" id="messageModal" role="alert">
           {{ Session::get('user_created') }}
       </div> 
-    @endif <div class="card">
+    @endif 
+
+    <div class="card">
 
     <div class="card-header">
       <a class="btn btn-error btn-sm" href="/admin/users/CRUDusers">

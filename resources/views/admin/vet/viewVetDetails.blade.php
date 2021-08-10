@@ -37,7 +37,7 @@
   <div class="card"> 
     @csrf 
     <div class="card-header">
-      <a class="btn btn-error btn-sm" href="/admin/clinic/CRUDclinic">
+      <a class="btn btn-error btn-sm" href="/admin/clinic/CRUDclinic/home">
         <i class="fas fa-arrow-left"></i> Return </a>
       <h3 class="header">Veterinary Details</h3>
       <br>
@@ -45,7 +45,6 @@
       <table class="table  table-striped table-hover">
         <thead>
           <tr>
-            <th scope="col" style="width:5%">ID #:</th>
             <th scope="col" style="width:10%">Name:</th>
             <th scope="col" style="width:7%">Mobile:</th>
             <th scope="col" style="width:7%">Telephone:</th>
@@ -53,24 +52,19 @@
             <!-- <th scope="col"style="width:10%">Customer Profile:</th> -->
             <th scope="col" style="width:20%">Address:</th>
             <th scope="col" style="width:10%">Date Added:</th>
-            <th scope="col" style="width:10%">Clinic ID:</th>
-            <th scope="col" style="width:10%">User ID:</th>
             <th scope="col" style="width:20%">Status:</th>
-            <th scope="col" style="width:20%">Action:</th>
+            <th scope="col" style="width:30%">Action:</th>
           </tr>
         </thead>
         <tbody> 
           @foreach ($vetDetails as $vdetails) 
           <tr>
-              <td>{{ $vdetails->vet_id }}</td>
               <td>{{ $vdetails->vet_lname }}, {{ $vdetails->vet_fname }} {{ $vdetails->vet_mname }}</td>
               <td>{{ $vdetails->vet_mobile}}</td>
               <td>{{ $vdetails->vet_tel}}</td>
               <td>{{ $vdetails->vet_birthday}}</td>
               <td>{{ $vdetails->vet_blk }} / {{ $vdetails->vet_street}} / {{ $vdetails->vet_subdivision}} / {{ $vdetails->vet_barangay}} / {{ $vdetails->vet_city}} / {{ $vdetails->vet_zip}}</td>
               <td>{{ $vdetails->vet_dateAdded }}</td>
-              <td>{{ $vdetails->clinic_id  }}</td>
-              <td>{{ $vdetails->user_id  }}</td>
 
               @if ($vdetails->vet_isActive == 1) 
               <td>
@@ -82,8 +76,9 @@
               </td> 
               @endif
 
-              <td class="project-actions text-right">
-               <h4><a class="btn btn-primary view-btn" style="margin-left: 15px;" href="#">
+              <td>
+               <h4>
+                <a class="btn btn-primary view-btn" href="#">
                 <i class="fas fa-folder"></i>
               </a>
 

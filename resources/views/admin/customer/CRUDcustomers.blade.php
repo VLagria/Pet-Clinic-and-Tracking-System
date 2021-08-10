@@ -127,55 +127,6 @@
     }, 2000);
   });
 </script> 
-<script>
-  jQuery(document).ready(function(){
-     jQuery('#addSubmit').click(function(e){
-        e.preventDefault();
-        $.ajaxSetup({
-           headers: {
-               'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-           }
-       });
-        jQuery.ajax({
-           url: "{{ url('/veterinary/viewvetcustomer') }}",
-           method: 'post',
-           data: {
-            customer_fname: jQuery('#customer_fname').val(),
-            customer_lname: jQuery('#customer_lname').val(),
-            customer_mname: jQuery('#customer_mname').val(),
-            customer_mobile: jQuery('#customer_mobile').val(),
-            customer_tel: jQuery('#customer_tel').val(),
-            customer_gender: jQuery('#customer_gender').val(),
-            customer_birthday: jQuery('#customer_birthday').val(),
-            customer_blk: jQuery('#customer_blk').val(),
-            customer_street: jQuery('#customer_street').val(),
-            customer_subdivision: jQuery('#customer_subdivision').val(),
-            customer_barangay: jQuery('#customer_barangay').val(),
-            customer_city: jQuery('#customer_city').val(),
-            customer_zip: jQuery('#customer_zip').val(),
-            user_id: jQuery('#user_id').val(),
-            isActive: jQuery('#isActive').val(),
-
-           },
-           success: function(result){
-             if(result.errors)
-             {
-               jQuery('.alert-danger').html('');
-
-               jQuery.each(result.errors, function(key, value){
-                 jQuery('.alert-danger').show();
-                 jQuery('.alert-danger').append('<li>'+value+'</li>');
-               });
-             }
-             else
-             {
-               jQuery('.alert-danger').hide();
-               $('#open').hide();
-               $('#myModal').modal('hide');
-             }
-           }});
-        });
-     });
 </script>
 
 @endsection
