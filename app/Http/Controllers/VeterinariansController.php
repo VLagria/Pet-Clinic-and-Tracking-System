@@ -22,7 +22,7 @@ class VeterinariansController extends Controller
      
     // retrieve data for customers 
 
-    final function getAllCustomer(){
+    final function admin_GetAllCustomer(){
 
         $customers = DB::table('customers')
         ->select('customer_id','customer_fname','customer_lname', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 

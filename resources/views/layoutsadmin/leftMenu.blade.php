@@ -99,7 +99,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="/admin/clinic/CRUDclinic" class="nav-link">
+                <a href="/admin/clinic/CRUDclinic/home" class="nav-link">
                   <i class="nav-icon fas fa-clinic-medical"></i>
                   <p>
                    Clinic

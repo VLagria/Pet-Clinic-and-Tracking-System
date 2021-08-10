@@ -31,6 +31,12 @@
     </div> 
   @endif
 
+  @if(Session::has('newVeterinary')) 
+    <div class="alert alert-success" id="messageModal" data-toggle="modal" role="alert">
+      {{ Session::get('newVeterinary') }}
+    </div> 
+  @endif
+
   @if(Session::has('clinic_deleted')) 
     <div class="alert alert-danger" id="messageModal" data-toggle="modal" role="alert">
       {{ Session::get('clinic_deleted') }}
@@ -61,25 +67,23 @@
         <thead>
         <tr>
   
-          <th>ID</th>
-          <th>Clinic Name</th>
-          <th>Owner Name</th>
-          <th>Mobile No</th>
-          <th>Telephone</th>
+          <th style="width: 14%">Clinic Name</th>
+          <th style="width: 15%">Owner Name</th>
+          <th style="width: 7%">Mobile No</th>
+          <th style="width: 7%">Telephone</th>
           <th>Email</th>       
           <th style="width: 30%">Address</th>
           <th>Status</th>
             
-        <th style="width: 35%" class="text-center">
+        <th style="width: 40%;" class="text-center">
                   Action
                 </th>
           
         </tr>
         </thead>
         <tbody>
-          @foreach($clinic as $cAccounts)
+          @foreach($getClinicInfo as $cAccounts)
         <tr>
-           <td>{{ $cAccounts->clinic_id }}</td>
            <td>{{ $cAccounts->clinic_name }}</td>
            <td>{{ $cAccounts->owner_name }}</td>
            <td>{{ $cAccounts->clinic_mobile }}</td>
@@ -95,7 +99,7 @@
           
             <td class="project-actions" style="margin-left: 30px;">
 
-              <h4><a class="btn btn-primary view-btn" style="margin-left: 15px;" href="/admin/vet/viewVetDetails/{{ $cAccounts->clinic_id }}">
+              <h4><a class="btn btn-primary view-btn" style="margin-left: 35%;" href="/admin/vet/viewVetDetails/{{ $cAccounts->clinic_id }}">
                 <i class="fas fa-folder"></i>
               </a>
 
