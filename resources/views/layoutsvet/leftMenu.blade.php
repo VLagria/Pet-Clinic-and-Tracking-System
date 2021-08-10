@@ -70,14 +70,6 @@
                   </p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="/veterinary/vetclinic" class="nav-link">
-                <i class="nav-icon fas fa-clinic-medical"></i>
-                  <p>
-                   Clinic
-                  </p>
-                </a>
-              </li>
               
               
               <li class="nav-item">

@@ -43,6 +43,16 @@
     {{ Session::get('newCustomer') }}
   </div>
   @endif 
+  @if(Session::has('success')) 
+   <div class="alert alert-success" role="alert" id="messageModal">
+    {{ Session::get('success') }}
+  </div>
+  @endif 
+  @if(Session::has('warning')) 
+   <div class="alert alert-warning" role="alert" id="messageModal">
+    {{ Session::get('warning') }}
+  </div>
+  @endif 
   <div class="card"> @csrf <div class="card-header">
       <h3 class="header">Customer</h3>
       <br>

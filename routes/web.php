@@ -316,7 +316,7 @@ Route::get('/customer/custProf/{user_id}',[CustProfileController::class,'saveUse
 // PETSSS CRUD
 Route::get('/admin/pets/CRUDpet',[PetsController::class,'retrievePet']);
 Route::get('/admin/pets/CRUDeditpet/{pet_id}',[PetsController::class,'getPetID']);
-Route::post('/admin/pets/CRUDeditbreed/{pet_id}',[PetsController::class,'savePet'])->name('savepet');
+// Route::post('/admin/pets/CRUDeditbreed/{pet_id}',[PetsController::class,'savePet'])->name('savepet');
 Route::get('/admin/pets/delete-pets/{pet_id}',[PetsController::class,'deleteBreed'])->name('pet_deleted');
 
 
@@ -345,7 +345,7 @@ Route::get('admin/customer/viewPatient', function () {
     return view('admin/customer/viewPatient');
 });
 
-Route::get('/admin/customer/viewPatient/{customer_id}',[VeterinaryController::class, 'patientsOwnerViews'])->name('custownerpatient');
+// Route::get('/admin/customer/viewPatient/{customer_id}',[VeterinaryController::class, 'patientsOwnerViews'])->name('custownerpatient');
 
 Route::get('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'veteditcustomersID']);
 
