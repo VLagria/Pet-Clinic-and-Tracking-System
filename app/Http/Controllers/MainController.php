@@ -70,7 +70,7 @@ class MainController extends Controller
                         return redirect('admin/index');
                     }elseif ($userInfo->userType_id == 3) {
                         $request->session()->put('LoggedUser', $userInfo->user_id); // for customer
-                        return redirect('customer/custhome');
+                        return redirect('customer/custProfile');
                     }
                     elseif($userInfo->userType_id == 2){
                         $request->session()->put('LoggedUser', $userInfo->user_id); // for veterinary
@@ -102,7 +102,7 @@ class MainController extends Controller
         return view('veterinary.vethome', $data);
     }
     final function userDashboard(){
-        $data = ['LoggedUserInfo'=>user_account::where('user_id','=', session('LoggedUser'))->first()];
+        $data = ['LoggedUserInfo'=>user_account::where('id','=', session('LoggedUser'))->first()];
         return view('customer.custProfile', $data);
     }
     final function getVetClinic(){
@@ -447,7 +447,6 @@ class MainController extends Controller
         -> where('customer_fname', 'like', '%'.$search.'%')->paginate('5');
         return view('veterinary.viewvetcustomer', compact('customers'));
     }
-
 }
 
 

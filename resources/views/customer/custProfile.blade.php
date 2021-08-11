@@ -42,6 +42,7 @@
                        src="{{asset('vendors/dist/img/han.jpg') }}"
                        alt="hannah">
                 </div>
+
                 @foreach($getUser as $Users)
                 <h3 class="profile text-center">{{$Users->user_name}}</h3>
                 <br>
@@ -50,6 +51,7 @@
                 
                 <b><center>Number of Pets:</b>
                 <h3><center></center></h3>
+
                 <br>
                 <a href="custProf" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
               </div>
