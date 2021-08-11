@@ -21,6 +21,7 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
+   
     
      <!-- Main content -->
      <section class="content">
@@ -41,12 +42,14 @@
                        src="{{asset('vendors/dist/img/han.jpg') }}"
                        alt="hannah">
                 </div>
-        
-                <h3 class="profile-username text-center">Hannah Ramirez </h3>
+                @foreach($getUser as $Users)
+                <h3 class="profile text-center">{{$Users->user_name}}</h3>
                 <br>
                 <br>
+                @endforeach
+                
                 <b><center>Number of Pets:</b>
-                <h3><center>{{ $countPet }}</center></h3>
+                <h3><center></center></h3>
                 <br>
                 <a href="custProf" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
               </div>

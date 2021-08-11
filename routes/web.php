@@ -9,6 +9,9 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\VeterinaryController;
 use App\Http\Controllers\Customercontroller;
 use App\Http\Controllers\CustProfilecontroller;
+use App\Http\Controllers\PetCountController;
+use App\Http\Controllers\ProfileController;
+
 use App\Models\Customer;
 use Illuminate\Support\Facades\Route;
 
@@ -297,14 +300,17 @@ Route::get('/customer/custAcc',function() {
 
 
 // // customer profile
-// Route::get('/customer/custProfile',[CustProfileController::class, 'countPet']);
+
 // Route::get('/customer/custProf/{user_id}',[CustProfileController::class,'userprofileID']);
 // Route::get('/customer/custProf/{user_id}',[CustProfileController::class,'saveUser']);
 
 // customer profile
-Route::get('/customer/custProfile',[CustProfileController::class, 'countPet']);
-Route::get('/customer/custProf/{user_id}',[CustProfileController::class,'userprofileID']);
-Route::get('/customer/custProf/{user_id}',[CustProfileController::class,'saveUser']);
+// Route::get('/customer/custProfile',[CustProfileController::class,'widgetPets']);
+Route::get('/customer/custProfile/',[ProfileController::class, 'countData'])->name('pet.count');
+Route::get('/customer/custProfile',[ProfileController::class,'userName']);
+Route::get('/customer/custProf/',[CustProfileController::class,'userprofileID']);
+
+
 
 // PETSSS CRUD
 Route::get('/admin/pets/CRUDpet',[PetsController::class,'retrievePet']);
