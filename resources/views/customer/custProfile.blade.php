@@ -42,11 +42,11 @@
                        alt="hannah">
                 </div>
         
-                <h3 class="profile-username text-center">Hannah Ramirez </h3>
+                <h3 class="profile-username text-center"> Hannah </h3>
                 <br>
                 <br>
-                <b><center>Number of Pets:</b>
-                <h3><center>{{ $countPet }}</center></h3>
+                <b>Number of Pets:</b>
+                <h3>{{ $countPet }}</h3>
                 <br>
                 <a href="custProf" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
               </div>
