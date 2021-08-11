@@ -135,7 +135,7 @@
        @endif
 
     <!-- Main content -->
-    <form class="cmxform" action="{{ route('vet.addpatient') }}" method="post" id="addPet">
+    <form class="cmxform" action="{{ route('vet.addpatient') }}" enctype="multipart/form-data" method="post" id="addPet">
 @csrf
     <table class="table table-striped table-hover">
   <thead>
@@ -263,7 +263,7 @@
                 <label for="inputdp"> Profile Picture</label>
                 <br>
                 <form action="/action_page.php">
-                  <input type="file" id="customer_DP" name="filename" name="customer_DP">
+                  <input type="file" id="image"  name="image">
               </div>
         </td>
     </tr>

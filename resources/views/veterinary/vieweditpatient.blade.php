@@ -130,7 +130,7 @@
 
 
     <!-- Main content -->
-    <form action="/veterinary/vieweditpatient-save/{{ $editPet->pet_id }}" method="post" class="cmxform" id="editPet">
+    <form action="/veterinary/vieweditpatient-save/{{ $editPet->pet_id }}" enctype="multipart/form-data" method="post" class="cmxform" id="editPet">
 @csrf
     <table class="table table-striped table-hover">
   <thead>
@@ -295,7 +295,7 @@
                 <label for="inputdp"> Profile Picture</label>
                 <br>
                 <form action="/action_page.php">
-                  <input type="file" id="customer_DP" name="filename" name="customer_DP">
+                  <input type="file" id="customer_DP" name="image">
               </div>
         </td>
     </tr>

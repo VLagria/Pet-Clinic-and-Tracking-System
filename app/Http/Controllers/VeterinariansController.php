@@ -22,7 +22,7 @@ class VeterinariansController extends Controller
      
     // retrieve data for customers 
 
-    final function admin_GetAllCustomer(){
+    final function getAllCustomer(){
 
         $customers = DB::table('customers')
         ->select('customer_id','customer_fname','customer_lname', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 
@@ -282,6 +282,8 @@ class VeterinariansController extends Controller
 
             ]);// PET ADD VALIDATION -END
 
+            $request->image->store('images', 'public');
+
             // INSERT PET -START
             DB::table('pets')->insert([
                 'pet_name'=>$request->pet_name,
@@ -296,6 +298,7 @@ class VeterinariansController extends Controller
                 'customer_id'=>$request->customer_id,
                 'clinic_id'=>$request->clinic_id,
                 'pet_isActive'=>$request->pet_isActive,
+                'pet_DP'=>$request->image
                 
             ]);
             //INSERT PET -END
@@ -402,11 +405,16 @@ class VeterinariansController extends Controller
         ->where('pet_breed_id','=', $request->pet_breed_id)
         ->where('customer_id', '=', $request->customer_id)
         ->where('clinic_id','=', $request->clinic_id)
-        ->where('pet_isActive','=', $request->pet_isActive)->first();
+        ->where('pet_isActive','=', $request->pet_isActive)
+        ->first();
 
         if ($NoActionQuery) {
             return redirect()->route('custownerpatient', ['customer_id'=> base64_encode($customer)])->with('warning','Nothing Changes');
         }else{
+
+            
+
+
             DB::table('pets')
         ->where('pet_id', $pet_id)
         ->update([
@@ -420,7 +428,8 @@ class VeterinariansController extends Controller
             'pet_breed_id'=>$request->pet_breed_id,
             'customer_id'=>$request->customer_id,
             'clinic_id'=>$request->clinic_id,
-            'pet_isActive'=>$request->pet_isActive
+            'pet_isActive'=>$request->pet_isActive,
+            'pet_DP'=>$request->image
         ]);
 
             $customer_id = $request->customer_id;
@@ -442,7 +451,7 @@ class VeterinariansController extends Controller
         ->join('pet_breeds','pet_breeds.breed_id','=','pets.pet_breed_id')
         ->join('customers','customers.customer_id','=','pets.customer_id')
         ->join('clinic','clinic.clinic_id','=','pets.clinic_id')
-        ->select('pets.pet_id','pets.pet_name','pets.pet_gender','pets.pet_birthday','pets.pet_notes','pets.pet_bloodType','pets.pet_registeredDate', 'pet_types.type_name',
+        ->select('pets.pet_id','pets.pet_name','pets.pet_gender','pets.pet_birthday','pets.pet_notes','pet_DP','pets.pet_bloodType','pets.pet_registeredDate', 'pet_types.type_name',
         'pet_breeds.breed_name','pets.pet_isActive','pets.customer_id', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name",),DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
         customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"),'clinic.clinic_name')
         ->where('pets.customer_id','=', base64_decode($customer_id))->get();
@@ -471,7 +480,7 @@ class VeterinariansController extends Controller
     public function search(Request $request){
         
         $search = $request->get('search');
-        $usersData = DB::table('user_accounts')->where('userType_id','=','3', 'AND','user_name', 'like', '%'.$search.'%')->paginate('5');
+        $usersData = DB::table('pets')->where('pet_name', 'like', '%'.$search.'%')->paginate('5');
         return view('veterinary.user', compact('usersData'));
     }
 
@@ -485,4 +494,24 @@ class VeterinariansController extends Controller
         -> where('customer_fname', 'like', '%'.$search.'%')->paginate('5');
         return view('veterinary.viewvetcustomer', compact('customers'));
     }
+
+    public function patientSearch(Request $request){
+        $search = $request->get('petsearch');
+
+         $petInfoDatas = DB::table('pets') 
+        ->join('pet_types','pet_types.type_id','=','pets.pet_type_id')
+        ->join('pet_breeds','pet_breeds.breed_id','=','pets.pet_breed_id')
+        ->join('customers','customers.customer_id','=','pets.customer_id')
+        ->join('clinic','clinic.clinic_id','=','pets.clinic_id')
+        ->select('pets.pet_id','pets.pet_name','pets.pet_type_id', 'pets.pet_breed_id','pets.pet_gender','pets.pet_birthday','pets.pet_notes','pets.pet_bloodType','pets.pet_registeredDate', 'pet_types.type_name',
+        'pet_breeds.breed_name','pets.pet_isActive', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),
+        'clinic.clinic_name', DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
+        customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"))
+        ->where('pet_name', 'like', '%'. $search. '%')
+        ->paginate(10);
+
+        return view('veterinary.viewvetpatient', compact('petInfoDatas'));
+
+    }
+
 }

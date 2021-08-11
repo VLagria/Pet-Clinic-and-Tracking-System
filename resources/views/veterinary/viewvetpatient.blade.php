@@ -1,6 +1,10 @@
 @extends('layoutsvet.app')
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js">
+    </script>
 
 @section('content')
   <!-- Content Wrapper. Contains page content -->
@@ -22,6 +26,15 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+   <form action="{{ route('vet.patientsearch') }}" method="get">
+      <div class="input-group" style="width: 400px; margin-left: 500px" >
+    <input type="search" class="form-control rounded" placeholder="Search...." aria-label="Search"
+  name="petsearch" id="petsearch" style="width: 200px;"/> 
+  <button type="submit" class="btn btn-outline-primary">search</button>
+  <br>
+  </div>
+   </form>
+  <br>
     
 <!-- Default box -->
 @if(Session::has('patients_deleted'))
@@ -40,9 +53,16 @@
          {{ Session::get('warning') }}
          </div>
    @endif
+
 <div class="card">
   @csrf
     <div class="card-header">
+<a class="btn btn-error btn-sm" href="/veterinary/vethome">
+            <i class="fas fa-arrow-left">
+            </i>
+            Return
+        </a>
+        <br>
       <h3 class="card-title">List of all patients</h3>
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -94,7 +114,7 @@
         @if ($info->pet_isActive==1)
         <td><span class="badge badge-success">Yes</span></td>
         @else
-        <td><span class="badge badge-success">No</span></td>
+        <td><span class="badge badge-danger">No</span></td>
         @endif
         
 
@@ -181,29 +201,18 @@
 <!-- Bootstrap 4 -->
 <script src="{{asset('vendors/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
+<script type="text/javascript">
 
-<!-- <script>
 
-  $('#viewModal').modal('hide');
+  var route = "{{ url('patientautocomplete-search') }}";
 
-  $(document).ready(function() {
-    $('.btn-sm').click(function(){
-      const pet_id = $(this).attr('data-id');
-      
-      $.ajax({
-        url: 'patients_detail/'+pet_id,
-        type: 'get',
-        data:{
-          'pet_id': pet_id
-        },
-        success:function(data){
-          console.log(data);
-          $('#pet_name').html(data.pet_name);
-        }
-      });
+  $('#petsearch').typeahead({
+    source: function(query, process){
+      return $.
+    },
+  })
 
-    });
-  });
-</script> -->
+
+</script>
 
   @endsection

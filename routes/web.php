@@ -181,7 +181,7 @@ Route::get('/veterinary/usereditcustomer/{customer_id}',[VeterinariansController
 Route::post('/veterinary/save_customer/{customer_id}',[VeterinariansController::class, 'saveCustomer'])->name('vet.savecust');
 
 
-Route::get('/search',[VeterinariansController::class, 'search'])->name('vet.usersearch');
+Route::get('/petsearch',[VeterinariansController::class, 'patientSearch'])->name('vet.patientsearch');
 Route::get('/custsearch',[VeterinariansController::class, 'custSearch'])->name('vet.custsearch');
 
 
@@ -210,6 +210,7 @@ Route::get('veterinary/clinicvet', function () {
 });
 Route::get('/veterinary/clinicvet/{clinic_id}',[VeterinariansController::class, 'viewClinicVets']);
 
+// Route::post('/patientautocomplete-search',[VeterinariansController:: class, 'getAutocompletePatients'])->name('patient.autocomplete');
 
 
 Route::get('veterinary/qrcode', function () {
