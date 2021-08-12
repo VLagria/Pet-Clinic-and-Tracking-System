@@ -15,7 +15,6 @@
                     </ol>
                 </div>
             </div>
-<<<<<<< HEAD
         </div>
         <!-- /.container-fluid -->
     </section>
@@ -33,100 +32,6 @@
                         <div class="card-body box-profile">
                             <div class="text-center">
                                 <img class="profile-user-img img-fluid img-circle" src="{{asset('vendors/dist/img/han.jpg') }}" alt="hannah">
-=======
-            <!-- /.card -->
-           
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-          <div class="col-md-9">
-            <div class="card">
-              <div class="card-header p-2">
-                <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#listofpets" data-toggle="tab">Vet Info</a></li>
-                  <!-- <li class="nav-item"><a class="nav-link" href="#change_password" data-toggle="tab">Change Password </a></li> -->
-                 
-                </ul>
-              </div><!-- /.card-header -->
-              <div class="card-body">
-                <div class="tab-content">
-                  <!--  -->
-                  <table class="table table-striped table-hover">
-                      <thead>
-                          <tr>
-                             <td>
-                                <div class="form-group">
-                                    <label for="">First Name</label>
-                                    <h5>{{ $LoggedUserInfo->vet_fname }}</h5>
-                                </div>
-                             </td>
-                             <td>
-                                <div class="form-group">
-                                    <label for="">Last Name</label>
-                                    <h5>{{ $LoggedUserInfo->vet_lname }}</h5>
-                                </div>
-                             </td>
-                             <td>
-                                <div class="form-group">
-                                    <label for="">Middle Name</label>
-                                    <h5>{{ $LoggedUserInfo->vet_mname }}</h5>
-                                </div>
-                             </td>
-                             <td>
-                                <div class="form-group">
-                                    <label for="">Mobile </label>
-                                    <h5>{{ $LoggedUserInfo->vet_mobile }}</h5>
-                                </div>
-                             </td>
-                             
-                       </tr>
-                       <tr>
-                           
-                            <td>
-                                <div class="form-group">
-                                    <label for="">Blk no. </label>
-                                    <h5>{{ $LoggedUserInfo->vet_blk }}</h5>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group">
-                                    <label for="">Street </label>
-                                    <h5>{{ $LoggedUserInfo->vet_street }}</h5>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group">
-                                    <label for="">Subdivision </label>
-                                    <h5>{{ $LoggedUserInfo->vet_subdivision }}</h5>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group">
-                                    <label for="">Subdivision </label>
-                                    <h5>{{ $LoggedUserInfo->vet_barangay }}</h5>
-                                </div>
-                            </td>
-
-                       </tr>
-                       <tr>
-                           
-                        <td>
-                            <div class="form-group">
-                                <label for="">City </label>
-                                <h5>{{ $LoggedUserInfo->vet_city }}</h5>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <label for="">Zipcode </label>
-                                <h5>{{ $LoggedUserInfo->vet_zip }}</h5>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <label for="">Date Added </label>
-                                <h5>{{ $LoggedUserInfo->vet_dateAdded }}</h5>
->>>>>>> 0905b2668dbde9d68bd72c621805b7f1c8240632
                             </div>
                             <br>
                             <h5 style="text-align: center">Dr. {{ $LoggedUserInfo->vet_lname }}, {{ $LoggedUserInfo->vet_fname }} {{ $LoggedUserInfo->vet_mname }} </h5>
