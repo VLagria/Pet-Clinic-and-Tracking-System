@@ -84,7 +84,7 @@
               <div class="card-body">
                 <div class="tab-content">
                   <div class=" active tab-pane" id="personal_info"> 
-                    <form class="form-horizontal" action="/veterinary/editprofile/{{ $LoggedUserInfo->customer_id }}/{{ $LoggedUserInfo->user_id }}" method="POST" action="#" id="InfoForm">
+                    <form class="form-horizontal" action="/customer/custAcc/{{ $LoggedUserInfo->customer_id }}/{{ $LoggedUserInfo->user_id }}" method="POST" action="#" id="InfoForm">
                       @csrf
                       <table class="table" >
                         <thead>
