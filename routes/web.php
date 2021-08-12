@@ -235,6 +235,7 @@ Route::get('veterinary/vethome', function () {
     return view('veterinary/vethome');
 });
 Route::get('/veterinary/vethome',[VeterinariansController::class, 'countData']);
+Route::get('/veterinary/vethome',[MainController::class, 'vetProfile']);
 Route::get('/admin/index',[MainController::class, 'countData2']);
 
 Route::get('veterinary/vetpatient',function() {
