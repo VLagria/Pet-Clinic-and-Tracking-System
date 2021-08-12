@@ -6,35 +6,24 @@
                 <div class="col-sm-6">
                     <h1>Customer Profile</h1>
                 </div>
-<<<<<<< HEAD
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item">
-                            <a href="custProfile">Profile</a>
-                        </li>
-                        <li class="breadcrumb-item active">Settings</li>
-                    </ol>
-                </div>
-=======
             
             <!-- Profile Image -->
           
-            <div class="card card-primary card-outline">
+            <!-- <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
                        src="{{$LoggedUserInfo->customer_DP }}"
                        alt="image">
                 </div>
-              <br> 
-
+              <br>  -->
+<!-- 
                <h5 style="text-align: center">{{ $LoggedUserInfo->customer_fname }} {{ $LoggedUserInfo->customer_mname }} {{ $LoggedUserInfo->customer_lname }} </h5> 
 
               <br>
               <a href="custAcc" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
->>>>>>> 3170105941c47d60dc12f4a6b1212be2bad5eca2
             </div>
-        </div>
+        </div> -->
         <!-- /.container-fluid -->
     </section>
     <!-- Main content -->

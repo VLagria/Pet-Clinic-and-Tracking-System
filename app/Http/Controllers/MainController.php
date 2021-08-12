@@ -524,12 +524,6 @@ class MainController extends Controller
         $typePet = DB::table('pet_types')->select('*')->where('type_name', 'LIKE', '%'.$search.'%')->paginate('5');
         return view('admin/pets/CRUDpettype', compact('typePet'));
     }
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> bc19de6c8e85934d68ec3c963774c415ad33bc83
 }
 
 
