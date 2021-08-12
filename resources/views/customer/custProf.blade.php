@@ -88,7 +88,7 @@
 <td>
 <div class="form-group" style="width: 300px">
                 <label for="inputType">User Type</label>
-                <select id="userType_id" class="form-control custom-select" name="userType_id">
+                <select readonly id="userType_id" class="form-control custom-select" name="userType_id">
                   @if($Users->userType_id=="1")
                   <option value="1"selected >Admin</option>
                   <option value="2">Veterinary</option>
@@ -107,11 +107,13 @@
               </div> 
 </td>
 
-</thead>
 <div style="text-align: right; height: 100; padding-top: 20px">
-    <button type="submit" class="btn btn-primary btn-sm" style=" height: 50%;"> <i class="fas fa-user"></i> Save Changes </a>
+    <button type="submit" class="btn btn-primary btn-sm" style=" height: 50%;"> <i class="fas fa-user"></i> Update User </a>
     
   </button>
+
+</thead>
+
 @endforeach
 </table>
 

@@ -43,10 +43,10 @@
                 </div>
               <br> 
 
-              {{-- <h5 style="text-align: center">{{ $LoggedUserInfo->customer_fname }} {{ $LoggedUserInfo->customer_mname }} {{ $LoggedUserInfo->customer_lname }} </h5> --}}
+               <h5 style="text-align: center">{{ $LoggedUserInfo->customer_fname }} {{ $LoggedUserInfo->customer_mname }} {{ $LoggedUserInfo->customer_lname }} </h5> 
 
               <br>
-              <a href="custProf" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
+              <a href="custAcc" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
             </div>
 
               <!-- /.card-body -->
