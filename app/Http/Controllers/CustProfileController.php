@@ -56,17 +56,9 @@ class CustProfileController extends Controller
         ->where('customer_city', '=', $request->customer_city)
         ->where('customer_zip','=', $request->customer_zip)->first();
 
-        if($NoActionQueryCustomer ) {
+        if($NoActionQueryCustomer && $NoActionQueryUser ) {
             return back()->with('warning', 'No changes');
         }
-    
-        if($NoActionQueryUser){
-            return back()->with('warning', 'No changes');
-        }
-        if($NoActionQueryUsers){
-            return back()->with('warning', 'No changes');
-        }
-
         DB::table('user_accounts')
             ->where('user_id',$user_id)
             ->update([
@@ -99,10 +91,18 @@ class CustProfileController extends Controller
             ]);
 
             return back()->with('success', 'Profile updated');
-        } 
+
+        //     DB::table('user_accounts')
+        //     ->where('user_id',$request->$user_id)
+        //     ->update([
+        //    'user_password','=', $password
+
+        //     ]);
+           
+
     }
 
 
 
-    
+}
     

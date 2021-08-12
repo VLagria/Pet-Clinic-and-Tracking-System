@@ -584,7 +584,7 @@ class VeterinariansController extends Controller
 
     public function changepassword(Request $request, $user_id){
 
-        $checkOldPass = DB::table('user_accounts')->select('user_password')->where('user_id','=', $$user_id);
+        $checkOldPass = DB::table('user_accounts')->select('user_password')->where('user_id','=', $user_id);
 
         if ($checkOldPass) {
             
