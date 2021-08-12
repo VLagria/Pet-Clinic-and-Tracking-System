@@ -2,7 +2,46 @@
 
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://jqueryvalidation.org/files/lib/jquery.js"></script>
+<script src="https://jqueryvalidation.org/files/lib/jquery-1.11.1.js"></script>
+<script src="https://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script> 
 
+
+<script>
+  $().ready(function() {
+      $("#confirmed_Password").validate({
+          rules: {
+              
+              oldpass: {
+                  required: true
+              },
+              new_pass: {
+                  required: true
+              },
+              check_pass:{
+                  required: true,
+                  equalTo: "#new_pass"
+              }
+          },
+          messages: {
+
+              oldpass: {
+                  required: "Password is required"
+              },
+              new_pass: {
+                  required: "New password is required"
+              },
+              check_pass: {
+                  required: "Confirmed new password is required",
+
+                  equalTo: "Please enter the same password as above"
+              }
+
+          }
+      });
+  });
+</script>
 @section('content')
 
 <div class="content-wrapper">
@@ -45,7 +84,7 @@
                        alt="Profile Picture">
                 </div>
 
-                <h3 class="profile-username text-center"> {{ $LoggedUserInfo->customer_fname }} {{ $LoggedUserInfo->customer_mname }} {{ $LoggedUserInfo->customer_lname }}</h3>
+                <h3 class="profile-username text-center"> <br> {{ $LoggedUserInfo->customer_fname }} {{ $LoggedUserInfo->customer_mname }} {{ $LoggedUserInfo->customer_lname }} <br> {{ $LoggedUserInfo->user_email }}</h3>
 
                  <h3 class="profile-username text-center">  </h3>
 
@@ -217,27 +256,26 @@
 
                   
                   <!-- /.tab-pane -->
-                  <div class="tab-pane fade" id="change_password">
-                    <form class="form-horizontal">
+                  <div class="tab-pane fade"  id="change_password">
+                    <form class="form-horizontal" id="confirmed_Password"  action="/customer/custAcc/{{ $LoggedUserInfo->user_id }}" method="POST">
+                      @csrf
                       <div class="form-group row">
                         <label for="oldpass" class="col-sm-2 col-form-label">Old Password</label>
                         <div class="col-sm-10">
-                          <input type="password" class="form-control" id="oldpass"value="{{$LoggedUserInfo->user_password}}" placeholder="Old Password">
+                          <input type="password" class="form-control" name="oldpass" id="oldpass"value="{{$LoggedUserInfo->user_password}}" placeholder="Old Password">
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="newpass" class="col-sm-2 col-form-label">New Password</label>
+                        <label for="new_pass" class="col-sm-2 col-form-label">New Password</label>
                         <div class="col-sm-10">
-                          <input type="password" class="form-control" id="newpass" placeholder="New Password">
-                          <span class="text-danger error-text newpass_error">@error('newpass'){{ $message }}@enderror</span>
+                          <input type="password"  required class="form-control" name="new_pass" id="new_pass" placeholder="New Password">
 
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="cnewpass" class="col-sm-2 col-form-label">Confirm Password</label>
+                        <label for="check_pass" class="col-sm-2 col-form-label">Confirm Password</label>
                         <div class="col-sm-10">
-                          <input type="password" class="form-control" id="cnewpass" placeholder="Confirm New Password">
-                          <span class="text-danger error-text cnewpass_error">@error('cnewpass'){{ $message }}@enderror</span>
+                          <input type="password" required class="form-control" name="check_pass" id="check_pass" placeholder="Confirm New Password">
 
                         </div>
                       </div>
@@ -276,6 +314,13 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 
+<script>
+  $("document").ready(function() {
+      setTimeout(function() {
+          $("#messageModal").remove();
+      }, 2000);
+  });
+</script>
 
 </body>
 </html>

@@ -82,15 +82,21 @@ class CustProfileController extends Controller
             return back()->with('success', 'Profile updated');
         
     }
+    public function changePw(Request $request, $user_id){
+
+    $checkOldPass = DB::table('user_accounts')->where('user_id','=', $user_id)->first();
+
+    if ($request->oldpass == $checkOldPass->user_password) {
+
+        DB::table('user_accounts')
+        ->where('user_id', $checkOldPass->user_id)
+        ->update([
+            'user_password'=>$request->new_pass
+        ]);
+
+         return redirect('customer/custAcc')->with('success', 'password successfully changed');
+    }else{
+        return back()->with('warning', 'wrong password');
+    }
 }
-
-    
-    //     public function changePw(Request $request){
-
-    //    $request->validate([
-    //         'oldpass' => ['required', new MatchOldPassword],
-    //         'newpass' => ['required'],
-    //         'cnewpass' => ['same:newpass'],
-    //     ]);
-    //     User::find(auth()->user()->id)->update(['password'=> Hash::make($request->newpass)]);
-    // }
+}

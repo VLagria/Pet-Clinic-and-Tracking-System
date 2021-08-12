@@ -410,4 +410,5 @@ Route::post('/customer/custhome', [Customercontroller ::class, 'getCustomerPet']
 Route::get('/customer/custAcc', [CustProfileController:: class, 'editProfile']);
 Route::get('/customer/custeditProfile', [CustProfileController:: class, 'userProfile']);
 Route::POST('/customer/custAcc/{customer_id}/{user_id}', [CustProfileController::class, 'custProfile'])->name('save.custimage');
+Route::post('/customer/custAcc/{user_id}',[CustProfileController::class, 'changePw'])->name('cust.changepassword');
 
