@@ -112,6 +112,7 @@
           </button>
         </div>
         <div class="modal-body">
+
           <h5>Pet name: <strong> {{ $owner->pet_name }} </strong></h5>
           <h5>Type: <strong> {{ $owner->type_name }} </strong></h5>
           <h5>Breed: <strong>{{ $owner->breed_name }}</strong> </h5>

@@ -70,7 +70,7 @@ class MainController extends Controller
                         return redirect('admin/index');
                     }elseif ($userInfo->userType_id == 3) {
                         $request->session()->put('LoggedUser', $userInfo->user_id); // for customer
-                        return redirect('customer/custhome');
+                        return redirect('customer/custProfile');
                     }
                     elseif($userInfo->userType_id == 2){
                         $request->session()->put('LoggedUser', $userInfo->user_id); // for veterinary
@@ -83,9 +83,7 @@ class MainController extends Controller
                     return back()->with('fail','Incorrect Password');
                 }
         }
-
     }
-
     final function logout(){
         if(session()->has('LoggedUser')){
             session()->pull('LoggedUser');
@@ -101,9 +99,21 @@ class MainController extends Controller
         $data = ['LoggedUserInfo'=>user_account::where('id','=', session('LoggedUser'))->first()];
         return view('veterinary.vethome', $data);
     }
-    final function userDashboard(){
-        $data = ['LoggedUserInfo'=>user_account::where('user_id','=', session('LoggedUser'))->first()];
-        return view('customer.custProfile', $data);
+ 
+
+    final function vetProfile(){
+        $data = ['LoggedUserInfo'=>DB::table('user_accounts')
+        ->join('veterinary','veterinary.user_id','=', 'user_accounts.user_id')
+        ->select('*')
+        ->where('user_accounts.user_id','=', session('LoggedUser'))->first()];
+        return view('veterinary.profilevet', $data);
+    }
+    final function editProfile(){
+        $data = ['LoggedUserInfo'=>DB::table('user_accounts')
+        ->join('veterinary','veterinary.user_id','=', 'user_accounts.user_id')
+        ->select('*')
+        ->where('user_accounts.user_id','=', session('LoggedUser'))->first()];
+        return view('veterinary.editprofile', $data);
     }
     final function getVetClinic(){
 
@@ -514,9 +524,12 @@ class MainController extends Controller
         $typePet = DB::table('pet_types')->select('*')->where('type_name', 'LIKE', '%'.$search.'%')->paginate('5');
         return view('admin/pets/CRUDpettype', compact('typePet'));
     }
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> bc19de6c8e85934d68ec3c963774c415ad33bc83
 }
 
 

@@ -1,4 +1,4 @@
-@extends('layoutscustomer.app')
+@extends('layoutsvet.app')
 
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -41,15 +41,15 @@
                 <div class="card text-center"> 
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
-                       src="{{asset('vendors/dist/img/han.jpg') }}"
+                       src="{{ $LoggedUserInfo->vet_DP }}"
                        alt="Profile Picture">
                 </div>
 
-                <h3 class="profile-username text-center"> {{ $LoggedUserInfo->customer_fname }} {{ $LoggedUserInfo->customer_mname }} {{ $LoggedUserInfo->customer_lname }}</h3>
+                <h3 class="profile-username text-center"> {{ $LoggedUserInfo->vet_fname }},{{ $LoggedUserInfo->vet_lname }}</h3>
 
                  <h3 class="profile-username text-center">  </h3>
 
-                <a href="custAcc" id="change_dp" class="btn btn-primary btn-block"><b>Change Picture</b></a>
+                <a href="custeditProfile" id="change_dp" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
 
     </div>
     <!-- /.row -->
@@ -84,7 +84,7 @@
               <div class="card-body">
                 <div class="tab-content">
                   <div class=" active tab-pane" id="personal_info"> 
-                    <form class="form-horizontal" action="/customer/custAcc/{{ $LoggedUserInfo->customer_id }}/{{ $LoggedUserInfo->user_id }}" method="POST" action="#" id="InfoForm">
+                    <form class="form-horizontal" action="/veterinary/editprofile/{{ $LoggedUserInfo->vet_id }}/{{ $LoggedUserInfo->user_id }}" method="POST" action="#" id="InfoForm">
                       @csrf
                       <table class="table" >
                         <thead>
@@ -119,14 +119,14 @@
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">First Name:</label>
 
-                                  <input type="text" class="form-control" id="customer_fname" value="{{ $LoggedUserInfo->customer_fname }}" placeholder="Enter First Name"name="vet_fname">
+                                  <input type="text" class="form-control" id="vet_fname" value="{{ $LoggedUserInfo->vet_fname }}" placeholder="Enter First Name"name="vet_fname">
                                   <span class="text-danger error-text email_error"></span>
                                 </div>
                             </td>
                             <td style="border: none">
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">Last Name:</label>
-                                  <input type="text" class="form-control" id="customer_lname" value="{{ $LoggedUserInfo->customer_lname }}" placeholder="Enter Last Name"name="vet_lname">
+                                  <input type="text" class="form-control" id="vet_lname" value="{{ $LoggedUserInfo->vet_lname }}" placeholder="Enter Last Name"name="vet_lname">
                                   <span class="text-danger error-text email_error"></span>
                                 </div>
                             </td>
@@ -134,7 +134,7 @@
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">Middle Name:</label>
                                 
-                                  <input type="text" class="form-control" id="customer_mname" value="{{ $LoggedUserInfo->customer_mname }}" placeholder="Enter Mobile Name" name="vet_mname">
+                                  <input type="text" class="form-control" id="vet_mname" value="{{ $LoggedUserInfo->vet_mname }}" placeholder="Enter Mobile Name" name="vet_mname">
                                   <span class="text-danger error-text email_error"></span>
                                 
                               </div>
@@ -145,21 +145,21 @@
                             <td style="border: none">
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">Contact Mobile No:</label>
-                                  <input type="text" class="form-control" id="customer_mobile" value="{{ $LoggedUserInfo->customer_mobile }}" placeholder="Enter Email"name="vet_mobile">
+                                  <input type="text" class="form-control" id="vet_mobile" value="{{ $LoggedUserInfo->vet_mobile }}" placeholder="Enter Email"name="vet_mobile">
                                   <span class="text-danger error-text email_error"></span>
                               </div>
                             </td>
                             <td style="border: none">
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">Telephone No:</label>
-                                  <input type="text" class="form-control" id="customer_tel" value="{{ $LoggedUserInfo->customer_tel }}" placeholder="Enter Email"name="vet_tel">
+                                  <input type="text" class="form-control" id="vet_tel" value="{{ $LoggedUserInfo->vet_tel }}" placeholder="Enter Email"name="vet_tel">
                                   <span class="text-danger error-text email_error"></span>
                               </div>
                             </td>
                             <td style="border: none">
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">Blk No:</label>
-                                  <input type="text" class="form-control" id="customer_blk" value="{{ $LoggedUserInfo->customer_blk }}" placeholder="Enter Email"name="vet_blk">
+                                  <input type="text" class="form-control" id="vet_blk" value="{{ $LoggedUserInfo->vet_blk }}" placeholder="Enter Email"name="vet_blk">
                                   <span class="text-danger error-text email_error"></span>
                               </div>
                             </td>
@@ -168,21 +168,21 @@
                             <td style="border: none">
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">Street:</label>
-                                  <input type="text" class="form-control" id="customer_street" value="{{ $LoggedUserInfo->customer_street}}" placeholder="Enter Email"name="vet_street">
+                                  <input type="text" class="form-control" id="vet_street" value="{{ $LoggedUserInfo->vet_street}}" placeholder="Enter Email"name="vet_street">
                                   <span class="text-danger error-text email_error"></span>
                               </div>
                               </td>
                             <td style="border: none">
                             <div class="form-group row" style="width: 250px">
                               <label for="inputEmail">Subdivision:</label>
-                                <input type="text" class="form-control" id="customer_subdivision" value="{{ $LoggedUserInfo->customer_subdivision }}" placeholder="Enter Email"name="vet_subdivision">
+                                <input type="text" class="form-control" id="vet_subdivision" value="{{ $LoggedUserInfo->vet_subdivision }}" placeholder="Enter Email"name="vet_subdivision">
                                 <span class="text-danger error-text email_error"></span>
                             </div>
                             </td>
                             <td style="border: none">
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">Barangay:</label>
-                                  <input type="text" class="form-control" id="customer_barangay" value="{{ $LoggedUserInfo->customer_barangay }}" placeholder="Enter Email"name="vet_barangay">
+                                  <input type="text" class="form-control" id="vet_barangay" value="{{ $LoggedUserInfo->vet_barangay }}" placeholder="Enter Email"name="vet_barangay">
                                   <span class="text-danger error-text email_error"></span>
                               </div>
                             </td>
@@ -192,14 +192,14 @@
                             <td style="border: none">
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">City:</label>
-                                  <input type="text" class="form-control" id="customer_city" value="{{ $LoggedUserInfo->customer_city }}" placeholder="Enter Email"name="vet_city">
+                                  <input type="text" class="form-control" id="vet_city" value="{{ $LoggedUserInfo->vet_city }}" placeholder="Enter Email"name="vet_city">
                                   <span class="text-danger error-text email_error"></span>
                               </div>
                             </td>
                             <td style="border: none">
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">Zip Code:</label>
-                                  <input type="text" class="form-control" id="customer_zip" value="{{ $LoggedUserInfo->customer_zip }}" placeholder="Enter Email"name="vet_zip">
+                                  <input type="text" class="form-control" id="vet_zip" value="{{ $LoggedUserInfo->vet_zip }}" placeholder="Enter Email"name="vet_zip">
                                   <span class="text-danger error-text email_error"></span>
                               </div>
                             </td>
@@ -222,7 +222,7 @@
                       <div class="form-group row">
                         <label for="oldpass" class="col-sm-2 col-form-label">Old Password</label>
                         <div class="col-sm-10">
-                          <input type="password" class="form-control" id="oldpass"value="{{$LoggedUserInfo->user_password}}" placeholder="Old Password">
+                          <input type="password" class="form-control" id="oldpass" placeholder="Old Password">
                         </div>
                       </div>
                       <div class="form-group row">

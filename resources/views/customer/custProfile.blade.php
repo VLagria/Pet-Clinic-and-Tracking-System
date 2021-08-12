@@ -5,23 +5,23 @@
 @section('content')
 
 <div class="content-wrapper">
-
-<section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>User Profile</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="custProfile">Profile</a></li>
-              <li class="breadcrumb-item active">Settings</li>
-            </ol>
-          </div>
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Customer Profile</h1>
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
-    
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="custProfile">Profile</a></li>
+            <li class="breadcrumb-item active">Settings</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+ 
+
      <!-- Main content -->
      <section class="content">
       <div class="container-fluid">
@@ -38,18 +38,16 @@
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
-                       src="{{asset('vendors/dist/img/han.jpg') }}"
-                       alt="hannah">
+                       src="{{$LoggedUserInfo->customer_DP }}"
+                       alt="image">
                 </div>
-        
-                <h3 class="profile-username text-center">Hannah Ramirez <!-- {{ $LoggedUserInfo ?? ''['user_id'] }} --></h3>
-                <br>
-                <br>
-                <b><center>Number of Pets:</b>
-                <h3><center></center></h3>
-                <br>
-                <a href="custProf" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
-              </div>
+              <br> 
+
+               <h5 style="text-align: center">{{ $LoggedUserInfo->customer_fname }} {{ $LoggedUserInfo->customer_mname }} {{ $LoggedUserInfo->customer_lname }} </h5> 
+
+              <br>
+              <a href="custAcc" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
+            </div>
 
               <!-- /.card-body -->
             </div>
@@ -57,86 +55,117 @@
            
             <!-- /.card -->
           </div>
+
           <!-- /.col -->
           <div class="col-md-9">
             <div class="card">
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#listofpets" data-toggle="tab">List of Pets</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="#listofpets" data-toggle="tab">Customer Details</a></li>
                   <!-- <li class="nav-item"><a class="nav-link" href="#change_password" data-toggle="tab">Change Password </a></li> -->
-                 
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content">
-                  <!--  -->
+
+                  <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                           <td>
+                              <div class="form-group">
+                                  <label for="">First Name</label>
+                                  <h5>{{ $LoggedUserInfo->customer_fname }}</h5>
+                              </div>
+                           </td>
+                           <td>
+
+                            <div class="form-group">
+                              <label for="">Last Name</label>
+                              <h5>{{ $LoggedUserInfo->customer_lname }}</h5>
+                          </div>
+                       </td>
+                       <td>
+                        
+                          <div class="form-group">
+                              <label for="">Middle Name</label>
+                              <h5>{{ $LoggedUserInfo->customer_mname }}</h5>
+                          </div>
+                       </td>
+                       <td>
+                        <div class="form-group">
+                            <label for="">Gender </label>
+                            <h5>{{ $LoggedUserInfo->customer_gender}}</h5>
+                        </div>
+                     </td>
+
+                        <td>
+                          <div class="form-group">
+                              <label for="">Mobile </label>
+                              <h5>{{ $LoggedUserInfo->customer_mobile }}</h5>
+                          </div>
+                       </td>
+                       <td>
+                        <div class="form-group">
+                            <label for="">Telephone </label>
+                            <h5>{{ $LoggedUserInfo->customer_tel}}</h5>
+                        </div>
+                     </td>
+
+                     <tr>
+                           
+                      <td>
+                          <div class="form-group">
+                              <label for="">Blk no. </label>
+                              <h5>{{ $LoggedUserInfo->customer_blk }}</h5>
+                          </div>
+                      </td>
+                      <td>
+                      <div class="form-group">
+                          <label for="">Street. </label>
+                          <h5>{{ $LoggedUserInfo->customer_street }}</h5>
+                      </div>
+                  </td>
+                      <td>
+                          <div class="form-group">
+                              <label for="">Subdivision </label>
+                              <h5>{{ $LoggedUserInfo->customer_subdivision }}</h5>
+                          </div>
+                      </td>
+                      <td>
+                          <div class="form-group">
+                              <label for="">Barangay </label>
+                              <h5>{{ $LoggedUserInfo->customer_barangay }}</h5>
+                          </div>
+                      </td>
+
+
+                      <td>
+                        <div class="form-group">
+                            <label for="">City </label>
+                            <h5>{{ $LoggedUserInfo->customer_city }}</h5>
+                        </div>
+                    </td>
+
+                    
+                    <td>
+                      <div class="form-group">
+                          <label for="">Zip </label>
+                          <h5>{{ $LoggedUserInfo->customer_zip }}</h5>
+                      </div>
+                  </td>
+
+                 </tr>
+                    </thead>
+                  </table>
+
+                    
              <div class="col-md-4">
-      <!-- Widget: user widget style 1 -->
-      <div class="card card-widget widget-user">
-        <!-- Add the bg color to the header using any of the bg-* classes -->
-        <div class="widget-user-header bg-warning">
-          <h3 class="widget-user-username"><b></b></h3>
-          
-        </div>
-        <div class="card-footer p-0">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link">
-                Gender: <span class="float-right"></span>
-              </a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link">
-                Birthday:<span class="float-right "></span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link">
-                Blood Type: <span class="float-right "></span>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link">
-                Date Registered: <span class="float-right"></span>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link">
-                Notes: <span class="float-right "></span>
-              </a>
-            </li>
-
-            
-            <li class="nav-item">
-              <a class="nav-link">
-                Status: <span class="float-right "></span>
-              </a>
-            </li>
-      
-          </div>
-          
-      </div>
-      <!-- /.widget-user -->
       
     </div>
-
     <!-- /.col -->
     
   </div>
-  <div class="card-footer">
-    <nav aria-label="Contacts Page Navigation">
-      <ul class="pagination justify-content-center m-0">
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">4</a></li>
-
-      </ul>
-    </nav>
-  </div>
+  
   <!-- /.card-footer -->
                 </div>
                 <!-- /.tab-content -->

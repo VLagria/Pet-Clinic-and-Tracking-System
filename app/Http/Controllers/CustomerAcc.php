@@ -14,6 +14,7 @@ class CustomerAcc extends Controller
         $widgetProfile = DB::table('users')->get();
         return view('/customer/custAcc',compact('widgetProfile'));
     }
+
     
     public function useredit(){
     
@@ -37,7 +38,10 @@ class CustomerAcc extends Controller
           
             return redirect('/customer/custProfile')->with('success','Customer has been updated successfuly');
         }
+    public function getUser(){
 
+    $custUser=DB::table('user_accounts')->where('user_Id','=',$users_id)->first();
+    }
     // function saveType(Request $request,$users_id){
     //     DB::table('users')->where('id',$users_id)
     //     ->update(['name'=>$request->users_name]);
