@@ -39,10 +39,6 @@ class CustProfileController extends Controller
         ->where('user_mobile', '=', $request->user_mobile) // query for not changes user_account
         ->where('user_email', '=', $request->user_email)->first();
 
-        $NoActionQueryUsers = DB::table('user_accounts')
-        // query for not changes pass
-        ->where('user_password', '=', $request->user_password)->first();
-
         $NoActionQueryCustomer = DB::table('customers')
         ->where('customer_fname','=', $request->customer_fname)
         ->where('customer_lname','=', $request->customer_lname)
@@ -56,25 +52,18 @@ class CustProfileController extends Controller
         ->where('customer_city', '=', $request->customer_city)
         ->where('customer_zip','=', $request->customer_zip)->first();
 
-        if($NoActionQueryCustomer && $NoActionQueryUser ) {
-            return back()->with('warning', 'No changes');
+        if ($NoActionQueryUser && $NoActionQueryCustomer) {
+            return back()->with('warning', 'No changes all data are the same');
         }
-        DB::table('user_accounts')
+            DB::table('user_accounts')
             ->where('user_id',$user_id)
             ->update([
                 'user_name'=>$request->user_name,
                 'user_mobile'=>$request->user_mobile,
                 'user_email'=>$request->user_email
             ]);
-
-        //     DB::table('user_accounts')
-        //     ->where('user_id',$request->$user_id)
-        //     ->update([
-        //    'user_password','=', $password
-
-        //     ]);
-           
-        DB::table('customers')
+       
+            DB::table('customers')
             ->where('customer_id', $customer_id)
             ->update([
                 'customer_fname'=>$request->customer_fname,
@@ -89,20 +78,19 @@ class CustProfileController extends Controller
                 'customer_city'=>$request->customer_city,
                 'customer_zip'=>$request->customer_zip
             ]);
-
+        
             return back()->with('success', 'Profile updated');
-
-        //     DB::table('user_accounts')
-        //     ->where('user_id',$request->$user_id)
-        //     ->update([
-        //    'user_password','=', $password
-
-        //     ]);
-           
-
+        
     }
-
-
-
 }
+
     
+    //     public function changePw(Request $request){
+
+    //    $request->validate([
+    //         'oldpass' => ['required', new MatchOldPassword],
+    //         'newpass' => ['required'],
+    //         'cnewpass' => ['same:newpass'],
+    //     ]);
+    //     User::find(auth()->user()->id)->update(['password'=> Hash::make($request->newpass)]);
+    // }

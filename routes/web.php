@@ -344,8 +344,7 @@ Route::get('/customer/custeditProfile',function() {
 Route::get('/customer/custAcc',function() {
     return view('/customer/custAcc');
 });
-// Route::get('/customer/custProfile',[CustProfileController::class, 'countPet']);
-
+// Route::post('/customer/custAcc/{clinic_id}',[CustProfileController::class,'saveProfile']);
 
 
 // // customer profile
@@ -408,5 +407,6 @@ Route::get('/customer/custProfile', [CustProfileController ::class, 'userProfile
 Route::post('/customer/custhome', [Customercontroller ::class, 'getCustomerPet']);
 
 Route::get('/customer/custAcc', [CustProfileController:: class, 'editProfile']);
+Route::get('/customer/custeditProfile', [CustProfileController:: class, 'userProfile']);
 Route::POST('/customer/custAcc/{customer_id}/{user_id}', [CustProfileController::class, 'saveProfile'])->name('save.custimage');
 
