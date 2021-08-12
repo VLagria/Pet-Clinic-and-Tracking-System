@@ -12,30 +12,29 @@ class VeterinaryController extends Controller
     function admin_AddVeterinarian(Request $request){
 
 
-        $userVetID = DB::table('user_accounts')->select('user_id')->orderBy('user_id', 'desc')->first();
         
-        $id = $request->vet_id;
         $fname = $request->vet_fname;
         $lname = $request->vet_lname;
         $mname = $request->vet_mname;
 
+
         $checkQuery = DB::table('veterinary')
         ->where('vet_fname','=', $fname)
-        ->where('vet_lname','=', $lname)
-        ->where('vet_mname','=', $mname)->first();
+        ->Where('vet_lname', '=', $lname)
+        ->Where('vet_mname', '=', $mname)->first();
 
         if ($checkQuery) {
-            return redirect('/admin/vet/registerVet')->with('existing','The Veterinarian Already Exist');
+            return back()->with('existing','The Veterinarian Already Exist');
         }else{
 
             $request->validate([
                 'user_name'=>'required | unique:user_accounts',
-                'user_email' => 'required | email | unique:user_accounts',
+                'user_email' => 'required | email | unique:user_accounts'
             ]);
     
            $inCheckQuery = DB::table('user_accounts')->insert([
                 'user_name'=>$request->user_name,
-                'user_password'=>Hash::make($request->user_password),
+                'user_password'=>$request->user_password,
                 'user_mobile'=>$request->user_mobile,
                 'user_email'=>$request->user_email,
                 'userType_id'=>$request->userType_id
@@ -50,26 +49,27 @@ class VeterinaryController extends Controller
                     $convert = implode($toArray);
 
                     DB::table('veterinary')->insert([
-                    'vet_fname'=>$request->vet_fname,
-                    'vet_lname'=>$request->vet_lname,
-                    'vet_mname'=>$request->vet_mname,
+                    'vet_fname'=>ucwords($request->vet_fname),
+                    'vet_lname'=>ucwords($request->vet_lname),
+                    'vet_mname'=>ucwords($request->vet_mname),
                     'vet_mobile'=>$request->vet_mobile,
                     'vet_tel'=>$request->vet_tel,
                     'vet_birthday'=>$request->vet_birthday,
                     'vet_DP'=>$request->vet_DP,
-                    'vet_blk'=>$request->vet_blk,
-                    'vet_street'=>$request->vet_street,
-                    'vet_subdivision'=>$request->vet_subdivision,
-                    'vet_barangay'=>$request->vet_barangay,
-                    'vet_city'=>$request->vet_city,
-                    'clinic_id'=>$request->clinic_id,
+                    'vet_blk'=>ucwords($request->vet_blk),
+                    'vet_street'=>ucwords($request->vet_street),
+                    'vet_subdivision'=>ucwords($request->vet_subdivision),
+                    'vet_barangay'=>ucwords($request->vet_barangay),
+                    'vet_city'=>ucwords($request->vet_city),
                     'vet_zip'=>$request->vet_zip,
                     'user_id'=>$convert,
+                    'clinic_id'=>$request->clinic_id,
                     'vet_isActive'=>$request->vet_isActive,
                     'vet_dateAdded'=>$request->vet_dateAdded
 
                 ]);
-                    return redirect('/admin/clinic/CRUDclinic/home')->with('newVeterinary','Veterinary has been succesfully added!');
+                    $id = $request->clinic_id;
+                    return redirect()->route('clinicvet', ['clinic_id'=> $id])->with('newVeterinary', 'Veterinary has been succesfully added!');
             }
            }
     }
@@ -79,8 +79,9 @@ class VeterinaryController extends Controller
         $userVetID = DB::table('user_accounts')->select('user_id')->orderBy('user_id', 'desc')->first();
 
         $vetInfo = DB::table('clinic')->where('clinic_id', '=', $clinic_id)->first();
+        $clinicInfo = DB::table('clinic')->get();
 
-        return view('admin.vet.registerVet', compact('userVetID','vetInfo'));
+        return view('admin.vet.registerVet', compact('userVetID','vetInfo','clinicInfo'));
     }
 
     function admin_viewVetDetails($clinic_id){
@@ -92,11 +93,18 @@ class VeterinaryController extends Controller
         // ->where('user_id', '=', $user_id)
         // ->get();
 
-        return view('admin.vet.viewVetDetails', compact('vetDetails'));
+        return view('admin/vet/viewVetDetails', ['vetDetails'=>$vetDetails]);
     }
 
-    final function admin_DeleteVets($vet_id){
-        DB::table('veterinary')->where('vet_id', $vet_id)->delete();
+    final function admin_DeleteVets($user_id){
+        $getType = DB::table('user_accounts')->where('user_id', $user_id)->pluck('userType_id')->first();
+        $deleteVet = DB::table('veterinary')->where('user_id', $user_id)->delete();
+        
+        if ($getType = 2) {
+            if($deleteVet == true){
+                    DB::table('user_accounts')->where('user_id', $user_id)->delete();
+                }
+        }
         return back()->with('vet_deleted','Veterinarian Deleted Succesfully');
     }
 
@@ -107,7 +115,9 @@ class VeterinaryController extends Controller
 
         $vetInfo = DB::table('clinic')->get();
 
-        return view('admin.vet.editVet', compact('vets', 'userVetID', 'vetInfo'));
+        $clinicInfo = DB::table('veterinary')->get();
+
+        return view('admin.vet.editVet', compact('vets', 'userVetID', 'vetInfo', 'clinicInfo'));
     }
 
 
@@ -170,7 +180,10 @@ class VeterinaryController extends Controller
         
         }
 
-            return redirect('/admin/clinic/CRUDclinic/home')->with('vet_updated','Vet has been successfully Updated');
+            // return redirect('/admin/clinic/CRUDclinic/home')->with('vet_updated','Vet has been successfully Updated');
+
+                    $clinic_id = $request->clinic_id;
+            return redirect()->route('clinicvet', ['clinic_id'=> $clinic_id])->with('success', 'Patient has been updated succesfully');
     }
 
 
@@ -245,7 +258,7 @@ class VeterinaryController extends Controller
         ->select('pets.pet_id','pets.pet_name','pets.pet_gender','pets.pet_birthday','pets.pet_notes','pets.pet_bloodType','pets.pet_registeredDate', 'pet_types.type_name',
         'pet_breeds.breed_name','pets.pet_isActive','pets.customer_id', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name",),DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
         customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"),'clinic.clinic_name')
-        ->where('pets.customer_id','=', base64_decode($customer_id))->get();
+        ->where('pets.customer_id','=', $customer_id)->get();
 
         return view('admin/customer/viewPatient', ['PatientOwner'=>$PatientOwner]);
     }
@@ -256,44 +269,81 @@ class VeterinaryController extends Controller
     }
 
     final function admin_SaveCustomers(Request $request, $customer_id){
-    $request->validate([
-        'customer_fname'=>'required',
-        'customer_lname'=>'required',
-        'customer_mname'=>'required',
-        'customer_mobile'=>'required|numeric',
-        'customer_tel'=>'required',
-        'customer_gender'=>'required',
-        'customer_birthday'=>'required',
-        'customer_blk'=>'required',
-        'customer_street'=>'required',
-        'customer_subdivision'=>'required',
-        'customer_barangay'=>'required',
-        'customer_city'=>'required',
-        'customer_zip'=>'required',
-        'isActive'=>'required'
-    ]);
+        $NoActionQuery = DB::table('customers')
+        ->where('customer_fname','=', $request->customer_fname)
+        ->where('customer_lname','=', $request->customer_lname)
+        ->where('customer_mname','=', $request->customer_mname)
+        ->where('customer_mobile','=', $request->customer_mobile)
+        ->where('customer_tel','=', $request->customer_tel)
+        ->where('customer_gender','=',$request->customer_gender)
+        ->where('customer_birthday','=', $request->customer_birthday)
+        ->where('customer_blk','=', $request->customer_blk)
+        ->where('customer_street', '=', $request->customer_street)
+        ->where('customer_subdivision', '=', $request->customer_subdivision)
+        ->where('customer_barangay','=', $request->customer_barangay)
+        ->where('customer_city','=', $request->customer_city)
+        ->where('customer_zip','=', $request->customer_zip)
+        ->where('customer_isActive','=', $request->isActive)->first();
 
-    DB::table('customers')
-    ->where('customer_id', '=', $customer_id)
-    ->update(array(
-        'customer_fname'=>$request->customer_fname,
-        'customer_lname'=>$request->customer_lname,
-        'customer_mname'=>$request->customer_mname,
-        'customer_mobile'=>$request->customer_mobile,
-        'customer_tel'=>$request->customer_tel,
-        'customer_gender'=>$request->customer_gender,
-        'customer_birthday'=>$request->customer_birthday,
-        'customer_blk'=>$request->customer_blk,
-        'customer_street'=>$request->customer_street,
-        'customer_subdivision'=>$request->customer_subdivision,
-        'customer_barangay'=>$request->customer_barangay,
-        'customer_city'=>$request->customer_city,
-        'customer_zip'=>$request->customer_zip,
-        'customer_isActive'=>$request->isActive
-    ));
-    
-    return redirect('/admin/customer/CRUDcustomers')->with('success','Customer has been updated successfuly');
+        if($NoActionQuery) {
+            return back()->with('warning','No changes');
+        }else{
+            DB::table('customers')
+            ->where('customer_id', '=', $customer_id)
+            ->update(array(
+                'customer_fname'=>$request->customer_fname,
+                'customer_lname'=>$request->customer_lname,
+                'customer_mname'=>$request->customer_mname,
+                'customer_mobile'=>$request->customer_mobile,
+                'customer_tel'=>$request->customer_tel,
+                'customer_gender'=>$request->customer_gender,
+                'customer_birthday'=>$request->customer_birthday,
+                'customer_blk'=>$request->customer_blk,
+                'customer_street'=>$request->customer_street,
+                'customer_subdivision'=>$request->customer_subdivision,
+                'customer_barangay'=>$request->customer_barangay,
+                'customer_city'=>$request->customer_city,
+                'customer_zip'=>$request->customer_zip,
+                'customer_isActive'=>$request->isActive
+            ));
+            //UPDATE CUSTOMER INFO
+             return redirect('admin/customer/CRUDcustomers')->with('success','Customer has been updated successfuly');
 
    }
 }
-   
+
+   public function autocompleteSearch(Request $request)
+    {
+        
+          $query = $request->get('');
+          $filterResult = User::where('name', 'LIKE', '%'. $query. '%')->get();
+          return response()->json($filterResult);
+    }
+
+    function admin_getPetID($pet_id){
+        $pluckID = DB::table('pets')->where('pet_id', $pet_id)->pluck('customer_id')->first();
+        $getCustID = DB::table('customers')->where('customer_id','=', $pluckID)->first();
+        $editPet = DB::table('pets')->where('pet_id', '=', $pet_id)->first();
+        $getTypePet = DB::table('pet_types')->get();
+        $getBreedPet = DB::table('pet_breeds')->get();
+        $getClinicPet = DB::table('clinic')->get();
+        $getOwnerPet = DB::table('customers')->get();
+        
+        return view('admin.vet.adminEditPatient', compact('editPet', 'getTypePet', 'getBreedPet','getClinicPet','getOwnerPet', 'getCustID'));
+    }
+
+    public function customerSearch2(Request $request){
+        $search = $request->get('custsearch');
+        $customers = DB::table('customers')
+        ->select('customer_id','customer_fname','customer_lname', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 
+        'customer_gender','customer_DP','customer_birthday','customer_blk','customer_street','customer_subdivision','customer_barangay',
+        'customer_city','customer_zip', DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
+        customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"), 'user_id', 'customer_isActive')
+        -> where('customer_fname', 'like', '%'.$search.'%')->paginate('5');
+        return view('admin.customer.CRUDcustomers', compact('customers'));
+    }
+
+
+
+}
+    

@@ -157,14 +157,6 @@
             </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
-                <label for="inputStatus">User</label>
-                
-                <select id="isActive" class="form-control custom-select" name="id">
-                    <option value="{{ $vetcust_id->user_id }}">{{ $vetcust_id->user_id }}</option>
-                  </select>
-                      
-              </div>
               <span class="text-danger error-text user_id_error">@error('user_id'){{ $message }}@enderror</span>
         </td>
         <td>

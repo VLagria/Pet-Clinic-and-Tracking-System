@@ -6,6 +6,7 @@
                 <div class="col-sm-6">
                     <h1>User Profile</h1>
                 </div>
+<<<<<<< HEAD
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item">
@@ -14,6 +15,31 @@
                         <li class="breadcrumb-item active">User Profile</li>
                     </ol>
                 </div>
+=======
+            @endif
+            <!-- Profile Image -->
+          
+            <div class="card card-primary card-outline ">
+              <div class="card-body  box-profile card text-center">
+                <div class="card text-center"> 
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle"
+                       src="{{ $LoggedUserInfo->vet_DP }}"
+                       alt="Profile Picture">
+                </div>
+
+                <h3 class="profile-username text-center"> {{ $LoggedUserInfo->vet_fname }},{{ $LoggedUserInfo->vet_lname }}</h3>
+
+                 <h3 class="profile-username text-center">  </h3>
+
+                <a href="custeditProfile" id="change_dp" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
+
+    </div>
+    <!-- /.row -->
+              </div>
+
+              <!-- /.card-body -->
+>>>>>>> 0905b2668dbde9d68bd72c621805b7f1c8240632
             </div>
         </div>
         <!-- /.container-fluid -->

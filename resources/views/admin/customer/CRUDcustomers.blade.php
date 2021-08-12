@@ -17,22 +17,14 @@
   </div>
   <!-- /.content-header -->
  
-    <br> 
-    <br>
     
-   <form action="{{ route('vet.custsearch') }}" method="get">
-  <div class="input-group" style="width: 400px; margin-left: 500px" >
-    <input type="search" class="form-control rounded" placeholder="Search...." aria-label="Search"
-  name="custsearch" style="width: 200px;"/> 
-  <button type="submit" class="btn btn-outline-primary">search</button><br>
-  </div>
-</form>
+   
   <br>
   <br>
   <!-- Default box --> 
-  @if(Session::has('customer_deleted')) 
+  @if(Session::has('cust_deleted')) 
   <div class="alert alert-danger" role="alert" id="messageModal">
-    {{ Session::get('customer_deleted') }}
+    {{ Session::get('cust_deleted') }}
   </div>
    @endif 
    @if(Session::has('newCustomer')) 
@@ -40,28 +32,40 @@
     {{ Session::get('newCustomer') }}
   </div>
   @endif 
+
+  @if(Session::has('deleteFail')) 
+   <div class="alert alert-danger" role="alert" id="messageModal">
+    {{ Session::get('deleteFail') }}
+  </div>
+  @endif 
+
   <div class="card"> @csrf <div class="card-header">
       <h3 class="header">Customer</h3>
       <br>
       <!-- Main content -->
       <table class="table  table-striped table-hover">
         <thead>
+<form action="{{ route('adminvet.custsearch') }}" method="get">
+    <div class="input-group" style="width: 500px; margin-left: 50px;">  
+            <button type="submit" class="btn btn-info" style="margin-right: 3%;">search</button>
+              <input type="search" class="form-control rounded" placeholder="Search by Name" name="custsearch" id="custsearch">
+  </div>
+</form>
+<br>
           <tr>
-            <th scope="col" style="width:5%">#</th>
-            <th scope="col" style="width:8%"> Name</th>
-            <th scope="col" style="width:5%">Mobile</th>
-            <th scope="col" style="width:5%">Telephone</th>
-            <th scope="col" style="width:10%">Gender</th>
-            <th scope="col" style="width:5%">Birthday</th>
-            {{-- <th scope="col"style="width:10%">Customer Profile</th> --}}
-            <th scope="col" style="width:20%">Address</th>
+
+            <th scope="col" style="width:15%"> Name</th>
+            <th scope="col" style="width:9%">Mobile</th>
+            <th scope="col" style="width:9%">Telephone</th>
+            <th scope="col" style="width:7%">Gender</th>
+            <th scope="col" style="width:7%">Birthday</th>
+            <th scope="col" style="width:25%">Address</th>
             <th scope="col" style="width:6%">User ID</th>
             <th scope="col" style="width:8%">Status</th>
-            <th scope="col" style="width:30%">Action</th>
+            <th scope="col" >Action</th>
           </tr>
         </thead>
         <tbody> @foreach ($customers as $customer) <tr>
-            <td>{{ $customer->customer_id}}</td>
             <td>{{ $customer->customer_name}}</td>
             <td>{{ $customer->customer_mobile}}</td>
             <td>{{ $customer->customer_tel}}</td>
@@ -77,16 +81,43 @@
 
             
             
-            <td class="project-actions text-right">
-              <a href="/admin/customer/viewPatient/{{ base64_encode($customer->customer_id)}}" class="btn btn-primary btn-sm">
-                <i class="fas fa-folder"></i> View </a>
-              <a href="/admin/customer/customerEdit/{{ $customer->customer_id }}" class="btn btn-info btn-sm" >
-                <i class="fas fa-pencil-alt"></i> Edit </a>
-              <a class="btn btn-danger btn-sm" href="/veterinary/delete-viewvetcustomer/{{ $customer->customer_id}}">
-                <i class="fas fa-trash"></i> Delete </a>
+            <td>
+              <button href="/admin/customer/viewPatient/{{ $customer->customer_id}}" class="btn btn-primary btn-lg">
+                <i class="fas fa-folder"></i>  
+                  </button>
+              <button href="/admin/customer/customerEdit/{{ $customer->customer_id }}" class="btn btn-info btn-lg" >
+                <i class="fas fa-pencil-alt"></i>  
+                  </button>
+              <button class="btn btn-danger btn-lg" id="delete" data-toggle="modal"  data-target="#deleteModal{{ $customer->customer_id }}">
+                  <i class="fas fa-trash"></i>
+                  
+                  </button>
             </td>
           </tr>
-      
+      <!---------------------------- delete modal -------------------------------->
+  <div class="modal fade" id="deleteModal{{ $customer->customer_id }}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action=" /admin/customer/delete/{{$customer->customer_id}} " method="GET">
+                {{ csrf_field() }}
+                <div class="modal-body">
+                    <h3>Confirm deletion of user?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger waves-effect remove-data-from-delete-form">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+<!---------------------------- end delete modal -------------------------------->
          
           @endforeach
         </tbody>

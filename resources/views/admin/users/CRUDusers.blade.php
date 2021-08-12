@@ -65,6 +65,16 @@
     </div>
     <div class="card-body table-responsive p-0">
       <table class="table table-striped table-valign-middle">
+        <br>
+
+        <form action="{{ route('user.userSearch') }}" method="get">
+          
+          <div class="input-group" style="width: 500px; margin-left: 50px;">
+            <button type="submit" class="btn btn-info" style="margin-right: 3%;">search</button>
+              <input type="search" class="form-control rounded" placeholder="Search by Username" name="userSearch" id="userSearch">
+          </div>
+        </form>
+
         <thead>
         <tr>
   
@@ -87,15 +97,14 @@
           
             <td class="project-actions">
 
-                <a class="btn btn-primary btn-sm editbt" data-toggle="modal" data-target="#viewModal{{$userAccounts->user_id}}"> <i class="fas fa-folder"></i>
-                View </a>
+                <a class="btn btn-primary btn-lg editbt" data-toggle="modal" data-target="#viewModal{{$userAccounts->user_id}}"> <i class="fas fa-folder"></i></a>
 
-                <a class="btn btn-info btn-sm editbt" href="/admin/users/editUser/{{ $userAccounts->user_id }}"><i class="fas fa-pencil-alt"></i>
-                   Edit User </a>
+                <button class="btn btn-info btn-lg editbt" href="/admin/users/editUser/{{ $userAccounts->user_id }}"><i class="fas fa-pencil-alt"></i>
+                   </button>
               
-              <button class="btn btn-danger btn-sm" id="delete" data-toggle="modal"  data-target="#deleteModal{{ $userAccounts->user_id }}">
+              <button class="btn btn-danger btn-lg" id="delete" data-toggle="modal"  data-target="#deleteModal{{ $userAccounts->user_id }}">
                   <i class="fas fa-trash"></i>
-                  Delete
+                  
                   </button>
           </td> 
           </tr>   
@@ -200,7 +209,7 @@
                 <label for="inputStatus">Usertype</label>
                 
                 <select name="userType_id" class="form-control custom-select">
-                  @foreach ($userOptions as $user_types) 
+                  @foreach ($userTypes_name as $user_types) 
                     @if($user_types->userType_id == $userAccounts->userType_id)
                       <option value="{{$user_types->userType_id}}" selected>{{$user_types->userType_name}}</option>
                     @else
@@ -249,6 +258,7 @@
       }, 3000 );
     });
   </script>
+
 
 
 

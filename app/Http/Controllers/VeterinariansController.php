@@ -43,6 +43,7 @@ class VeterinariansController extends Controller
         'veterinary.vet_mobile','veterinary.vet_tel','veterinary.vet_birthday','veterinary.vet_DP', DB::raw("CONCAT(vet_blk, ' ', vet_street,' ',vet_subdivision,' ',vet_barangay,' ',
         vet_city,' ',vet_zip) AS vet_address"),'veterinary.vet_dateAdded','clinic.clinic_name','veterinary.vet_isActive')
         ->paginate(10);
+       
 
         return view('veterinary/viewvet', ['veterinaries'=>$veterinaries]);
     }
@@ -287,6 +288,7 @@ class VeterinariansController extends Controller
                 "pet_isActive"=>'required'
 
             ]);// PET ADD VALIDATION -END
+
 
 
             // INSERT PET -START

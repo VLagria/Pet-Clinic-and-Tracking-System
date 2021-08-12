@@ -20,14 +20,14 @@
     <i class="fas fa-save"></i> Add Customer </a>
     <br> --}}
     <br>
-    
-   <form action="{{ route('vet.custsearch') }}" method="get">
-  <div class="input-group" style="width: 400px; margin-left: 500px" >
-    <input type="search" class="form-control rounded" placeholder="Search...." aria-label="Search"
-  name="custsearch" style="width: 200px;"/> 
-  <button type="submit" class="btn btn-outline-primary">search</button><br>
-  </div>
-</form>
+
+    <form action="{{ route('pet.petsearch') }}" method="GET">
+        <div class="input-group" style="width: 500px; margin-left: 50px;">
+            <button type="submit" class="btn btn-info" style="margin-right: 3%;">search</button>
+            <input type="search" class="form-control rounded" placeholder="Search by Name" name="petSearch" id="petSearch">
+        </div>
+    </form>
+
 <a class="btn btn-success btn-sm" style="margin-left: 20px" href="/admin/pets/CRUDaddtype">
   <i class="fas fa-user"></i> Add Pet Type</a>
   <br>
@@ -49,10 +49,7 @@
   <div class="alert alert-success" role="alert" id="messageModal">
    {{ Session::get('Success') }}
  </div>
- @endif 
-
-
-  
+ @endif   
 
 
 
@@ -72,17 +69,13 @@
         </tr>
         </thead>
         <tbody> @foreach ($typePet as $pettype) <tr>
-            <td>{{ $pettype->type_id}}</td>
-            <td>{{ $pettype->type_name}}</td>
-        
-
-            
-            
-            <td class="project-actions text-right">
-              <a href="/admin/pets/CRUDedittype/{{$pettype->type_id}}" class="btn btn-info btn-sm">
-                <i class="fas fa-pencil-alt"></i> Edit </a>
-              <a class="btn btn-danger btn-sm" href="/admin/pets/delete/{{$pettype->type_id}}">
-                <i class="fas fa-trash"></i> Delete </a>
+            <td>{{ $pettype->type_id }}</td>
+            <td>{{ $pettype->type_name }}</td>
+            <td>
+              <a href="/admin/pets/CRUDedittype/{{$pettype->type_id}}" class="btn btn-info btn-lg">
+                <i class="fas fa-pencil-alt"></i> </a>
+              <a class="btn btn-danger btn-lg" href="/admin/pets/delete/{{$pettype->type_id}}">
+                <i class="fas fa-trash"></i></a>
               </td>
             </tr>
         

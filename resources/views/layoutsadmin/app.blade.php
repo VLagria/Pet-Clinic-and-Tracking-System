@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <meta charset="utf-8">
@@ -55,6 +54,7 @@
 <script src=".https://jqueryvalidation.org/files/lib/jquery.js"></script>
 <script src="https://jqueryvalidation.org/files/lib/jquery-1.11.1.js"></script>
 <script src="https://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+
 </body>
 </html>
 
