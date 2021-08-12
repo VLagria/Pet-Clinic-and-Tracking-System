@@ -62,7 +62,7 @@ class CustProfileController extends Controller
        
 
         DB::table('user_accounts')
-            ->where('user_id', $user_id)
+            ->where('user_id',$request->$user_id)
             ->update([
                 'user_name'=>$request->user_name,
                 'user_mobile'=>$request->user_mobile,
@@ -71,7 +71,7 @@ class CustProfileController extends Controller
 
 
         DB::table('customers')
-            ->where('customer_id', $customer_id)
+            ->where('customer_id', $request->$customer_id)
             ->update([
                 'customer_fname'=>$request->customer_fname,
                 'customer_lname'=>$request->customer_lname,
@@ -87,6 +87,14 @@ class CustProfileController extends Controller
             ]);
 
             return back()->with('success', 'Profile updated');
+
+            DB::table('user_accounts')
+            ->where('user_id',$request->$user_id)
+            ->update([
+           'user_password','=', $password
+
+            ]);
+           
 
     }
 

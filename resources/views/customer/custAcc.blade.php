@@ -93,16 +93,16 @@
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputName">Username:</label>
                                   <input type="text" class="form-control" id="user_name" value="{{ $LoggedUserInfo->user_name }}" placeholder="Enter User Name" 
-                                   name="name">
-                                  <span class="text-danger error-text name_error"></span>
-                              </div>
+                                   name="user_name">
+                                   <span class="text-danger error-text user_name_error">@error('user_name'){{ $message }}@enderror</span>
+                                  </div>
                             </td>
 
                               <td style="border: none">
                                 <div class="form-group row" style="width: 250px">
                                   <label for="inputName2">Account Mobile No:</label>
                                     <input type="number" class="form-control" id="user_mobile" value="{{ $LoggedUserInfo->user_mobile }}" placeholder="Enter mobile number" name="user_mobile">
-                                    <span class="text-danger error-text mobile_error"></span>
+                                    <span class="text-danger error-text user_mobile_error">@error('user_mobile'){{ $message }}@enderror</span>
                                 </div>
                               </td style="border: none">
 
@@ -110,32 +110,32 @@
                                 <div class="form-group row" style="width: 250px">
                                   <label for="inputEmail">Email:</label>
                                     <input type="email" class="form-control" id="user_email" value="{{ $LoggedUserInfo->user_email }}" placeholder="Enter Email"name="user_email">
-                                    <span class="text-danger error-text email_error"></span>
-                                </div>
-                              </td>
+                                    <span class="text-danger error-text user_email_error">@error('user_email'){{ $message }}@enderror</span>
+                                 </div>
+                                  </td>
                           </tr>
                           <tr>
                             <td style="border: none">
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">First Name:</label>
-
-                                  <input type="text" class="form-control" id="customer_fname" value="{{ $LoggedUserInfo->customer_fname }}" placeholder="Enter First Name"name="vet_fname">
-                                  <span class="text-danger error-text email_error"></span>
+                                  <input type="text" class="form-control" id="customer_fname" value="{{ $LoggedUserInfo->customer_fname }}" placeholder="Enter First Name"name="customer_fname">
+                                  <span class="text-danger error-text customer_fname_error">@error('customer_fname'){{ $message }}@enderror</span>
                                 </div>
                             </td>
                             <td style="border: none">
+
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">Last Name:</label>
-                                  <input type="text" class="form-control" id="customer_lname" value="{{ $LoggedUserInfo->customer_lname }}" placeholder="Enter Last Name"name="vet_lname">
-                                  <span class="text-danger error-text email_error"></span>
+                                  <input type="text" class="form-control" id="customer_lname" value="{{ $LoggedUserInfo->customer_lname }}" placeholder="Enter Last Name"name="customer_lname">
+                                  <span class="text-danger error-text customer_fname_error">@error('customer_lname'){{ $message }}@enderror</span>
                                 </div>
                             </td>
                             <td style="border: none">
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">Middle Name:</label>
                                 
-                                  <input type="text" class="form-control" id="customer_mname" value="{{ $LoggedUserInfo->customer_mname }}" placeholder="Enter Mobile Name" name="vet_mname">
-                                  <span class="text-danger error-text email_error"></span>
+                                  <input type="text" class="form-control" id="customer_mname" value="{{ $LoggedUserInfo->customer_mname }}" placeholder="Enter Middle Name" name="customer_mname">
+                                  <span class="text-danger error-text customer_mname_error">@error('customer_mname'){{ $message }}@enderror</span>
                                 
                               </div>
                             </td>
@@ -145,22 +145,22 @@
                             <td style="border: none">
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">Contact Mobile No:</label>
-                                  <input type="text" class="form-control" id="customer_mobile" value="{{ $LoggedUserInfo->customer_mobile }}" placeholder="Enter Email"name="vet_mobile">
-                                  <span class="text-danger error-text email_error"></span>
+                                  <input type="text" class="form-control" id="customer_mobile" value="{{ $LoggedUserInfo->customer_mobile }}" placeholder="Enter Email"name="customer_mobile">
+                                  <span class="text-danger error-text customer_mobile_error">@error('customer_mobile'){{ $message }}@enderror</span>
                               </div>
                             </td>
                             <td style="border: none">
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">Telephone No:</label>
-                                  <input type="text" class="form-control" id="customer_tel" value="{{ $LoggedUserInfo->customer_tel }}" placeholder="Enter Email"name="vet_tel">
-                                  <span class="text-danger error-text email_error"></span>
+                                  <input type="text" class="form-control" id="customer_tel" value="{{ $LoggedUserInfo->customer_tel }}" placeholder="Enter Email"name="customer_tel">
+                                  <span class="text-danger error-text customer_tel_error">@error('customer_tel'){{ $message }}@enderror</span>
                               </div>
                             </td>
                             <td style="border: none">
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">Blk No:</label>
-                                  <input type="text" class="form-control" id="customer_blk" value="{{ $LoggedUserInfo->customer_blk }}" placeholder="Enter Email"name="vet_blk">
-                                  <span class="text-danger error-text email_error"></span>
+                                  <input type="text" class="form-control" id="customer_blk" value="{{ $LoggedUserInfo->customer_blk }}" placeholder="Enter Email"name="customer_blk">
+                                  <span class="text-danger error-text customer_blk_error">@error('customer_blk'){{ $message }}@enderror</span>
                               </div>
                             </td>
                           </tr>
@@ -168,22 +168,22 @@
                             <td style="border: none">
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">Street:</label>
-                                  <input type="text" class="form-control" id="customer_street" value="{{ $LoggedUserInfo->customer_street}}" placeholder="Enter Email"name="vet_street">
-                                  <span class="text-danger error-text email_error"></span>
+                                  <input type="text" class="form-control" id="customer_street" value="{{ $LoggedUserInfo->customer_street}}" placeholder="Enter Email"name="customer_street">
+                                  <span class="text-danger error-text customer_street_error">@error('customer_street'){{ $message }}@enderror</span>
                               </div>
                               </td>
                             <td style="border: none">
                             <div class="form-group row" style="width: 250px">
                               <label for="inputEmail">Subdivision:</label>
-                                <input type="text" class="form-control" id="customer_subdivision" value="{{ $LoggedUserInfo->customer_subdivision }}" placeholder="Enter Email"name="vet_subdivision">
-                                <span class="text-danger error-text email_error"></span>
-                            </div>
+                                <input type="text" class="form-control" id="customer_subdivision" value="{{ $LoggedUserInfo->customer_subdivision }}" placeholder="Enter Email"name="customer_subdivision">
+                                <span class="text-danger error-text customer_subdivision_error">@error('customer_subdivision'){{ $message }}@enderror</span>
+                              </div>
                             </td>
                             <td style="border: none">
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">Barangay:</label>
-                                  <input type="text" class="form-control" id="customer_barangay" value="{{ $LoggedUserInfo->customer_barangay }}" placeholder="Enter Email"name="vet_barangay">
-                                  <span class="text-danger error-text email_error"></span>
+                                  <input type="text" class="form-control" id="customer_barangay" value="{{ $LoggedUserInfo->customer_barangay }}" placeholder="Enter Email"name="customer_barangay">
+                                  <span class="text-danger error-text customer_barangay_error">@error('customer_barangay'){{ $message }}@enderror</span>
                               </div>
                             </td>
                             
@@ -192,15 +192,15 @@
                             <td style="border: none">
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">City:</label>
-                                  <input type="text" class="form-control" id="customer_city" value="{{ $LoggedUserInfo->customer_city }}" placeholder="Enter Email"name="vet_city">
-                                  <span class="text-danger error-text email_error"></span>
+                                  <input type="text" class="form-control" id="customer_city" value="{{ $LoggedUserInfo->customer_city }}" placeholder="Enter Email"name="customer_city">
+                                  <span class="text-danger error-text customer_city_error">@error('customer_city'){{ $message }}@enderror</span>
                               </div>
                             </td>
                             <td style="border: none">
                               <div class="form-group row" style="width: 250px">
                                 <label for="inputEmail">Zip Code:</label>
-                                  <input type="text" class="form-control" id="customer_zip" value="{{ $LoggedUserInfo->customer_zip }}" placeholder="Enter Email"name="vet_zip">
-                                  <span class="text-danger error-text email_error"></span>
+                                  <input type="text" class="form-control" id="customer_zip" value="{{ $LoggedUserInfo->customer_zip }}" placeholder="Enter Email"name="customer_zip">
+                                  <span class="text-danger error-text customer_zip_error">@error('customer_zip'){{ $message }}@enderror</span>
                               </div>
                             </td>
                           </tr>
