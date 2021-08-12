@@ -56,15 +56,5 @@ class PetsController extends Controller
             return view('/admin/pets/CRUDpet', compact('Pet'));
         }
     
-        final function getCustomerPet(){
-
-            $data = ['LoggedUserInfo'=>DB::table('pets')
-            ->join('pets','pets.customer_id','=', 'pets.customer_id')
-            ->select('*')
-            ->where('pets.customer_id','=', session('LoggedUser'))->first()];
-            return view('pets.custHome', $data);
-    
-        }
-    
     
     }

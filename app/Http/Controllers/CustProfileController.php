@@ -6,13 +6,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 class CustProfileController extends Controller
 {
-<<<<<<< HEAD
-    function userprofileID(){
-=======
 
-    
     final function userprofileID(){
->>>>>>> 4d26316b26b2eda08f0ddbc4235b5c7994f35633
+
         $getUserinfo = DB::select('select * from user_accounts where user_id = :user_id',['user_id' => 5]);
         return view('customer/custProf',compact('getUserinfo'));
     }

@@ -283,10 +283,7 @@ class VeterinariansController extends Controller
 
             ]);// PET ADD VALIDATION -END
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 4675ea0823c4b973f4afb59883f27ca825a61b7e
 
             // INSERT PET -START
             DB::table('pets')->insert([
