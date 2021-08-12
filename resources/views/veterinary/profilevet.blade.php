@@ -109,7 +109,7 @@
                             <td>
                                 <div class="form-group">
                                     <label for="">Street </label>
-                                    <h5>Yawa</h5>
+                                    <h5>{{ $LoggedUserInfo->vet_street }}</h5>
                                 </div>
                             </td>
                             <td>
@@ -137,7 +137,7 @@
                         <td>
                             <div class="form-group">
                                 <label for="">Zipcode </label>
-                                <h5>Yawa</h5>
+                                <h5>{{ $LoggedUserInfo->vet_zip }}</h5>
                             </div>
                         </td>
                         <td>

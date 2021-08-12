@@ -319,7 +319,7 @@ Route::get('/customer/custAcc',function() {
 Route::get('/customer/custProfile/',[ProfileController::class, 'countData'])->name('pet.count');
 Route::get('/customer/custProfile',[ProfileController::class,'userName']);
 Route::get('/customer/custProf/',[CustProfileController::class,'userprofileID']);
-
+Route::get('/customer/custAcc', [CustProfileController:: class, 'editProfile']);
 
 
 // PETSSS CRUD

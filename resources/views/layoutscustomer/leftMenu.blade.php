@@ -16,7 +16,7 @@
           <img src="{{asset('vendors/dist/img/han.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          {{-- <a href="custProfile" class="d-block">{{ $LoggedUserInfo->customer_lname }}, {{ $LoggedUserInfo->customer_fname }} {{ $LoggedUserInfo->customer_mname }} </a> --}}
+          <a href="custProfile" class="d-block">{{ $LoggedUserInfo->customer_lname }}, {{ $LoggedUserInfo->customer_fname }} </a> 
 
         </div>
       </div>

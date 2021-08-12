@@ -43,10 +43,14 @@
                 </div>
               <br> 
 
+<<<<<<< HEAD
                 <h5 style="text-align: center">{{ $LoggedUserInfo->customer_fname }} {{ $LoggedUserInfo->customer_mname }} {{ $LoggedUserInfo->customer_lname }} </h5>
+=======
+               <h5 style="text-align: center">{{ $LoggedUserInfo->customer_fname }} {{ $LoggedUserInfo->customer_mname }} {{ $LoggedUserInfo->customer_lname }} </h5> 
+>>>>>>> 4d26316b26b2eda08f0ddbc4235b5c7994f35633
 
               <br>
-              <a href="custProf" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
+              <a href="custAcc" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
             </div>
 
               <!-- /.card-body -->
