@@ -38,16 +38,12 @@
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
-                       src="{{asset('vendors/dist/img/han.jpg') }}"
-                       alt="hannah">
+                       src="{{$LoggedUserInfo->customer_DP }}"
+                       alt="image">
                 </div>
               <br> 
 
-<<<<<<< HEAD
-                <h5 style="text-align: center">{{ $LoggedUserInfo->customer_fname }} {{ $LoggedUserInfo->customer_mname }} {{ $LoggedUserInfo->customer_lname }} </h5>
-=======
                <h5 style="text-align: center">{{ $LoggedUserInfo->customer_fname }} {{ $LoggedUserInfo->customer_mname }} {{ $LoggedUserInfo->customer_lname }} </h5> 
->>>>>>> 4d26316b26b2eda08f0ddbc4235b5c7994f35633
 
               <br>
               <a href="custAcc" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
