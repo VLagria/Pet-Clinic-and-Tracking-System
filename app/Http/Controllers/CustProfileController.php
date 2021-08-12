@@ -32,7 +32,7 @@ class CustProfileController extends Controller
         ->where('user_accounts.user_id','=', session('LoggedUser'))->first()];
         return view('customer.custAcc', $data);
     }
-    public function saveProfile(Request $request, $customer_id, $user_id){
+    public function custProfile(Request $request, $customer_id, $user_id){
 
         $NoActionQueryUser = DB::table('user_accounts')
         ->where('user_name', '=', $request->user_name)

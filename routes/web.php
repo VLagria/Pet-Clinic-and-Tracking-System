@@ -231,6 +231,7 @@ Route::get('/custsearch',[VeterinariansController::class, 'custSearch'])->name('
 Route::get('/veterinary/profilevet', [MainController::class, 'vetProfile']); //get session for veterinary to profilevet page
 Route::get('/veterinary/editprofile', [MainController:: class, 'editProfile']); // get session update for vet
 Route::post('/veterinary/editprofile/{vet_id}/{user_id}', [VeterinariansController::class, 'saveProfile'])->name('save.vetimage');
+Route::post('/veterinary/changepass/{user_id}',[VeterinariansController::class, 'changePassword'])->name('vet.changepassword');
 
 
 Route::post('/veterinary/registercustomer', [VeterinariansController::class, 'addCustomer'])->name('vet.addcustomer');

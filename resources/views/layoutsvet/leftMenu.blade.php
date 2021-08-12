@@ -16,7 +16,7 @@
           <img src="{{asset('vendors/dist/img/soy.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/veterinary/profilevet" class="d-block">vet</a>
+          <a href="/veterinary/profilevet" class="d-block">Doctor Vet </a>
           
         </div>
       </div>
