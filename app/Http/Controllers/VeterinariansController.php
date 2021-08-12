@@ -452,12 +452,14 @@ class VeterinariansController extends Controller
     }
 
     final function deletePatients($pet_id){
-        DB::table('pets')->where('pet_id', $pet_id)->delete(); //DELETE PATIENTS OR PETS
+        DB::table('pets')->where('pet_id', $pet_id)->delete(); //DELETE PATIENTS FROM viewvetpatient OR PETS
         return back()->with('patients_deleted','Patients has been deleted sucessfully');
     }
+    final function deleteCustPatients($pet_id){
+        DB::table('pets')->where('pet_id', $pet_id)->delete(); //DELETE PATIENTS from viewpatient OR PETS
+        return back()->with('error','Patients has been deleted sucessfully');
+    }
 
-    
-    
     final function patientsOwnerView($customer_id){
        $PatientOwner = DB::table('pets') 
         ->join('pet_types','pet_types.type_id','=','pets.pet_type_id')

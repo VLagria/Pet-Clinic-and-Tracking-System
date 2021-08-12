@@ -18,6 +18,7 @@
     <!-- /.content-header -->
     {{-- <a class="btn btn-success btn-sm " data-toggle="modal" data-target="#addModal" style="margin-left: 10px">
 			<i class="fas fa-save"></i> Add Customer 
+		
 		</a>
 		<br> --}}
     <br>
@@ -77,12 +78,36 @@
                                 <i class="fas fa-folder"></i> View </a>
                             <a href="/veterinary/veteditcustomer/{{ $customer->customer_id}}" class="btn btn-info btn-sm">
                                 <i class="fas fa-pencil-alt"></i> Edit </a>
-                            <a class="btn btn-danger btn-sm" href="/veterinary/delete-viewvetcustomer/{{ $customer->customer_id}}">
+                            <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal{{ $customer->customer_id }}">
                                 <i class="fas fa-trash"></i> Delete </a>
                             <a class="btn btn-success btn-sm" href="/veterinary/registerpet/{{ $customer->customer_id}}">
                                 <i class="fas fa-paw"></i> Add Pets </a>
                         </td>
-                    </tr> @endforeach </tbody>
+                    </tr>
+                    {{-- delete warning modal --}}
+                    <div class="modal fade" id="deleteModal{{ $customer->customer_id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="/veterinary/delete-viewvetcustomer/{{ $customer->customer_id}}" method="GET">
+                                    {{ csrf_field() }}
+                                    <div class="modal-body">
+                                        <h3>Delete Customer?</h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-danger waves-effect remove-data-from-delete-form">Delete</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div> @endforeach
+                </tbody>
             </table>
             {{ $customers->links('pagination::bootstrap-4') }}
         </div>
