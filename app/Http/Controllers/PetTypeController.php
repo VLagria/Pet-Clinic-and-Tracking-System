@@ -28,7 +28,12 @@ function addType(Request $request){
 
 }
 
+    function retrieveType(){
     
+        $typePet = DB::table('pet_types')->get();
+
+        return view('/admin/pets/CRUDpettype',compact('typePet'));
+    }
 
     function getTypeID($type_id){
 

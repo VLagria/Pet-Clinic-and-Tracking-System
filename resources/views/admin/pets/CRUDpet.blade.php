@@ -19,6 +19,16 @@
     </div>
     <!-- /.content-header -->
 <!-- Default box -->
+
+<form action="{{ route('pet.petSearch') }}" method="GET">
+  <div class="input-group" style="width: 400px; margin-left: 500px" >
+    <input type="search" class="form-control rounded" placeholder="Search by Breed" name="petSearch" id="petSearch" style="width: 200px;"/> 
+    <button type="submit" class="btn btn-outline-primary">search</button><br>
+  </div>
+</form>
+
+<br>
+
 @if(Session::has('pets_deleted'))
 <div class="alert alert-danger"role="alert"id="messageModal">
   {{ Session::get('pets_deleted') }}
@@ -31,7 +41,7 @@
 @endif
 <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Pets</h3>
+      <h1 class="card-title">Pets</h1>
     </div>
     <div class="card-body table-responsive p-0">
       <table class="table table-striped table-valign-middle">
@@ -58,7 +68,7 @@
         </tr>
         </thead>
         <tbody>
-          @foreach ($Pet as $pet)
+          @foreach($Pet as $pet)
         <tr>
           <td> {{ $pet->pet_id}}</td>
           <td> {{ $pet->pet_name}}</td>
@@ -67,26 +77,26 @@
           <td> {{ $pet->pet_notes}}</td>
           <td> {{ $pet->pet_bloodType}}</td>
           <td> {{ $pet->pet_registeredDate}}</td>
-          <td> {{ $pet->type_name}} </td>
+          <td> {{ $pet->type_name }} </td>
           <td> {{ $pet->breed_name}}</td>
           <td> {{ $pet->customer_fname }} {{ $pet->customer_lname }} <td>
           <td> {{ $pet->clinic_name}}</td>
 
           @if( $pet->pet_isActive == 1 )
-            <td>Yes</td>
+            <td><h4><span class="badge badge-success lg">Yes</span></h4></td>
             @else
-            <td>No</td>
+            <td class="badge badge-warning">No</td>
           @endif
           <td class="project-actions text-right">
-            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal{{ $pet->pet_id }}">
+            <button href="" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#viewModal{{ $pet->pet_id }}">
                           <i class="fas fa-folder">
-                          </i>
-                          View
-                      </a>
-              <a href="/admin/pets/CRUDeditpet/{{$pet->pet_id}}" class="btn btn-info btn-sm">
-                <i class="fas fa-pencil-alt"></i> Edit </a>
-              <a class="btn btn-danger btn-sm" href="/admin/pets/delete-pets/{{$pet->pet_id}}">
-                <i class="fas fa-trash"></i> Delete </a>
+                          </i></button>
+                          
+              <a href="/admin/pets/CRUDeditpet/{{ $pet->pet_id }}" class="btn btn-info btn-lg">
+                <i class="fas fa-pencil-alt"></i>  </a>
+
+              <button class="btn btn-danger btn-lg" href="/admin/pets/delete-pets/{{$pet->pet_id}}">
+                <i class="fas fa-trash"></i>  </button>
               </td>
             </tr>
 

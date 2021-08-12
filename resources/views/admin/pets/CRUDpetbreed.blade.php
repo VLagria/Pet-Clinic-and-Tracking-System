@@ -18,13 +18,14 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    <form action="{{ route('vet.custsearch') }}" method="get">
-  <div class="input-group" style="width: 400px; margin-left: 500px" >
-    <input type="search" class="form-control rounded" placeholder="Search...." aria-label="Search"
-  name="custsearch" style="width: 200px;"/> 
-  <button type="submit" class="btn btn-outline-primary">search</button><br>
-  </div>
-</form>
+    
+    <form action="{{ route('pet.breedSearch') }}" method="get">
+      <div class="input-group" style="width: 400px; margin-left: 500px" >
+        <input type="search" class="form-control rounded" placeholder="Search by Breed" name="breedSearch" id="breedSearch" style="width: 200px;"/> 
+        <button type="submit" class="btn btn-outline-primary">search</button><br>
+      </div>
+    </form>
+
 <a class="btn btn-success btn-sm" style="margin-left: 20px" href="/admin/pets/CRUDaddbreed">
   <i class="fas fa-user"></i> Add Pet Breed</a>
   <br>

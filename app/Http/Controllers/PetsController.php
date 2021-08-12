@@ -39,8 +39,9 @@ class PetsController extends Controller
 
         function getPetID($pet_id){
             $getID = DB::table('pets')->where ('pet_id','=',$pet_id)->first();
-            return view ('/admin/pets/CRUDeditpet',compact('getID'));
+            return view ('admin.pets.CRUDeditpet',compact('getID'));
         }
+
         function savePet(Request $request,$breed_id){
     
             DB::table('pets')
@@ -86,6 +87,10 @@ class PetsController extends Controller
             return view('pets.custHome', $data);
     
         }
+
+        
+
+    
     
     
     }

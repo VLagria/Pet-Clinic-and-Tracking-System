@@ -97,6 +97,7 @@ Route::get('/admin/clinic/CRUDclinic/home',[MainController::class,'getAllClinic'
 Route::get('/admin/clinic/editClinic/{clinic_id}',[MainController::class, 'admin_EditClinic'])->name('clin.editclinic');
 Route::post('/admin/clinic/editClinic/{clinic_id}',[MainController::class,'admin_EditClinicSubmit'])->name('clin.editclinicsubmit');
 Route::post('/admin/clinic/registerClinic',[MainController::class,'admin_AddClinicSubmit'])->name('clin.addclinicsubmit');
+Route::get('/admin/pets/CRUDpet/{pet_id}',[MainController::class, 'admin_PetClinic'])->name('pet.editpet');
 
 
 //ADMIN CUSTOMER
@@ -107,12 +108,20 @@ Route::get('/admin/customer/CRUDcustomers/customerSearch',[VeterinaryController:
 //ADMIN PETS
 // Route::get('/admin/pets/CRUDpet/{customer_id}',[PetsController::class, 'admin_patientsOwnerView'])->name('admin_custownerpatient');
 Route::get('/admin/pets/CRUDpet/{customer_id}',[PetsController::class, 'admin_patientsOwnerView2'])->name('custownerpatients');
-Route::get('/petSearch',[MainController::class, 'petSearch'])->name('pet.petsearch');
+Route::get('/petTypeSearch',[MainController::class, 'petTypeSearch'])->name('pet.petTypesearch');
+Route::get('/breedSearch',[MainController::class, 'breedSearch'])->name('pet.breedSearch');
+Route::get('/petSearch1',[MainController::class, 'petSearch'])->name('pet.petSearch');
+
+
+Route::get('/admin/pets/CRUDeditpet/{pet_id}',[MainController::class, 'admin_SavePetClinic'])->name('pet.editpetdetails');
+Route::get('/admin/pets/CRUDeditpet/{pet_id}',[MainController::class,'admin_PetSave'])->name('pet.editsubmit');
+
 // retrieveType
 Route::get('/admin/index/dashboard', [MainController::class, 'adminDashboard']);
 Route::get('/admin/pets/CRUDpet', [MainController::class, 'adminPet']);
 Route::get('/admin/customer/CRUDcustomers', [MainController::class, 'adminCustomer']);
 Route::get('/admin/vet/CRUDvet', [MainController::class, 'adminVet']);
+
 
 
 
@@ -352,7 +361,6 @@ Route::get('/customer/custAcc', [CustProfileController:: class, 'editProfile']);
 
 // PETSSS CRUD
 Route::get('/admin/pets/CRUDpet',[PetsController::class,'retrievePet']);
-Route::get('/admin/pets/CRUDeditpet/{pet_id}',[PetsController::class,'getPetID']);
 // Route::post('/admin/pets/CRUDeditbreed/{pet_id}',[PetsController::class,'savePet'])->name('savepet');
 Route::get('/admin/pets/delete-pets/{pet_id}',[PetsController::class,'deleteBreed'])->name('pet_deleted');
 

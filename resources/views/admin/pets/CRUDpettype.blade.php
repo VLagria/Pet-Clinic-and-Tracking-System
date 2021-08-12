@@ -21,10 +21,10 @@
     <br> --}}
     <br>
 
-    <form action="{{ route('pet.petsearch') }}" method="GET">
+    <form action="{{ route('pet.petTypesearch') }}" method="GET">
         <div class="input-group" style="width: 500px; margin-left: 50px;">
             <button type="submit" class="btn btn-info" style="margin-right: 3%;">search</button>
-            <input type="search" class="form-control rounded" placeholder="Search by Name" name="petSearch" id="petSearch">
+            <input type="search" class="form-control rounded" placeholder="Search by Name" name="petTypeSearch" id="petTypeSearch">
         </div>
     </form>
 

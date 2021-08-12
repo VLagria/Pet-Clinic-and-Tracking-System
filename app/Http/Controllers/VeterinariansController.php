@@ -333,6 +333,7 @@ class VeterinariansController extends Controller
         
         return view('veterinary.vieweditpatient', compact('editPet', 'getTypePet', 'getBreedPet','getClinicPet','getOwnerPet'));
     }
+    
     function getPetID($pet_id){
 
         $editPet = DB::table('pets')->where('pet_id', '=', $pet_id)->first();
@@ -343,6 +344,7 @@ class VeterinariansController extends Controller
         
         return view('veterinary.vieweditpatient', compact('editPet', 'getTypePet', 'getBreedPet','getClinicPet','getOwnerPet'));
     }
+
     function savePetVet(Request $request, $pet_id){
 
         $breed = $request->pet_breed_id;
