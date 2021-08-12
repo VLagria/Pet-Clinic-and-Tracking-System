@@ -396,7 +396,7 @@ Route::get('admin/customer/viewPatient', function () {
 
 
 Route::post('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'admin_SaveCustomers'])->name('adminVet.savecusts');
-Route::get('/customer/custhome/test',[Customercontroller::class,'widgetPets']);
+Route::get('/customer/custhome/',[Customercontroller::class,'widgetPets']);
 Route::get('/customer/custhome{pet_id}',[Customercontroller::class,'getPetID']);
 
 
@@ -409,5 +409,5 @@ Route::get('/customer/custProfile', [CustProfileController ::class, 'userProfile
 Route::post('/customer/custhome', [Customercontroller ::class, 'getCustomerPet']);
 
 Route::get('/customer/custAcc', [CustProfileController:: class, 'editProfile']);
-Route::POST('/customer/custAcc/{customer_id}/{user_id}', [CustProfileController::class, 'saveProfile']);
+Route::POST('/customer/custAcc/{customer_id}/{user_id}', [CustProfileController::class, 'custProfile'])->name('save.custimage');
 
