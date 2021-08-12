@@ -49,6 +49,11 @@
                 <div class="col-md-9">
                     <div class="card">
                         <div class="card-header p-2">
+                            @if(Session::has('success')) 
+                             <div class="alert alert-success" role="alert" id="messageModal">
+                                {{ Session::get('success') }}
+                            </div> 
+                            @endif
                             <ul class="nav nav-pills">
                                 <li class="nav-item">
                                     <a class="nav-link active" href="#listofpets" data-toggle="tab">Vet Info</a>
@@ -168,5 +173,16 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+<script src="{{asset('vendors/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>
+    $("document").ready(function() {
+        setTimeout(function() {
+            $("#messageModal").remove();
+        }, 2000);
+    });
+</script>
 </body>
 </html>

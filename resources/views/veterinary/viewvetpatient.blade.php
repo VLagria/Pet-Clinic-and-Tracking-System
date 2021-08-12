@@ -89,7 +89,7 @@
                                     <i class="fas fa-folder"></i> View </a>
                                 <a href="/veterinary/viewveteditpatient/{{ $info->pet_id }}" class="btn btn-info btn-sm">
                                     <i class="fas fa-pencil-alt"></i> Edit </a>
-                                <a class="btn btn-danger btn-sm" href="/veterinary/delete-viewvetpatient/{{ $info->pet_id }}">
+                                <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal{{ $info->pet_id }}">
                                     <i class="fas fa-trash"></i> Delete </a>
                             </td>
                         </tr>
@@ -128,6 +128,29 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- delete warning modal --}}
+                        <div class="modal fade" id="deleteModal{{ $info->pet_id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form action="/veterinary/delete-viewvetpatient/{{ $info->pet_id }}" method="GET">
+                                        {{ csrf_field() }}
+                                        <div class="modal-body">
+                                            <h3>Delete Patient?</h3>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-danger waves-effect remove-data-from-delete-form">Delete</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div> @endforeach

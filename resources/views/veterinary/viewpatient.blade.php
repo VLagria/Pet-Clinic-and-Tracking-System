@@ -23,10 +23,20 @@
             <a class="btn btn-error btn-sm" href="/veterinary/viewvetcustomer">
                 <i class="fas fa-arrow-left"></i> Return </a>
             <h3 class="header">Pets</h3>
-            <br> @if(Session::has('success')) <div class="alert alert-success" role="alert" id="messageModal">
+            <br> 
+            @if(Session::has('success')) 
+            <div class="alert alert-success" role="alert" id="messageModal">
                 {{ Session::get('success') }}
-            </div> @endif @if(Session::has('warning')) <div class="alert alert-warning" role="alert" id="messageModal">
+            </div>
+             @endif 
+            @if(Session::has('warning')) 
+            <div class="alert alert-warning" role="alert" id="messageModal">
                 {{ Session::get('warning') }}
+            </div>
+             @endif
+             @if(Session::has('error'))
+            <div class="alert alert-danger" role="alert" id="messageModal">
+                {{ Session::get('error') }}
             </div> @endif
             <!-- Main content -->
             <table class="table  table-striped table-hover">
@@ -66,7 +76,7 @@
                                 <i class="fas fa-folder"></i> View </a>
                             <a href="/veterinary/vieweditpatient/{{ $owner->pet_id }}" class="btn btn-info btn-sm">
                                 <i class="fas fa-pencil-alt"></i> Edit </a>
-                            <a class="btn btn-danger btn-sm" href="/veterinary/delete-viewvetpatient/{{ $owner->pet_id }}">
+                            <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal{{ $owner->pet_id }}">
                                 <i class="fas fa-trash"></i> Delete </a>
                         </td>
                     </tr>
@@ -108,8 +118,33 @@
                     </div>
                     {{-- end view modal --}}
                     </form>
-        </div>
-    </div> @endforeach </tbody>
+                 </div>
+            </div>
+            {{-- delete warning modal --}}
+            <div class="modal fade" id="deleteModal{{ $owner->pet_id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="/veterinary/delete-custpatitent/{{ $owner->pet_id }}" method="GET">
+                            {{ csrf_field() }}
+                            <div class="modal-body">
+                                <h3>Delete Patient?</h3>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-danger waves-effect remove-data-from-delete-form">Delete</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+     @endforeach </tbody>
     </table>
 </div>
 </div>

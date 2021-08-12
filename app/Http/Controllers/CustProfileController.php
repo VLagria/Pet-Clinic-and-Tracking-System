@@ -32,7 +32,7 @@ class CustProfileController extends Controller
         ->where('user_accounts.user_id','=', session('LoggedUser'))->first()];
         return view('customer.custAcc', $data);
     }
-    public function saveProfile(Request $request, $customer_id, $user_id){
+    public function custProfile(Request $request, $customer_id, $user_id){
 
         $NoActionQueryUser = DB::table('user_accounts')
         ->where('user_name', '=', $request->user_name)
@@ -52,25 +52,18 @@ class CustProfileController extends Controller
         ->where('customer_city', '=', $request->customer_city)
         ->where('customer_zip','=', $request->customer_zip)->first();
 
-        if($NoActionQueryCustomer ) {
-            return back()->with('warning', 'No changes');
+        if ($NoActionQueryUser && $NoActionQueryCustomer) {
+            return back()->with('warning', 'No changes all data are the same');
         }
-    
-        if($NoActionQueryUser){
-            return back()->with('warning', 'No changes');
-        }
-       
-
-        DB::table('user_accounts')
-            ->where('user_id', $user_id)
+            DB::table('user_accounts')
+            ->where('user_id',$user_id)
             ->update([
                 'user_name'=>$request->user_name,
                 'user_mobile'=>$request->user_mobile,
                 'user_email'=>$request->user_email
             ]);
-
-
-        DB::table('customers')
+       
+            DB::table('customers')
             ->where('customer_id', $customer_id)
             ->update([
                 'customer_fname'=>$request->customer_fname,
@@ -85,12 +78,25 @@ class CustProfileController extends Controller
                 'customer_city'=>$request->customer_city,
                 'customer_zip'=>$request->customer_zip
             ]);
-
+        
             return back()->with('success', 'Profile updated');
-
+        
     }
+    public function changePw(Request $request, $user_id){
 
+    $checkOldPass = DB::table('user_accounts')->where('user_id','=', $user_id)->first();
+
+    if ($request->oldpass == $checkOldPass->user_password) {
+
+        DB::table('user_accounts')
+        ->where('user_id', $checkOldPass->user_id)
+        ->update([
+            'user_password'=>$request->new_pass
+        ]);
+
+         return redirect('customer/custAcc')->with('success', 'password successfully changed');
+    }else{
+        return back()->with('warning', 'wrong password');
+    }
 }
-
-    
-    
+}

@@ -92,4 +92,8 @@ class PetsController extends Controller
 
     
     
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 3b3dd23ceee504338d5cde3c3468809257d63631
     }

@@ -232,6 +232,7 @@ Route::get('/custsearch',[VeterinariansController::class, 'custSearch'])->name('
 Route::get('/veterinary/profilevet', [MainController::class, 'vetProfile']); //get session for veterinary to profilevet page
 Route::get('/veterinary/editprofile', [MainController:: class, 'editProfile']); // get session update for vet
 Route::post('/veterinary/editprofile/{vet_id}/{user_id}', [VeterinariansController::class, 'saveProfile'])->name('save.vetimage');
+Route::post('/veterinary/changepass/{user_id}',[VeterinariansController::class, 'changePassword'])->name('vet.changepassword');
 
 
 Route::post('/veterinary/registercustomer', [VeterinariansController::class, 'addCustomer'])->name('vet.addcustomer');
@@ -240,6 +241,7 @@ Route::get('/veterinary/viewvetcustomer',[VeterinariansController::class, 'getAl
 Route::get('/veterinary/viewvetpatient',[VeterinariansController::class, 'retrieveInfo'])->name('vet.retrieveInfo');
 Route::post('/veterinary/viewvetpatient',[VeterinariansController::class, 'addPatients'])->name('vet.addpatient');
 Route::get('/veterinary/delete-viewvetpatient/{pet_id}',[VeterinariansController::class, 'deletePatients'])->name('vet.deletepatients');
+Route::get('/veterinary/delete-custpatitent/{pet_id}',[VeterinariansController::class, 'deleteCustPatients'])->name('vet.deletecustpatients');
 // Route::get('patients_detail/{pet_id}',[VeterinariansController::class, 'patients_detail']);
 // Route::post('/veterinary/registercustomer/{user_id}', [VeterinariansController::class, 'addCustomer'])->name('cust.vetaddcustomer');
 Route::post('/veterinary/edit-viewvetcustomer/{customer_id}', [VeterinariansController::class, 'editCustomer'])->name('vet.editcust');
@@ -344,8 +346,7 @@ Route::get('/customer/custeditProfile',function() {
 Route::get('/customer/custAcc',function() {
     return view('/customer/custAcc');
 });
-// Route::get('/customer/custProfile',[CustProfileController::class, 'countPet']);
-
+// Route::post('/customer/custAcc/{clinic_id}',[CustProfileController::class,'saveProfile']);
 
 
 // // customer profile
@@ -395,7 +396,7 @@ Route::get('admin/customer/viewPatient', function () {
 
 
 Route::post('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'admin_SaveCustomers'])->name('adminVet.savecusts');
-Route::get('/customer/custhome/test',[Customercontroller::class,'widgetPets']);
+Route::get('/customer/custhome/',[Customercontroller::class,'widgetPets']);
 Route::get('/customer/custhome{pet_id}',[Customercontroller::class,'getPetID']);
 
 
@@ -408,5 +409,7 @@ Route::get('/customer/custProfile', [CustProfileController ::class, 'userProfile
 Route::post('/customer/custhome', [Customercontroller ::class, 'getCustomerPet']);
 
 Route::get('/customer/custAcc', [CustProfileController:: class, 'editProfile']);
-Route::POST('/customer/custAcc/{customer_id}/{user_id}', [CustProfileController::class, 'saveProfile']);
+Route::get('/customer/custeditProfile', [CustProfileController:: class, 'userProfile']);
+Route::POST('/customer/custAcc/{customer_id}/{user_id}', [CustProfileController::class, 'custProfile'])->name('save.custimage');
+Route::post('/customer/custAcc/{user_id}',[CustProfileController::class, 'changePw'])->name('cust.changepassword');
 
