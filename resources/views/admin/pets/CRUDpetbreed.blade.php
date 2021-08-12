@@ -61,11 +61,11 @@
           <td> {{ $petbreed->breed_id}}</td>
           <td> {{ $petbreed->breed_name}} </td>
 
-          <td class="project-actions text-right">
-              <a href="/admin/pets/CRUDeditbreed/{{$petbreed->breed_id}}" class="btn btn-info btn-sm">
-                <i class="fas fa-pencil-alt"></i> Edit </a>
-              <a class="btn btn-danger btn-sm" href="/admin/pets/delete-breed/{{$petbreed->breed_id}}">
-                <i class="fas fa-trash"></i> Delete </a>
+          <td>
+              <a href="/admin/pets/CRUDeditbreed/{{$petbreed->breed_id}}" class="btn btn-info btn-lg">
+                <i class="fas fa-pencil-alt"></i></a>
+              <a class="btn btn-danger btn-lg" href="/admin/pets/delete-breed/{{$petbreed->breed_id}}">
+                <i class="fas fa-trash"></i></a>
               </td>
             </tr>
             @endforeach 

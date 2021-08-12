@@ -27,7 +27,7 @@ class MainController extends Controller
         
     }
     final function adminDashboard(){
-        return view('admin/index');
+        return view('admin/index/home');
     }
     
     final function adminPet(){
@@ -175,16 +175,16 @@ class MainController extends Controller
             'clinic_zip'=>'required | numeric',
         ]);
         DB::table('clinic')->insert([
-            'clinic_name' => $request->clinic_name,
-            'owner_name' => $request->owner_name,
+            'clinic_name' => ucwords($request->clinic_name),
+            'owner_name' => ucwords($request->owner_name),
             'clinic_mobile' => $request->clinic_mobile,
             'clinic_tel' => $request->clinic_tel,
             'clinic_email' => $request->clinic_email,
-            'clinic_blk' => $request->clinic_blk,
-            'clinic_street' => $request->clinic_street,
-            'clinic_barangay' => $request->clinic_barangay,
-            'clinic_city' => $request->clinic_city,
-            'clinic_zip' => $request->clinic_zip,
+            'clinic_blk' => ucwords($request->clinic_blk),
+            'clinic_street' => ucwords($request->clinic_street),
+            'clinic_barangay' => ucwords($request->clinic_barangay),
+            'clinic_city' => ucwords($request->clinic_city),
+            'clinic_zip' => ucwords($request->clinic_zip),
             'clinic_isActive' => $request->clinic_isActive
         ]);
         return redirect('/admin/clinic/CRUDclinic/home')->with('clinic_created', 'Clinic successfully registered!');
@@ -314,6 +314,7 @@ class MainController extends Controller
         $custID = DB::table('customers')->where('user_id', $user_id)->pluck('customer_id')->first();
         $custQuery = DB::table('pets')->where('customer_id', $custID)->first();
         $countAdmin = DB::table('user_accounts')->select(DB::raw('COUNT(*) as count'))->where('userType_id', 1)->pluck('count')->first();
+        $deleteVet = DB::table('veterinary')->where('user_id', $user_id)->delete();
 
         if ($custQuery) {
             return back()->with('deleteFail', 'Customer has pets. Cannot be deleted.');
@@ -322,7 +323,9 @@ class MainController extends Controller
                 DB::table('customers')->where('user_id', $user_id)->delete();
                 DB::table('user_accounts')->where('user_id', $user_id)->delete();
             }elseif($getType = 2){
-                DB::table('veterinary')->where('user_id', $user_id)->delete();
+                if($deleteVet == true){
+                    DB::table('user_accounts')->where('user_id', $user_id)->delete();
+                }
             }else{
                 if ($countAdmin>1) {
                     DB::table('user_accounts')->where('user_id', $user_id)->delete();
@@ -335,13 +338,45 @@ class MainController extends Controller
                 return back()->with('user_deleted','user successfully deleted');
             }
 
+    final function admin_DeleteCustomer2($customer_id){ 
+            $getUserID = DB::table('customers')->where('customer_id', $customer_id)->pluck('user_id')->first();
+            $getType = DB::table('user_accounts')->where('user_id', $getUserID)->pluck('userType_id')->first();
+            $custID = DB::table('customers')->where('user_id', $getUserID)->pluck('customer_id')->first();
+            $custQuery = DB::table('pets')->where('customer_id', $custID)->first();
+            $countAdmin = DB::table('user_accounts')->select(DB::raw('COUNT(*) as count'))->where('userType_id', 1)->pluck('count')->first();
+            $deleteVet = DB::table('veterinary')->where('user_id', $getUserID)->delete();
+
+            if ($custQuery) {
+                return back()->with('deleteFail', 'Customer has pets. Cannot be deleted.');
+            }else{
+                if ($getType = 3) {
+                    DB::table('customers')->where('user_id', $getUserID)->delete();
+                    DB::table('user_accounts')->where('user_id', $getUserID)->delete();
+                    return back()->with('cust_deleted','Customer Successfully Deleted');
+                }elseif($getType = 2){
+                    if($deleteVet == true){
+                        DB::table('user_accounts')->where('user_id', $getUserID)->delete();
+                    }
+                }else{
+                    if ($countAdmin>1) {
+                        DB::table('user_accounts')->where('user_id', $getUserID)->delete();
+                    }else{
+                        return back()->with('deleteFail2','Need 1 Administrator.');
+                    }
+                }
+            }
+                    
+                    return back()->with('user_deleted','user successfully deleted');
+                }
         
     final function deleteClinic($clinic_id){
+        $clinicQuery2 = DB::table('pets')->where('clinic_id', $clinic_id)->first();
         $clinicID = DB::table('veterinary')->where('clinic_id', $clinic_id)->pluck('clinic_id')->first();
         $clinicQuery = DB::table('veterinary')->where('clinic_id', $clinicID)->first();
 
-        if($clinicQuery){
-            return back()->with('clinicDeleteFail', 'Clinic contains Veterinarians');
+        if($clinicQuery || $clinicQuery2){
+            return back()->with('clinicDeleteFail', 'Clinic contains veterinarians/pets. Empty Clinic First! ');
+            
         }else{
             DB::table('clinic')->where('clinic_id', $clinic_id)->delete();
             return back()->with('clinic_deleted','clinic successfully deleted');
@@ -352,6 +387,8 @@ class MainController extends Controller
         DB::table('customers')->where('customer_id', $customer_id)->delete();
         return back()->with('customer_deleted','customer successfully deleted');
     }
+
+    
 
     function admin_UserCustomerDetails($user_id){
         $userCustomer = DB::table('customers')
@@ -389,19 +426,19 @@ class MainController extends Controller
 
   
         DB::table('customers')->insert([
-            'customer_fname'=>$request->customer_fname,
-            'customer_lname'=>$request->customer_lname,
-            'customer_mname'=>$request->customer_mname,
+            'customer_fname'=>ucwords($request->customer_fname),
+            'customer_lname'=>ucwords($request->customer_lname),
+            'customer_mname'=>ucwords($request->customer_mname),
             'customer_mobile'=>$request->customer_mobile,
             'customer_tel'=>$request->customer_tel,
             'customer_gender'=>$request->customer_gender,
             'customer_birthday'=>$request->customer_birthday,
             'customer_DP'=>$request->customer_DP,
-            'customer_blk'=>$request->customer_blk,
-            'customer_street'=>$request->customer_street,
-            'customer_subdivision'=>$request->customer_subdivision,
-            'customer_barangay'=>$request->customer_barangay,
-            'customer_city'=>$request->customer_city,
+            'customer_blk'=>ucwords($request->customer_blk),
+            'customer_street'=>ucwords($request->customer_street),
+            'customer_subdivision'=>ucwords($request->customer_subdivision),
+            'customer_barangay'=>ucwords($request->customer_barangay),
+            'customer_city'=>ucwords($request->customer_city),
             'customer_zip'=>$request->customer_zip,
             'user_id'=>$request->id,
             'customer_isActive'=>$request->isActive
@@ -429,24 +466,56 @@ class MainController extends Controller
 
         return view('veterinary/viewvetcustomer', compact('customers','users','pet_clinics','pet_breeds', 'pet_types'));
     }
-    public function countData2(){
+    public function admin_CountData(){
         $countVeterinarians = DB::table('veterinary')->count();
         $countPet = DB::table('pets')->count();
         $countCustomers = DB::table('customers')->count();
         $countClinic = DB::table('clinic')->count();
+
         return view('/admin/index', compact('countVeterinarians','countPet','countCustomers','countClinic'));
     }
 
-    public function customerSearch(Request $request){
-        $search = $request->get('custsearch');
-        $customers = DB::table('customers')
-        ->select('customer_id','customer_fname','customer_lname', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 
-        'customer_gender','customer_DP','customer_birthday','customer_blk','customer_street','customer_subdivision','customer_barangay',
-        'customer_city','customer_zip', DB::raw("CONCAT(customer_blk,' ', customer_street,' ', customer_subdivision,' ',
-        customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"), 'user_id', 'customer_isActive')
-        -> where('customer_fname', 'like', '%'.$search.'%')->paginate('5');
-        return view('veterinary.viewvetcustomer', compact('customers'));
+    public function userSearch(Request $request){
+        
+        $search = $request->get('userSearch');
+        $userTypes_name = DB::table('usertypes')
+        ->join('user_accounts', 'usertypes.userType_id', '=', 'user_accounts.userType_id')
+        ->select('user_accounts.*','usertypes.*')->where('user_name', 'LIKE', '%'.$search.'%')->paginate('5');
+        return view('admin/users/CRUDusers', compact('userTypes_name'));
     }
+
+    public function clinicSearch(Request $request){
+        $search = $request->get('clinicSearch');
+        $getClinicInfo = DB::table('clinic')->select('*')->where('clinic_name', 'LIKE', '%'.$search.'%')->paginate('5');
+        return view('admin/clinic/CRUDclinic', compact('getClinicInfo'));
+    }
+
+    function getAllVet(){
+        $admin_Veterinary = DB::table('veterinary')
+        ->join('clinic', 'veterinary.clinic_id', '=', 'clinic.clinic_id')
+        ->select('veterinary.*','clinic.*')->paginate(5);
+        //inner join clinic
+
+        $pet_clinics = DB::table('clinic')->get();
+
+        $users = DB::table('user_accounts')->where('userType_id','=','3')->get();
+
+        $pet_types = DB::table('pet_types')->get();
+
+        $pet_breeds = DB::table('pet_breeds')->get();
+
+        $pet_clinics = DB::table('clinic')->get();
+
+        return view('admin/vet/CRUDvet', compact('admin_Veterinary','users','pet_clinics','pet_breeds', 'pet_types'));
+    }
+
+    public function petSearch(Request $request){
+        $search = $request->get('petSearch');
+        $typePet = DB::table('pet_types')->select('*')->where('type_name', 'LIKE', '%'.$search.'%')->paginate('5');
+        return view('admin/pets/CRUDpettype', compact('typePet'));
+    }
+
+
 
 }
 

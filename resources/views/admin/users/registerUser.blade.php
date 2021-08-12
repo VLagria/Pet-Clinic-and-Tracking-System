@@ -141,11 +141,10 @@
   </td>
   </tr>
   </thead>
+  <br>
 
-  <div class="modal-footer">
-    <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
-  </div>
-
+    <button type="submit" class="btn btn-primary btn-lg" style="margin-bottom: 10px;">Save Changes</button>
+  
   </table>
   </form>
 </div>

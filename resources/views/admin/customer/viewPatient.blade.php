@@ -55,7 +55,7 @@
         <th style="width: 10%;"scope="col"> Notes</th>
          <th style="width: 10%;"scope="col"> Blood Type</th>
          <!-- <th style="width:95px;"scope="col"> Profile</th> -->
-          <th style="width: 5%;"scope="col"> Registered Date</th>
+          <th style="width: 10%;"scope="col"> Registered Date</th>
          <th style="width: 5%;"scope="col"> Type </th>
           <th style="width: 10%;"scope="col"> Breed </th>
          <th style="width: 10%;"scope="col">Clinic </th>
@@ -88,12 +88,12 @@
                           </i>
                           View
                       </a>  
-                      <a href="/veterinary/vieweditpatient/{{ $owner->pet_id }}" class="btn btn-info btn-sm">
+                      <a href="/admin/vet/adminEditPatient/{{ $owner->pet_id }}" class="btn btn-info btn-sm">
                           <i class="fas fa-pencil-alt">
                           </i>
                           Edit
                       </a>
-                      <a class="btn btn-danger btn-sm" href="/veterinary/delete-viewvetpatient/{{ $owner->pet_id }}">
+                      <a class="btn btn-danger btn-sm" href="/admin/vet/adminEditPatient/{{ $owner->pet_id }} ">
                           <i class="fas fa-trash">
                           </i>
                           Delete
