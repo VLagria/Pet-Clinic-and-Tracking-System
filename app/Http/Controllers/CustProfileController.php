@@ -8,11 +8,11 @@ class CustProfileController extends Controller
 {
 
 
-    final function userprofileID(){
+    // final function userprofileID(){
 
-        $getUserinfo = DB::select('select * from user_accounts where user_id = :user_id',['user_id' => 5]);
-        return view('customer/custProf',compact('getUserinfo'));
-    }
+    //     $getUserinfo = DB::select('select * from user_accounts where user_id = :user_id',['user_id' => 5]);
+    //     return view('customer/custProf',compact('getUserinfo'));
+    // }
 
     
     
