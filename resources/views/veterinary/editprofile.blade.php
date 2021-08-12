@@ -1,5 +1,50 @@
 @extends('layoutsvet.app')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> @section('content') <div class="content-wrapper">
+<script src="https://jqueryvalidation.org/files/lib/jquery.js"></script>
+<script src="https://jqueryvalidation.org/files/lib/jquery-1.11.1.js"></script>
+<script src="https://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script> 
+
+<script>
+    $().ready(function() {
+        $("#confirmed_Password").validate({
+            rules: {
+                
+                oldpassword: {
+                    required: true
+                },
+                new_pass: {
+                    required: true
+                },
+                check_pass:{
+                    required: true,
+                    equalTo: "#new_pass"
+                }
+            },
+            messages: {
+
+                oldpassword: {
+                    required: "Password is required"
+                },
+                new_pass: {
+                    required: "New password is required"
+                },
+                check_pass: {
+                    required: "Confirmed new password is required",
+
+                    equalTo: "Please enter the same password as above"
+                }
+
+            }
+        });
+    });
+</script>
+<style>
+    label.error {
+        color: #dc3545;
+        font-size: 14px;
+    }
+</style>
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -17,9 +62,12 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3">
-                    <!-- update --> @if($message = Session::get('userUpdate')) <div class="text-success alert-block text-center" id="update-success">
+                    <!-- update -->
+                     @if($message = Session::get('userUpdate')) 
+                     <div class="text-success alert-block text-center" id="update-success">
                         <strong>{{ $message }}</strong>
                     </div> @endif
+                    
                     <!-- Profile Image -->
                     <div class="card card-primary card-outline ">
                         <div class="card-body  box-profile card text-center">
@@ -40,11 +88,18 @@
                 <!-- /.col -->
                 <div class="col-md-9">
                     <div class="card">
-                        <div class="card-header p-2"> @if(Session::has('warning')) <div class="alert alert-warning" role="alert">
+                        <div class="card-header p-2">
+                             @if(Session::has('warning')) 
+                             <div class="alert alert-warning" role="alert" id="messageModal">
                                 {{ Session::get('warning') }}
-                            </div> @endif @if(Session::has('success')) <div class="alert alert-success" role="alert">
-                                {{ Session::get('success') }}
-                            </div> @endif <ul class="nav nav-pills">
+                            </div> 
+                            @endif
+                             @if(Session::has('error')) 
+                             <div class="alert alert-danger" role="alert" id="messageModal">
+                                {{ Session::get('error') }}
+                            </div> 
+                            @endif
+                             <ul class="nav nav-pills">
                                 <li class="nav-item">
                                     <a class="nav-link active" href="#personal_info" data-toggle="tab">Personal Information</a>
                                 </li>
@@ -58,7 +113,8 @@
                             <div class="tab-content">
                                 <div class=" active tab-pane" id="personal_info">
                                     <form class="form-horizontal" action="/veterinary/editprofile/{{ $LoggedUserInfo->vet_id }}/{{ $LoggedUserInfo->user_id }}" method="POST" action="#" id="InfoForm"> @csrf <table class="table">
-                                            <thead>
+                                          @csrf  
+                                        <thead>
                                                 <tr>
                                                     <td style="border: none">
                                                         <div class="form-group row" style="width: 250px">
@@ -178,23 +234,24 @@
                                 </div>
                                 <!-- /.tab-pane -->
                                 <div class="tab-pane fade" id="change_password">
-                                    <form class="form-horizontal">
+                                    <form class="form-horizontal" id="confirmed_Password" action="/veterinary/changepass/{{ $LoggedUserInfo->user_id }}" method="POST">
+                                        @csrf
                                         <div class="form-group row">
-                                            <label for="oldpass" class="col-sm-2 col-form-label">Old Password</label>
+                                            <label for="oldpassword" class="col-sm-2 col-form-label">Old Password</label>
                                             <div class="col-sm-10">
-                                                <input type="password" class="form-control" id="oldpassword" name="newpassword" placeholder="Old Password">
+                                                <input type="password" class="form-control" id="oldpassword" name="oldpassword" placeholder="Old Password">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="newpass" class="col-sm-2 col-form-label">New Password</label>
+                                            <label for="new_pass" class="col-sm-2 col-form-label">New Password</label>
                                             <div class="col-sm-10">
-                                                <input type="password" class="form-control" id="newpass" placeholder="New Password">
+                                                <input type="password" class="form-control" id="new_pass" name="new_pass" placeholder="New Password">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="cnewpass" class="col-sm-2 col-form-label">Confirm Password</label>
+                                            <label for="check_pass" class="col-sm-2 col-form-label">Confirm Password</label>
                                             <div class="col-sm-10">
-                                                <input type="password" class="form-control" id="cnewpass" placeholder="Confirm New Password">
+                                                <input type="password" class="form-control" id="check_pass" name="check_pass" placeholder="Confirm New Password">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -228,5 +285,16 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+<script src="{{asset('vendors/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>
+    $("document").ready(function() {
+        setTimeout(function() {
+            $("#messageModal").remove();
+        }, 2000);
+    });
+</script>
 </body>
 </html>

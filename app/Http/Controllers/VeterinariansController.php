@@ -550,7 +550,7 @@ class VeterinariansController extends Controller
         ->where('vet_zip','=', $request->vet_zip)->first();
 
         if($NoActionQueryVet && $NoActionQueryUser) {
-            return back()->with('warning', 'No changes');
+            return back()->with('warning', 'No changes');  // no actions
         }
     
     
@@ -558,7 +558,7 @@ class VeterinariansController extends Controller
             ->where('user_id', $user_id)
             ->update([
                 'user_name'=>$request->user_name,
-                'user_mobile'=>$request->user_mobile,
+                'user_mobile'=>$request->user_mobile, // acc update query
                 'user_email'=>$request->user_email
             ]);
 
@@ -570,7 +570,7 @@ class VeterinariansController extends Controller
                 'vet_mname'=>$request->vet_mname,
                 'vet_mobile'=>$request->vet_mobile,
                 'vet_tel'=>$request->vet_tel,
-                'vet_blk'=>$request->vet_blk,
+                'vet_blk'=>$request->vet_blk,         // vet info update query
                 'vet_street'=>$request->vet_street,
                 'vet_subdivision'=>$request->vet_subdivision,
                 'vet_barangay'=>$request->vet_barangay,
@@ -578,19 +578,27 @@ class VeterinariansController extends Controller
                 'vet_zip'=>$request->vet_zip
             ]);
 
-            return back()->with('success', 'Profile updated');
+            return redirect('veterinary/profilevet')->with('success', 'Profile updated');
 
     }
 
-    public function changepassword(Request $request, $user_id){
+    public function changePassword(Request $request, $user_id){
 
-        $checkOldPass = DB::table('user_accounts')->select('user_password')->where('user_id','=', $$user_id);
+        $checkOldPass = DB::table('user_accounts')->where('user_id','=', $user_id)->first();
 
-        if ($checkOldPass) {
-            
-            
+        if ($request->oldpassword == $checkOldPass->user_password) {
 
+            DB::table('user_accounts')
+            ->where('user_id', $checkOldPass->user_id)
+            ->update([
+                'user_password'=>$request->new_pass
+            ]);
+
+             return redirect('veterinary/profilevet')->with('success', 'password successfully changed');
+        }else{
+            return back()->with('error', 'wrong password');
         }
+
 
     }
 
