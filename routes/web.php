@@ -359,7 +359,7 @@ Route::get('/admin/customer/viewPatient/{customer_id}',[VeterinaryController::cl
 Route::get('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'admin_veteditcustomersID']);
 
 Route::post('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'admin_SaveCustomers'])->name('adminVet.savecusts');
-Route::get('/customer/custhome',[Customercontroller::class,'widgetPets']);
+Route::get('/customer/custhome/test',[Customercontroller::class,'widgetPets']);
 Route::get('/customer/custhome{pet_id}',[Customercontroller::class,'getPetID']);
 
 

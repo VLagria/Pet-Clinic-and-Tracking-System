@@ -83,9 +83,7 @@ class MainController extends Controller
                     return back()->with('fail','Incorrect Password');
                 }
         }
-
     }
-
     final function logout(){
         if(session()->has('LoggedUser')){
             session()->pull('LoggedUser');
