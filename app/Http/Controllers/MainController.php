@@ -524,6 +524,7 @@ class MainController extends Controller
         $typePet = DB::table('pet_types')->select('*')->where('type_name', 'LIKE', '%'.$search.'%')->paginate('5');
         return view('admin/pets/CRUDpettype', compact('typePet'));
     }
+<<<<<<< HEAD
 
     public function breedSearch(Request $request){
         $search = $request->get('breedSearch');
@@ -606,6 +607,8 @@ class MainController extends Controller
             return redirect('admin/pets/CRUDpet')->with('success','Patients has been updated sucessfully');
         }
     }
+=======
+>>>>>>> 68654cc7dfe73d4f1e15d00f4f98ce95bf8a60a7
 }
 
 

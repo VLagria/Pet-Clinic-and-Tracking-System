@@ -78,6 +78,7 @@ class PetsController extends Controller
         return view('admin/customer/viewPatient', ['PatientOwner'=>$PatientOwner]);
     }
     
+<<<<<<< HEAD
         final function getCustomerPet(){
 
             $data = ['LoggedUserInfo'=>DB::table('pets')
@@ -92,5 +93,7 @@ class PetsController extends Controller
 
     
     
+=======
+>>>>>>> 68654cc7dfe73d4f1e15d00f4f98ce95bf8a60a7
     
     }
