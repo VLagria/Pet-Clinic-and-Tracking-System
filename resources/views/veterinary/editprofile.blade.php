@@ -41,11 +41,11 @@
                 <div class="card text-center"> 
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
-                       src="{{asset('vendors/dist/img/han.jpg') }}"
+                       src="{{ $LoggedUserInfo->vet_DP }}"
                        alt="Profile Picture">
                 </div>
 
-                <h3 class="profile-username text-center"> Owner</h3>
+                <h3 class="profile-username text-center"> {{ $LoggedUserInfo->vet_fname }},{{ $LoggedUserInfo->vet_lname }}</h3>
 
                  <h3 class="profile-username text-center">  </h3>
 

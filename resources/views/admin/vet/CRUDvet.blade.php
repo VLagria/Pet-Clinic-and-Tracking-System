@@ -42,51 +42,37 @@
         <thead>
         <tr>
   
-          <th>ID</th>
-          <th>Username</th>
-          <th>Password</th>
           <th>Name</th>
-          <th>Gender</th>
+          <!-- <th>Mobile No</th> -->
+          <!-- <th>Telephone</th> -->
           <th>Birthdate</th>
-          <th>Mobile No</th>
-          <th>Telephone</th>
-          <th>Email</th>
-          <th>Address</th>
+          <!-- <th>Email</th> -->
+          <!-- <th>Address</th> -->
           <th>Status</th>
           <th>Clinic</th>
             
-        <th style="width: 13%" class="text-center">
-                  Action
-                </th>
+        <th > Action </th>
           
         </tr>
         </thead>
+        @foreach($admin_Veterinary as $vetInfo)
         <tbody>
         <tr>
-           <td>242</td>
-          <td>LagriaVincent21</td>
-          <td>-----</td> 
-          <td>
+          <td> {{ $vetInfo->vet_fname }} {{ $vetInfo->vet_mname }} {{ $vetInfo->vet_lname }} </td>
+          <td>{{ $vetInfo->vet_birthday}}</td> 
+          <!-- <td>
             <img src="{{asset('vendors/dist/img/vincent.jpg') }}" class="img-circle img-size-32 mr-2">
             Vincent
-       
-          </td>
-         <td>Male</td> 
-         <td>12/12/1999</td>
-          <td>
-            <small class="text-success mr-1">
-              
-            </small>
-            09123242123
-          </td>
-          <td>83293782</td>
-          <td>vlagria@gmail.com</td>
-          <td>Purok 25 Maa Davao City</td>
-          <td class="project-state">
-            <span class="badge badge-success">Yes</span>
-        </td> 
+          </td> -->
 
-          <td>Cubao</td>
+          @if ($vetInfo->vet_isActive == 1)
+            <td><span class="badge badge-success">Yes</span></td>
+            @else
+            <td><span class="badge badge-danger">No</span></td>
+            @endif
+
+
+          <td>{{ $vetInfo->clinic_name }}</td>
           
             <td class="project-actions">
               <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal" >
@@ -94,20 +80,44 @@
                   </i>
                   View
               </a>
-              <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
+              <a class="btn btn-info btn-sm" >
                   <i class="fas fa-pencil-alt">
                   </i>
                   Edit
               </a>
-              <a class="btn btn-danger btn-sm" >
+              <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal{{ $vetInfo->vet_id }}">
                   <i class="fas fa-trash">
                   </i>
-                  Delete
+                  
               </a>
           </td> 
         
         </tbody>
-  
+        <!---------------------------- delete modal -------------------------------->
+  <div class="modal fade" id="deleteModal{{ $vetInfo->vet_id }}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Vet</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/admin/vet/viewVetDetails/delete/{{ $vetInfo->user_id }}" method="GET">
+                @csrf
+                <div class="modal-body">
+                    <h3>Confirm deletion of Veterinarian?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger waves-effect remove-data-from-delete-form">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+<!---------------------------- end delete modal -------------------------------->
+      @endforeach
         
       </table>
       

@@ -15,6 +15,7 @@
                     </ol>
                 </div>
             </div>
+<<<<<<< HEAD
         </div>
         <!-- /.container-fluid -->
     </section>
@@ -32,6 +33,79 @@
                             <div class="card text-center">
                                 <div class="text-center">
                                     <img class="profile-user-img img-fluid img-circle" src="{{asset('vendors/dist/img/han.jpg') }}" alt="Profile Picture">
+=======
+            <!-- /.card -->
+           
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-9">
+            <div class="card">
+              <div class="card-header p-2">
+                @if(Session::has('warning'))
+                  <div class="alert alert-warning" role="alert">
+                  {{ Session::get('warning') }}
+                  </div>
+                @endif
+                @if(Session::has('success'))
+                  <div class="alert alert-success" role="alert">
+                  {{ Session::get('success') }}
+                  </div>
+                @endif
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><a class="nav-link active" href="#personal_info" data-toggle="tab">Personal Information</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#change_password" data-toggle="tab">Change Password </a></li>
+                 
+                </ul>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class=" active tab-pane" id="personal_info"> 
+                    <form class="form-horizontal" action="/customer/custAcc/{{ $LoggedUserInfo->customer_id }}/{{ $LoggedUserInfo->user_id }}" method="POST" action="#" id="InfoForm">
+                      @csrf
+                      <table class="table" >
+                        <thead>
+                          <tr>
+                            <td style="border: none">
+                              <div class="form-group row" style="width: 250px">
+                                <label for="inputName">Username:</label>
+                                  <input type="text" class="form-control" id="user_name" value="{{ $LoggedUserInfo->user_name }}" placeholder="Enter User Name" 
+                                   name="name">
+                                  <span class="text-danger error-text name_error"></span>
+                              </div>
+                            </td>
+
+                              <td style="border: none">
+                                <div class="form-group row" style="width: 250px">
+                                  <label for="inputName2">Account Mobile No:</label>
+                                    <input type="number" class="form-control" id="user_mobile" value="{{ $LoggedUserInfo->user_mobile }}" placeholder="Enter mobile number" name="user_mobile">
+                                    <span class="text-danger error-text mobile_error"></span>
+                                </div>
+                              </td style="border: none">
+
+                              <td style="border: none">
+                                <div class="form-group row" style="width: 250px">
+                                  <label for="inputEmail">Email:</label>
+                                    <input type="email" class="form-control" id="user_email" value="{{ $LoggedUserInfo->user_email }}" placeholder="Enter Email"name="user_email">
+                                    <span class="text-danger error-text email_error"></span>
+                                </div>
+                              </td>
+                          </tr>
+                          <tr>
+                            <td style="border: none">
+                              <div class="form-group row" style="width: 250px">
+                                <label for="inputEmail">First Name:</label>
+
+                                  <input type="text" class="form-control" id="customer_fname" value="{{ $LoggedUserInfo->customer_fname }}" placeholder="Enter First Name"name="vet_fname">
+                                  <span class="text-danger error-text email_error"></span>
+                                </div>
+                            </td>
+                            <td style="border: none">
+                              <div class="form-group row" style="width: 250px">
+                                <label for="inputEmail">Last Name:</label>
+                                  <input type="text" class="form-control" id="customer_lname" value="{{ $LoggedUserInfo->customer_lname }}" placeholder="Enter Last Name"name="vet_lname">
+                                  <span class="text-danger error-text email_error"></span>
+>>>>>>> 3170105941c47d60dc12f4a6b1212be2bad5eca2
                                 </div>
                                 <h3 class="profile-username text-center"> {{ $LoggedUserInfo->customer_fname }} {{ $LoggedUserInfo->customer_mname }} {{ $LoggedUserInfo->customer_lname }}</h3>
                                 <h3 class="profile-username text-center"></h3>

@@ -33,6 +33,13 @@
         {{ Session::get('newCustomer') }}
     </div> 
   @endif 
+  
+     @if(Session::has('newVeterinary')) 
+      <div class="alert alert-success" role="alert" id="messageModal">
+        {{ Session::get('newVeterinary') }}
+      </div>
+     @endif 
+
 
   <div class="card"> 
     @csrf 
@@ -42,8 +49,10 @@
       <h3 class="header">Veterinary Details</h3>
       <br>
       <!-- Main content -->
-      <table class="table  table-striped table-hover">
+
+      <table class="table  table-striped table-hover" id="vetDetails">
         <thead>
+
           <tr>
             <th scope="col" style="width:10%">Name:</th>
             <th scope="col" style="width:7%">Mobile:</th>
@@ -72,7 +81,7 @@
               </td> 
               @else 
               <td>
-                <span class="badge badge-error"> No </span>
+                <h6><span class="badge badge-danger">No</span>
               </td> 
               @endif
 
@@ -102,7 +111,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/admin/vet/viewVetDetails/delete/{{ $vdetails->vet_id }}" method="GET">
+            <form action="/admin/vet/viewVetDetails/delete/{{ $vdetails->user_id }}" method="GET">
                 @csrf
                 <div class="modal-body">
                     <h3>Confirm deletion of Veterinarian?</h3>
@@ -138,6 +147,8 @@
   <!-- Bootstrap 4 -->
   <script src="{{asset('vendors/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+  
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script>

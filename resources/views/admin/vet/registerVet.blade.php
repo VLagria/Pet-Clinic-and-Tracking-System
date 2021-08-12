@@ -12,40 +12,40 @@
     // validate signup form on keyup and submit
     $("#regVet").validate({
       rules: {
-        user_name: { required: true, minlength: 2 },
-        user_mobile: { required: true},
-        user_password: { required: true, minlength: 5 },
+        user_name: { required: true, minlength: 2, maxlength: 15},
+        user_mobile: { required: true, minlength: 9, maxlength: 13},
+        user_password: { required: true, minlength: 5, maxlength: 35},
         user_email: { required: true, email: true },
-        vet_fname: { required: true, minlength: 2 },
-        vet_lname: { required: true, minlength: 2 },
-        vet_mname: { required: true, minlength: 2 },
-        vet_mobile: { required: true},
-        vet_tel: { required: true },
+        vet_fname: { required: true, minlength: 2, maxlength: 15},
+        vet_lname: { required: true, minlength: 2, maxlength: 15},
+        vet_mname: { required: true, minlength: 2, maxlength: 15},
+        vet_mobile: { required: true, minlength: 9, maxlength: 13},
+        vet_tel: { required: true, minlength: 9, maxlength: 13},
         vet_birthday: { required: true },
-        vet_blk: { required: true },
-        vet_street: { required: true },
-        vet_subdivision: { required: true },
-        vet_barangay: { required: true },
-        vet_city: { required: true },
-        vet_zip: { required: true},
-        vet_dateAdded: { required: true }
+        vet_blk: { required: true, maxlength: 50},
+        vet_street: { required: true, maxlength: 50},
+        vet_subdivision: { required: true, maxlength: 50},
+        vet_barangay: { required: true, maxlength: 50},
+        vet_city: { required: true, maxlength: 50},
+        vet_zip: { required: true, minlength: 4, maxlength: 8},
+        vet_dateAdded: { required: true}
       },
       messages: {
-        user_name: { required: "Please enter a username", minlength: "Your username must consist of at least 2 characters"},
-        user_mobile: { required: "Please provide a mobile #"},
-        user_password: { required: "Please provide a password", minlength: "Your password must be at least 5 characters long" },
-        vet_fname: { required: "Please provide a First Name", minlength: "Name must be at least 2 characters long" },
-        vet_lname: { required: "Please provide a Last Name", minlength: "Name must be at least 2 characters long" },
-        vet_mname: { required: "Please provide a Middle Name", minlength: "Name must be at least 2 characters long" },
-        vet_mobile: { required: "Please provide Mobile #"},
-        vet_tel: { required: "Please provide Tel. #"},
+        user_name: { required: "Please enter a username", minlength: "Your username must consist of at least 2 characters", maxlength: "Must not exceed 15 characters"},
+        user_mobile: { required: "Please provide a mobile #", minlength: "Minimum of 9 characters", maxlength: "Must not exceed 13 characters"},
+        user_password: { required: "Please provide a password", minlength: "Your password must be at least 5 characters long", maxlength: "Must not exceed 35 characters"},
+        vet_fname: { required: "Please provide a First Name", minlength: "Name must be at least 2 characters long", maxlength: "Must not exceed 15 characters"},
+        vet_lname: { required: "Please provide a Last Name", minlength: "Name must be at least 2 characters long", maxlength: "Must not exceed 15 characters"},
+        vet_mname: { required: "Please provide a Middle Name", minlength: "Name must be at least 2 characters long", maxlength: "Must not exceed 15 characters"},
+        vet_mobile: { required: "Please provide Mobile #", minlength: "Minimum of 9 characters", maxlength: "Must not exceed 13 characters"},
+        vet_tel: { required: "Please provide Tel. #", minlength: "Minimum of 9 characters", maxlength: "Must not exceed 13 characters"},
         vet_birthday: { required: "Please provide Birthday"},
-        vet_blk: { required: "Please provide Blk. Address"},
-        vet_street: { required: "Please provide Address"},
-        vet_subdivision: { required: "Please provide Address"},
-        vet_barangay: { required: "Please provide Address"},
-        vet_city: { required: "Please provide Address"},
-        vet_zip: { required: "Please provide ZIP"},
+        vet_blk: { required: "Please provide Blk. Address", maxlength: "Must not exceed 50 characters"},
+        vet_street: { required: "Please provide Address", maxlength: "Must not exceed 50 characters"},
+        vet_subdivision: { required: "Please provide Address", maxlength: "Must not exceed 50 characters"},
+        vet_barangay: { required: "Please provide Address", maxlength: "Must not exceed 50 characters"},
+        vet_city: { required: "Please provide Address", maxlength: "Must not exceed 50 characters"},
+        vet_zip: { required: "Please provide ZIP", minlength: "Minimum of 4 characters", maxlength: "Must not exceed 8 characters"},
         vet_dateAdded: { required: "Please pick a date"},
         user_email: "Please enter a valid email address"
       }
@@ -96,11 +96,6 @@
      </div>
      @endif 
 
-     @if(Session::has('newVeterinary')) 
-      <div class="alert alert-warning" role="alert" id="messageModal">
-        {{ Session::get('newVeterinary') }}
-      </div>
-     @endif 
      
     <!-- Main content -->
     <form action="{{ route('vet.addveterinarian') }}" method="POST" id="regVet">
@@ -254,15 +249,27 @@
               </div>
         </td>
         <td>
+
+
+
+
             <div class="form-group" style="width: 300px">
                 <label for="inputStatus">Clinic:</label>
+                @foreach($clinicInfo as $idGetter)
+                    @if($idGetter->clinic_id == $vetInfo->clinic_id)
+                    <input class="form-control" id="" name="" value="{{ $vetInfo->clinic_name}}" disabled>
+                    @endif
+                @endforeach
+              </div>
+
+
                 
-                <select id="clinic_id" class="form-control custom-select" name="clinic_id">
-                    <option value="{{ $vetInfo->clinic_id}}">{{ $vetInfo->clinic_name}}</option>
+                <select id="clinic_id" class="form-control custom-select" name="clinic_id" hidden="">
+                    <option value="{{ $vetInfo->clinic_id }}">{{ $vetInfo->clinic_name}}</option>
                   </select>
                       
-              </div>
-              <span class="text-danger error-text user_id_error">@error('clinic_id'){{ $message }}@enderror</span>
+
+
         </td>
         <td>
             <div class="form-group" style="width: 300px">

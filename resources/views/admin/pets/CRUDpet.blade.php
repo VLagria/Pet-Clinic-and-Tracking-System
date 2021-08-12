@@ -44,11 +44,11 @@
           <th>Birthdate</th>
           <th>Pet Notes</th>
           <th>Blood Type</th>
-          <th>Pet Profile</th>
           <th>Date of Registration </th>
           <th>Pet Type</th>
           <th>Pet Breed</th>
           <th>Customer ID </th>
+          <th></th>
           <th>Clinic ID</th>
           <th>Status</th>            
         <th style="width: 14%" class="text-center">
@@ -66,20 +66,74 @@
           <td> {{ $pet->pet_birthday}}</td>
           <td> {{ $pet->pet_notes}}</td>
           <td> {{ $pet->pet_bloodType}}</td>
-          <td> {{ $pet->pet_DP}}</td>
           <td> {{ $pet->pet_registeredDate}}</td>
-          <td> {{ $pet->pet_type_id}}</td>
-          <td> {{ $pet->pet_breed_id}}</td>
-          <td> {{ $pet->customer_id}}</td>
-          <td> {{ $pet->clinic_id}}</td>
-          <td> {{ $pet->pet_isActive}}</td>
+          <td> {{ $pet->type_name}} </td>
+          <td> {{ $pet->breed_name}}</td>
+          <td> {{ $pet->customer_fname }} {{ $pet->customer_lname }} <td>
+          <td> {{ $pet->clinic_name}}</td>
+
+          @if( $pet->pet_isActive == 1 )
+            <td>Yes</td>
+            @else
+            <td>No</td>
+          @endif
           <td class="project-actions text-right">
+            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal{{ $pet->pet_id }}">
+                          <i class="fas fa-folder">
+                          </i>
+                          View
+                      </a>
               <a href="/admin/pets/CRUDeditpet/{{$pet->pet_id}}" class="btn btn-info btn-sm">
                 <i class="fas fa-pencil-alt"></i> Edit </a>
               <a class="btn btn-danger btn-sm" href="/admin/pets/delete-pets/{{$pet->pet_id}}">
                 <i class="fas fa-trash"></i> Delete </a>
               </td>
             </tr>
+
+            {{-- View  modal  --}}
+  <div class="modal" id="viewModal{{ $pet->pet_id }}" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">View Patients</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>Pet name: <strong> {{ $pet->pet_name }} </strong></h5>
+          <h5>Type: <strong> {{ $pet->type_name }} </strong></h5>
+          <h5>Breed: <strong>{{ $pet->breed_name }}</strong> </h5>
+          <h5>Gender: <strong> {{ $pet->pet_gender }} </strong></h5>
+          <h5>Registered date: <strong> {{ $pet->pet_registeredDate }} </strong></h5>
+          <h5>Address: <strong> {{ $pet->customer_address }} </strong> </h5>
+          <h5>Owner: <strong> {{ $pet->customer_name }} </strong></h5>
+          @if ($pet->pet_isActive == "1")
+          <h5>Status : <strong> YES </strong></h5>
+          @else
+          <h5>Status : <strong> NO </strong></h5>
+          @endif
+          
+
+          <h5 style="text-align: center">
+            {!! QrCode::size(150)->generate('name: '.$pet->pet_name.
+              ' Gender: '.$pet->pet_gender.
+              ' Type: '.$pet->type_name.
+              ' Breed: '.$pet->breed_name.
+              ' Registered Date: '. $pet->pet_registeredDate.
+              ' Owner: '.$pet->clinic_name .
+              ' Address: '.$pet->customer_address); !!}
+              <br><strong>Scan Me</strong>
+            </h5> 
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{-- end view modal --}}
             @endforeach 
         </tbody>
       </table>

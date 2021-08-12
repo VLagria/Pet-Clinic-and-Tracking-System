@@ -21,8 +21,6 @@
 
 
 
-
-
 <!-- Default box -->
 
   @if(Session::has('clinic_updated')) 
@@ -48,8 +46,13 @@
       {{ Session::get('clinicDeleteFail') }}
     </div> 
   @endif
-
-<div class="card">
+    <div class="">
+        <a class="btn btn-success btn-lg" href="/admin/clinic/registerClinic" style="margin-left: 1%;">
+          <i class="fas fa-clinic-medical"></i> Create
+        </a>
+      </div>
+      <br>
+    <div class="card">
     <div class="card-header">
       <h3 class="card-title">Clinic</h3>
   
@@ -62,9 +65,18 @@
         </button>
       </div>
     </div>
-    <div class="card-body table-responsive p-0">
-      <table class="table table-striped table-valign-middle">
-        <thead>
+    <div class="card-body table-responsive p-0" id="CRUDclinic">
+      <table class="table table-striped table-valign-middle" id="CRUDclinic">
+        <br>
+
+        <form action="{{ route('clinic.clinicsearch') }}" method="GET">
+            <div class="input-group" style="width: 500px; margin-left: 50px;">
+            <button type="submit" class="btn btn-info" style="margin-right: 3%;">search</button>
+              <input type="search" class="form-control rounded" placeholder="Search by Type Name" name="clinicSearch" id="clinicSearch">
+            </div>
+        </form>
+
+        <thead id="CRUDclinic">
         <tr>
   
           <th style="width: 14%">Clinic Name</th>
@@ -94,7 +106,7 @@
             @if ($cAccounts->clinic_isActive == 1)
             <td><h6><span class="badge badge-success lg" >Active</span></h4></td>
             @else
-            <td><h6><span class="badge badge-success lg">Inactive</span></td>
+            <td><h6><span class="badge badge-warning lg">Inactive</span></td>
             @endif
           
             <td class="project-actions" style="margin-left: 30px;">
@@ -145,11 +157,7 @@
   </div>
   <!-- /.card -->
 
-  <div class="float-sm-right">
-    <a class="btn btn-success btn-lg" href="/admin/clinic/registerClinic" >
-      <i class="fas fa-clinic-medical"></i> Create
-    </a>
-  </div>
+  
   
 
 
@@ -190,5 +198,7 @@
       }, 3000 );
     });
   </script>
+
+  
 
 @endsection
