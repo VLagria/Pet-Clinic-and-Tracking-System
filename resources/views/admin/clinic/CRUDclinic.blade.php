@@ -55,15 +55,6 @@
     <div class="card">
     <div class="card-header">
       <h3 class="card-title">Clinic</h3>
-  
-      <div class="card-tools">
-        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-          <i class="fas fa-minus"></i>
-        </button>
-        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
     </div>
     <div class="card-body table-responsive p-0" id="CRUDclinic">
       <table class="table table-striped table-valign-middle" id="CRUDclinic">
@@ -84,10 +75,10 @@
           <th style="width: 7%">Mobile No</th>
           <th style="width: 7%">Telephone</th>
           <th>Email</th>       
-          <th style="width: 30%">Address</th>
+          <th style="width: 25%">Address</th>
           <th>Status</th>
             
-        <th style="width: 40%;" class="text-center">
+        <th style="width: 50%;" class="text-center">
                   Action
                 </th>
           
@@ -111,18 +102,18 @@
           
             <td class="project-actions" style="margin-left: 30px;">
 
-              <h4><a class="btn btn-primary view-btn" style="margin-left: 35%;" href="/admin/vet/viewVetDetails/{{ $cAccounts->clinic_id }}">
+              <h4><a class="btn btn-primary view-btn btn-sm" style="margin-left: 35%;" href="/admin/vet/viewVetDetails/{{ $cAccounts->clinic_id }}">
                 <i class="fas fa-folder"></i>
               </a>
 
-              <a href="/admin/clinic/editClinic/{{ $cAccounts->clinic_id }}" class="btn btn-info" >
+              <a href="/admin/clinic/editClinic/{{ $cAccounts->clinic_id }}" class="btn btn-info btn-sm" >
                   <i class="fas fa-pencil-alt"></i>
               </a>
-              <a class="btn btn-danger" data-toggle="modal"  data-target="#deleteModal{{ $cAccounts->clinic_id }}">
+              <a class="btn btn-danger btn-sm" data-toggle="modal"  data-target="#deleteModal{{ $cAccounts->clinic_id }}" >
                   <i class="fas fa-trash"></i>
                   </a>
 
-                  <a class="btn btn-success" href="/admin/vet/registerVet/{{ $cAccounts->clinic_id }}"><i class="fas fa-user-md"></i> 
+                  <a class="btn btn-success btn-sm" href="/admin/vet/registerVet/{{ $cAccounts->clinic_id }}"><i class="fas fa-user-md"></i> 
             </a>
           </td> 
 

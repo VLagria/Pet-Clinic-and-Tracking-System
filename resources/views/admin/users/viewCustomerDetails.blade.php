@@ -22,6 +22,7 @@
   </div>
   <!-- /.content-header -->
   <!-- Default box --> 
+  
   @if(Session::has('customer_deleted')) 
     <div class="alert alert-danger" role="alert" id="messageModal">
         {{ Session::get('customer_deleted') }}

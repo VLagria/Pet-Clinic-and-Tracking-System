@@ -85,7 +85,10 @@ class VeterinaryController extends Controller
     }
 
     function admin_viewVetDetails($clinic_id){
-        $vetDetails = DB::table('veterinary')->where('clinic_id','=', $clinic_id) ->get();
+        $vetDetails = DB::table('veterinary')
+        ->join('user_accounts', 'user_accounts.user_id','=','veterinary.user_id')
+        ->join('usertypes', 'user_accounts.userType_id','=','usertypes.userType_id')
+        ->select('veterinary.*','user_accounts.*','usertypes.*')->where('clinic_id','=', $clinic_id)->get();
 
         // ('vet_id','vet_fname','vet_lname',
         //     DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 'customer_gender','customer_DP','customer_birthday','customer_blk','customer_street','customer_subdivision','customer_barangay','customer_city','customer_zip', 

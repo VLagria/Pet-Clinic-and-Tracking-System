@@ -130,7 +130,7 @@
 
 
     <!-- Main content -->
-    <form action="/admin/vet/adminEditPatient/{{ $editPet->pet_id }}" method="post" class="cmxform" id="editPet">
+    <form action="/admin/vet/adminEditPatient/saveUpdate/{{ $editPet->pet_id }}" method="post" class="cmxform" id="editPet">
 @csrf
     <table class="table table-striped table-hover">
   <thead>

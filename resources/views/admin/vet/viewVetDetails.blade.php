@@ -54,15 +54,15 @@
         <thead>
 
           <tr>
-            <th scope="col" style="width:10%">Name:</th>
+            <th scope="col" style="width:16%">Name:</th>
             <th scope="col" style="width:7%">Mobile:</th>
             <th scope="col" style="width:7%">Telephone:</th>
             <th scope="col" style="width:10%">Birthday:</th>
             <!-- <th scope="col"style="width:10%">Customer Profile:</th> -->
             <th scope="col" style="width:20%">Address:</th>
             <th scope="col" style="width:10%">Date Added:</th>
-            <th scope="col" style="width:20%">Status:</th>
-            <th scope="col" style="width:30%">Action:</th>
+            <th scope="col" style="width:10%">Status:</th>
+            <th scope="col" style="width:50%">Action:</th>
           </tr>
         </thead>
         <tbody> 
@@ -87,16 +87,16 @@
 
               <td>
                <h4>
-                <a class="btn btn-primary view-btn" href="#">
+                <b class="btn btn-primary view-btn" data-toggle="modal" data-target="#viewModal{{ $vdetails->vet_id }}">
                 <i class="fas fa-folder"></i>
-              </a>
+              </b>
 
               <a class="btn btn-info" href="/admin/vet/editVet/{{ $vdetails->vet_id }}">
                   <i class="fas fa-pencil-alt"></i>
               </a>
-              <a class="btn btn-danger" data-toggle="modal"  data-target="#deleteModal{{ $vdetails->vet_id }}">
+              <button class="btn btn-danger" data-toggle="modal"  data-target="#deleteModal{{ $vdetails->vet_id }}">
                   <i class="fas fa-trash"></i>
-                  </a>
+                  </button>
 
               </td>
           </tr> 
@@ -125,6 +125,32 @@
     </div>
   </div>
 <!---------------------------- end delete modal -------------------------------->
+
+<!-- VIEW MODAL -->
+        <div id="viewModal{{ $vdetails->vet_id }}" class="modal fade" role="dialog" style="display:none">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header" style="display: inline-block;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" style="font-weight: bold;">View Veterinary Details</h4>
+              </div>
+                <div class="modal-body" style="font-weight: bold;">
+                  <h3 style="font-weight: bold;">User ID: {{ $vdetails->user_id }}
+                    <h5>Username:  {{ $vdetails->user_name }}
+                      <br>Password:  {{ $vdetails->user_password }}
+                      <br>Mobile No.:  {{ $vdetails->user_mobile }}
+                      <br>Email:  {{ $vdetails->user_email }}
+                    </h5>
+                  </h3>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-light" data-dismiss="modal" id="CloseBtn">Close</button>
+                </div>
+          </div>
+        </div>
+      </div>
+      <!-- END VIEW MODAL -->
 
           @endforeach 
        </tbody>

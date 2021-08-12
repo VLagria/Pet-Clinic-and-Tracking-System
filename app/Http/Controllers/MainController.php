@@ -301,7 +301,7 @@ class MainController extends Controller
         $userTypes_name = DB::table('usertypes')
         ->join('user_accounts', 'usertypes.userType_id', '=', 'user_accounts.userType_id')
         ->select('user_accounts.*','usertypes.*')
-        ->paginate(10);
+        ->paginate(5);
 
         $userOptions = DB::table('usertypes')->get();
 
@@ -411,52 +411,6 @@ class MainController extends Controller
         return view('admin.users.viewCustomerDetails', compact('userCustomer'));
     }
 
-    function admin_GetUserID($user_id){
-        $get_id = DB::table('user_accounts')->where('user_id','=', $user_id)->first();
-        return view('admin.users.inputUser', compact('get_id'));
-    }
-   
-   function admin_addCustomers(Request $request){
-
-        $request->validate([
-            'customer_fname'=>'required',
-            'customer_lname'=>'required'
-            // 'customer_mname'=>'required',
-            // 'customer_mobile'=>'required',
-            // 'customer_tel'=>'required',
-            // 'customer_gender'=>'required',
-            // 'customer_birthday'=>'required',
-            // 'customer_street'=>'required',
-            // 'customer_subdivision'=>'required',
-            // 'customer_barangay'=>'required',
-            // 'customer_city'=>'required',
-            // 'customer_zip'=>'required',
-            // 'customer_isActive'=>'required'
-        ]);
-
-  
-        DB::table('customers')->insert([
-            'customer_fname'=>ucwords($request->customer_fname),
-            'customer_lname'=>ucwords($request->customer_lname),
-            'customer_mname'=>ucwords($request->customer_mname),
-            'customer_mobile'=>$request->customer_mobile,
-            'customer_tel'=>$request->customer_tel,
-            'customer_gender'=>$request->customer_gender,
-            'customer_birthday'=>$request->customer_birthday,
-            'customer_DP'=>$request->customer_DP,
-            'customer_blk'=>ucwords($request->customer_blk),
-            'customer_street'=>ucwords($request->customer_street),
-            'customer_subdivision'=>ucwords($request->customer_subdivision),
-            'customer_barangay'=>ucwords($request->customer_barangay),
-            'customer_city'=>ucwords($request->customer_city),
-            'customer_zip'=>$request->customer_zip,
-            'user_id'=>$request->id,
-            'customer_isActive'=>$request->isActive
-        ]);
-
-       return redirect('/admin/users/CRUDusers')->with('newCustomer','Customer has been completely added succesfully');
-    }
-
     function getAllCustomers(){
         $customers = DB::table('customers')
         ->select('customer_id','customer_fname','customer_lname', DB::raw("CONCAT(customer_fname,' ', customer_lname) AS customer_name"),'customer_mobile', 'customer_tel', 
@@ -503,7 +457,8 @@ class MainController extends Controller
     function getAllVet(){
         $admin_Veterinary = DB::table('veterinary')
         ->join('clinic', 'veterinary.clinic_id', '=', 'clinic.clinic_id')
-        ->select('veterinary.*','clinic.*')->paginate(5);
+        ->join('user_accounts', 'veterinary.user_id', '=','user_accounts.user_id')
+        ->select('veterinary.*', 'clinic.*', 'user_accounts.*', DB::raw("CONCAT(vet_blk,'/', vet_street,'/', vet_subdivision,'/', vet_barangay,' ',vet_city,' ', vet_zip) AS vet_address"))->paginate(5);
         //inner join clinic
 
         $pet_clinics = DB::table('clinic')->get();

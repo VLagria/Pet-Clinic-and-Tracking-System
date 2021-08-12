@@ -34,7 +34,7 @@
         <h3 class="header">Edit Veterinarian</h3>
       </div>
       <br>
-      <form action="/admin/vet/editVet/saveUpdate/{{$vets->vet_id}}" method="POST" id="editFormID"> 
+      <form action="/admin/vet/adminEditPatient/saveUpdate/{{$vets->vet_id}}" method="POST" id="editFormID"> 
         @csrf 
         <table class="table table-striped table-hover">
   <thead>

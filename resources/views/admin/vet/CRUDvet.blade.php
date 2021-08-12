@@ -75,11 +75,11 @@
           <td>{{ $vetInfo->clinic_name }}</td>
           
             <td class="project-actions">
-              <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal" >
+              <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal{{ $vetInfo->vet_id }}" >
                   <i class="fas fa-folder">
                   </i>
                   View
-              </a>
+              </button>
               <a class="btn btn-info btn-sm" >
                   <i class="fas fa-pencil-alt">
                   </i>
@@ -117,6 +117,37 @@
     </div>
   </div>
 <!---------------------------- end delete modal -------------------------------->
+<!-- VIEW MODAL -->
+  <div id="viewModal{{ $vetInfo->vet_id }}" class="modal fade" role="dialog" style="display:none">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="display: inline-block;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="font-weight: bold;">View Veterinary Details</h4>
+        </div>
+          <div class="modal-body" style="font-weight: bold;">
+            <h3 style="font-weight: bold;">User ID: {{ $vetInfo->user_id }}
+              <h5><strong>Username:  </strong>{{ $vetInfo->user_name }}
+                <br><strong>Password:  </strong>{{ $vetInfo->user_password }}
+                <br><strong>Mobile No.:  </strong>{{ $vetInfo->user_mobile }}
+                <br><strong>Email:  </strong>{{ $vetInfo->user_email }}
+                <br><strong>Vet Mobile#   :  </strong>{{ $vetInfo->vet_mobile }}
+                <br><strong>Vet Telephone#   :  </strong>{{ $vetInfo->vet_tel }}
+                <br><br><strong>Address:  </strong>{{ $vetInfo->vet_address }}
+                <br><br><strong>Date Registered   :  </strong>{{ $vetInfo->vet_dateAdded }}
+                <br><strong>Clinic Assigned:  </strong>{{ $vetInfo->clinic_name }}
+              </h5>
+            </h3>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-dismiss="modal" id="CloseBtn">Close</button>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- END VIEW MODAL -->
+
       @endforeach
         
       </table>

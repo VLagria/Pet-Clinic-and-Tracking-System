@@ -85,17 +85,17 @@
           @if( $pet->pet_isActive == 1 )
             <td><h4><span class="badge badge-success lg">Yes</span></h4></td>
             @else
-            <td class="badge badge-warning">No</td>
+            <td class="badge badge-warning lg">No</td>
           @endif
           <td class="project-actions text-right">
-            <button href="" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#viewModal{{ $pet->pet_id }}">
+            <button href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal{{ $pet->pet_id }}">
                           <i class="fas fa-folder">
                           </i></button>
                           
-              <a href="/admin/pets/CRUDeditpet/{{ $pet->pet_id }}" class="btn btn-info btn-lg">
+              <a href="/admin/pets/CRUDeditpet/{{ $pet->pet_id }}" class="btn btn-info btn-sm">
                 <i class="fas fa-pencil-alt"></i>  </a>
 
-              <button class="btn btn-danger btn-lg" href="/admin/pets/delete-pets/{{$pet->pet_id}}">
+              <button class="btn btn-danger btn-sm" href="">
                 <i class="fas fa-trash"></i>  </button>
               </td>
             </tr>

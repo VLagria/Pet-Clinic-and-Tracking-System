@@ -16,11 +16,6 @@
     <!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
- 
-    
-   
-  <br>
-  <br>
   <!-- Default box --> 
   @if(Session::has('cust_deleted')) 
   <div class="alert alert-danger" role="alert" id="messageModal">
@@ -37,96 +32,94 @@
    <div class="alert alert-danger" role="alert" id="messageModal">
     {{ Session::get('deleteFail') }}
   </div>
-  @endif 
+  @endif
+
+  <div>
+    <form action="{{ route('adminvet.custsearch') }}" method="get">
+      <div class="input-group" style="width: 400px; margin-left: 400px">  
+        <button type="submit" class="btn btn-info" style="margin-right: 3%;">search</button>
+        <input type="search" class="form-control rounded" placeholder="Search by Name" name="custsearch" id="custsearch">
+      </div>
+    </form>
+  </div>
 
   <div class="card"> @csrf <div class="card-header">
-      <h3 class="header">Customer</h3>
-      <br>
-      <!-- Main content -->
-      <table class="table  table-striped table-hover">
-        <thead>
-<form action="{{ route('adminvet.custsearch') }}" method="get">
-    <div class="input-group" style="width: 500px; margin-left: 50px;">  
-            <button type="submit" class="btn btn-info" style="margin-right: 3%;">search</button>
-              <input type="search" class="form-control rounded" placeholder="Search by Name" name="custsearch" id="custsearch">
-  </div>
-</form>
-<br>
-          <tr>
+    <h3 class="header">Customer</h3>
+    <br>
+    <!-- Main content -->
+    <table class="table  table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col" style="width:15%"> Name</th>
+          <th scope="col" style="width:9%">Mobile</th>
+          <th scope="col" style="width:9%">Telephone</th>
+          <th scope="col" style="width:7%">Gender</th>
+          <th scope="col" style="width:7%">Birthday</th>
+          <th scope="col" style="width:25%">Address</th>
+          <th scope="col" style="width:7%">User ID</th>
+          <th scope="col" style="width:8%">Status</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody> 
+        @foreach ($customers as $customer) 
+        <tr>
+          <td>{{ $customer->customer_name}}</td>
+          <td>{{ $customer->customer_mobile}}</td>
+          <td>{{ $customer->customer_tel}}</td>
+          <td>{{ $customer->customer_gender}}</td>
+          <td>{{ $customer->customer_birthday}}</td>
+          <td>{{ $customer->customer_address}}</td>
+          <td>{{ $customer->user_id}}</td> @if ($customer->customer_isActive == 1) <td>
+            <span class="badge badge-success">Yes</span>
+          </td> @else <td>
+            <span class="badge badge-danger">No</span>
+          </td> @endif <td>
+            <a href="/admin/customer/viewPatient/{{ $customer->customer_id}}" class="btn btn-primary btn-sm">
+              <i class="fas fa-folder"></i>
+            </a>
+            <a href="/admin/customer/customerEdit/{{ $customer->customer_id }}" class="btn btn-info btn-sm">
+              <i class="fas fa-pencil-alt"></i>
+            </a>
+            <button class="btn btn-danger btn-sm" id="delete" data-toggle="modal" data-target="#deleteModal{{ $customer->customer_id }}">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
 
-            <th scope="col" style="width:15%"> Name</th>
-            <th scope="col" style="width:9%">Mobile</th>
-            <th scope="col" style="width:9%">Telephone</th>
-            <th scope="col" style="width:7%">Gender</th>
-            <th scope="col" style="width:7%">Birthday</th>
-            <th scope="col" style="width:25%">Address</th>
-            <th scope="col" style="width:6%">User ID</th>
-            <th scope="col" style="width:8%">Status</th>
-            <th scope="col" >Action</th>
-          </tr>
-        </thead>
-        <tbody> @foreach ($customers as $customer) <tr>
-            <td>{{ $customer->customer_name}}</td>
-            <td>{{ $customer->customer_mobile}}</td>
-            <td>{{ $customer->customer_tel}}</td>
-            <td>{{ $customer->customer_gender}}</td>
-            <td>{{ $customer->customer_birthday}}</td>
-            <td>{{ $customer->customer_address}}</td>
-            <td>{{ $customer->user_id}}</td>
-            @if ($customer->customer_isActive == 1)
-            <td><span class="badge badge-success">Yes</span></td>
-            @else
-            <td><span class="badge badge-danger">No</span></td>
-            @endif
-
-            
-            
-            <td>
-              <button href="/admin/customer/viewPatient/{{ $customer->customer_id}}" class="btn btn-primary btn-lg">
-                <i class="fas fa-folder"></i>  
-                  </button>
-              <button href="/admin/customer/customerEdit/{{ $customer->customer_id }}" class="btn btn-info btn-lg" >
-                <i class="fas fa-pencil-alt"></i>  
-                  </button>
-              <button class="btn btn-danger btn-lg" id="delete" data-toggle="modal"  data-target="#deleteModal{{ $customer->customer_id }}">
-                  <i class="fas fa-trash"></i>
-                  
-                  </button>
-            </td>
-          </tr>
-      <!---------------------------- delete modal -------------------------------->
-  <div class="modal fade" id="deleteModal{{ $customer->customer_id }}" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+<!-- DELETE MODAL -->
+        <div class="modal fade" id="deleteModal{{ $customer->customer_id }}" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                  <span aria-hidden="true">&times;</span>
                 </button>
-            </div>
-            <form action=" /admin/customer/delete/{{$customer->customer_id}} " method="GET">
+              </div>
+              <form action=" /admin/customer/delete/{{$customer->customer_id}} " method="GET">
                 {{ csrf_field() }}
                 <div class="modal-body">
-                    <h3>Confirm deletion of user?</h3>
+                  <h3>Confirm deletion of user?</h3>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger waves-effect remove-data-from-delete-form">Delete</button>
+                  <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-danger waves-effect remove-data-from-delete-form">Delete</button>
                 </div>
-            </form>
+              </form>
+            </div>
+          </div>
         </div>
-    </div>
-  </div>
-<!---------------------------- end delete modal -------------------------------->
-         
-          @endforeach
-        </tbody>
-      </table>
+<!-- END DELETE MODAL -->
+        @endforeach
+      </tbody>
+    </table>
       {{ $customers->links('pagination::bootstrap-4') }}
     </div>
   </div>
 </div>
-{{-- end edit modal  --}}
+
+
 </section>
 <!-- /.content -->
 </div>
