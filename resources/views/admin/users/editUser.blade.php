@@ -123,16 +123,16 @@
       </tr>
     </div>
 
-    @foreach($userOptions as $user_types)
-      @if($users->userType_id == $user_types->userType_id)
     <div class="form-group feet">
       <tr>
         <label>Usertype: </label>
-        <input style="width: 300px" name="userType_id" id="userType_id" class="form-control border border-info bg bg-light rounded" placeholder="Enter Email" value="{{ $user_types->userType_name }}" disabled>
-      </tr>
-    </div>
+    @foreach($userOptions as $user_types)
+      @if($users->userType_id == $user_types->userType_id)
+        <input style="width: 300px" name="userType_id" id="userType_id" class="form-control border border-info bg bg-light rounded"  value="{{ $user_types->userType_name }}" disabled>
       @endif
     @endforeach
+      </tr>
+    </div>
   </div>
   <br>
   </td>

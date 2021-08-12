@@ -1,7 +1,7 @@
  <!-- Main Sidebar Container -->
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/admin/index" class="brand-link">
+    <a href="/admin/index/home" class="brand-link">
       <img src="{{asset('vendors/dist/img/MediaoneLogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">PET CLINIC ADMIN
 
@@ -39,7 +39,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                <a href="/admin/index" class="nav-link">
+                <a href="/admin/index/home" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>
                    Dashboard
@@ -53,7 +53,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                <a href="/admin/vet/CRUDvet" class="nav-link">
+                <a href="/admin/vet/CRUDvet/home" class="nav-link">
                   <i class="nav-icon fas fa-ambulance"></i>
                   <p>
                    Veterinarians
@@ -72,7 +72,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="/admin/pets/CRUDpettype" class="nav-link">
+                <a href="/admin/pets/CRUDpettype/home" class="nav-link">
                   <i class="nav-icon fas fa-paw"></i>
                   <p>
                    Pet Type
