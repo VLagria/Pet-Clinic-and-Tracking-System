@@ -236,6 +236,7 @@ Route::get('veterinary/vethome', function () {
 });
 Route::get('/veterinary/vethome',[VeterinariansController::class, 'countData']);
 Route::get('/veterinary/vethome',[MainController::class, 'vetProfile']);
+
 Route::get('/admin/index',[MainController::class, 'countData2']);
 
 Route::get('veterinary/vetpatient',function() {
@@ -318,10 +319,9 @@ Route::get('/customer/custAcc',function() {
 
 // customer profile
 // Route::get('/customer/custProfile',[CustProfileController::class,'widgetPets']);
-Route::get('/customer/custProfile/',[ProfileController::class, 'countData'])->name('pet.count');
-Route::get('/customer/custProfile',[ProfileController::class,'userName']);
+// Route::get('/customer/custProfile/',[ProfileController::class, 'countData'])->name('pet.count');
+// Route::get('/customer/custProfile',[ProfileController::class,'userName']);
 
-Route::get('/customer/custAcc', [CustProfileController:: class, 'editProfile']);
 
 
 // PETSSS CRUD
@@ -373,5 +373,6 @@ Route::get('/admin/clinic/CRUDclinic/delete/{clinic_id}',[MainController::class,
 Route::get('/customer/custProfile', [CustProfileController ::class, 'userProfile']);
 Route::post('/customer/custHome', [Customercontroller ::class, 'getCustomerPet']);
 
-
+Route::get('/customer/custAcc', [CustProfileController:: class, 'editProfile']);
+Route::post('/customer/custAcc/{customer_id}/{user_id}', [CustProfileController::class, 'saveProfile']);
 
