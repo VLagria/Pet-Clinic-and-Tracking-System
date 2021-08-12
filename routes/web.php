@@ -362,3 +362,9 @@ Route::get('/admin/clinic/CRUDclinic/delete/{clinic_id}',[MainController::class,
 
 });
 
+
+Route::get('/customer/custProfile', [CustProfileController ::class, 'userProfile']);
+Route::post('/customer/custHome', [Customercontroller ::class, 'getCustomerPet']);
+
+
+

@@ -282,7 +282,7 @@ class VeterinariansController extends Controller
 
             ]);// PET ADD VALIDATION -END
 
-            $request->image->store('images', 'public');
+
 
             // INSERT PET -START
             DB::table('pets')->insert([

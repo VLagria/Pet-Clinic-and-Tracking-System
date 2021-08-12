@@ -9,9 +9,20 @@ class Customercontroller extends Controller
 {
 
     public function widgetPets(){
-        $widgetPets = DB::table('pets')->get();
-        return view('/customer/custhome', compact('widgetPets'));
-    }
+
+        $widgetPets = ['LoggedUserInfo'=>DB::table('user_accounts')
+        ->join('customers','customers.user_id','=', 'user_accounts.user_id')
+        ->join('pets','customers.customer_id','=', 'pets.customer_id')
+
+        ->join('pet_types','pet_types.type_id','=', 'pets.pet_type_id')
+        ->join('pet_breeds','pet_breed.pet_breed_id','=', 'pets.pet_breed_id')
+        ->select('*')
+        ->where('user_accounts.user_id','=', session('LoggedUser'))->first()];
+        return view('customer.custHome', $widgetPets);
+    } 
+
+
+
 }
     function getPetID($id_pet){
 

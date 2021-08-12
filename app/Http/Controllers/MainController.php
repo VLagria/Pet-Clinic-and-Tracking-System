@@ -101,10 +101,8 @@ class MainController extends Controller
         $data = ['LoggedUserInfo'=>user_account::where('id','=', session('LoggedUser'))->first()];
         return view('veterinary.vethome', $data);
     }
-    final function userDashboard(){
-        $data = ['LoggedUserInfo'=>user_account::where('id','=', session('LoggedUser'))->first()];
-        return view('customer.custProfile', $data);
-    }
+ 
+
     final function vetProfile(){
         $data = ['LoggedUserInfo'=>DB::table('user_accounts')
         ->join('veterinary','veterinary.user_id','=', 'user_accounts.user_id')
