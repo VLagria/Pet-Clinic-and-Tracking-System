@@ -7,6 +7,7 @@
 <script src="https://jqueryvalidation.org/files/lib/jquery-1.11.1.js"></script>
 <script src="https://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 
 
 <script>

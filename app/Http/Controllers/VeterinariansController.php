@@ -124,9 +124,15 @@ class VeterinariansController extends Controller
         ->where('customer_fname','=', $fname, 'AND',
          'customer_lname','=', $lname, 'AND', 
          'customer_mname','=', $mname)->first();
+
+        $checkcust = DB::table('customers')
+        ->where('customer_fname','=', $fname)
+        ->where('customer_lname','=', $lname)
+        ->where('customer_mname','=', $mname)->first();
+
          //QUERY FOR CHECKING IF THE CUSTOMER IS ALREADY REGISTERED
 
-        if ($checkQuery) {
+        if ($checkcust) {
             return back()->with('existing','The customer is Already Exist');
         }else{
 
@@ -537,14 +543,11 @@ class VeterinariansController extends Controller
         ->where('vet_city', '=', $request->vet_city)
         ->where('vet_zip','=', $request->vet_zip)->first();
 
-        if($NoActionQueryVet) {
+        if($NoActionQueryVet && $NoActionQueryUser) {
             return back()->with('warning', 'No changes');
         }
     
-        if($NoActionQueryUser){
-            return back()->with('warning', 'No changes');
-        }
-
+    
         DB::table('user_accounts')
             ->where('user_id', $user_id)
             ->update([
@@ -552,7 +555,6 @@ class VeterinariansController extends Controller
                 'user_mobile'=>$request->user_mobile,
                 'user_email'=>$request->user_email
             ]);
-
 
         DB::table('veterinary')
             ->where('vet_id', $vet_id)
@@ -571,6 +573,18 @@ class VeterinariansController extends Controller
             ]);
 
             return back()->with('success', 'Profile updated');
+
+    }
+
+    public function changepassword(Request $request, $user_id){
+
+        $checkOldPass = DB::table('user_accounts')->select('user_password')->where('user_id','=', $$user_id);
+
+        if ($checkOldPass) {
+            
+            
+
+        }
 
     }
 
