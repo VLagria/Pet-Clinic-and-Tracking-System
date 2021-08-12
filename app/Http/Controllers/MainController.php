@@ -110,6 +110,13 @@ class MainController extends Controller
         ->where('user_accounts.user_id','=', session('LoggedUser'))->first()];
         return view('veterinary.profilevet', $data);
     }
+    final function editProfile(){
+        $data = ['LoggedUserInfo'=>DB::table('user_accounts')
+        ->join('veterinary','veterinary.user_id','=', 'user_accounts.user_id')
+        ->select('*')
+        ->where('user_accounts.user_id','=', session('LoggedUser'))->first()];
+        return view('veterinary.editprofile', $data);
+    }
     final function getVetClinic(){
 
         $data = ['LoggedUserInfo'=>DB::table('user_accounts')
