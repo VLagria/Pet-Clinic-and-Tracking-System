@@ -45,20 +45,21 @@ class CustProfileController extends Controller
         ->where('customer_mname','=', $request->customer_mname)
         ->where('customer_mobile','=', $request->customer_mobile)
         ->where('customer_tel','=', $request->customer_tel)
-        ->where('customer_blk','=',$request->customer_blk)    // query for not changes veterinary
+        ->where('customer_blk','=',$request->customer_blk)    // query for not changes customer
         ->where('customer_street','=', $request->customer_street)
         ->where('customer_subdivision','=', $request->customer_subdivision)
         ->where('customer_barangay', '=', $request->customer_barangay)
         ->where('customer_city', '=', $request->customer_city)
         ->where('customer_zip','=', $request->customer_zip)->first();
 
-        if($NoActionQueryCustomer) {
+        if($NoActionQueryCustomer ) {
             return back()->with('warning', 'No changes');
         }
     
         if($NoActionQueryUser){
             return back()->with('warning', 'No changes');
         }
+       
 
         DB::table('user_accounts')
             ->where('user_id', $user_id)

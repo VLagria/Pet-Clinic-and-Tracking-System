@@ -13,7 +13,7 @@ class Customercontroller extends Controller
         ->join('customers','customers.user_id','=', 'user_accounts.user_id')
         ->select('*')
         ->where('user_accounts.user_id','=', session('LoggedUser'))->first()];
-        return view('customer.custHome', $widgetPets);
+        return view('customer.custhome', $widgetPets);
         // return dd($widgetPets);
     }
 }
