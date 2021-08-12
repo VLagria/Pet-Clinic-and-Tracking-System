@@ -282,7 +282,6 @@ class VeterinariansController extends Controller
 
             ]);// PET ADD VALIDATION -END
 
-            $request->image->store('images', 'public');
 
             // INSERT PET -START
             DB::table('pets')->insert([
@@ -310,8 +309,15 @@ class VeterinariansController extends Controller
     }
 
     final function deleteCustomers($customer_id){ 
-        DB::table('customers')->where('customer_id', $customer_id)->delete();// DELETE CUSTOMERS
-        return back()->with('customer_deleted','Customer has been deleted succesfully');
+        $checkPetCustomer = DB::table('pets')->where('customer_id', '=', $customer_id)->first();
+
+        if ($checkPetCustomer) {
+            return back()->with('error','You cant delete a customer does have a register pet');
+        }else{
+            DB::table('customers')->where('customer_id', $customer_id)->delete();// DELETE CUSTOMERS
+            return back()->with('customer_deleted','Customer has been deleted succesfully');
+        }
+       
     }
 
     //<------------- ---End of customer crud operations----------------------->//
@@ -412,9 +418,6 @@ class VeterinariansController extends Controller
             return redirect()->route('custownerpatient', ['customer_id'=> base64_encode($customer)])->with('warning','Nothing Changes');
         }else{
 
-            
-
-
             DB::table('pets')
         ->where('pet_id', $pet_id)
         ->update([
@@ -511,6 +514,63 @@ class VeterinariansController extends Controller
         ->paginate(10);
 
         return view('veterinary.viewvetpatient', compact('petInfoDatas'));
+
+    }
+
+    public function saveProfile(Request $request, $vet_id, $user_id){
+
+        $NoActionQueryUser = DB::table('user_accounts')
+        ->where('user_name', '=', $request->user_name)
+        ->where('user_mobile', '=', $request->user_mobile) // query for not changes user_account
+        ->where('user_email', '=', $request->user_email)->first();
+
+        $NoActionQueryVet = DB::table('veterinary')
+        ->where('vet_fname','=', $request->vet_fname)
+        ->where('vet_lname','=', $request->vet_lname)
+        ->where('vet_mname','=', $request->vet_mname)
+        ->where('vet_mobile','=', $request->vet_mobile)
+        ->where('vet_tel','=', $request->vet_tel)
+        ->where('vet_blk','=',$request->vet_blk)    // query for not changes veterinary
+        ->where('vet_street','=', $request->vet_street)
+        ->where('vet_subdivision','=', $request->vet_subdivision)
+        ->where('vet_barangay', '=', $request->vet_barangay)
+        ->where('vet_city', '=', $request->vet_city)
+        ->where('vet_zip','=', $request->vet_zip)->first();
+
+        if($NoActionQueryVet) {
+            return back()->with('warning', 'No changes');
+        }
+    
+        if($NoActionQueryUser){
+            return back()->with('warning', 'No changes');
+        }
+
+        DB::table('user_accounts')
+            ->where('user_id', $user_id)
+            ->update([
+                'user_name'=>$request->user_name,
+                'user_mobile'=>$request->user_mobile,
+                'user_email'=>$request->user_email
+            ]);
+
+
+        DB::table('veterinary')
+            ->where('vet_id', $vet_id)
+            ->update([
+                'vet_fname'=>$request->vet_fname,
+                'vet_lname'=>$request->vet_lname,
+                'vet_mname'=>$request->vet_mname,
+                'vet_mobile'=>$request->vet_mobile,
+                'vet_tel'=>$request->vet_tel,
+                'vet_blk'=>$request->vet_blk,
+                'vet_street'=>$request->vet_street,
+                'vet_subdivision'=>$request->vet_subdivision,
+                'vet_barangay'=>$request->vet_barangay,
+                'vet_city'=>$request->vet_city,
+                'vet_zip'=>$request->vet_zip
+            ]);
+
+            return back()->with('success', 'Profile updated');
 
     }
 

@@ -47,7 +47,7 @@
                 
 
                 <br>
-                <a href="custProf" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
+                <a href="/veterinary/editprofile" class="btn btn-primary btn-block"><b>Edit Profile </b></a>
               </div>
 
               <!-- /.card-body -->

@@ -53,6 +53,11 @@
     {{ Session::get('warning') }}
   </div>
   @endif 
+  @if(Session::has('error')) 
+   <div class="alert alert-danger" role="alert" id="messageModal">
+    {{ Session::get('error') }}
+  </div>
+  @endif 
   <div class="card"> @csrf <div class="card-header">
       <h3 class="header">Customer</h3>
       <br>
