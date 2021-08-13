@@ -8,7 +8,7 @@ use App\Http\Controllers\PetBreedController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\VeterinaryController;
 use App\Http\Controllers\Customercontroller;
-use App\Http\Controllers\CustProfilecontroller;
+use App\Http\Controllers\CustProfileController;
 use App\Http\Controllers\PetCountController;
 use App\Http\Controllers\ProfileController;
 
@@ -405,10 +405,9 @@ Route::get('/admin/clinic/CRUDclinic/delete/{clinic_id}',[MainController::class,
 });
 
 
-Route::get('/customer/custProfile', [CustProfileController ::class, 'userProfile']);
-Route::post('/customer/custhome', [Customercontroller ::class, 'getCustomerPet']);
-Route::get('/customer/custAcc', [CustProfileController:: class, 'editProfile']);
-Route::get('/customer/custeditProfile', [CustProfileController:: class, 'userProfile']);
+Route::get('/customer/custProfile', [CustProfileController::class, 'userProfile']);
+Route::post('/customer/custhome', [Customercontroller::class, 'getCustomerPet']);
+Route::get('/customer/custAcc', [CustProfileController::class, 'editProfile']);
 Route::POST('/customer/custAcc/{customer_id}/{user_id}', [CustProfileController::class, 'custProfile'])->name('save.custimage');
 Route::post('/customer/custAcc/{user_id}',[CustProfileController::class, 'changePw'])->name('cust.changepassword');
 
