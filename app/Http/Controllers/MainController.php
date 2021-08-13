@@ -84,6 +84,76 @@ class MainController extends Controller
                 }
         }
     }
+    final function registerCust(Request $request){
+        $fname = $request->customer_fname;
+        $lname = $request->customer_lname;
+        $mname = $request->customer_mname;
+
+        $request->validate([
+            'user_name'=>'required',
+            'user_password'=>'required',
+            'user_mobile'=>'required',
+            'user_email'=>'required|unique:user_accounts'
+        ]);
+
+        $checkcust = DB::table('customers')
+        ->where('customer_fname','=', $fname)
+        ->where('customer_lname','=', $lname)
+        ->where('customer_mname','=', $mname)->first();
+
+         //QUERY FOR CHECKING IF THE CUSTOMER IS ALREADY REGISTERED
+
+        if ($checkcust) {
+            return back()->with('error','The customer is Already Exist');
+        }else{
+
+        
+            $type = 3;
+            $insAccQuery = DB::table('user_accounts')->insert([
+                'user_name'=>$request->user_name,
+                'user_password'=>$request->user_password,
+                'user_mobile'=>$request->user_mobile,
+                'user_email'=>$request->user_email,
+                'userType_id'=>$type
+            ]);
+            //INSERT QUERY FOR ACCOUNTS
+
+
+            if ($insAccQuery) { //IF THE INSERT ACCOUNT SUCCESS
+                
+                $getid = DB::table('user_accounts')->select('user_id')->where('user_email','=', $request->user_email)->first();
+                //GET ID BY USING UNIQUE ATTRIBUTES
+               
+                if (is_object($getid)) {
+                    
+                    $toArray = (array)$getid; //CONVERT OBJECT INTO ARRAY
+                    $convert = implode($toArray); // CONVERT ARRAY INTO STRING
+
+
+                    DB::table('customers')->insert([
+                        'customer_fname'=>$request->customer_fname,
+                        'customer_lname'=>$request->customer_lname,
+                        'customer_mname'=>$request->customer_mname,
+                        'customer_mobile'=>$request->customer_mobile,
+                        'customer_tel'=>$request->customer_tel,
+                        'customer_gender'=>$request->customer_gender,
+                        'customer_birthday'=>$request->customer_birthday,
+                        'customer_DP'=>$request->customer_DP,
+                        'customer_blk'=>$request->customer_blk,
+                        'customer_street'=>$request->customer_street,
+                        'customer_subdivision'=>$request->customer_subdivision,
+                        'customer_barangay'=>$request->customer_barangay,
+                        'customer_city'=>$request->customer_city,
+                        'customer_zip'=>$request->customer_zip,
+                        'user_id'=>$convert ,
+                        'customer_isActive'=>$request->isActive
+                    ]);
+                    return redirect('/auth/login')->with('success','Your account is successfully registered');
+                   
+                }
+            }  
+        } 
+    }
     final function logout(){
         if(session()->has('LoggedUser')){
             session()->pull('LoggedUser');
@@ -127,13 +197,7 @@ class MainController extends Controller
     }
 
     final function registerValidate(Request $request){
-        $request->validate([
-            'user_name'=>'required',
-            'user_password'=>'required',
-            'user_mobile'=>'required',
-            'user_email'=>'required|unique'
-        ]);
-
+        
     }
 
     // <==============================================Login Controller====================================>

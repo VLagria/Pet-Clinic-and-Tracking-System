@@ -24,6 +24,11 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        @if(Session::has('success')) 
+                        <div class="alert alert-warning" role="alert" id="messageModal">
+                         {{ Session::get('success') }}
+                       </div>
+                       @endif 
                         <p class="login-box-msg">Sign in to start your session</p>
                         <form action="{{ route('auth.checkAdmin') }}" method="post"> @if (Session::get('fail')) <div class="alert alert-danger">
                                 {{ Session::get('fail') }}
@@ -56,7 +61,7 @@
                                 <div class="col-4">
                                     <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                                 </div>
-                                <!-- /.col -->
+                                <!-- /.col --> 
                             </div>
                         </form>
                         <!-- /.social-auth-links -->
@@ -78,5 +83,12 @@
             <script src="{{ asset('vendors/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
             <!-- AdminLTE App -->
             <script src="{{ asset('vendors/dist/js/adminlte.min.js') }}"></script>
+            <script>
+                $("document").ready(function() {
+                    setTimeout(function() {
+                        $("#messageModal").remove();
+                    }, 2000);
+                });
+            </script>
         </body>
 </html>

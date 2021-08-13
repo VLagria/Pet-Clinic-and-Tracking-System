@@ -141,7 +141,7 @@ class VeterinariansController extends Controller
             $type = 3;
             $insAccQuery = DB::table('user_accounts')->insert([
                 'user_name'=>$request->user_name,
-                'user_password'=>Hash::make($request->user_password),
+                'user_password'=>$request->user_password,
                 'user_mobile'=>$request->user_mobile,
                 'user_email'=>$request->user_email,
                 'userType_id'=>$type
@@ -159,6 +159,7 @@ class VeterinariansController extends Controller
                     $toArray = (array)$getid; //CONVERT OBJECT INTO ARRAY
                     $convert = implode($toArray); // CONVERT ARRAY INTO STRING
 
+                    $isActive = 1;
 
                     DB::table('customers')->insert([
                         'customer_fname'=>$request->customer_fname,
@@ -176,7 +177,7 @@ class VeterinariansController extends Controller
                         'customer_city'=>$request->customer_city,
                         'customer_zip'=>$request->customer_zip,
                         'user_id'=>$convert ,
-                        'customer_isActive'=>$request->isActive
+                        'customer_isActive'=>$isActive
                     ]);
                     return redirect('/veterinary/viewvetcustomer')->with('newCustomer','Customer has been completely added succesfully');
                    
@@ -372,11 +373,11 @@ class VeterinariansController extends Controller
         ->where('pet_gender','=', $request->pet_gender)
         ->where('pet_birthday','=', $request->pet_birthday)
         ->where('pet_notes','=', $request->pet_notes)
-        ->where('pet_bloodType','=', $$request->pet_bloodType)
+        ->where('pet_bloodType','=', $request->pet_bloodType)
         ->where('pet_registeredDate','=',$request->pet_registeredDate)
         ->where('pet_type_id','=', $request->pet_type_id)
         ->where('pet_breed_id','=', $request->pet_breed_id)
-        ->where('customer_id', '=', $$request->customer_id)
+        ->where('customer_id', '=', $request->customer_id)
         ->where('clinic_id','=', $request->clinic_id)
         ->where('pet_isActive','=', $request->pet_isActive)->first();
 

@@ -8,7 +8,7 @@ use App\Http\Controllers\PetBreedController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\VeterinaryController;
 use App\Http\Controllers\Customercontroller;
-use App\Http\Controllers\CustProfilecontroller;
+use App\Http\Controllers\CustProfileController;
 use App\Http\Controllers\PetCountController;
 use App\Http\Controllers\ProfileController;
 
@@ -31,7 +31,6 @@ Route::get('/', function () {
 });
 
 Route::get('/auth/register', [MainController::class, 'register'])->name('auth.register');
-Route::post('/auth/registerValidate', [MainController::class, 'registerValidate'])->name('auth.registerValidate');
 Route::get('/auth/recover', [MainController::class, 'recover'])->name('auth.recover');
 Route::post('/auth/checkAdmin', [MainController::class, 'checkAdmin'])->name('auth.checkAdmin');
 Route::post('/auth/registerAcc', [RegisterController::class, 'registerUser'])->name('auth.registerUser');
@@ -45,6 +44,7 @@ Route::group(['middleware'=>['AuthCheck']], function(){
 
 
 Route::get('/auth/login', [MainController::class, 'logIn'])->name('auth.login');
+Route::post('/auth/register', [MainController::class, 'registerCust'])->name('auth.validateregister');
 
 Route::get('/auth/logout', [MainController::class, 'logout'])->name('auth.logout');
 
@@ -399,18 +399,16 @@ Route::get('admin/customer/viewPatient', function () {
 Route::post('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'admin_SaveCustomers'])->name('adminVet.savecusts');
 Route::get('/customer/custhome/',[Customercontroller::class,'widgetPets']);
 Route::get('/customer/custhome{pet_id}',[Customercontroller::class,'getPetID']);
-
+Route::post('/customer/custhome{pet_id}',[Customercontroller::class,'savePet'])->name('savePet');
 
 Route::get('/admin/clinic/CRUDclinic/delete/{clinic_id}',[MainController::class, 'deleteClinic'])->name('post.deleteclinic');
 
 });
 
 
-Route::get('/customer/custProfile', [CustProfileController ::class, 'userProfile']);
-Route::post('/customer/custhome', [Customercontroller ::class, 'getCustomerPet']);
-
-Route::get('/customer/custAcc', [CustProfileController:: class, 'editProfile']);
-Route::get('/customer/custeditProfile', [CustProfileController:: class, 'userProfile']);
+Route::get('/customer/custProfile', [CustProfileController::class, 'userProfile']);
+Route::post('/customer/custhome', [Customercontroller::class, 'getCustomerPet']);
+Route::get('/customer/custAcc', [CustProfileController::class, 'editProfile']);
 Route::POST('/customer/custAcc/{customer_id}/{user_id}', [CustProfileController::class, 'custProfile'])->name('save.custimage');
 Route::post('/customer/custAcc/{user_id}',[CustProfileController::class, 'changePw'])->name('cust.changepassword');
 
