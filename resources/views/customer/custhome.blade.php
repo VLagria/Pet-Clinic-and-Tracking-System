@@ -46,8 +46,16 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link"> Status: <span class="float-right ">{{$info->pet_isActive}}</span>
-                                        </a>
+                                    <label for="inputStatus">Status</label>
+                                      <select id="pet_isActive" class="form-control custom-select" name="pet_isActive">
+                                        @if($info->pet_isActive=="1")
+                                        <option value="1"selected>Active</option>
+                                        <option value="2">InActive</option>
+                                        @elseif ($info->pet_isActive=="2")
+                                        <option value="1">Active</option>
+                                        <option value="2"selected>InActive</option>
+                                        @endif
+                                        </select>
                                     </li>
                             </div>
                         </div>
