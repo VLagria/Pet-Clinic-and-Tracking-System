@@ -7,30 +7,50 @@ use Illuminate\Support\Facades\Hash;
 
 class Customercontroller extends Controller
 {
-    final function widgetPets(){
-        $widgetPets = ['LoggedUserInfo'=>DB::table('user_accounts')
+
+    public function widgetPets(){
+        $LoggedUserInfo = DB::table('user_accounts')
         ->join('customers','customers.user_id','=', 'user_accounts.user_id')
-        ->join('pets','customers.customer_id','=', 'pets.customer_id')
         ->select('*')
-        ->where('user_accounts.user_id','=', session('LoggedUser'))->first()];
-        return view('customer.custhome', $widgetPets);
+        ->where('user_accounts.user_id','=', session('LoggedUser'))->first();
+
+        $customerid=DB::table('customers')
+        ->select('customer_id')
+        ->where('user_id','=', session('LoggedUser'))->pluck('customer_id')->first();
+        
+
+            $petinfo= DB::table('pets')
+            ->select('*')
+            ->where('customer_id','=', $customerid) ->get();
+            
+            return view('customer.custhome',compact('LoggedUserInfo','petinfo'));
+           // return dd($widgetPets);
+    
+          
         // return dd($widgetPets);
     }
+
+
 }
 
-//     function getPetID($id_pet){
+    function getPetID($id_pet){
 
-//         $getID=DB::table('pets')->where('pet_id','=',$id_pet)->first();
+        $getID=DB::table('pets')->where('pet_id','=',$id_pet)->first();
     
-//         return view('/customer/custhome',compact('getID'));
-//     }
+    
 
-//     function saveType(Request $request,$id_pet,$user_id){
+        return view('/customer/custhome',compact('getID'));
+    }
 
-//        $NoActionQueryPet = DB::table('pets')
-//         ->where('pet_id',$id_pet)
-//         ->update([
-//             'pet_name'=>$request->pet_name
-//         ]);
-//         return redirect('/customer/custhome')->with('Success','Successfully Updated!');
-// }
+    function saveType(Request $request,$id_pet){
+
+        DB::table('pets')
+        ->where('pet_id',$id_pet)
+        ->update([
+            'pet_name'=>$request->pet_name
+        ]);
+        return redirect('/customer/custhome')->with('Success','Successfully Updated!');
+}
+
+
+

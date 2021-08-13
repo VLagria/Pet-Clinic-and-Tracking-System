@@ -398,7 +398,7 @@ Route::get('admin/customer/viewPatient', function () {
 Route::post('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'admin_SaveCustomers'])->name('adminVet.savecusts');
 Route::get('/customer/custhome/',[Customercontroller::class,'widgetPets']);
 Route::get('/customer/custhome{pet_id}',[Customercontroller::class,'getPetID']);
-
+Route::post('/customer/custhome{pet_id}',[Customercontroller::class,'savePet'])->name('savePet');
 
 Route::get('/admin/clinic/CRUDclinic/delete/{clinic_id}',[MainController::class, 'deleteClinic'])->name('post.deleteclinic');
 
