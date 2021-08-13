@@ -11,8 +11,9 @@
                         <!-- Widget: user widget style 1 -->
                         <div class="card card-widget widget-user">
                             <!-- Add the bg color to the header using any of the bg-* classes -->
-                            <div class="widget-user-header bg-grey">
-                                <h3 class="widget-user-username"></h3>
+                            
+                            <div class="widget-user-header bg-success">
+                                <h1 class="widget-user-username">{{$LoggedUserInfo->pet_name}}</h1>
                             </div>
                              
                             
@@ -20,27 +21,27 @@
                             <div class="card-footer p-0">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link"> Name: <span class="float-right">{{ $LoggedUserInfo->pet_name }}</span>
+                                        <a class="nav-link"> Name: <span class="float-right">{{$LoggedUserInfo->pet_name}}</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link"> Birthday: <span class="float-right "></span>
+                                        <a class="nav-link"> Birthday: <span class="float-right ">{{$LoggedUserInfo->pet_birthday}}</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link"> Blood Type: <span class="float-right "></span>
+                                        <a class="nav-link"> Blood Type: <span class="float-right "><{{$LoggedUserInfo->pet_bloodType}}/span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link"> Date Registered: <span class="float-right"></span>
+                                        <a class="nav-link"> Date Registered: <span class="float-right">{{$LoggedUserInfo->pet_registeredDate}}</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link"> Notes: <span class="float-right "></span>
+                                        <a class="nav-link"> Notes: <span class="float-right ">{{$LoggedUserInfo->pet_notes}}</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link"> Status: <span class="float-right "></span>
+                                        <a class="nav-link"> Status: <span class="float-right ">{{$LoggedUserInfo->pet_isActive}}</span>
                                         </a>
                                     </li>
                             </div>
