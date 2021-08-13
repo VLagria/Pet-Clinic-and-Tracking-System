@@ -31,7 +31,6 @@ Route::get('/', function () {
 });
 
 Route::get('/auth/register', [MainController::class, 'register'])->name('auth.register');
-Route::post('/auth/registerValidate', [MainController::class, 'registerValidate'])->name('auth.registerValidate');
 Route::get('/auth/recover', [MainController::class, 'recover'])->name('auth.recover');
 Route::post('/auth/checkAdmin', [MainController::class, 'checkAdmin'])->name('auth.checkAdmin');
 Route::post('/auth/registerAcc', [RegisterController::class, 'registerUser'])->name('auth.registerUser');
@@ -45,6 +44,7 @@ Route::group(['middleware'=>['AuthCheck']], function(){
 
 
 Route::get('/auth/login', [MainController::class, 'logIn'])->name('auth.login');
+Route::post('/auth/register', [MainController::class, 'registerCust'])->name('auth.validateregister');
 
 Route::get('/auth/logout', [MainController::class, 'logout'])->name('auth.logout');
 
@@ -406,7 +406,7 @@ Route::get('/admin/clinic/CRUDclinic/delete/{clinic_id}',[MainController::class,
 
 
 Route::get('/customer/custProfile', [CustProfileController ::class, 'userProfile']);
-Route::post('/customer/custhome', [Customercontroller ::class, 'getCustomerPet']);
+Route::post('/customer/custhome', [Customerontroller ::class, 'getCustomerPet']);
 
 Route::get('/customer/custAcc', [CustProfileController:: class, 'editProfile']);
 Route::get('/customer/custeditProfile', [CustProfileController:: class, 'userProfile']);
