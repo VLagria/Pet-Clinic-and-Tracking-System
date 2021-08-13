@@ -118,6 +118,11 @@
 
    
 <!-- Default box -->
+@if(Session::get('PetEditFail'))
+    <div class="alert alert-warning" id="messageModal">
+        {{ Session::get('PetEditFail')}}
+    </div>
+@endif
 <div class="card">
     <div class="card-header">
         <a class="btn btn-error btn-sm" href="/admin/customer/viewPatient/{{ $getCustID->customer_id }}">
@@ -291,7 +296,7 @@
 
        
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: 300px" hidden="">
                 <label for="inputdp"> Profile Picture</label>
                 <br>
                 <form action="/action_page.php">
@@ -322,4 +327,15 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+<script>
+  $("document").ready(function() {
+    setTimeout(function() {
+      $("#messageModal").remove();
+    }, 3000);
+  });
+</script>
+
 @endsection

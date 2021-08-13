@@ -22,15 +22,7 @@
   <!-- /.content-header -->
     
   <!-- Default box -->
-  <div class="card"> 
-    @csrf
-    <div class="card-header">
-      <a class="btn btn-error btn-sm" href="/admin/customer/CRUDcustomers">
-        <i class="fas fa-arrow-left"></i> Return </a>
-      <h3 class="header">Pets</h3>
-      <br>
-
-      @if(Session::has('success')) 
+  @if(Session::has('success')) 
       <div class="alert alert-success" role="alert" id="messageModal">
       {{ Session::get('success') }}
       </div>
@@ -40,6 +32,21 @@
       {{ Session::get('warning') }}
       </div>
        @endif
+       @if(Session::has('deletedPet'))
+        <div class="alert alert-danger" id="messageModal">
+          {{ Session:: get('deletedPet')}}
+        </div>
+       @endif
+       
+  <div class="card"> 
+    @csrf
+    <div class="card-header">
+      <a class="btn btn-error btn-sm" href="/admin/customer/CRUDcustomers">
+        <i class="fas fa-arrow-left"></i> Return </a>
+      <h3 class="header">Pets</h3>
+      <br>
+
+      
 
       <!-- Main content -->
       <table class="table  table-striped table-hover">
@@ -82,8 +89,8 @@
                 <i class="fas fa-folder"></i>  </a>
               <a href="/admin/vet/adminEditPatient/{{ $owner->pet_id }}" class="btn btn-info btn-sm">
                 <i class="fas fa-pencil-alt"></i>  </a>
-              <a class="btn btn-danger btn-sm" href="/admin/vet/adminEditPatient/{{ $owner->pet_id }} ">
-                <i class="fas fa-trash"></i>  </a>
+              <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal{{ $owner->pet_id }}">
+                <i class="fas fa-trash"></i></button>
             </td>
           </tr>
 <!-- VIEW MODAL -->
@@ -130,7 +137,31 @@
       </div>
     </div>
   </div>
-<!-- END VIEW MODAL -->
+
+<!-- DELETE MODAL -->
+      <div class="modal fade" id="deleteModal{{ $owner->pet_id }}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Delete Pet</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action=" /admin/customer/viewPatient/delete/{{ $owner->pet_id }} " method="GET">
+              {{ csrf_field() }}
+              <div class="modal-body">
+                <h3>Confirm deletion of {{ $owner->pet_name }}?</h3>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-danger waves-effect remove-data-from-delete-form">Delete</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
           </div>
         @endforeach    
         </tbody>
@@ -158,12 +189,13 @@
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
 </script>
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 <script>
   $("document").ready(function() {
     setTimeout(function() {
       $("#messageModal").remove();
-    }, 2000);
+    }, 3000);
   });
-</script> 
+</script>
 @endsection

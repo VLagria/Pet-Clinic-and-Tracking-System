@@ -22,7 +22,7 @@ function addType(Request $request){
         DB::table('pet_types')->insert([
             'type_name'=>$request->type_name
         ]);
-        return redirect('/admin/pets/CRUDpettype')->with('newPettype','Pet type added succesfully');
+        return redirect('/admin/pets/CRUDpettype/home')->with('newPettype','Pet type added succesfully');
 }
 
 
@@ -53,9 +53,14 @@ function addType(Request $request){
         return redirect('/admin/pets/CRUDpettype')->with('Success','Successfully Updated!');
     }
     function deleteType($type_id){
-        DB::table('pet_types')->where('type_id', $type_id)->delete();
-        return redirect('/admin/pets/CRUDpettype')->with('type_deleted','Sucessfully Deleted!!!!!');
+        $queryCheck = DB::table('pets')->where('pet_type_id',$type_id)->first();
 
+        if ($queryCheck) {
+            return back()->with('cantDelete', 'Pet Type is in use. Cannot Delete');
+        }else{
+            DB::table('pet_types')->where('type_id', $type_id)->delete();
+            return redirect('/admin/pets/CRUDpettype/home')->with('typeDeleted','Pet Type Successfully Deleted');
+        }
     }
 
     public function search(Request $request){

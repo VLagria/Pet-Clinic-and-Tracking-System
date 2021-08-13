@@ -22,6 +22,12 @@
 
    
 <!-- Default box -->
+@if(Session::has('editVetFail'))
+<div class="alert alert-warning" id="messageModal" role="alert">
+    {{ Session::get('editVetFail') }}
+</div>
+@endif
+
 <div class="card">
     <div class="card-header">
         <a class="btn btn-error btn-sm" href="/admin/customer/CRUDcustomers">
@@ -157,9 +163,6 @@
             </div>
         </td>
         <td>
-              <span class="text-danger error-text user_id_error">@error('user_id'){{ $message }}@enderror</span>
-        </td>
-        <td>
             <div class="form-group" style="width: 300px">
                 <label for="inputStatus">Active</label>
                 <select id="isActive" class="form-control custom-select" name="isActive">
@@ -175,17 +178,8 @@
                   
                   
                 </select>
-                <span class="text-danger error-text isActive_error">@error('isActive'){{ $message }}@enderror</span>
               </div>
         </td>
-        {{-- <td>
-            <div class="form-group" style="width: 300px">
-                <label for="inputdp"> Profile Picture</label>
-                <br>
-                <form action="/action_page.php">
-                  <input type="file" id="customer_DP" name="filename" name="customer_DP">
-              </div>
-        </td> --}}
     </tr>
     @endif
   </thead>
@@ -211,4 +205,22 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+<script>
+$("document").ready(function(){
+  setTimeout(function(){
+    $("#messageModal").remove();
+  }, 3000 );
+});
+</script>
+
+<script>
+$('.feet').on('click', function(e){
+    e.preventDefault();
+    $(#formSubmit).on('submit', function())
+});
+</script>
 @endsection

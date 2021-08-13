@@ -130,7 +130,7 @@
 
 
     <!-- Main content -->
-    <form action="/admin/pets/CRUDeditpet/{{ $petsDB->pet_id }}" method="post" class="cmxform" id="editPet">
+    <form action="/admin/pets/CRUDeditpet/saveUpdate/{{ $editPet->pet_id }}" method="post" class="cmxform" id="editPet">
         @csrf
     <table class="table table-striped table-hover">
   <thead>
@@ -138,7 +138,7 @@
         <td >
             <div class="form-group" style="width: 300px">
                 <label for="pet_name">Pet Name</label>
-                <input type="name" class="form-control" value="{{ $petsDB->pet_name }}" name="pet_name" placeholder="Enter Pet Name" id="pet_name">
+                <input type="name" class="form-control" value="{{ $editPet->pet_name }}" name="pet_name" placeholder="Enter Pet Name" id="pet_name">
                 <span class="text-danger error-text customer_fname_error">@error('pet_name'){{ $message }}@enderror</span>
             </div>
         </td>
@@ -147,12 +147,12 @@
                 <div class="form-group" style="width: 300px">
                     <label for="pet_gender">Gender</label>
                       <select id="pet_gender" class="form-control custom-select" name="pet_gender">
-                       @if ($petsDB->pet_gender == "Male")
+                       @if ($editPet->pet_gender == "Male")
 
                        <option value="Male" selected>Male</option>
                        <option value="Female">Female</option>
 
-                       @elseif ($petsDB->pet_gender == "Female")   
+                       @elseif ($editPet->pet_gender == "Female")   
 
                        <option value="Female" selected>Female</option>
                        <option value="Male">Male</option>
@@ -203,7 +203,7 @@
         <td>
             <div class="form-group" style="width: 300px">
                 <label for="pet_bloodType" class="form-label"> BloodType</label>
-                <input type="text" class="form-control" value="{{ $petsDB->pet_bloodType }}" name="pet_bloodType" placeholder="Optional" id="pet_bloodType">
+                <input type="text" class="form-control" value="{{ $editPet->pet_bloodType }}" name="pet_bloodType" placeholder="Optional" id="pet_bloodType">
                 <span class="text-danger error-text customer_blk_error">@error('pet_bloodType'){{ $message }}@enderror</span>
                 </div>
         </td>
@@ -211,7 +211,7 @@
             <div class="form-group" style="width: 300px">
                 <label for="pet_registeredDate" required class="form-label"> Registered Date</label>
                 <br>
-                  <input type="date" class="form-control" value="{{ $petsDB->pet_registeredDate }}" id="date" name="pet_registeredDate" id="pet_registeredDate">
+                  <input type="date" class="form-control" value="{{ $editPet->pet_registeredDate }}" id="date" name="pet_registeredDate" id="pet_registeredDate">
                   <span class="text-danger error-text customer_blk_error">@error('pet_registeredDate'){{ $message }}@enderror</span>
               </div>
         </td>
@@ -220,7 +220,7 @@
                 <label for="pet_birthday" required class="form-label"> Birthday</label>
                 <br>
                 
-                  <input type="date" class="form-control" value="{{ $petsDB->pet_birthday }}" id="date" name="pet_birthday" id="pet_birthday">
+                  <input type="date" class="form-control" value="{{ $editPet->pet_birthday }}" id="date" name="pet_birthday" id="pet_birthday">
                   <span class="text-danger error-text customer_blk_error">@error('pet_birthday'){{ $message }}@enderror</span>
               
               </div>
@@ -314,4 +314,15 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+<script>
+  $("document").ready(function() {
+    setTimeout(function() {
+      $("#messageModal").remove();
+    }, 3000);
+  });
+</script>
+
 @endsection

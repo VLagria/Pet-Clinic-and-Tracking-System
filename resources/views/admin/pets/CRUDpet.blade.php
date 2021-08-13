@@ -19,16 +19,6 @@
     </div>
     <!-- /.content-header -->
 <!-- Default box -->
-
-<form action="{{ route('pet.petSearch') }}" method="GET">
-  <div class="input-group" style="width: 400px; margin-left: 500px" >
-    <input type="search" class="form-control rounded" placeholder="Search by Breed" name="petSearch" id="petSearch" style="width: 200px;"/> 
-    <button type="submit" class="btn btn-outline-primary">search</button><br>
-  </div>
-</form>
-
-<br>
-
 @if(Session::has('pets_deleted'))
 <div class="alert alert-danger"role="alert"id="messageModal">
   {{ Session::get('pets_deleted') }}
@@ -39,6 +29,21 @@
   {{ Session::get('newPet')}}
 </div>
 @endif
+@if(Session::has('pet_updated'))
+  <div class="alert alert-success" id="messageModal">
+    {{ Session::get('pet_updated')}}
+  </div>
+@endif
+<form action="{{ route('pet.petSearch') }}" method="GET">
+  <div class="input-group" style="width: 400px; margin-left: 500px" >
+    <input type="search" class="form-control rounded" placeholder="Search by Breed" name="petSearch" id="petSearch" style="width: 200px;"/> 
+    <button type="submit" class="btn btn-outline-primary">search</button><br>
+  </div>
+</form>
+
+<br>
+
+
 <div class="card">
     <div class="card-header">
       <h1 class="card-title">Pets</h1>
@@ -47,8 +52,6 @@
       <table class="table table-striped table-valign-middle">
         <thead>
         <tr>
-  
-          <th>ID</th>
           <th>Name</th>
           <th>Gender</th>
           <th>Birthdate</th>
@@ -59,9 +62,9 @@
           <th>Pet Breed</th>
           <th>Customer ID </th>
           <th></th>
-          <th>Clinic ID</th>
+          <th>Clinic</th>
           <th>Status</th>            
-        <th style="width: 14%" class="text-center">
+        <th style="width: 14%">
                   Action
                 </th>
           
@@ -70,7 +73,6 @@
         <tbody>
           @foreach($Pet as $pet)
         <tr>
-          <td> {{ $pet->pet_id}}</td>
           <td> {{ $pet->pet_name}}</td>
           <td> {{ $pet->pet_gender}}</td>
           <td> {{ $pet->pet_birthday}}</td>
@@ -85,9 +87,9 @@
           @if( $pet->pet_isActive == 1 )
             <td><h4><span class="badge badge-success lg">Yes</span></h4></td>
             @else
-            <td class="badge badge-warning lg">No</td>
+            <td><h4><span class="badge badge-danger lg">No</span></h4></td>
           @endif
-          <td class="project-actions text-right">
+          <td>
             <button href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal{{ $pet->pet_id }}">
                           <i class="fas fa-folder">
                           </i></button>
@@ -164,5 +166,15 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+<script>
+  $("document").ready(function() {
+    setTimeout(function() {
+      $("#messageModal").remove();
+    }, 3000);
+  });
+</script>
 
 @endsection

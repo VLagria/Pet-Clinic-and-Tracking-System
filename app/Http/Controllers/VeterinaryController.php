@@ -132,7 +132,6 @@ class VeterinaryController extends Controller
         $vet_mobile = $request->vet_mobile;
         $vet_tel = $request->vet_tel;
         $vet_birthday = $request->vet_birthday;
-        $vet_DP  = $request->vet_DP;
         $vet_blk = $request->vet_blk;
         $vet_street = $request->vet_street;
         $vet_subdivision = $request->vet_subdivision;
@@ -159,7 +158,7 @@ class VeterinaryController extends Controller
             ->where('vet_isActive', '=', $vet_isActive)->first();
 
             if ($checkClinicQuery) {
-                return back()->with('fail', 'No changes / all are the same');
+                return back()->with('editVetFail', 'No changes / all are the same');
             }else{
 
             DB::table('veterinary')
@@ -176,8 +175,8 @@ class VeterinaryController extends Controller
                 'vet_subdivision'=>$request->vet_subdivision,
                 'vet_barangay'=>$request->vet_barangay,
                 'vet_city'=>$request->vet_city,
+                'vet_dateAdded'=>$request->vet_dateAdded,
                 'vet_zip'=>$request->vet_zip,
-                'clinic_id'=>$request->clinic_id,
                 'vet_isActive'=>$request->vet_isActive,
         ));
         
@@ -185,41 +184,10 @@ class VeterinaryController extends Controller
 
             // return redirect('/admin/clinic/CRUDclinic/home')->with('vet_updated','Vet has been successfully Updated');
 
-                    $clinic_id = $request->clinic_id;
+            $clinic_id = $request->clinic_id;
             return redirect()->route('clinicvet', ['clinic_id'=> $clinic_id])->with('success', 'Patient has been updated succesfully');
     }
 
-
-
-
-
-
-    // function admin_EditVetDetails(Request $request, $vet_id){
-    //     $request->validate([
-    //             'user_name' => 'required | unique:user_accounts,user_name',
-    //             'user_password' => 'required',
-    //             'user_mobile' => 'required',
-    //             'user_email' => 'required | unique:user_accounts,user_email',
-    //             'vet_fname'=>'required',
-    //             'vet_lname' => 'required',
-    //             'vet_mname' => 'required',
-    //             'vet_mobile' => 'required | numeric',
-    //             'vet_tel' => 'required',
-    //             'vet_birthday' => 'required',
-    //             'vet_blk' => 'required',
-    //             'vet_street' => 'required',
-    //             'vet_subdivision' => 'required',
-    //             'vet_barangay' => 'required',
-    //             'vet_city' => 'required',
-    //             'vet_zip' => 'required',
-    //             'vet_isActive' => 'required'
-    //         ]);
-
-        
-    //         $id=$request->clinic_id;
-        
-    //     return redirect()->route('clinicvet', ['clinic_id' => $id])->with('vet_updated','Veterinary has been successfully Updated');
-    // }
 
     function admin_GetAllCustomer(){
         $customers = DB::table('customers')
@@ -289,7 +257,7 @@ class VeterinaryController extends Controller
         ->where('customer_isActive','=', $request->isActive)->first();
 
         if($NoActionQuery) {
-            return back()->with('warning','No changes');
+            return back()->with('editVetFail','No editing happened. Change something to edit.');
         }else{
             DB::table('customers')
             ->where('customer_id', '=', $customer_id)
@@ -344,6 +312,66 @@ class VeterinaryController extends Controller
         customer_barangay,' ',customer_city,' ', customer_zip) AS customer_address"), 'user_id', 'customer_isActive')
         -> where('customer_fname', 'like', '%'.$search.'%')->paginate('5');
         return view('admin.customer.CRUDcustomers', compact('customers'));
+    }
+
+    function admin_savePetVet(Request $request, $pet_id){
+
+        $breed = $request->pet_breed_id;
+        $gender = $request->pet_gender;
+        $birthday = $request->pet_birthday;
+        $notes = $request->pet_notes;
+        $bloodtype = $request->pet_bloodType;
+        $regDate = $request->pet_registeredDate;
+        $type = $request->pet_type_id;
+        $name = $request->pet_name;
+        $customer = $request->customer_id;
+        $clinic = $request->clinic_id;
+        $status = $request->pet_isActive;
+
+
+        $NoActionQuery = DB::table('pets')
+        ->where('pet_name','=', $request->pet_name)
+        ->where('pet_gender','=', $request->pet_gender)
+        ->where('pet_birthday','=', $request->pet_birthday)
+        ->where('pet_notes','=', $request->pet_notes)
+        ->where('pet_bloodType','=', $request->pet_bloodType)
+        ->where('pet_registeredDate','=',$request->pet_registeredDate)
+        ->where('pet_type_id','=', $request->pet_type_id)
+        ->where('pet_breed_id','=', $request->pet_breed_id)
+        ->where('customer_id', '=', $request->customer_id)
+        ->where('clinic_id','=', $request->clinic_id)
+        ->where('pet_isActive','=', $request->pet_isActive)->first();
+
+
+        if ($NoActionQuery) {
+            return back()->with('PetEditFail','No editing happened. Change something to edit.');
+        }else{
+            DB::table('pets')
+        ->where('pet_id', $pet_id)
+        ->update([
+            'pet_name'=>$request->pet_name,
+            'pet_gender'=>$request->pet_gender,
+            'pet_birthday'=>$request->pet_birthday,
+            'pet_notes'=>$request->pet_notes,
+            'pet_bloodType'=>$request->pet_bloodType,
+            'pet_registeredDate'=>$request->pet_registeredDate,
+            'pet_type_id'=>$request->pet_type_id,
+            'pet_breed_id'=>$request->pet_breed_id,
+            'customer_id'=>$request->customer_id,
+            'clinic_id'=>$request->clinic_id,
+            'pet_isActive'=>$request->pet_isActive
+        ]);
+
+            $id = $request->customer_id;
+            return redirect()->route('adminPetView', ['customer_id'=>$request->customer_id])->with('success','Patients has been updated sucessfully');
+        }
+
+    }
+
+    function admin_DeletePet($pet_id){
+        $delPet = DB::table('pets')->where('pet_id',$pet_id)->delete();
+        $getPetName = DB::table('pets')->select('pet_name')->where('pet_id',$pet_id)->first();
+        return back()->with('deletedPet','Pet info deleteted Successfully. Goodbye!');
     }
 
 

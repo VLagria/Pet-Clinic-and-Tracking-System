@@ -46,6 +46,7 @@
 
 @section('content') 
 
+
 <div class="content-wrapper">
 
   <!-- Content Header (Page header) -->
@@ -66,7 +67,9 @@
   <!-- /.content-header -->
 
   <!-- Default box --> 
-  @if(Session::has('clinic_updated')) 
+  
+
+@if(Session::has('clinic_updated')) 
     <div class="alert alert-success" id="messageModal" role="alert">
         {{ Session::get('clinic_updated') }}
     </div> 
@@ -77,7 +80,7 @@
       {{ Session::get('fail') }}
     </div> 
     @endif
-
+    
   <div class="card">
     <div class="card-header">
       <a class="btn btn-error btn-sm" href="/admin/clinic/CRUDclinic/home">

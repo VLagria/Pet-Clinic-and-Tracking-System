@@ -45,8 +45,15 @@ class PetBreedController extends Controller
         return redirect('/admin/pets/CRUDpetbreed')->with('Success','Successfully Updated!');
     }
     function deleteBreed($breed_id){
-        DB::table('pet_breeds')->where('breed_id', $breed_id)->delete();
-        return redirect('/admin/pets/CRUDpetbreed')->with('breed_deleted','Sucessfully Deleted!!!!!');
+        $checkQuery = DB::table('pets')->where('pet_breed_id',$breed_id)->first();
+
+        if ($checkQuery) {
+            return back()->with('cantDelete', 'Breed Option is in use. Cannot Delete');
+        }else{
+            DB::table('pet_breeds')->where('breed_id', $breed_id)->delete();
+            return redirect('/admin/pets/CRUDpetbreed')->with('breed_deleted','Breed Successfully Deleted');
+        }
+        
 
     }
 
