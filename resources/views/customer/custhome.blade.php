@@ -29,7 +29,11 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link"> Blood Type: <span class="float-right "><{{$LoggedUserInfo->pet_bloodType}}/span>
+                                        <a class="nav-link"> Gender: <span class="float-right ">{{$LoggedUserInfo->pet_gender }}</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link"> Bloodtype: <span class="float-right ">{{$LoggedUserInfo->pet_bloodType}}</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
