@@ -39,7 +39,7 @@
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle" src="{{asset('vendors/dist/img/han.jpg') }}" alt="hannah">
+                                <img class="profile-user-img img-fluid img-circle" src="{{ $LoggedUserInfo->customer_DP }}}" alt="Profile Pic">
                             </div>
                             <br>
                             <h5 style="text-align: center">{{ $LoggedUserInfo->customer_fname }} {{ $LoggedUserInfo->customer_mname }} {{ $LoggedUserInfo->customer_lname }} </h5>
