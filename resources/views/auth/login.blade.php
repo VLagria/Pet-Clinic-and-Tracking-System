@@ -12,15 +12,17 @@
         <link rel="stylesheet" href="{{ asset('vendors/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{ asset('vendors/dist/css/adminlte.min.css') }}">
+
+        
     </head>
-    <body>
-        <body class="hold-transition login-page">
+  
+        <body class="hold-transition login-page" style="background-image: url('vendors/dist/img/1.png'')">
             <div class="login-box">
                 <!-- /.login-logo -->
                 <div class="card card-outline card-primary">
                     <div class="card-header text-center">
-                        <div class="avatar">
-                            <img src="{{asset('vendors/dist/img/MediaoneLogo.png') }}" alt="Avatar">
+                        <div class="avatar" >
+                            <img src="{{asset('vendors/dist/img/copy.png') }}" width="300px" height="300px" alt="Avatar">
                         </div>
                     </div>
                     <div class="card-body">
