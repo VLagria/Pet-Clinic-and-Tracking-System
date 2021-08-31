@@ -23,9 +23,14 @@
 
    
 <!-- Default box -->
+@if(Session::has('existing')) 
+      <div class="alert alert-warning" role="alert">
+       {{ Session::get('existing') }}
+     </div>
+     @endif 
 <div class="card">
     <div class="card-header">
-        <a class="btn btn-error btn-sm" href="/admin/pets/CRUDpettype">
+        <a class="btn btn-error btn-sm" href="/admin/pets/CRUDpettype/home">
             <i class="fas fa-arrow-left">
             </i>
             Return
@@ -33,11 +38,7 @@
       <h3 class="header">Create Pet Type</h3>
       <br>
     
-      @if(Session::has('existing')) 
-      <div class="alert alert-error" role="alert">
-       {{ Session::get('existing') }}
-     </div>
-     @endif 
+      
  
     <!-- Main content -->
     <form action="{{ route('addtype') }}" method="post">

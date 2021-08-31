@@ -34,9 +34,9 @@
   <br>
 
 <!-- Default box -->
-@if(Session::has('type_deleted')) 
+@if(Session::has('typeDeleted')) 
   <div class="alert alert-danger" role="alert" id="messageModal">
-    {{ Session::get('type_deleted') }}
+    {{ Session::get('typeDeleted') }}
   </div>
    @endif 
    @if(Session::has('newPettype')) 
@@ -45,11 +45,17 @@
   </div>
   @endif 
 
-  @if(Session::has('Success')) 
+  @if(Session::has('cantDelete')) 
+  <div class="alert alert-warning" role="alert" id="messageModal">
+   {{ Session::get('cantDelete') }}
+ </div>
+ @endif  
+
+ @if(Session::has('Success')) 
   <div class="alert alert-success" role="alert" id="messageModal">
    {{ Session::get('Success') }}
  </div>
- @endif   
+ @endif
 
 
 
@@ -74,12 +80,11 @@
             <td>
               <a href="/admin/pets/CRUDedittype/{{$pettype->type_id}}" class="btn btn-info btn-lg">
                 <i class="fas fa-pencil-alt"></i> </a>
-              <a class="btn btn-danger btn-lg" href="/admin/pets/delete/{{$pettype->type_id}}">
+              <a class="btn btn-danger btn-lg" href="/admin/pets/delete/{{ $pettype->type_id }}">
                 <i class="fas fa-trash"></i></a>
               </td>
             </tr>
         
-           
             @endforeach
           </tbody>
         </table>

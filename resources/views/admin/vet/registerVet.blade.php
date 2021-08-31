@@ -80,6 +80,11 @@
 
    
 <!-- Default box -->
+@if(Session::has('existing')) 
+      <div class="alert alert-warning" role="alert" id="messageModal">
+       {{ Session::get('existing') }}
+     </div>
+     @endif 
 <div class="card">
     <div class="card-header">
         <a class="btn btn-error btn-sm" href="/admin/clinic/CRUDclinic/home">
@@ -90,11 +95,7 @@
       <h3 class="header">Register Veterinary</h3>
       <br>
      
-      @if(Session::has('existing')) 
-      <div class="alert alert-warning" role="alert" id="messageModal">
-       {{ Session::get('existing') }}
-     </div>
-     @endif 
+      
 
      
     <!-- Main content -->

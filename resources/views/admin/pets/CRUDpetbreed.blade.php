@@ -26,7 +26,7 @@
       </div>
     </form>
 
-<a class="btn btn-success btn-sm" style="margin-left: 20px" href="/admin/pets/CRUDaddbreed">
+<a class="btn btn-success btn-lg" style="margin-left: 20px" href="/admin/pets/CRUDaddbreed">
   <i class="fas fa-user"></i> Add Pet Breed</a>
   <br>
   <br>
@@ -40,6 +40,11 @@
 @if(Session::has('newPetbreed'))
 <div class="alert alert-success" role="alert"id="messageModal">
   {{ Session::get('newPetbreed')}}
+</div>
+@endif
+@if(Session::has('cantDelete'))
+<div class="alert alert-warning" role="alert"id="messageModal">
+  {{ Session::get('cantDelete')}}
 </div>
 @endif
 <div class="card">
@@ -98,50 +103,18 @@
                crossorigin="anonymous">
       </script>
       <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script>
-  $("document").ready(function() {
-    setTimeout(function() {
-      $("#messageModal").remove();
-    }, 2000);
-  });
-</script> 
-<script>
-  jQuery(document).ready(function(){
-     jQuery('#addSubmit').click(function(e){
-        e.preventDefault();
-        $.ajaxSetup({
-           headers: {
-               'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-           }
-       });
-        jQuery.ajax({
-           url: "{{ url('/admin/pets/CRUDpetbreed') }}",
-           method: 'post',
-           data: {
-           type_name: jQuery('#breed_name').val(),
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+  <script src="../../plugins/jquery/jquery.min.js"></script>
 
-           },
-           success: function(result){
-             if(result.errors)
-             {
-               jQuery('.alert-danger').html('');
-
-               jQuery.each(result.errors, function(key, value){
-                 jQuery('.alert-danger').show();
-                 jQuery('.alert-danger').append('<li>'+value+'</li>');
-               });
-             }
-             else
-             {
-               jQuery('.alert-danger').hide();
-               $('#open').hide();
-               $('#myModal').modal('hide');
-             }
-           }});
-        });
-     });
-</script>
+  <script>
+    $("document").ready(function(){
+      setTimeout(function(){
+        $("#messageModal").remove();
+      }, 3000 );
+    });
+  </script>
 
 
 @endsection

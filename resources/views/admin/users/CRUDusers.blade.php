@@ -72,7 +72,8 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tbody> @foreach ($userTypes_name as $userAccounts) 
+      <tbody> 
+        @foreach ($userTypes_name as $userAccounts) 
         <tr>
           <td>{{ $userAccounts->user_name }}</td>
           <td>{{ $userAccounts->user_email }}</td>
@@ -91,7 +92,7 @@
           </td>
         </tr>  
 
-        <!-- DELETE MODAL -->
+<!-- DELETE MODAL -->
         <div class="modal fade" id="deleteModal{{ $userAccounts->user_id }}" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -114,7 +115,6 @@
             </div>
           </div>
         </div>
-<!-- END DELETE MODAL -->
 <!-- VIEW MODAL -->
         <div id="viewModal{{ $userAccounts->user_id }}" class="modal fade" role="dialog" style="display:none">
           <div class="modal-dialog">
@@ -142,16 +142,17 @@
           </div>
         </div>
       </div>
-<!-- END VIEW MODAL -->
+
       @endforeach
+
       </tbody>      
     </table>
   </div>
 </div>
+  {{ $userTypes_name->links('pagination::bootstrap-4') }}
 </div>
 
 <!-- /.card -->
-{{ $userTypes_name->links('pagination::bootstrap-4') }}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>

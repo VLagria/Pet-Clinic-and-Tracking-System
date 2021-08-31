@@ -543,6 +543,71 @@ class MainController extends Controller
         $typePet = DB::table('pet_types')->select('*')->where('type_name', 'LIKE', '%'.$search.'%')->paginate('5');
         return view('admin/pets/CRUDpettype', compact('typePet'));
     }
+
+    function pet_getPetID($pet_id){
+        $pluckID = DB::table('pets')->where('pet_id', $pet_id)->pluck('customer_id')->first();
+        $getCustID = DB::table('customers')->where('customer_id','=', $pluckID)->first();
+        $editPet = DB::table('pets')->where('pet_id', '=', $pet_id)->first();
+        $getTypePet = DB::table('pet_types')->get();
+        $getBreedPet = DB::table('pet_breeds')->get();
+        $getClinicPet = DB::table('clinic')->get();
+        $getOwnerPet = DB::table('customers')->get();
+        
+        return view('admin.pets.CRUDeditpet', compact('editPet', 'getTypePet', 'getBreedPet','getClinicPet','getOwnerPet', 'getCustID'));
+    }
+
+    function pet_savePetVet(Request $request, $pet_id){
+
+        $breed = $request->pet_breed_id;
+        $gender = $request->pet_gender;
+        $birthday = $request->pet_birthday;
+        $notes = $request->pet_notes;
+        $bloodtype = $request->pet_bloodType;
+        $regDate = $request->pet_registeredDate;
+        $type = $request->pet_type_id;
+        $name = $request->pet_name;
+        $customer = $request->customer_id;
+        $clinic = $request->clinic_id;
+        $status = $request->pet_isActive;
+
+
+        $NoActionQuery = DB::table('pets')
+        ->where('pet_name','=', $request->pet_name)
+        ->where('pet_gender','=', $request->pet_gender)
+        ->where('pet_birthday','=', $request->pet_birthday)
+        ->where('pet_notes','=', $request->pet_notes)
+        ->where('pet_bloodType','=', $request->pet_bloodType)
+        ->where('pet_registeredDate','=',$request->pet_registeredDate)
+        ->where('pet_type_id','=', $request->pet_type_id)
+        ->where('pet_breed_id','=', $request->pet_breed_id)
+        ->where('customer_id', '=', $request->customer_id)
+        ->where('clinic_id','=', $request->clinic_id)
+        ->where('pet_isActive','=', $request->pet_isActive)->first();
+
+
+        if ($NoActionQuery) {
+            return back()->with('PetEditFail','No editing happened. Change something to edit.');
+        }else{
+            DB::table('pets')
+        ->where('pet_id', $pet_id)
+        ->update([
+            'pet_name'=>$request->pet_name,
+            'pet_gender'=>$request->pet_gender,
+            'pet_birthday'=>$request->pet_birthday,
+            'pet_notes'=>$request->pet_notes,
+            'pet_bloodType'=>$request->pet_bloodType,
+            'pet_registeredDate'=>$request->pet_registeredDate,
+            'pet_type_id'=>$request->pet_type_id,
+            'pet_breed_id'=>$request->pet_breed_id,
+            'customer_id'=>$request->customer_id,
+            'clinic_id'=>$request->clinic_id,
+            'pet_isActive'=>$request->pet_isActive
+        ]);
+
+        return redirect('/admin/pets/CRUDpet')->with('pet_updated','Pet has been successfully Updated');
+        }
+
+    }
 }
 
 

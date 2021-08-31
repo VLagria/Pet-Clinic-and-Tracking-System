@@ -20,6 +20,11 @@
     </div>
     <!-- /.content-header -->
    <!-- Default box -->
+   @if(Session::has('existing')) 
+      <div class="alert alert-error" role="alert" id="messageModal">
+       {{ Session::get('existing') }}
+     </div>
+     @endif 
 <div class="card">
     <div class="card-header">
         <a class="btn btn-error btn-sm" href="/admin/pets/CRUDpetbreed">
@@ -29,11 +34,7 @@
         </a>
       <h3 class="header">Create Pet Breed</h3>
       <br>
-      @if(Session::has('existing')) 
-      <div class="alert alert-error" role="alert" id="messageModal">
-       {{ Session::get('existing') }}
-     </div>
-     @endif 
+      
      
     <!-- Main content -->
     <form action="{{ route('pets.addbreed') }}" method="post">

@@ -46,6 +46,14 @@
       {{ Session::get('clinicDeleteFail') }}
     </div> 
   @endif
+    <div>
+      <form action="{{ route('clinic.clinicsearch') }}" method="GET">
+            <div class="input-group" style="width: 400px; margin-left: 400px">
+            <button type="submit" class="btn btn-info" style="margin-right: 3%;">search</button>
+              <input type="search" class="form-control rounded" placeholder="Search by Type Name" name="clinicSearch" id="clinicSearch">
+            </div>
+        </form>
+    </div>
     <div class="">
         <a class="btn btn-success btn-lg" href="/admin/clinic/registerClinic" style="margin-left: 1%;">
           <i class="fas fa-clinic-medical"></i> Create
@@ -58,14 +66,9 @@
     </div>
     <div class="card-body table-responsive p-0" id="CRUDclinic">
       <table class="table table-striped table-valign-middle" id="CRUDclinic">
-        <br>
+     
 
-        <form action="{{ route('clinic.clinicsearch') }}" method="GET">
-            <div class="input-group" style="width: 500px; margin-left: 50px;">
-            <button type="submit" class="btn btn-info" style="margin-right: 3%;">search</button>
-              <input type="search" class="form-control rounded" placeholder="Search by Type Name" name="clinicSearch" id="clinicSearch">
-            </div>
-        </form>
+        
 
         <thead id="CRUDclinic">
         <tr>
@@ -116,8 +119,7 @@
                   <a class="btn btn-success btn-sm" href="/admin/vet/registerVet/{{ $cAccounts->clinic_id }}"><i class="fas fa-user-md"></i> 
             </a>
           </td> 
-
-  <!---------------------------- delete modal -------------------------------->
+<!-- DELETE MODAL -->
   <div class="modal fade" id="deleteModal{{ $cAccounts->clinic_id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -130,7 +132,7 @@
             <form action="/admin/clinic/CRUDclinic/delete/{{ $cAccounts->clinic_id }}" method="GET">
                 {{ csrf_field() }}
                 <div class="modal-body">
-                    <h3>Confirm deletion of Clinic?</h3>
+                    <h3>Confirm deletion of {{ $cAccounts->clinic_name }}?</h3>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
