@@ -1,0 +1,20 @@
+#petSearch {
+    border: solid 1px #CCC;
+    vertical-align: bottom;
+    height: auto;
+    text-align: center;
+    display: inline-block;
+  }
+  #searchIcon{
+    border: solid 1px #CCC;
+  }
+  #pet_name_id{
+    margin-top: 0.5%;
+  }
+  #petTypeSearch {
+    border: solid 1px #CCC;
+    vertical-align: bottom;
+    height: auto;
+    text-align: center;
+    display: inline-block;
+  }

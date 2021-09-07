@@ -1,37 +1,14 @@
 @extends('layoutsadmin.app')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> @section('content') @csrf <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
+
+@section('content') @csrf 
+<link rel="stylesheet" href="/styles.css">
+<div class="content-wrapper">
     <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6"></div>
-        <!-- /.col -->
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right"></ol>
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
   </div>
-  <!-- /.content-header -->
-  {{-- <a class="btn btn-success btn-sm " data-toggle="modal" data-target="#addModal" style="margin-left: 10px">
-    <i class="fas fa-save"></i> Add Customer </a>
-    <br> --}}
-    <br>
 
-    <form action="{{ route('pet.petTypesearch') }}" method="GET">
-        <div class="input-group" style="width: 500px; margin-left: 50px;">
-            <button type="submit" class="btn btn-info" style="margin-right: 3%;">search</button>
-            <input type="search" class="form-control rounded" placeholder="Search by Name" name="petTypeSearch" id="petTypeSearch">
-        </div>
-    </form>
+<br>
+  
 
-<a class="btn btn-success btn-sm" style="margin-left: 20px" href="/admin/pets/CRUDaddtype">
-  <i class="fas fa-user"></i> Add Pet Type</a>
-  <br>
-  <br>
 
 <!-- Default box -->
 @if(Session::has('typeDeleted')) 
@@ -57,30 +34,37 @@
  </div>
  @endif
 
-
+ 
 
 <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Pets</h3>
-  
+      
+      <h3 class="card-title" id="pet_name_id">Pet Types</h3>
+      <form action="{{ route('pet.petTypesearch') }}" method="GET">
+        <a id="add-sign" class="btn btn-success btn-sm" style="margin-left: 20px" href="/admin/pets/CRUDaddtype">
+            <i class="fas fa-plus"></i></a>
+        <div class="float-right">
+          <input type="search" class="form-control rounded" name="petTypeSearch" id="petTypeSearch" placeholder="Search by Name" style="width: 200px;"/>
+          <button type="submit" class="btn btn-outline-primary" id=""><i class="fas fa-search"></i></button><br>
+        </div>
+      </form>
     </div>
+
     <div class="card-body table-responsive p-0">
       <table class="table table-striped table-valign-middle">
         <thead>
         <tr>
-          
-            <th scope="col" style="width:8%">ID</th>
             <th scope="col" style="width:8%">Pet Type</th>
             <th scope="col" style="width:30%">Action</th>
         </tr>
         </thead>
-        <tbody> @foreach ($typePet as $pettype) <tr>
-            <td>{{ $pettype->type_id }}</td>
+        <tbody> @foreach ($typePet as $pettype) 
+          <tr>
             <td>{{ $pettype->type_name }}</td>
             <td>
-              <a href="/admin/pets/CRUDedittype/{{$pettype->type_id}}" class="btn btn-info btn-lg">
+              <a href="/admin/pets/CRUDedittype/{{$pettype->type_id}}" class="btn btn-info">
                 <i class="fas fa-pencil-alt"></i> </a>
-              <a class="btn btn-danger btn-lg" href="/admin/pets/delete/{{ $pettype->type_id }}">
+              <a class="btn btn-danger " href="/admin/pets/delete/{{ $pettype->type_id }}">
                 <i class="fas fa-trash"></i></a>
               </td>
             </tr>

@@ -1,23 +1,13 @@
 @extends('layoutsadmin.app')
 
 @section('content')
+<link rel="stylesheet" href="/styles.css">
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-        
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+    <div class="container-fluid">
+  </div>
+    
+  <br>
 <!-- Default box -->
 @if(Session::has('pets_deleted'))
 <div class="alert alert-danger"role="alert"id="messageModal">
@@ -34,19 +24,17 @@
     {{ Session::get('pet_updated')}}
   </div>
 @endif
-<form action="{{ route('pet.petSearch') }}" method="GET">
-  <div class="input-group" style="width: 400px; margin-left: 500px" >
-    <input type="search" class="form-control rounded" placeholder="Search by Breed" name="petSearch" id="petSearch" style="width: 200px;"/> 
-    <button type="submit" class="btn btn-outline-primary">search</button><br>
-  </div>
-</form>
-
-<br>
 
 
 <div class="card">
-    <div class="card-header">
-      <h1 class="card-title">Pets</h1>
+  <div class="card-header">
+    <h1 class="card-title" id="pet_name_id">Pet List</h1>
+    <form action="{{ route('pet.petSearch') }}" method="GET">
+      <div class="float-right">
+        <input type="search" class="form-control rounded" name="petSearch" id="petSearch" placeholder="Search by Pet Name" style="width: 200px;"/>
+        <button type="submit" class="btn btn-outline-primary" id=""><i class="fas fa-search"></i></button><br>
+      </div>
+    </form>
     </div>
     <div class="card-body table-responsive p-0">
       <table class="table table-striped table-valign-middle">

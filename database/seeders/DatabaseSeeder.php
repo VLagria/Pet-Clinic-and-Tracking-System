@@ -33,12 +33,12 @@ class DatabaseSeeder extends Seeder
                 'userType_id'=>'3'),
         ));
 
-        DB::table('pet_type')->insert(array(
-            array('pet_name'=>'Cat'),
-            array('pet_name'=>'Dog'),
-            array('pet_name'=>'Reptile'),
-            array('pet_name'=>'Bird'),
-            array('pet_name'=>'Rodent'),
+        DB::table('pet_types')->insert(array(
+            array('type_name'=>'Cat'),
+            array('type_name'=>'Dog'),
+            array('type_name'=>'Reptile'),
+            array('type_name'=>'Bird'),
+            array('type_name'=>'Rodent'),
 
         ));
     }

@@ -544,6 +544,12 @@ class MainController extends Controller
         return view('admin/pets/CRUDpettype', compact('typePet'));
     }
 
+    public function petSearch(Request $request){
+        $search = $request->get('petSearch');
+        $Pet = DB::table('pets')->select('*')->where('pet_name', 'LIKE', '%'.$search.'%')->paginate('5');
+        return view('admin/pets/CRUDpet', compact('Pet'));
+    }
+
     function pet_getPetID($pet_id){
         $pluckID = DB::table('pets')->where('pet_id', $pet_id)->pluck('customer_id')->first();
         $getCustID = DB::table('customers')->where('customer_id','=', $pluckID)->first();
