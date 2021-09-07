@@ -121,7 +121,8 @@
                                         </h5>
                                         <h5>Address: <strong>{{ $info->customer_address}}</strong>
                                         </h5>
-                                        {{-- {{ QrCode::generate('http://127.0.0.1:8000/veterinary/qrcode/$info->pet_id'); }} --}} <h5 style="text-align: center"> {!! QrCode::size(150)->generate('name: '.$info->pet_name. ' Gender: '.$info->pet_gender. ' Type: '.$info->type_name. ' Breed: '.$info->breed_name. ' Registered Date: '.$info->pet_registeredDate. ' Owner: '.$info->customer_name. ' Address: '.$info->customer_address); !!} <br>
+                                        {{-- {{ QrCode::generate('http://127.0.0.1:8000/veterinary/qrcode/$info->pet_id'); }} --}} <h5 style="text-align: center"> 
+                                            {!! QrCode::size(150)->generate('name: '.$info->pet_name. ' Gender: '.$info->pet_gender. ' Type: '.$info->type_name. ' Breed: '.$info->breed_name. ' Registered Date: '.$info->pet_registeredDate. ' Owner: '.$info->customer_name. ' Address: '.$info->customer_address); !!} <br>
                                             <strong>Scan Me</strong>
                                         </h5>
                                     </div>

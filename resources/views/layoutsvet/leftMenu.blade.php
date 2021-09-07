@@ -2,7 +2,7 @@
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="vethome" class="brand-link">
-      <img src="{{asset('vendors/dist/img/MediaoneLogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{asset('vendors/dist/img/logs.jpg')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">VETERINARY PAGE
 
       </span>
@@ -13,7 +13,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{asset('vendors/dist/img/soy.jpg') }}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{asset('vendors/dist/img/img.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="/veterinary/profilevet" class="d-block">Doctor Vet </a>

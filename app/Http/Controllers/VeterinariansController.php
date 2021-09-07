@@ -432,7 +432,7 @@ class VeterinariansController extends Controller
             DB::table('pets')
         ->where('pet_id', $pet_id)
         ->update([
-            'pet_name'=>$request->pet_name,
+            'pet_name'=>$request->pet_name, 
             'pet_gender'=>$request->pet_gender,
             'pet_birthday'=>$request->pet_birthday,
             'pet_notes'=>$request->pet_notes,
