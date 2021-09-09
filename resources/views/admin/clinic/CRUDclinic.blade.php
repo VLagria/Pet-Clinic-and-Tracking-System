@@ -2,24 +2,11 @@
 
 @section('content')
   <!-- Content Wrapper. Contains page content -->
+  <link rel="stylesheet" href="/styles.css">
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    
-    <!-- /.content-header -->
 
 
+  <br>
 
 <!-- Default box -->
 
@@ -42,28 +29,26 @@
   @endif
 
   @if(Session::has('clinicDeleteFail')) 
-    <div class="alert alert-danger" id="messageModal" data-toggle="modal" role="alert">
+    <div class="alert alert-danger" id="messageModal" role="alert">
       {{ Session::get('clinicDeleteFail') }}
     </div> 
   @endif
-    <div>
-      <form action="{{ route('clinic.clinicsearch') }}" method="GET">
-            <div class="input-group" style="width: 400px; margin-left: 400px">
-            <button type="submit" class="btn btn-info" style="margin-right: 3%;">search</button>
-              <input type="search" class="form-control rounded" placeholder="Search by Type Name" name="clinicSearch" id="clinicSearch">
-            </div>
-        </form>
-    </div>
-    <div class="">
-        <a class="btn btn-success btn-lg" href="/admin/clinic/registerClinic" style="margin-left: 1%;">
-          <i class="fas fa-clinic-medical"></i> Create
-        </a>
-      </div>
-      <br>
-    <div class="card">
+
+      
+        
+    <div class="card" style="width: 1200px; margin: auto;">
     <div class="card-header">
-      <h3 class="card-title">Clinic</h3>
+      <h3 class="card-title" id="pet_name_id">Clinic</h3>
+      <form action="{{ route('clinic.clinicsearch') }}" method="GET">
+          <div class="float-right">
+            <input type="search" class="form-control rounded" placeholder="Search by Name" name="clinicSearch" id="clinicSearch" style="width: 200px;" />
+            <button type="submit" class="btn btn-outline-primary" title="Searcha"><i class="fas fa-search"></i></button>
+            <a class="btn btn-success" style="margin-left: 10px" href="/admin/clinic/registerClinic" title="Create Clinic"><i class="fas fa-clinic-medical" ></i> Create</a>
     </div>
+          
+      </form>
+    </div>
+    
     <div class="card-body table-responsive p-0" id="CRUDclinic">
       <table class="table table-striped table-valign-middle" id="CRUDclinic">
      

@@ -1,20 +1,10 @@
 @extends('layoutsadmin.app')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> @section('content') @csrf <div class="content-wrapper">
+@section('content') 
+@csrf 
+<link rel="stylesheet" href="/styles.css">
+<div class="content-wrapper">
   <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6"></div>
-        <!-- /.col -->
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right"></ol>
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-  </div>
+  <br>
   <!-- /.content-header -->
   <!-- Default box --> 
   @if(Session::has('cust_deleted')) 
@@ -34,31 +24,34 @@
   </div>
   @endif
 
-  <div>
+    
+
+  <div class="card" style="width: 1100px; margin: auto;"> 
+    @csrf 
+    <div class="card-header">
+    <h3 class="card-title" id="">Customer</h3>
     <form action="{{ route('adminvet.custsearch') }}" method="get">
-      <div class="input-group" style="width: 400px; margin-left: 400px">  
-        <button type="submit" class="btn btn-info" style="margin-right: 3%;">search</button>
-        <input type="search" class="form-control rounded" placeholder="Search by Name" name="custsearch" id="custsearch">
+      <div class="float-right">  
+        <input type="search" class="form-control rounded" placeholder="Search by Name" name="custsearch" id="custsearch" style="width: 200px;"/>
+        <button type="submit" class="btn btn-outline-primary"><i class="fas fa-search"></i></button>
       </div>
     </form>
   </div>
-
-  <div class="card"> @csrf <div class="card-header">
-    <h3 class="header">Customer</h3>
-    <br>
     <!-- Main content -->
-    <table class="table  table-striped table-hover">
+
+    <div class="card-body table-responsive p-0" id="CRUDclinic">
+    <table class="table table-striped table-valign-middle">
       <thead>
         <tr>
-          <th scope="col" style="width:15%"> Name</th>
-          <th scope="col" style="width:9%">Mobile</th>
-          <th scope="col" style="width:9%">Telephone</th>
-          <th scope="col" style="width:7%">Gender</th>
-          <th scope="col" style="width:7%">Birthday</th>
-          <th scope="col" style="width:25%">Address</th>
-          <th scope="col" style="width:7%">User ID</th>
-          <th scope="col" style="width:8%">Status</th>
-          <th scope="col">Action</th>
+          <th style="width:15%"> Name</th>
+          <th style="width:9%">Mobile</th>
+          <th style="width:9%">Telephone</th>
+          <th style="width:7%">Gender</th>
+          <th style="width:7%">Birthday</th>
+          <th style="width:25%">Address</th>
+          <th style="width:7%">User ID</th>
+          <th style="width:8%">Status</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody> 
@@ -117,6 +110,7 @@
       {{ $customers->links('pagination::bootstrap-4') }}
     </div>
   </div>
+</div>
 </div>
 
 

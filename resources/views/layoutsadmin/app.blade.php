@@ -12,7 +12,11 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('vendors/dist/css/adminlte.min.css') }}">
 </head>
+
+<script src="{{ url('js/app.js') }}"></script>
+
 <body class="hold-transition sidebar-mini">
+@include('sweet::alert')
 <div class="wrapper">
 
  

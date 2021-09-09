@@ -1,34 +1,14 @@
 @extends('layoutsadmin.app') 
 
 @section('content')
-<!-- Content Wrapper. Contains page content -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" href="/styles.css">
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
-  <div class="content-header">
     <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <div class="project-actions">
-            <form action="{{ route('user.userSearch') }}" method="get">
-              <div class="input-group" style="width: 400px; margin-left: 400px">
-                <input type="search" class="form-control rounded" placeholder="Search by Username" aria-label="Search" name="userSearch" id="userSearch">
-                <button type="submit" class="btn btn-info" style="margin-left: 3%;">search</button>
-              </div>
-            </form>
-            <a class="btn btn-success btn-lg" style="margin-right: 50px;" href="/admin/users/registerUser">
-              <i class="fas fa-user"></i> Create User </a>
-          </div>
-        </div><!-- /.col -->
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            
-          </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+      <br>
   </div>
   <!-- /.content-header -->
-
 
 <!-- Default box -->
 @if(Session::has('user_deleted')) 
@@ -49,17 +29,19 @@
   </div> 
 @endif 
 
-@if(Session::has('user_created')) 
-  <div class="alert alert-success" id="messageModal" role="alert">
-    {{ Session::get('user_created') }}
-  </div> 
-@endif
 
-<div class="card">
+<div class="card" style="width: 1200px; margin: auto;">
   <div class="card-header">
     <div class="card-title">
-      <h3>User Accounts</h3>
+      <h3 class="card-title" id="pet_name_id">User Accounts</h3>
     </div>
+    <form action="{{ route('user.userSearch') }}" method="get">
+        <div class="float-right">
+          <input type="search" class="form-control rounded" placeholder="Search by Username" aria-label="Search" name="userSearch" id="userSearch" style="width: 200px;" />
+          <button type="submit" class="btn btn-info"><i class="fas fa-search"></i></button>
+          <a class="btn btn-success" style="margin-left: 10px;" href="/admin/users/registerUser"><i class="fas fa-user"></i> Create User </a>
+        </div>
+      </form>
   </div>
   <div class="card-body table-responsive p-0">
     <table class="table table-striped table-valign-middle">
@@ -80,13 +62,13 @@
           <td>{{ $userAccounts->userType_name }}</td>
 
           <td class="project-actions">
-            <a class="btn btn-primary btn-lg editbt" data-toggle="modal" data-target="#viewModal{{$userAccounts->user_id}}">
+            <a class="btn btn-primary editbt" data-toggle="modal" data-target="#viewModal{{$userAccounts->user_id}}">
               <i class="fas fa-folder"></i>
             </a>
-            <a class="btn btn-info btn-lg editbt" href="/admin/users/editUser/{{ $userAccounts->user_id }}">
+            <a class="btn btn-info editbt" href="/admin/users/editUser/{{ $userAccounts->user_id }}">
               <i class="fas fa-pencil-alt"></i>
             </a>
-            <button class="btn btn-danger btn-lg" id="delete" data-toggle="modal" data-target="#deleteModal{{ $userAccounts->user_id }}">
+            <button class="btn btn-danger" id="delete" data-toggle="modal" data-target="#deleteModal{{ $userAccounts->user_id }}">
               <i class="fas fa-trash"></i>
             </button>
           </td>
@@ -148,8 +130,9 @@
       </tbody>      
     </table>
   </div>
+  <br>
+  <div style="margin-left: 10px;">{{ $userTypes_name->links('pagination::bootstrap-4') }}</div>
 </div>
-  {{ $userTypes_name->links('pagination::bootstrap-4') }}
 </div>
 
 <!-- /.card -->

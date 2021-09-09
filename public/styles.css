@@ -18,3 +18,34 @@
     text-align: center;
     display: inline-block;
   }
+  td,tr {
+    text-align: center;
+  }
+  #breedSearch {
+    border: solid 1px #CCC;
+    vertical-align: bottom;
+    height: auto;
+    text-align: center;
+    display: inline-block;
+  }
+  #custsearch {
+    border: solid 1px #CCC;
+    vertical-align: bottom;
+    height: auto;
+    text-align: center;
+    display: inline-block;
+  }
+  #clinicSearch {
+    border: solid 1px #CCC;
+    vertical-align: bottom;
+    height: auto;
+    text-align: center;
+    display: inline-block;
+  }
+  #userSearch {
+    border: solid 1px #CCC;
+    vertical-align: bottom;
+    height: auto;
+    text-align: center;
+    display: inline-block;
+  }

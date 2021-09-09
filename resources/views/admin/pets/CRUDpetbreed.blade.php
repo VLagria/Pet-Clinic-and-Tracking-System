@@ -1,35 +1,15 @@
 @extends('layoutsadmin.app')
-
 @section('content')
+
+<link rel="stylesheet" href="/styles.css">
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-        
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
     <!-- /.content-header -->
+    <br>
     
-    <form action="{{ route('pet.breedSearch') }}" method="get">
-      <div class="input-group" style="width: 400px; margin-left: 500px" >
-        <input type="search" class="form-control rounded" placeholder="Search by Breed" name="breedSearch" id="breedSearch" style="width: 200px;"/> 
-        <button type="submit" class="btn btn-outline-primary">search</button><br>
-      </div>
-    </form>
 
-<a class="btn btn-success btn-lg" style="margin-left: 20px" href="/admin/pets/CRUDaddbreed">
-  <i class="fas fa-user"></i> Add Pet Breed</a>
-  <br>
-  <br>
+
 
 <!-- Default box -->
 @if(Session::has('breed_deleted'))
@@ -42,35 +22,46 @@
   {{ Session::get('newPetbreed')}}
 </div>
 @endif
+
 @if(Session::has('cantDelete'))
 <div class="alert alert-warning" role="alert"id="messageModal">
   {{ Session::get('cantDelete')}}
 </div>
 @endif
-<div class="card">
+
+<div class="card" style="width: 900px; margin: auto;">
     <div class="card-header">
-      <h3 class="card-title">Pets</h3>
+      <h3 class="card-title" id="pet_name_id">Breed List</h3>
+      <form action="{{ route('pet.breedSearch') }}" method="get">
+        <div class="float-right">
+          <input type="search" class="form-control rounded" placeholder="Search by Breed" name="breedSearch" id="breedSearch" style="width: 200px;"/> 
+          <button type="submit" class="btn btn-outline-primary"><i class="fas fa-search"></i></button>
+          
+          <a class="btn btn-success" title="Add Pet Breed" style="margin-left: 10px" href="/admin/pets/CRUDaddbreed">
+          <i class="fas fa-dna"></i> Add Pet Breed</a>
+        </div>
+    </form>
 </div>
     <div class="card-body table-responsive p-0">
       <table class="table table-striped table-valign-middle">
         <thead>
         <tr>
   
-        <th scope="col" style="width:20%">ID</th>
-        <th scope="col" style="width:65%">Pet Breed</th>
-        <th scope="col" style="width:45%">Action</th>
+        <th scope="col" style="width:20%" hidden>ID</th>
+        <th scope="col" style="width: 450px;" >Pet Breed</th>
+        <th scope="col" >Action</th>
           
           
         </tr>
         </thead>
         <tbody> @foreach ($typeBreed as $petbreed) <tr>
-          <td> {{ $petbreed->breed_id}}</td>
+          <td hidden> {{ $petbreed->breed_id}}</td>
           <td> {{ $petbreed->breed_name}} </td>
 
           <td>
-              <a href="/admin/pets/CRUDeditbreed/{{$petbreed->breed_id}}" class="btn btn-info btn-lg">
+              <a href="/admin/pets/CRUDeditbreed/{{$petbreed->breed_id}}" class="btn btn-info">
                 <i class="fas fa-pencil-alt"></i></a>
-              <a class="btn btn-danger btn-lg" href="/admin/pets/delete-breed/{{$petbreed->breed_id}}">
+              <a class="btn btn-danger" href="/admin/pets/delete-breed/{{$petbreed->breed_id}}">
                 <i class="fas fa-trash"></i></a>
               </td>
             </tr>

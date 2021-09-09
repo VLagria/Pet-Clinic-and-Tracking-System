@@ -3,8 +3,6 @@
 @section('content') @csrf 
 <link rel="stylesheet" href="/styles.css">
 <div class="content-wrapper">
-    <div class="container-fluid">
-  </div>
 
 <br>
   
@@ -13,39 +11,41 @@
 <!-- Default box -->
 @if(Session::has('typeDeleted')) 
   <div class="alert alert-danger" role="alert" id="messageModal">
-    {{ Session::get('typeDeleted') }}
+  {{ Session::get('typeDeleted') }}
   </div>
-   @endif 
-   @if(Session::has('newPettype')) 
-   <div class="alert alert-success" role="alert" id="messageModal">
-    {{ Session::get('newPettype') }}
-  </div>
-  @endif 
+@endif 
 
-  @if(Session::has('cantDelete')) 
-  <div class="alert alert-warning" role="alert" id="messageModal">
-   {{ Session::get('cantDelete') }}
- </div>
- @endif  
-
- @if(Session::has('Success')) 
+@if(Session::has('newPettype')) 
   <div class="alert alert-success" role="alert" id="messageModal">
-   {{ Session::get('Success') }}
- </div>
- @endif
+  {{ Session::get('newPettype') }}
+  </div>
+@endif 
+
+@if(Session::has('cantDelete')) 
+  <div class="alert alert-warning" role="alert" id="messageModal">
+  {{ Session::get('cantDelete') }}
+  </div>
+@endif  
+
+@if(Session::has('Success')) 
+  <div class="alert alert-success" role="alert" id="messageModal">
+  {{ Session::get('Success') }}
+  </div>
+@endif
 
  
 
-<div class="card">
+
+<div class="card" style="width: 900px; margin: auto;">
     <div class="card-header">
-      
       <h3 class="card-title" id="pet_name_id">Pet Types</h3>
       <form action="{{ route('pet.petTypesearch') }}" method="GET">
-        <a id="add-sign" class="btn btn-success btn-sm" style="margin-left: 20px" href="/admin/pets/CRUDaddtype">
-            <i class="fas fa-plus"></i></a>
         <div class="float-right">
           <input type="search" class="form-control rounded" name="petTypeSearch" id="petTypeSearch" placeholder="Search by Name" style="width: 200px;"/>
-          <button type="submit" class="btn btn-outline-primary" id=""><i class="fas fa-search"></i></button><br>
+          <button type="submit" class="btn btn-outline-primary" id=""><i class="fas fa-search"></i></button>
+          
+            <a id="add-sign" class="btn btn-success" title="Add Pet Type" style="margin-left: 10px" href="/admin/pets/CRUDaddtype">
+            <i class="fas fa-plus" ></i> Add Pet Type</a><br>
         </div>
       </form>
     </div>
@@ -54,17 +54,18 @@
       <table class="table table-striped table-valign-middle">
         <thead>
         <tr>
-            <th scope="col" style="width:8%">Pet Type</th>
-            <th scope="col" style="width:30%">Action</th>
+            <th scope="col" style="width:20%" hidden>ID</th>
+            <th scope="col" style="width: 450px;">Pet Type</th>
+            <th scope="col" >Action</th>
         </tr>
         </thead>
         <tbody> @foreach ($typePet as $pettype) 
-          <tr>
+          <tr >
             <td>{{ $pettype->type_name }}</td>
             <td>
-              <a href="/admin/pets/CRUDedittype/{{$pettype->type_id}}" class="btn btn-info">
+              <a href="/admin/pets/CRUDedittype/{{$pettype->type_id}}" title="Edit Pet Type" class="btn btn-info">
                 <i class="fas fa-pencil-alt"></i> </a>
-              <a class="btn btn-danger " href="/admin/pets/delete/{{ $pettype->type_id }}">
+              <a class="btn btn-danger " title="Delete Pet Type" href="/admin/pets/delete/{{ $pettype->type_id }}">
                 <i class="fas fa-trash"></i></a>
               </td>
             </tr>
@@ -72,7 +73,7 @@
             @endforeach
           </tbody>
         </table>
-        {{-- {{ $pet_types->links('pagination::bootstrap-4') }} --}}
+        <!-- {{-- {{ $pet_types->links('pagination::bootstrap-4') }} --}} -->
       </div>
     </div>
   </div>

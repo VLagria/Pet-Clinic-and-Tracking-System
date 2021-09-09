@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Hash;
+use Doctrine\DBAL\Schema\Index;
+use Doctrine\DBAL\Types\StringType;
+
 
 
 
@@ -365,7 +368,7 @@ class MainController extends Controller
         $userTypes_name = DB::table('usertypes')
         ->join('user_accounts', 'usertypes.userType_id', '=', 'user_accounts.userType_id')
         ->select('user_accounts.*','usertypes.*')
-        ->paginate(5);
+        ->paginate(10);
 
         $userOptions = DB::table('usertypes')->get();
 
@@ -548,6 +551,12 @@ class MainController extends Controller
         $search = $request->get('petSearch');
         $Pet = DB::table('pets')->select('*')->where('pet_name', 'LIKE', '%'.$search.'%')->paginate('5');
         return view('admin/pets/CRUDpet', compact('Pet'));
+    }
+
+    public function breedSearch(Request $request){
+        $search = $request->get('breedSearch');
+        $typeBreed = DB::table('pet_breeds')->select('*')->where('breed_name', 'LIKE', '%'.$search.'%')->paginate('5');
+        return view('admin/pets/CRUDpetbreed', compact('typeBreed'));
     }
 
     function pet_getPetID($pet_id){
