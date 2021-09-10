@@ -30,7 +30,7 @@ function addType(Request $request){
 
     function retrieveType(){
     
-        $typePet = DB::table('pet_types')->get();
+        $typePet = DB::table('pet_types')->paginate(8);
 
         return view('/admin/pets/CRUDpettype',compact('typePet'));
     }

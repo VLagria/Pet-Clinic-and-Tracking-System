@@ -46,12 +46,9 @@
       <table class="table table-striped table-valign-middle">
         <thead>
         <tr>
-  
         <th scope="col" style="width:20%" hidden>ID</th>
-        <th scope="col" style="width: 450px;" >Pet Breed</th>
-        <th scope="col" >Action</th>
-          
-          
+        <th scope="col" style="width: 450px;">Pet Breed</th>
+        <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody> @foreach ($typeBreed as $petbreed) <tr>
@@ -59,21 +56,47 @@
           <td> {{ $petbreed->breed_name}} </td>
 
           <td>
-              <a href="/admin/pets/CRUDeditbreed/{{$petbreed->breed_id}}" class="btn btn-info">
+              <a href="/admin/pets/CRUDeditbreed/{{$petbreed->breed_id}}" title="Edit Breed Name" class="btn btn-info">
                 <i class="fas fa-pencil-alt"></i></a>
-              <a class="btn btn-danger" href="/admin/pets/delete-breed/{{$petbreed->breed_id}}">
-                <i class="fas fa-trash"></i></a>
+              <button class="btn btn-danger" title="Delete Breed Name" data-toggle="modal" data-target="#deleteModal{{ $petbreed->breed_id }}">
+                <i class="fas fa-trash"></i></button>
               </td>
             </tr>
+
+            <!-- DELETE MODAL -->
+            <div class="modal fade" id="deleteModal{{ $petbreed->breed_id }}" tabindex="-1" role="dialog" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> Delete Breed </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <form action="/admin/pets/delete-breed/{{ $petbreed->breed_id }}" method="GET">
+                    {{ csrf_field() }}
+                    <div class="modal-body">
+                      <h3>Confirm deletion of Breed Name?</h3>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-danger waves-effect remove-data-from-delete-form">Delete</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
             @endforeach 
         </tbody>
       </table>
-      {{-- {{ $pet_breeds->links('pagination::bootstrap-4') }} --}}
+      <div style="margin-left: 10px;">{{ $typeBreed->links('pagination::bootstrap-4') }}</div>
     </div>  
   </div>
 </div>
 </section>
   
+
+
  <!-- /.content -->
  </div>
   <!-- /.content-wrapper -->

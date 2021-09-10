@@ -17,6 +17,8 @@
 
 <body class="hold-transition sidebar-mini">
 @include('sweet::alert')
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <div class="wrapper">
 
  

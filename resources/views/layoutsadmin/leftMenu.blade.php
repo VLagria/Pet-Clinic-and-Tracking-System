@@ -1,5 +1,5 @@
- <!-- Main Sidebar Container -->
- <aside class="main-sidebar sidebar-dark-primary elevation-4">
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/admin/index/home" class="brand-link">
       <img src="{{asset('vendors/dist/img/MediaoneLogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -125,11 +125,6 @@
                   </p>
                 </a>
               </li>    
-
-
-          
-          
-        
       </nav>
       <!-- /.sidebar-menu -->
     </div>

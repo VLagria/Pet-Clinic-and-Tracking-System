@@ -4,61 +4,42 @@
 
 @section('content')
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-        
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+  <br>
    <!-- Default box -->
    @if(Session::has('existing')) 
       <div class="alert alert-error" role="alert" id="messageModal">
        {{ Session::get('existing') }}
      </div>
      @endif 
-<div class="card">
+<div class="card" style="width: 500px; margin: auto;  padding-bottom: 20px">
     <div class="card-header">
         <a class="btn btn-error btn-sm" href="/admin/pets/CRUDpetbreed">
             <i class="fas fa-arrow-left">
             </i>
-            Return
         </a>
-      <h3 class="header">Create Pet Breed</h3>
+      <h3 class="header" style="text-align: center;">Add Pet Breed</h3>
       <br>
-      
-     
+
     <!-- Main content -->
     <form action="{{ route('pets.addbreed') }}" method="post">
-@csrf
+    @csrf
     <table class="table table-striped table-hover">
-  <thead>
-    <tr>
+      <thead>
+        <tr>
           <td>
-            <div class="form-group" style="">
-                <label for="exampleInputEmail1">Pet Breed</label>
-                <input type="text" style="width: 300px" class="form-control" id="petbreed" name="breed_name" value="{{ old('petbreed')}}" placeholder="Pet Breed">
-                <span class="text-danger error-text pet_breed_error">@error('petbreed'){{ $message }}@enderror</span>
+            <div class="form-group" style="margin-left: 70px;">
+              <label for="exampleInputEmail1" >Enter Breed Name:</label>
+              <input type="text" style="width: 300px" class="form-control" id="petbreed" name="breed_name" value="{{ old('petbreed')}}" placeholder="Pet Breed">
+              <span class="text-danger error-text pet_breed_error">@error('petbreed'){{ $message }}@enderror</span>
             </div>
-        </td>
-           
-    </tr>
-   
-  </thead>
-</table>
+          </td>  
+        </tr>
+      </thead>
+    </table>
 
-<div style="text-align: right; height: 100; padding-top: 20px">
-    <button type="submit" class="btn btn-success btn-sm" style=" height: 40%;"> <i class="fas fa-user"></i> Create </a></button>
-
-   
+    <button type="submit" class="btn btn-success" style="height: 40px; margin-left: 185px;"><i class="fas fa-dna"></i> Create </a></button>
+<!-- <div style="text-align: right; height: 100;"> -->
+    
 </div>
 
 </form>   

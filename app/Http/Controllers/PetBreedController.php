@@ -12,7 +12,7 @@ class PetBreedController extends Controller
     $checkQuery = DB::table('pet_breeds')->where('breed_name','=', $breed_name)->first();
 
     if ($checkQuery) {
-        return redirect('/admin/pets/CRUDaddbreed')->with('existing','Pet breed has Already Exist');
+        return redirect('/admin/pets/CRUDpetbreed')->with('existing','Pet breed has Already Exist');
     }else{
 
         $request->validate([
@@ -22,12 +22,10 @@ class PetBreedController extends Controller
             'breed_name'=>$request->breed_name
         ]);
         return redirect('/admin/pets/CRUDpetbreed')->with('newPetbreed','Pet breed added succesfully');
-}
-
-
+    }
 }
       function retrieveBreed(){
-        $typeBreed = DB::table('pet_breeds')->get();
+        $typeBreed = DB::table('pet_breeds')->orderBy('breed_id','DESC')->paginate(8);
 
         return view('/admin/pets/CRUDpetbreed',compact('typeBreed'));
     }

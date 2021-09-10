@@ -73,7 +73,7 @@
             @endforeach
           </tbody>
         </table>
-        <!-- {{-- {{ $pet_types->links('pagination::bootstrap-4') }} --}} -->
+        <div style="margin-left: 10px;">{{ $typePet->links('pagination::bootstrap-4') }}</div> 
       </div>
     </div>
   </div>

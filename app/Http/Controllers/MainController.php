@@ -11,7 +11,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Hash;
 use Doctrine\DBAL\Schema\Index;
 use Doctrine\DBAL\Types\StringType;
-
+use UxWeb\SweetAlert\SweetAlert;
 
 
 
@@ -87,6 +87,7 @@ class MainController extends Controller
                 }
         }
     }
+
     final function registerCust(Request $request){
         $fname = $request->customer_fname;
         $lname = $request->customer_lname;
@@ -108,9 +109,7 @@ class MainController extends Controller
 
         if ($checkcust) {
             return back()->with('error','The customer is Already Exist');
-        }else{
-
-        
+        }else{        
             $type = 3;
             $insAccQuery = DB::table('user_accounts')->insert([
                 'user_name'=>$request->user_name,
@@ -164,15 +163,16 @@ class MainController extends Controller
             return redirect('/auth/login');
         }
     }
+
     final function adminsDashboard(){
         $data = ['LoggedUserInfo'=>user_account::where('id','=', session('LoggedUser'))->first()];
         return view('admin.index', $data);
     }
+
     final function vetDashboard(){
         $data = ['LoggedUserInfo'=>user_account::where('id','=', session('LoggedUser'))->first()];
         return view('veterinary.vethome', $data);
     }
- 
 
     final function vetProfile(){
         $data = ['LoggedUserInfo'=>DB::table('user_accounts')
@@ -181,6 +181,7 @@ class MainController extends Controller
         ->where('user_accounts.user_id','=', session('LoggedUser'))->first()];
         return view('veterinary.profilevet', $data);
     }
+
     final function editProfile(){
         $data = ['LoggedUserInfo'=>DB::table('user_accounts')
         ->join('veterinary','veterinary.user_id','=', 'user_accounts.user_id')
@@ -188,6 +189,7 @@ class MainController extends Controller
         ->where('user_accounts.user_id','=', session('LoggedUser'))->first()];
         return view('veterinary.editprofile', $data);
     }
+
     final function getVetClinic(){
 
         $data = ['LoggedUserInfo'=>DB::table('user_accounts')
@@ -209,6 +211,7 @@ class MainController extends Controller
     final function adminCustomer(){
         return view('admin/customer/CRUDcustomers');
     }
+
     final function adminVet(){
         return view('admin/vet/CRUDvet');
     }
@@ -216,7 +219,7 @@ class MainController extends Controller
     final function adminUsers(){
         return view('admin/users/CRUDusers');
     }
-
+    
     final function registerUser(){
         return view('admin/users/registerUser');
     }
@@ -235,6 +238,8 @@ class MainController extends Controller
             'user_email' => $request->user_email,
             'userType_id' => $request->userType_id
         ]);
+
+        alert()->success('SUCCESSFULLY CREATED', 'Creation of Account');
         return redirect('/admin/users/CRUDusers')->with('user_created', 'User Created successfully!');
     }
 
@@ -310,11 +315,10 @@ class MainController extends Controller
             'clinic_city' => $request->clinic_city,
             'clinic_zip' => $request->clinic_zip,
             'clinic_isActive' => $request->clinic_isActive
-        ));
+                ));
         }
-
-            return redirect('/admin/clinic/CRUDclinic/home')->with('clinic_updated','Clinic has been successfully Updated');
-        }
+        return redirect('/admin/clinic/CRUDclinic/home')->with('clinic_updated','Clinic has been successfully Updated');
+    }
 
     public function editUserDetails(Request $request){
         $username = $request->user_name;
