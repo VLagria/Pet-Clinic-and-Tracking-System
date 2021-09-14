@@ -1,88 +1,61 @@
 @extends('layoutsadmin.app')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-
 @section('content') 
+<link rel="stylesheet" href="/styles.css">
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6"></div>
-        <!-- /.col -->
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right"></ol>
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-  </div>
-  <!-- /.content-header -->
+  <br>
 
-  <!-- Default box -->
-  @if(Session::has('fail')) 
-  <div class="alert alert-warning" id="messageModal" role="alert">
-    {{ Session::get('fail') }}
-  </div> 
-  @endif
-  <div class="card-header">
-    <a class="btn btn-error btn-sm" href="/admin/users/CRUDusers">
+  <div class="card" style="width: auto; margin-left:20px; margin-right:20px; text-align: left; padding: 20px;">
+    <a class="btn btn-error btn-sm" href="/admin/users/CRUDusers" style="text-align: left;">
       <i class="fas fa-arrow-left"></i> Return </a>
-    <div class="bg bg-light rounded" style="width: 300px">
-      <br>
-      <h3 class="header">Edit User</h3>
+    <div>
+      <h3 class="header" id="pet_name_id" style="font-size: 300%">Edit User</h3>
     </div>
     <br>
     <form action="{{ route('post.edituserdetails') }}" method="POST" id="editForm"> 
       @csrf 
-      <table class="table table-striped table-hover">
+      <table class="table table-striped table-hover" >
         <thead>
           <input type="hidden" name="user_id" value="{{ $users->user_id }}">
-          <tr>
-            <td>
-              <div class="form-group feet">
-                <div class="form-group feet">
-                  <tr>
+                  <tr >
+                    <td style="width: auto; text-align: left; margin: auto;">
                     <label>Username: </label>
-                    <input type="text" style="width: 300px" name="user_name" id="user_name" class="form-control border border-info bg bg-light rounded" placeholder="Enter Username" value="{{ $users->user_name }}">
+                    <input type="text"  name="user_name" id="user_name" class="form-control" placeholder="Enter Username" value="{{ $users->user_name }}" >
                     <span class="text-danger error-text customer_fname_error" id="messageModal">@error('user_name'){{ $message }}@enderror</span>
-                  </tr>
+                    </td>
+                  <td style="width: auto; text-align: left; margin: auto;">
+                    <label>Password: </label>
+                    <input type="password"  name="user_password" id="user_password" class="form-control" placeholder="Enter Password" value="{{ $users->user_password }}">
+                    </td>
                 </div>
-                <div class="form-group feet">
+                  <td style="width: auto; text-align: left; margin: auto;">
+                    <label>Mobile No: </label>
+                    <input type="text"  name="user_mobile" id="user_mobile" class="form-control" placeholder="Enter Mobile No" value="{{ $users->user_mobile }}">
+                    </td>
+                </tr>
                   <tr>
-                    <label for="exampleInputEmail1">Password: </label>
-                    <input type="password" style="width: 300px" name="user_password" id="user_password" class="form-control border border-info bg bg-light rounded" placeholder="Enter Password" value="{{ $users->user_password }}">
-                  </tr>
-                </div>
-                <div class="form-group feet">
-                  <tr>
-                    <label for="exampleInputEmail1">Mobile No: </label>
-                    <input type="text" style="width: 300px" name="user_mobile" id="user_mobile" class="form-control border border-info bg bg-light rounded" placeholder="Enter Mobile No" value="{{ $users->user_mobile }}">
-                  </tr>
-                </div>
-                <div class="form-group feet">
-                  <tr>
-                    <label for="exampleInputEmail1">Email: </label>
-                    <input type="email" style="width: 300px" name="user_email" id="user_email" class="form-control border border-info bg bg-light rounded" placeholder="Enter Email" value="{{ $users->user_email }}">
+                    <td style="width: auto; text-align: left; margin: auto;">
+                    <label >Email: </label>
+                    <input type="email"  name="user_email" id="user_email" class="form-control" placeholder="Enter Email" value="{{ $users->user_email }}">
                     <span class="text-danger error-text customer_fname_error" id="messageModal">@error('user_email'){{ $message }}@enderror</span>
-                  </tr>
-                </div>
-                <div class="form-group feet">
-                  <tr>
-                    <label>Usertype: </label> @foreach($userOptions as $user_types) @if($users->userType_id == $user_types->userType_id) <input style="width: 300px" name="userType_id" id="userType_id" class="form-control border border-info bg bg-light rounded" value="{{ $user_types->userType_name }}" disabled> @endif @endforeach
-                  </tr>
-                </div>
+                    </td>
+                    <td style="width: auto; text-align: left; margin: auto;">
+                    <label >Usertype: </label> 
+                    @foreach($userOptions as $user_types) 
+                      @if($users->userType_id == $user_types->userType_id) 
+                        <input name="userType_id" id="userType_id" class="form-control" value="{{ $user_types->userType_name }}" readonly> 
+                      @endif 
+                    @endforeach
               </div>
               <br>
             </td>
           </tr>
         </thead>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary formSubmit" id="formSubmit">Save Changes</button>
-        </div>
       </table>
+      <div style="text-align: center; margin-top: auto;">
+      <button type="submit" class="btn btn-success btn-lg"  id="formSubmit"><i class="fas fa-save"></i>Save Changes</button>
+      </div>
     </form>
 </div>
 </div>

@@ -7,40 +7,14 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" href="/styles.css">
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-    <div class="container-fluid">
-      <br>
-  </div>
-  <!-- /.content-header -->
-
-<!-- Default box -->
-@if(Session::has('user_deleted')) 
-  <div class="alert alert-danger" id="messageModal" data-toggle="modal" role="alert">
-    {{ Session::get('user_deleted') }}
-  </div> 
-@endif 
-
-@if(Session::has('deleteFail')) 
-  <div class="alert alert-danger" id="messageModal" data-toggle="modal" role="alert">
-    {{ Session::get('deleteFail') }}
-  </div> 
-@endif 
-
-@if(Session::has('user_updated')) 
-  <div class="alert alert-success" id="messageModal" role="alert">
-    {{ Session::get('user_updated') }}
-  </div> 
-@endif 
-
-
-<div class="card" style="width: 1200px; margin: auto;">
+  <br>
+  
+<div class="card" style="width: auto; margin-left:20px; margin-right:20px; padding: 20px;">
   <div class="card-header">
-    <div class="card-title">
       <h3 class="card-title" id="pet_name_id">User Accounts</h3>
-    </div>
     <form action="{{ route('user.userSearch') }}" method="get">
         <div class="float-right">
-          <input type="search" class="form-control rounded" placeholder="Search by Username" aria-label="Search" name="userSearch" id="userSearch" style="width: 200px;" />
+          <input type="search" class="form-control rounded" name="userSearch" id="userSearch" placeholder="Search by Username" aria-label="Search" style="width: 200px;" />
           <button type="submit" class="btn btn-info"><i class="fas fa-search"></i></button>
           <a class="btn btn-success" style="margin-left: 10px;" href="/admin/users/registerUser"><i class="fas fa-user"></i> Create User </a>
         </div>
@@ -78,7 +52,7 @@
         </tr>  
 
 <!-- DELETE MODAL -->
-        <div class="modal fade" id="deleteModal{{ $userAccounts->user_id }}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal fade" id="deleteModal{{ $userAccounts->user_id }}" tabindex="-1" role="dialog" aria-hidden="true" >
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -90,7 +64,7 @@
               <form action=" /admin/users/CRUDusers/delete/{{$userAccounts->user_id}} " method="GET">
                 {{ csrf_field() }}
                 <div class="modal-body">
-                  <h3>Confirm deletion of user?</h3>
+                  <h3>Confirm deletion of {{$userAccounts->userType_name}}: <b>{{$userAccounts->user_name}}</b>?</h3>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
@@ -100,6 +74,7 @@
             </div>
           </div>
         </div>
+        
 <!-- VIEW MODAL -->
         <div id="viewModal{{ $userAccounts->user_id }}" class="modal fade" role="dialog" style="display:none">
           <div class="modal-dialog">
@@ -111,12 +86,12 @@
               </div>
               <form action="" method="get">
                 <div class="modal-body" style="font-weight: bold;">
-                  <h3 style="font-weight: bold;">User ID: {{ $userAccounts->user_id }}
-                    <h5>Username: {{ $userAccounts->user_name }}
-                      <br>Password: {{ $userAccounts->user_password }}
-                      <br>Mobile No.: {{ $userAccounts->user_mobile }}
-                      <br>Email: {{ $userAccounts->user_email }}
-                      <br>User Type: {{ $userAccounts->userType_name }}
+                  <h3 style="font-weight: bold;">User Details:
+                    <h5>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Username: {{ $userAccounts->user_name }}
+                      <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Password: {{ $userAccounts->user_password }}
+                      <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Mobile No.: {{ $userAccounts->user_mobile }}
+                      <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Email: {{ $userAccounts->user_email }}
+                      <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;User Type: {{ $userAccounts->userType_name }}
                     </h5>
                   </h3>
                 </div>

@@ -1,10 +1,10 @@
 @extends('layoutsadmin.app')
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
 
-<script src="https://jqueryvalidation.org/files/lib/jquery.js"></script>
+@section('content') 
+@include('sweet::alert')
+
 <script src="https://jqueryvalidation.org/files/lib/jquery-1.11.1.js"></script>
-<script src="https://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
 
 
 <script>
@@ -44,44 +44,16 @@
       font-size: 14px;
     }
   </style>
-  
-@section('content') 
-
-
 <div class="content-wrapper">
+  <br>
 
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6"></div>
-        <!-- /.col -->
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right"></ol>
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-  </div>
-  <!-- /.content-header -->
-
-  <!-- Default box --> 
-  @if(Session::has('clinic_created')) 
-    <div class="alert alert-success" id="messageModal" role="alert">
-        {{ Session::get('clinic_created') }}
-    </div> 
-  @endif 
-
-  <div class="card">
-    <div class="card-header">
-      <a class="btn btn-error btn-sm" href="/admin/clinic/CRUDclinic/home">
+  <div class="card" style="width: auto; margin-left:20px; margin-right:20px; text-align: center; padding: 20px;">
+      <a class="btn btn-error btn-sm" href="/admin/clinic/CRUDclinic/home" style="text-align: left;">
         <i class="fas fa-arrow-left"></i> Return </a>
 
-      <div class="bg bg-light rounded" style="width: 300px">
+      <div style="width: auto; text-align: left;">
         <br>
-        <h3>Register Clinic</h3>
+        <h3 style="font-size: 300% ">Register Clinic</h3>
       </div>
 
       <form action="{{ route('clin.addclinicsubmit') }}" method="POST" id="addClinicForm"> 
@@ -91,54 +63,51 @@
           <tr>
               <td>
                 <label>Clinic Name: </label>
-                <input type="text" class="form-control border border-info bg bg-light rounded" name="clinic_name" id="clinic_name" placeholder="Enter Clinic Name" style="width: 370px">
+                <input type="text" class="form-control" name="clinic_name" id="clinic_name" placeholder="Enter Clinic Name" style="width: 370px">
               </td>
               <td>
                 <label>Owner Name: </label>
-                <input type="text" class="form-control border border-info bg bg-light rounded" name="owner_name" id="owner_name" placeholder="Enter Owner Name" style="width: 370px">
+                <input type="text" class="form-control" name="owner_name" id="owner_name" placeholder="Enter Owner Name" style="width: 370px">
               </td>
               <td>
                 <label>Mobile No: </label>
-                <input type="number" class="form-control border border-info bg bg-light rounded" name="clinic_mobile" id="clinic_mobile" placeholder="Enter Mobile No" style="width: 370px">
-              </td>
-          </tr>
-          <tr>
+                <input type="number" class=style="width: 250px
             <td>
                 <label>Telephone: </label>
-                <input type="number" class="form-control border border-info bg bg-light rounded" name="clinic_tel" id="clinic_tel" placeholder="Enter Telephone" style="width: 370px">
+                <input type="number" class="form-control" name="clinic_tel" id="clinic_tel" placeholder="Enter Telephone" style="width: 370px">
               </div>
             </td>
             <td>
                 <label>Email: </label>
-                <input type="email" class="form-control border border-info bg bg-light rounded" name="clinic_email" id="clinic_email" placeholder="Enter Email" style="width: 370px">
+                <input type="email" class="form-control" name="clinic_email" id="clinic_email" placeholder="Enter Email" style="width: 370px">
             </td>
             <td>
                 <label>House Block/Building/Floor No.: </label>
-                <input type="text" class="form-control border border-info bg bg-light rounded" name="clinic_blk" id="clinic_blk" placeholder="House Block/Building/Floor No." style="width: 370px">
+                <input type="text" class="form-control" name="clinic_blk" id="clinic_blk" placeholder="House Block/Building/Floor No." style="width: 370px">
             </td>
           <tr>
             <td>
                 <label>Street/Highway: </label>
-                <input type="text" class="form-control border border-info bg bg-light rounded" name="clinic_street" id="clinic_street" placeholder="House Block/Building/Floor No." style="width: 370px">
+                <input type="text" class="form-control" name="clinic_street" id="clinic_street" placeholder="House Block/Building/Floor No." style="width: 370px">
             </td>
             <td>
                 <label>Barangay: </label>
-                <input type="text" class="form-control border border-info bg bg-light rounded" name="clinic_barangay" id="clinic_barangay" placeholder="Barangay" style="width: 370px">
+                <input type="text" class="form-control" name="clinic_barangay" id="clinic_barangay" placeholder="Barangay" style="width: 370px">
             </td>
             <td>
                 <label>City: </label>
-                <input type="text" class="form-control border border-info bg bg-light rounded" name="clinic_city" id="clinic_city" placeholder="City" style="width: 370px">
+                <input type="text" class="form-control" name="clinic_city" id="clinic_city" placeholder="City" style="width: 370px">
             </td>
           </tr>
           <tr>
             <td>
               <div class="form-group">
                 <label>Zip Code: </label>
-                <input type="number" class="form-control border border-info bg bg-light rounded" name="clinic_zip" id="clinic_zip" placeholder="Zip Code" style="width: 370px">
+                <input type="number" class="form-control" name="clinic_zip" id="clinic_zip" placeholder="Zip Code" style="width: 370px">
             </td>
             <td>
                 <label>Clinic Active: </label>
-                <select name="clinic_isActive" id="clinic_isActive" style="width: 25%;" class="form-control border border-info bg bg-light rounded" >
+                <select name="clinic_isActive" id="clinic_isActive" style="width: 25%;" class="form-control" >
                   <option value=1 selected=""> Yes </option>
                   <option value=0> No </option>
                 </select>
@@ -148,7 +117,7 @@
         </thead>
       </table>
       <div>
-        <button type="submit" class="btn btn-primary btn-lg" style="width: 250px">Save Changes</button>
+        <button type="submit" class="btn btn-success btn-lg" style="width: 250px"><i class="fas fa-save"></i> Save Changes</button>
       </div>
     </form>
   </div>

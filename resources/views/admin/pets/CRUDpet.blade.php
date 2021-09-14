@@ -8,25 +8,8 @@
   </div>
     
   <br>
-<!-- Default box -->
-@if(Session::has('pets_deleted'))
-<div class="alert alert-danger"role="alert"id="messageModal">
-  {{ Session::get('pets_deleted') }}
-</div>
-@endif
-@if(Session::has('newPet'))
-<div class="alert alert-success" role="alert"id="messageModal">
-  {{ Session::get('newPet')}}
-</div>
-@endif
-@if(Session::has('pet_updated'))
-  <div class="alert alert-success" id="messageModal">
-    {{ Session::get('pet_updated')}}
-  </div>
-@endif
 
-
-<div class="card">
+<div class="card" style="width: auto; margin-left:20px; margin-right:20px; text-align: center; padding: 20px;">
   <div class="card-header">
     <h1 class="card-title" id="pet_name_id">Pet List</h1>
     <form action="{{ route('pet.petSearch') }}" method="GET">
@@ -42,20 +25,13 @@
         <tr>
           <th>Name</th>
           <th>Gender</th>
-          <th>Birthdate</th>
-          <th>Pet Notes</th>
-          <th>Blood Type</th>
-          <th>Date of Registration </th>
+          <th>Birthdate</th>  
           <th>Pet Type</th>
           <th>Pet Breed</th>
-          <th>Customer ID </th>
-          <th></th>
+          <th>Guardian </th>
           <th>Clinic</th>
           <th>Status</th>            
-        <th style="width: 14%">
-                  Action
-                </th>
-          
+          <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -64,34 +40,29 @@
           <td> {{ $pet->pet_name}}</td>
           <td> {{ $pet->pet_gender}}</td>
           <td> {{ $pet->pet_birthday}}</td>
-          <td> {{ $pet->pet_notes}}</td>
-          <td> {{ $pet->pet_bloodType}}</td>
-          <td> {{ $pet->pet_registeredDate}}</td>
           <td> {{ $pet->type_name }} </td>
           <td> {{ $pet->breed_name}}</td>
-          <td> {{ $pet->customer_fname }} {{ $pet->customer_lname }} <td>
-          <td> {{ $pet->clinic_name}}</td>
+          <td> {{ $pet->customer_fname }} {{ $pet->customer_lname }} </td>
+          <td> {{ $pet->clinic_name }}</td>
 
           @if( $pet->pet_isActive == 1 )
-            <td><h4><span class="badge badge-success lg">Yes</span></h4></td>
+            <td><span class="badge badge-success">Active</span></td>
             @else
-            <td><h4><span class="badge badge-danger lg">No</span></h4></td>
+            <td><span class="badge badge-danger">Inactive</span></td>
           @endif
           <td>
-            <button href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal{{ $pet->pet_id }}">
-                          <i class="fas fa-folder">
-                          </i></button>
+            <button href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal{{ $pet->pet_id }}"><i class="fas fa-folder"></i></button>
                           
               <a href="/admin/pets/CRUDeditpet/{{ $pet->pet_id }}" class="btn btn-info btn-sm">
-                <i class="fas fa-pencil-alt"></i>  </a>
+                <i class="fas fa-pencil-alt"></i></a>
 
-              <button class="btn btn-danger btn-sm" href="">
-                <i class="fas fa-trash"></i>  </button>
+              <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal{{$pet->pet_id}}">
+                <i class="fas fa-trash"></i></button>
               </td>
             </tr>
 
-            {{-- View  modal  --}}
-  <div class="modal" id="viewModal{{ $pet->pet_id }}" tabindex="-1" role="dialog">
+<!-- {{-- View  modal  --}} -->
+  <div class="modal fade" id="viewModal{{ $pet->pet_id }}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -100,7 +71,10 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style="font-weight: bold; text-align: left; margin-left: auto; margin-right: auto;">
+          <h5>Pet name: <strong> {{ $pet->pet_name }} </strong></h5>
+          <h5>Pet name: <strong> {{ $pet->pet_notes}} </strong></h5>
+          <h5>Pet name: <strong> {{ $pet->pet_bloodType}} </strong></h5>
           <h5>Pet name: <strong> {{ $pet->pet_name }} </strong></h5>
           <h5>Type: <strong> {{ $pet->type_name }} </strong></h5>
           <h5>Breed: <strong>{{ $pet->breed_name }}</strong> </h5>
@@ -133,7 +107,32 @@
       </div>
     </div>
   </div>
-  {{-- end view modal --}}
+  <!-- {{-- end view modal --}} -->
+
+  <!---------------------------- delete modal -------------------------------->
+<div class="modal fade" id="deleteModal{{$pet->pet_id}}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Pet</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/admin/customer/viewPatient/delete/{{$pet->pet_id}}" method="GET">
+                @csrf
+                <div class="modal-body">
+                    <h3>Confirm deletion of Pet, {{ $pet->pet_name }}?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger waves-effect remove-data-from-delete-form">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+<!---------------------------- end delete modal -------------------------------->
             @endforeach 
         </tbody>
       </table>

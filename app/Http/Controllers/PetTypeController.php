@@ -1,8 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\user_account;
 use Illuminate\Http\Request;
+use App\Models\User_accounts;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\Hash;
+use Doctrine\DBAL\Schema\Index;
+use Doctrine\DBAL\Types\StringType;
+use UxWeb\SweetAlert\SweetAlert;
+
+
+
 class PetTypeController extends Controller
 {
 
@@ -13,17 +25,15 @@ function addType(Request $request){
     $checkQuery = DB::table('pet_types')->where('type_name','=', $type_name)->first();
 
     if ($checkQuery) {
-        return redirect('/admin/pets/CRUDaddtype')->with('existing','Pet type is Already Exist');
+        alert()->warning('Welcome, Admin!', 'Account Created');
+        return back();
     }else{
+        $request->validate([ 'type_name'=>'required' ]);
+        DB::table('pet_types')->insert([ 'type_name'=>$request->type_name ]);
 
-        $request->validate([
-            'type_name'=>'required',
-        ]);
-        DB::table('pet_types')->insert([
-            'type_name'=>$request->type_name
-        ]);
-        return redirect('/admin/pets/CRUDpettype/home')->with('newPettype','Pet type added succesfully');
-}
+        alert()->success('Pet type added succesfully', 'Type Added!');
+        return redirect('/admin/pets/CRUDpettype/home');
+    }
 
 
 }
@@ -50,16 +60,20 @@ function addType(Request $request){
         ->update([
             'type_name'=>$request->type_name
         ]);
-        return redirect('/admin/pets/CRUDpettype')->with('Success','Successfully Updated!');
+        alert()->warning('Type Name Successfully Updated', 'Updated!');
+        return redirect('/admin/pets/CRUDpettype/home');
     }
+    
     function deleteType($type_id){
         $queryCheck = DB::table('pets')->where('pet_type_id',$type_id)->first();
 
         if ($queryCheck) {
-            return back()->with('cantDelete', 'Pet Type is in use. Cannot Delete');
+            alert()->error('Pet Type is in use.', 'Cannot Delete.');
+            return back();
         }else{
             DB::table('pet_types')->where('type_id', $type_id)->delete();
-            return redirect('/admin/pets/CRUDpettype/home')->with('typeDeleted','Pet Type Successfully Deleted');
+            alert()->warning('Pet Type Successfully Deleted', 'Type Deletion');
+            return back();
         }
     }
 

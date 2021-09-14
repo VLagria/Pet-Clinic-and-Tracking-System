@@ -5,31 +5,13 @@
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <br>
-  <!-- /.content-header -->
-  <!-- Default box --> 
-  @if(Session::has('cust_deleted')) 
-  <div class="alert alert-danger" role="alert" id="messageModal">
-    {{ Session::get('cust_deleted') }}
-  </div>
-   @endif 
-   @if(Session::has('newCustomer')) 
-   <div class="alert alert-success" role="alert" id="messageModal">
-    {{ Session::get('newCustomer') }}
-  </div>
-  @endif 
-
-  @if(Session::has('deleteFail')) 
-   <div class="alert alert-danger" role="alert" id="messageModal">
-    {{ Session::get('deleteFail') }}
-  </div>
-  @endif
 
     
 
-  <div class="card" style="width: 1100px; margin: auto;"> 
+  <div class="card" style="width: auto; margin-left:20px; margin-right:20px; text-align: center; padding: 20px;"> 
     @csrf 
     <div class="card-header">
-    <h3 class="card-title" id="">Customer</h3>
+    <h3 class="card-title" id="pet_name_id">Customer</h3>
     <form action="{{ route('adminvet.custsearch') }}" method="get">
       <div class="float-right">  
         <input type="search" class="form-control rounded" placeholder="Search by Name" name="custsearch" id="custsearch" style="width: 200px;"/>

@@ -1,68 +1,30 @@
 @extends('layoutsadmin.app')
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
-
 @section('content') 
-@csrf 
+
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6"></div>
-        <!-- /.col -->
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right"></ol>
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-  </div>
-  <!-- /.content-header -->
-  <!-- Default box --> 
-  @if(Session::has('vet_deleted')) 
-    <div class="alert alert-danger" role="alert" id="messageModal">
-        {{ Session::get('vet_deleted') }}
-    </div> 
-  @endif 
-
-  @if(Session::has('newCustomer')) 
-    <div class="alert alert-success" role="alert" id="messageModal">
-        {{ Session::get('newCustomer') }}
-    </div> 
-  @endif 
-  
-     @if(Session::has('newVeterinary')) 
-      <div class="alert alert-success" role="alert" id="messageModal">
-        {{ Session::get('newVeterinary') }}
-      </div>
-     @endif 
+<br>
 
 
-  <div class="card"> 
+  <div class="card" style="width: auto; margin-left:20px; margin-right:20px; padding: 20px;"> 
     @csrf 
     <div class="card-header">
-      <a class="btn btn-error btn-sm" href="/admin/clinic/CRUDclinic/home">
+    <a class="btn btn-error btn-sm" style="margin-right:2500" href="/admin/clinic/CRUDclinic/home" style="text-align: left;">
         <i class="fas fa-arrow-left"></i> Return </a>
-      <h3 class="header">Veterinary Details</h3>
+        <h3 class="header" style="font-size: 300%">Veterinary Details</h3>
       <br>
-      <!-- Main content -->
-
-      <table class="table  table-striped table-hover" id="vetDetails">
+      </div>
+      <table class="table table-striped table-hover" id="vetDetails" style="margin: auto;">
         <thead>
-
           <tr>
-            <th scope="col" style="width:16%">Name:</th>
-            <th scope="col" style="width:7%">Mobile:</th>
-            <th scope="col" style="width:7%">Telephone:</th>
-            <th scope="col" style="width:10%">Birthday:</th>
-            <!-- <th scope="col"style="width:10%">Customer Profile:</th> -->
-            <th scope="col" style="width:20%">Address:</th>
-            <th scope="col" style="width:10%">Date Added:</th>
-            <th scope="col" style="width:10%">Status:</th>
-            <th scope="col" style="width:50%">Action:</th>
+            <th>Name:</th>
+            <th>Mobile:</th>
+            <th>Telephone:</th>
+            <th>Birthday:</th>
+            <th>Address:</th>
+            <th>Date Added:</th>
+            <th>Status:</th>
+            <th>Action:</th>
           </tr>
         </thead>
         <tbody> 
@@ -74,15 +36,10 @@
               <td>{{ $vdetails->vet_birthday}}</td>
               <td>{{ $vdetails->vet_blk }} / {{ $vdetails->vet_street}} / {{ $vdetails->vet_subdivision}} / {{ $vdetails->vet_barangay}} / {{ $vdetails->vet_city}} / {{ $vdetails->vet_zip}}</td>
               <td>{{ $vdetails->vet_dateAdded }}</td>
-
               @if ($vdetails->vet_isActive == 1) 
-              <td>
-                <span class="badge badge-success"> Yes </span>
-              </td> 
+              <td><span class="badge badge-success"> Active </span></td> 
               @else 
-              <td>
-                <h6><span class="badge badge-danger">No</span>
-              </td> 
+              <td><h6><span class="badge badge-danger">Inactive</span></td> 
               @endif
 
               <td>
@@ -114,7 +71,7 @@
             <form action="/admin/vet/viewVetDetails/delete/{{ $vdetails->user_id }}" method="GET">
                 @csrf
                 <div class="modal-body">
-                    <h3>Confirm deletion of Veterinarian?</h3>
+                    <h3>Confirm deletion of Veterinarian: <br> <strong>{{ $vdetails->vet_fname }} {{ $vdetails->vet_mname }} {{ $vdetails->vet_lname }}</strong>?</h3><br>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
@@ -133,10 +90,10 @@
             <div class="modal-content">
               <div class="modal-header" style="display: inline-block;">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" style="font-weight: bold;">View Veterinary Details</h4>
+                <h4 class="modal-title" style="font-weight: bold;">Veterinary Details</h4>
               </div>
-                <div class="modal-body" style="font-weight: bold;">
-                  <h3 style="font-weight: bold;">User ID: {{ $vdetails->user_id }}
+                <div class="modal-body" style="font-weight: bold; text-align: left; margin-right: 20px; margin-left: 20px;">
+                  <h3 style="font-weight: bold;">
                     <h5>Username:  {{ $vdetails->user_name }}
                       <br>Password:  {{ $vdetails->user_password }}
                       <br>Mobile No.:  {{ $vdetails->user_mobile }}

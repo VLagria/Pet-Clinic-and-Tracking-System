@@ -5,31 +5,24 @@
 @section('content')
 <div class="content-wrapper">
   <br>
-   <!-- Default box -->
-   @if(Session::has('existing')) 
-      <div class="alert alert-error" role="alert" id="messageModal">
-       {{ Session::get('existing') }}
-     </div>
-     @endif 
-<div class="card" style="width: 500px; margin: auto;  padding-bottom: 20px">
-    <div class="card-header">
-        <a class="btn btn-error btn-sm" href="/admin/pets/CRUDpetbreed">
+  
+<div class="card" style="width: auto; margin-left:20px; margin-right:20px; text-align: center; padding: 20px">
+<a class="btn btn-error btn-sm" href="/admin/pets/CRUDpetbreed" style="text-align: left;">
             <i class="fas fa-arrow-left">
-            </i>
+            </i> 
+            Return
         </a>
-      <h3 class="header" style="text-align: center;">Add Pet Breed</h3>
-      <br>
+      <h3 class="header" style="font-size: 300%">Add Pet Breed</h3>
 
-    <!-- Main content -->
     <form action="{{ route('pets.addbreed') }}" method="post">
     @csrf
     <table class="table table-striped table-hover">
       <thead>
         <tr>
           <td>
-            <div class="form-group" style="margin-left: 70px;">
-              <label for="exampleInputEmail1" >Enter Breed Name:</label>
-              <input type="text" style="width: 300px" class="form-control" id="petbreed" name="breed_name" value="{{ old('petbreed')}}" placeholder="Pet Breed">
+            <div class="form-group" style="margin: auto; text-align: center;">
+              <label style=" margin-right: 150px;"> Enter Breed Name:</label>
+              <input type="text" style="width: 300px; margin: auto;" class="form-control" id="petbreed" name="breed_name" value="{{ old('petbreed')}}" placeholder="Enter Breed Name">
               <span class="text-danger error-text pet_breed_error">@error('petbreed'){{ $message }}@enderror</span>
             </div>
           </td>  
@@ -37,7 +30,7 @@
       </thead>
     </table>
 
-    <button type="submit" class="btn btn-success" style="height: 40px; margin-left: 185px;"><i class="fas fa-dna"></i> Create </a></button>
+    <button type="submit" class="btn btn-success" title="Save Breed Name"><i class="fas fa-dna"></i> Create </a></button>
 <!-- <div style="text-align: right; height: 100;"> -->
     
 </div>

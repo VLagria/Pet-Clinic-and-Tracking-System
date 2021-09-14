@@ -1,71 +1,52 @@
 @extends('layoutsadmin.app')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> @section('content') <div class="content-wrapper">
+@section('content') 
+@include('sweet::alert')
 
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6"></div>
-        <!-- /.col -->
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right"></ol>
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-  </div>
-  <!-- /.content-header -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
 
+<div class="content-wrapper">
+<br>
   <!-- Default box --> 
-    
-    @if(Session::has('fail')) 
-    <div class="alert alert-warning" id="messageModal" role="alert">
-      {{ Session::get('fail') }}
-    </div> 
-    @endif
-
-    <div class="card-header">
-      <a class="btn btn-error btn-sm" href="/admin/vet/viewVetDetails/{{ $vets->clinic_id }}">
+  <div class="card" style="width: auto; margin-left:20px; margin-right:20px; padding: 20px;">
+      <a class="btn btn-error btn-sm" href="/admin/vet/viewVetDetails/{{ $vets->clinic_id }}" style="text-align: left; padding-top: 10px; margin-left:10px">
         <i class="fas fa-arrow-left"></i> Return </a>
-      <div class="bg bg-light rounded" style="width: 300px">
         <br>
-        <h3 class="header">Edit Veterinarian</h3>
-      </div>
+        <h3 class="header" id="pet_name_id" style="font-size: 300%;">Edit Veterinarian</h3>
       <br>
-      <form action="/admin/vet/adminEditPatient/saveUpdate/{{$vets->vet_id}}" method="POST" id="editFormID"> 
+      <form action="/admin/vet/editVet/saveUpdate/{{$vets->vet_id}}" method="POST" id="editFormID"> 
         @csrf 
         <table class="table table-striped table-hover">
+
+    <div class="card-body table-responsive p-0">    
   <thead>
     <tr>
         <td >
-            <div class="form-group">
+            <div class="form-group" style="width: auto;">
                 <label for="exampleInputEmail1">First Name:</label>
-                <input type="text" style="width: 300px" class="form-control" id="vet_fname" name="vet_fname"  placeholder="Enter First Name" value="{{$vets->vet_fname}}">
+                <input type="text" class="form-control" id="vet_fname" name="vet_fname"  placeholder="Enter First Name" value="{{$vets->vet_fname}}">
                 <span class="text-danger error-text customer_fname_error">@error('vet_fname'){{ $message }}@enderror</span>
             </div>
         </td>
 
             <td >
-                <div class="form-group">
+                <div class="form-group" style="width: auto;">
                     <label for="exampleInputEmail1">Last Name:</label>
-                    <input type="text" style="width: 300px" class="form-control" id="vet_lname" name="vet_lname"  placeholder="Enter Last Name" value="{{$vets->vet_lname}}">
+                    <input type="text" class="form-control" id="vet_lname" name="vet_lname"  placeholder="Enter Last Name" value="{{$vets->vet_lname}}">
                     <span class="text-danger error-text customer_lname_error">@error('vet_lname'){{ $message }}@enderror</span>
                 </div>
             </td>
 
             <td>
-                <div class="form-group">
+                <div class="form-group" style="width: auto;">
                     <label for="exampleInputEmail1">Middle Name:</label>
-                    <input type="text" style="width: 300px" class="form-control" id="vet_mname" name="vet_mname" aria-describedby="emailHelp" placeholder="Enter Middle Name" value="{{$vets->vet_mname}}">
+                    <input type="text" class="form-control" id="vet_mname" name="vet_mname" aria-describedby="emailHelp" placeholder="Enter Middle Name" value="{{$vets->vet_mname}}">
                     <span class="text-danger error-text customer_mname_error">@error('vet_mname'){{ $message }}@enderror</span>
                 </div>
             </td>
             <td>
-                <div class="form-group">
+                <div class="form-group" style="width: 300px; margin: auto;">
                     <label for="exampleInputEmail1">Mobile:</label>
-                    <input type="number" class="form-control" style="width: 300px" id="vet_mobile" name="vet_mobile" aria-describedby="emailHelp" placeholder="Enter Mobile No" value="{{$vets->vet_mobile}}">
+                    <input type="number" class="form-control" style="text-align: center" id="vet_mobile" name="vet_mobile" aria-describedby="emailHelp" placeholder="Enter Mobile No" value="{{$vets->vet_mobile}}">
                     <span class="text-danger error-text customer_mobile_error">@error('vet_mobile'){{ $message }}@enderror</span>
                 </div>
             </td>
@@ -73,14 +54,14 @@
     </tr>
     <tr>
         <td>
-            <div class="form-group">
+            <div class="form-group" style="width: auto;">
                 <label for="exampleInputEmail1">Telephone:</label>
-                <input type="number" class="form-control" style="width: 300px" id="vet_tel" name="vet_tel" placeholder="Enter Telephone" value="{{$vets->vet_tel}}">
+                <input type="number" class="form-control" style="text-align: center" id="vet_tel" name="vet_tel" placeholder="Enter Telephone" value="{{$vets->vet_tel}}">
                 <span class="text-danger error-text customer_tel_error">@error('vet_tel'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto;">
                 <label for="date" required class="form-label">Birthdate:</label>
                 <br>
                 <div class="">
@@ -90,15 +71,15 @@
               </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
-                <label>House Block/Building/Floor No.:</label>
+            <div class="form-group" style="width: auto;">
+                <label>House No.:</label>
                 <input type="text" class="form-control" name="vet_blk" id="vet_blk"  placeholder="Enter Address" value="{{$vets->vet_blk}}">
                 <span class="text-danger error-text customer_blk_error">@error('vet_blk'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
-                <label for="exampleInputEmail1">Street/Highway:</label>
+            <div class="form-group" style="width: auto;">
+                <label for="exampleInputEmail1"> Street/Highway: </label>
                 <input type="text" class="form-control" name="vet_street" id="vet_street" placeholder="Enter Address" value="{{$vets->vet_street}}">
                 <span class="text-danger error-text customer_street_error">@error('vet_street'){{ $message }}@enderror</span>
             </div>
@@ -106,28 +87,28 @@
     </tr>
     <tr>
         <td>
-            <div class="form-group" style="width: 300px">
-                <label for="exampleInputEmail1">Subdivision:</label>
+            <div class="form-group" style="width: auto;">
+                <label for="exampleInputEmail1"> Subdivision: </label>
                 <input type="text" class="form-control" name="vet_subdivision" id="vet_subdivision"  placeholder="Enter Address" value="{{$vets->vet_subdivision}}">
                 <span class="text-danger error-text customer_subdivision_error">@error('vet_subdivision'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto;">
                 <label for="exampleInputEmail1">Barangay:</label>
                 <input type="text" class="form-control" name="vet_barangay" id="vet_barangay" placeholder="Enter Address" value="{{$vets->vet_barangay}}">
                 <span class="text-danger error-text customer_barangay_error">@error('vet_barangay'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto;">
                 <label for="exampleInputEmail1">City:</label>
                 <input type="text" class="form-control" name="vet_city" id="vet_city"  placeholder="Enter Address" value="{{$vets->vet_city}}">
                 <span class="text-danger error-text customer_city_error">@error('vet_city'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto;">
                 <label for="exampleInputEmail1">Zip Code: </label>
                 <input type="text" class="form-control" name="vet_zip" id="vet_zip" placeholder="Enter Addres" value="{{$vets->vet_zip}}">
                 <span class="text-danger error-text customer_zip_error">@error('vet_zip'){{ $message }}@enderror</span>
@@ -137,7 +118,7 @@
 
     <tr>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto;">
                 <label for="date" required class="form-label">Date Added:</label>
                 <br>
                 <div class="">
@@ -147,7 +128,7 @@
               </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto;">
                 <label for="inputStatus">Clinic:</label>
                 
                 <select id="clinic_id" class="form-control custom-select" name="clinic_id" value="{{$vets->clinic_id}}">
@@ -164,7 +145,7 @@
               <span class="text-danger error-text user_id_error">@error('clinic_id'){{ $message }}@enderror</span>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto;">
                 <label for="inputStatus">Active</label>
                 <select id="vet_isActive" class="form-control custom-select" name="vet_isActive" >
                  @if( $vets->vet_isActive  == 1)
@@ -179,7 +160,7 @@
               </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto;">
                 <label for="inputdp">Vet Profile:</label>
                 <br>
                 <form action="/action_page.php">
@@ -187,14 +168,15 @@
               </div>
         </td>
     </tr>
-</div>
   </thead>
+</div>
 </table>
+
+<div style="padding-bottom: 20px; text-align:center;">
+    <button type="submit" class="btn btn-success btn-lg" ><i class="fas fa-user"></i> Update Veterinary</button>
 </div>
-  <div style="text-align: right; height: 100; padding-top: 20px">
-    <button type="submit" class="btn btn-success btn-sm" style=" height: 40%;"><i class="fas fa-user"></i> Update Veterinary</button></div>
+</div>
   </form>
-</div>
 </div>
 
 <!-- REQUIRED SCRIPTS -->
@@ -225,5 +207,4 @@ $('.feet').on('click', function(e){
     $(#formSubmit).on('submit', function())
 });
 </script>
-
 @endsection

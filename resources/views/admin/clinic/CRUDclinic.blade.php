@@ -1,6 +1,7 @@
 @extends('layoutsadmin.app')
 
 @section('content')
+@include('sweet::alert')
   <!-- Content Wrapper. Contains page content -->
   <link rel="stylesheet" href="/styles.css">
   <div class="content-wrapper">
@@ -8,35 +9,9 @@
 
   <br>
 
-<!-- Default box -->
-
-  @if(Session::has('clinic_updated')) 
-    <div class="alert alert-success" id="messageModal" data-toggle="modal" role="alert">
-      {{ Session::get('clinic_updated') }}
-    </div> 
-  @endif
-
-  @if(Session::has('newVeterinary')) 
-    <div class="alert alert-success" id="messageModal" data-toggle="modal" role="alert">
-      {{ Session::get('newVeterinary') }}
-    </div> 
-  @endif
-
-  @if(Session::has('clinic_deleted')) 
-    <div class="alert alert-danger" id="messageModal" data-toggle="modal" role="alert">
-      {{ Session::get('clinic_deleted') }}
-    </div> 
-  @endif
-
-  @if(Session::has('clinicDeleteFail')) 
-    <div class="alert alert-danger" id="messageModal" role="alert">
-      {{ Session::get('clinicDeleteFail') }}
-    </div> 
-  @endif
-
       
         
-    <div class="card" style="width: 1200px; margin: auto;">
+    <div class="card" style="width: auto; margin-left:20px; margin-right:20px; text-align: center; padding: 20px;">
     <div class="card-header">
       <h3 class="card-title" id="pet_name_id">Clinic</h3>
       <form action="{{ route('clinic.clinicsearch') }}" method="GET">
@@ -51,25 +26,16 @@
     
     <div class="card-body table-responsive p-0" id="CRUDclinic">
       <table class="table table-striped table-valign-middle" id="CRUDclinic">
-     
-
-        
-
         <thead id="CRUDclinic">
         <tr>
-  
-          <th style="width: 14%">Clinic Name</th>
-          <th style="width: 15%">Owner Name</th>
-          <th style="width: 7%">Mobile No</th>
-          <th style="width: 7%">Telephone</th>
+          <th>Clinic Name</th>
+          <th>Owner Name</th>
+          <th>Mobile No</th>
+          <th>Telephone</th>
           <th>Email</th>       
-          <th style="width: 25%">Address</th>
+          <th>Address</th>
           <th>Status</th>
-            
-        <th style="width: 50%;" class="text-center">
-                  Action
-                </th>
-          
+          <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -88,7 +54,7 @@
             <td><h6><span class="badge badge-warning lg">Inactive</span></td>
             @endif
           
-            <td class="project-actions" style="margin-left: 30px;">
+            <td class="project-actions" style="width: 20%; margin-right: 30px;">
 
               <h4><a class="btn btn-primary view-btn btn-sm" style="margin-left: 35%;" href="/admin/vet/viewVetDetails/{{ $cAccounts->clinic_id }}">
                 <i class="fas fa-folder"></i>

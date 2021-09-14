@@ -1,11 +1,9 @@
-
 @extends('layoutsadmin.app')
 
+@section('content')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://jqueryvalidation.org/files/lib/jquery.js"></script>
+
 <script src="https://jqueryvalidation.org/files/lib/jquery-1.11.1.js"></script>
-<script src="https://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
 
 
 <script>
@@ -98,34 +96,14 @@
         font-size: 14px;
     }
 </style>
-@section('content')
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-        
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
+<br>
    
 <!-- Default box -->
-<div class="card">
-    <div class="card-header">
-        <a class="btn btn-error btn-sm" href="/admin/pets/CRUDpet">
-            <i class="fas fa-arrow-left">
-            </i>
-            Return
-        </a>
-      <h3 class="header">Edit Pet</h3>
+<div class="card" style="width: auto; margin-left:20px; margin-right:20px; text-align: left; padding: 20px;">
+        <a class="btn btn-error btn-sm" href="/admin/pets/CRUDpet" style="text-align: left;">
+            <i class="fas fa-arrow-left"></i> Return </a>
+      <h3 class="header" id="pet_name_id" style="font-size: 300%">Edit Pet</h3>
       <br>
 
 
@@ -136,7 +114,7 @@
   <thead>
     <tr>
         <td >
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto;">
                 <label for="pet_name">Pet Name</label>
                 <input type="name" class="form-control" value="{{ $editPet->pet_name }}" name="pet_name" placeholder="Enter Pet Name" id="pet_name">
                 <span class="text-danger error-text customer_fname_error">@error('pet_name'){{ $message }}@enderror</span>
@@ -144,7 +122,7 @@
         </td>
 
             <td >
-                <div class="form-group" style="width: 300px">
+                <div class="form-group" style="width: auto;">
                     <label for="pet_gender">Gender</label>
                       <select id="pet_gender" class="form-control custom-select" name="pet_gender">
                        @if ($editPet->pet_gender == "Male")
@@ -164,8 +142,8 @@
             </td>
 
             <td>
-                <div class="form-group" style="width: 300px">
-                    <label for="pet_type_id">Type</label>
+            <div class="form-group" style="width: auto">
+            <label for="pet_breed_id">Pet Type:</label>
                     <select id="pet_type_id" class="form-control custom-select" name="pet_type_id">
                        @foreach ($getTypePet as $type) 
                        @if ($type->type_id == $editPet->pet_type_id )
@@ -180,7 +158,7 @@
                   </div>
             </td>
             <td>
-                <div class="form-group" style="width: 300px">
+                <div class="form-group" style="width: auto;">
                     <label for="pet_breed_id">Breed</label>
                     <select id="pet_breed_id" class="form-control custom-select" name="pet_breed_id">
                      @foreach ($getBreedPet as $breed) 
@@ -201,14 +179,14 @@
     </tr>
     <tr>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto;">
                 <label for="pet_bloodType" class="form-label"> BloodType</label>
                 <input type="text" class="form-control" value="{{ $editPet->pet_bloodType }}" name="pet_bloodType" placeholder="Optional" id="pet_bloodType">
                 <span class="text-danger error-text customer_blk_error">@error('pet_bloodType'){{ $message }}@enderror</span>
                 </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto;">
                 <label for="pet_registeredDate" required class="form-label"> Registered Date</label>
                 <br>
                   <input type="date" class="form-control" value="{{ $editPet->pet_registeredDate }}" id="date" name="pet_registeredDate" id="pet_registeredDate">
@@ -216,7 +194,7 @@
               </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto;">
                 <label for="pet_birthday" required class="form-label"> Birthday</label>
                 <br>
                 
@@ -226,7 +204,7 @@
               </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto;">
                 <label for="customer_id">Owner</label>
                 @foreach ($getOwnerPet as $petowner)
                 @if ($petowner->customer_id == $editPet->customer_id)
@@ -247,7 +225,7 @@
     <tr>
         
         <td>
-            <div class="form-group" style="width: 300px;" >
+            <div class="form-group" style="width: auto;"" >
                 <label for="pet_notes" class="form-label"> Notes</label>
                 <textarea placeholder="Enter Description and Health Conditions" class="form-control" name="pet_notes" id="pet_notes">{{ $editPet->pet_notes }}</textarea>
                 <span class="text-danger error-text customer_street_error">@error('pet_notes'){{ $message }}@enderror</span>
@@ -255,7 +233,7 @@
         </td>
 
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto;">
                 <label for="inputClinic">Clinic</label>
                 <select id="inputClinic" class="form-control custom-select" id="clinic_id" name="clinic_id">
                   @foreach ($getClinicPet as $clinic) 
@@ -271,17 +249,17 @@
         </td>
 
         <td>
-            <div class="form-group" style="width: 300px;">
+            <div class="form-group" style="width: auto;">
                 
                 <label for="pet_isActive">Status</label>
                 <select id="pet_isActive" class="form-control custom-select" id="pet_isActive" name="pet_isActive">
                     
                   @if ($editPet->pet_isActive == "1")
-                  <option value="1" selected>Yes</option>
-                  <option value="0">No</option>
+                  <option value="1" selected>Active</option>
+                  <option value="0">Inactive</option>
                   @else
-                  <option value="0" selected>No</option>
-                  <option value="1">Yes</option>
+                  <option value="0" selected>Inactive</option>
+                  <option value="1">Active</option>
                   @endif
                 </select>
                 <span class="text-danger error-text customer_blk_error">@error('pet_isActive'){{ $message }}@enderror</span>
@@ -294,10 +272,8 @@
   </thead>
 </table>
 
-<div style="text-align: right; height: 100; padding-top: 20px">
-    <button type="submit" class="btn btn-primary btn-sm" style=" height: 50%;"> <i class="fas fa-save"></i> Save Changes </a></button>
-
-   
+<div style="padding-bottom: 20px; text-align: center">
+    <button type="submit" class="btn btn-success btn-lg"> <i class="fas fa-save"></i> Save Changes </a></button>
 </div>
 
 </form>   

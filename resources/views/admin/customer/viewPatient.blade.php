@@ -1,75 +1,37 @@
 @extends('layoutsadmin.app')
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
 
 @section('content')
-<!-- Content Wrapper. Contains page content -->
+@include('sweet::alert')
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-      
-        </div><!-- /.col -->
-        <div class="col-sm-lg">
-          <ol class="breadcrumb float-sm-right">
-          </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </div>
-  <!-- /.content-header -->
-    
-  <!-- Default box -->
-  @if(Session::has('success')) 
-      <div class="alert alert-success" role="alert" id="messageModal">
-      {{ Session::get('success') }}
-      </div>
-       @endif
-       @if(Session::has('warning')) 
-      <div class="alert alert-warning" role="alert" id="messageModal">
-      {{ Session::get('warning') }}
-      </div>
-       @endif
-       @if(Session::has('deletedPet'))
-        <div class="alert alert-danger" id="messageModal">
-          {{ Session:: get('deletedPet')}}
-        </div>
-       @endif
-       
-  <div class="card"> 
-    @csrf
+  <br>
+  <div class="card" style="width: auto; margin-left:20px; margin-right:20px; text-align: left; padding: 20px"> 
+  <a class="btn btn-error btn-sm" href="/admin/customer/CRUDcustomers" style="text-align: left;">
+  <i class="fas fa-arrow-left"></i> Return </a>
     <div class="card-header">
-      <a class="btn btn-error btn-sm" href="/admin/customer/CRUDcustomers">
-        <i class="fas fa-arrow-left"></i> Return </a>
-      <h3 class="header">Pets</h3>
+      <h3 class="header" style="font-size: 300%">Pets</h3>
       <br>
-
+      </div>
       
-
-      <!-- Main content -->
-      <table class="table  table-striped table-hover">
+      <table class="table  table-striped table-hover" style="margin: auto;">
         <thead>
           <tr>
-            <th style="width:5%;" scope="col">ID</th>
-            <th style="width:5%;"scope="col"> Name</th>
-            <th style="width:5%;"scope="col"> Gender</th>
-            <th style="width: 10%;"scope="col">Birthday</th>
-            <th style="width: 10%;"scope="col"> Notes</th>
-            <th style="width: 10%;"scope="col"> Blood Type</th>
-            <th style="width: 10%;"scope="col"> Registered Date</th>
-            <th style="width: 5%;"scope="col"> Type </th>
-            <th style="width: 10%;"scope="col"> Breed </th>
-            <th style="width: 10%;"scope="col">Clinic </th>
-            <th style="width:5%;"scope="col">Status</th>
-            <th style="width:500px;"scope="col">Action</th>
+            <th> Name</th>
+            <th> Gender</th>
+            <th>Birthday</th>
+            <th> Notes</th>
+            <th> Blood Type</th>
+            <th> Registered Date</th>
+            <th> Type </th>
+            <th> Breed </th>
+            <th>Clinic </th>
+            <th>Status</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody> 
           <tr>
             @foreach ($PatientOwner as $owner)
-            <td>{{ $owner->pet_id }}</td>
             <td>{{ $owner->pet_name }}</td>
             <td>{{ $owner->pet_gender }}</td>
             <td>{{ $owner->pet_birthday }}</td>
@@ -80,9 +42,9 @@
             <td>{{ $owner->breed_name }}</td>
             <td>{{ $owner->clinic_name }}</td>
             @if ($owner->pet_isActive == 1)
-              <td><span class="badge badge-success">Yes</span></td>
+              <td><span class="badge badge-success">Active</span></td>
             @else
-              <td><span class="badge badge-danger">No</span></td>
+              <td><span class="badge badge-danger">Inactive</span></td>
             @endif
             <td class="project-actions">
               <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal{{ $owner->pet_id }}">
@@ -113,9 +75,9 @@
           <h5>Address: <strong> {{ $owner->customer_address }} </strong> </h5>
           <h5>Owner: <strong> {{ $owner->customer_name }} </strong></h5>
           @if ($owner->pet_isActive == "1")
-          <h5>Status : <strong> YES </strong></h5>
+          <h5>Status : <strong> ACTIVE </strong></h5>
           @else
-          <h5>Status : <strong> NO </strong></h5>
+          <h5>Status : <strong> INACTIVE </strong></h5>
           @endif
           
 
@@ -151,7 +113,7 @@
             <form action=" /admin/customer/viewPatient/delete/{{ $owner->pet_id }} " method="GET">
               {{ csrf_field() }}
               <div class="modal-body">
-                <h3>Confirm deletion of {{ $owner->pet_name }}?</h3>
+                <h3>Confirm data deletion of pet, <strong>{{ $owner->pet_name }}</strong>?</h3>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>

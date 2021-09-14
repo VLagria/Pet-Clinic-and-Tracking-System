@@ -1,89 +1,51 @@
 @extends('layoutsadmin.app')
 
 @section('content')
+<link rel="stylesheet" href="/styles.css">
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-        
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-
+    <br>
 
 
 
 <!-- Default box -->
-<div class="card">
+<div class="card" style="width: auto; margin-left:20px; margin-right:20px; text-align: center; padding: 20px;">
     <div class="card-header">
-      <h3 class="card-title">Veterinarians</h3>
-    </div>
+      <h3 class="card-title" id="pet_name_id">Veterinarians</h3>
+</div>
     <div class="card-body table-responsive p-0">
       <table class="table table-striped table-valign-middle">
         <thead>
         <tr>
-  
           <th>Name</th>
-          <!-- <th>Mobile No</th> -->
-          <!-- <th>Telephone</th> -->
           <th>Birthdate</th>
-          <!-- <th>Email</th> -->
-          <!-- <th>Address</th> -->
           <th>Status</th>
           <th>Clinic</th>
-            
-        <th > Action </th>
-          
+          <th>  Action</th>
         </tr>
         </thead>
-        @foreach($admin_Veterinary as $vetInfo)
         <tbody>
+        @foreach($admin_Veterinary as $vetInfo)
         <tr>
           <td> {{ $vetInfo->vet_fname }} {{ $vetInfo->vet_mname }} {{ $vetInfo->vet_lname }} </td>
           <td>{{ $vetInfo->vet_birthday}}</td> 
-          <!-- <td>
-            <img src="{{asset('vendors/dist/img/vincent.jpg') }}" class="img-circle img-size-32 mr-2">
-            Vincent
-          </td> -->
 
           @if ($vetInfo->vet_isActive == 1)
-            <td><span class="badge badge-success">Yes</span></td>
+            <td><span class="badge badge-success">Active</span></td>
             @else
-            <td><span class="badge badge-danger">No</span></td>
+            <td><span class="badge badge-danger">Inactive</span></td>
             @endif
 
 
           <td>{{ $vetInfo->clinic_name }}</td>
           
             <td class="project-actions">
-              <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal{{ $vetInfo->vet_id }}" >
-                  <i class="fas fa-folder">
-                  </i>
-                  View
-              </button>
-              <a class="btn btn-info btn-sm" >
-                  <i class="fas fa-pencil-alt">
-                  </i>
-                  Edit
-              </a>
-              <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal{{ $vetInfo->vet_id }}">
-                  <i class="fas fa-trash">
-                  </i>
-                  
-              </a>
-          </td> 
-        
-        </tbody>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#viewModal{{ $vetInfo->vet_id }}" ><i class="fas fa-folder"></i></button>
+              <a class="btn btn-info" href="/admin/vet/editVet/{{ $vetInfo->vet_id }}"><i class="fas fa-pencil-alt"></i></a>
+              <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{ $vetInfo->vet_id }}"><i class="fas fa-trash"></i></button>
+            </td> 
+        </tr>
+
         <!---------------------------- delete modal -------------------------------->
   <div class="modal fade" id="deleteModal{{ $vetInfo->vet_id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -96,8 +58,8 @@
             </div>
             <form action="/admin/vet/viewVetDetails/delete/{{ $vetInfo->user_id }}" method="GET">
                 @csrf
-                <div class="modal-body">
-                    <h3>Confirm deletion of Veterinarian?</h3>
+                <div class="modal-body" style="text-align: center;">
+                    <h4>Confirm deletion of Veterinarian, <strong>{{ $vetInfo->vet_fname }}</strong>?</h4><br>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
@@ -117,8 +79,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title" style="font-weight: bold;">View Veterinary Details</h4>
         </div>
-          <div class="modal-body" style="font-weight: bold;">
-            <h3 style="font-weight: bold;">User ID: {{ $vetInfo->user_id }}
+          <div class="modal-body" style="font-weight: bold; text-align: left; margin-left: auto; margin-right: auto;">
               <h5><strong>Username:  </strong>{{ $vetInfo->user_name }}
                 <br><strong>Password:  </strong>{{ $vetInfo->user_password }}
                 <br><strong>Mobile No.:  </strong>{{ $vetInfo->user_mobile }}
@@ -141,6 +102,7 @@
 
       @endforeach
         
+    </tbody>
       </table>
       
     </div>
@@ -310,7 +272,7 @@
     </div>
   </div>
 
-  {{-- end edit modal  --}}
+  <!-- {{-- end edit modal  --}} -->
       
 
   </section>

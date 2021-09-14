@@ -1,6 +1,7 @@
 @extends('layoutsadmin.app')
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+@section('content') 
 
 <script src="../lib/jquery.js"></script>
 <script src="https://jqueryvalidation.org/files/lib/jquery-1.11.1.js"></script>
@@ -44,51 +45,16 @@
     }
   </style>
 
-@section('content') 
-
-
 <div class="content-wrapper">
-
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6"></div>
-        <!-- /.col -->
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right"></ol>
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-  </div>
-  <!-- /.content-header -->
-
-  <!-- Default box --> 
-  
-
-@if(Session::has('clinic_updated')) 
-    <div class="alert alert-success" id="messageModal" role="alert">
-        {{ Session::get('clinic_updated') }}
-    </div> 
-  @endif 
-
-  @if(Session::has('fail')) 
-    <div class="alert alert-warning" id="messageModal" role="alert">
-      {{ Session::get('fail') }}
-    </div> 
-    @endif
+  <br>
     
-  <div class="card">
-    <div class="card-header">
-      <a class="btn btn-error btn-sm" href="/admin/clinic/CRUDclinic/home">
+  <div class="card" style="width: auto; margin-left:20px; margin-right:20px; text-align: center; padding: 20px;">
+      <a class="btn btn-error btn-sm" href="/admin/clinic/CRUDclinic/home" style="text-align: left;">
         <i class="fas fa-arrow-left"></i> Return </a>
 
-      <div class="bg bg-light rounded" style="width: 300px">
+      <div style="width: 300px">
         <br>
-        <h3>Edit Clinic</h3>
+        <h3 style="font-size: 300% ">Edit Clinic</h3>
       </div>
 
       <form action="/admin/clinic/editClinic/{{$clinics->clinic_id}}" method="POST" id="editClinicForm"> 
@@ -99,19 +65,19 @@
             <div class="form-group">
               <td>
                 <label>Clinic Name: </label>
-                <input type="text" class="form-control border border-info bg bg-light rounded btn-lg" name="clinic_name" id="clinic_name" placeholder="Enter Clinic Name" style="width: 300px; height: 50px;" value="{{$clinics->clinic_name}}">
+                <input type="text" class="form-control" name="clinic_name" id="clinic_name" placeholder="Enter Clinic Name"  value="{{$clinics->clinic_name}}">
               </td>
             </div>
             <div class="form-group">
               <td>
                 <label>Owner Name: </label>
-                <input type="text" class="form-control border border-info bg bg-light rounded btn-lg" name="owner_name" id="owner_name" placeholder="Enter Owner Name" style="width: 300px; height: 50px;" value="{{$clinics->owner_name}}">
+                <input type="text" class="form-control" name="owner_name" id="owner_name" placeholder="Enter Owner Name"  value="{{$clinics->owner_name}}">
               </td>
             </div>
             <div class="form-group">
               <td>
                 <label>Mobile No: </label>
-                <input type="number" class="form-control border border-info bg bg-light rounded btn-lg" name="clinic_mobile" id="clinic_mobile" placeholder="Enter Mobile No" style="width: 300px; height: 50px;" value="{{$clinics->clinic_mobile}}">
+                <input type="number" class="form-control" name="clinic_mobile" id="clinic_mobile" placeholder="Enter Mobile No"  value="{{$clinics->clinic_mobile}}">
               </td>
             </div>
           </tr>
@@ -119,38 +85,38 @@
             <td>
               <div class="form-group">
                 <label>Telephone: </label>
-                <input type="number" class="form-control border border-info bg bg-light rounded btn-lg" name="clinic_tel" id="clinic_tel" placeholder="Enter Telephone" style="width: 300px; height: 50px;" value="{{$clinics->clinic_tel}}">
+                <input type="number" class="form-control" name="clinic_tel" id="clinic_tel" placeholder="Enter Telephone"  value="{{$clinics->clinic_tel}}">
               </div>
             </td>
             <td>
               <div class="form-group">
                 <label>Email: </label>
-                <input type="email" class="form-control border border-info bg bg-light rounded btn-lg" name="clinic_email" id="clinic_email" placeholder="Enter Email" style="width: 300px; height: 50px;" value="{{$clinics->clinic_email}}">
+                <input type="email" class="form-control" name="clinic_email" id="clinic_email" placeholder="Enter Email"  value="{{$clinics->clinic_email}}">
               </div>
             </td>
             <td>
               <div class="form-group">
                 <label>House Block/Building/Floor No.: </label>
-                <input type="text" class="form-control border border-info bg bg-light rounded btn-lg" name="clinic_blk" id="clinic_blk" placeholder="House Block/Building/Floor No." style="width: 300px; height: 50px;" value="{{$clinics->clinic_blk}}">
+                <input type="text" class="form-control" name="clinic_blk" id="clinic_blk" placeholder="House Block/Building/Floor No."  value="{{$clinics->clinic_blk}}">
               </div>
             </td>
           <tr>
             <td>
               <div class="form-group">
                 <label>Street/Highway: </label>
-                <input type="text" class="form-control border border-info bg bg-light rounded btn-lg" name="clinic_street" id="clinic_street" placeholder="House Block/Building/Floor No." style="width: 300px; height: 50px;" value="{{$clinics->clinic_street}}">
+                <input type="text" class="form-control" name="clinic_street" id="clinic_street" placeholder="House Block/Building/Floor No."  value="{{$clinics->clinic_street}}">
               </div>
             </td>
             <td>
               <div class="form-group">
                 <label>Barangay: </label>
-                <input type="text" class="form-control border border-info bg bg-light rounded btn-lg" name="clinic_barangay" id="clinic_barangay" placeholder="Barangay" style="width: 300px; height: 50px;" value="{{$clinics->clinic_barangay}}">
+                <input type="text" class="form-control" name="clinic_barangay" id="clinic_barangay" placeholder="Barangay"  value="{{$clinics->clinic_barangay}}">
               </div>
             </td>
             <td>
               <div class="form-group">
                 <label>City: </label>
-                <input type="text" class="form-control border border-info bg bg-light rounded btn-lg" name="clinic_city" id="clinic_city" placeholder="City" style="width: 300px; height: 50px;" value="{{$clinics->clinic_city}}">
+                <input type="text" class="form-control" name="clinic_city" id="clinic_city" placeholder="City"  value="{{$clinics->clinic_city}}">
               </div>
             </td>
           </tr>
@@ -158,13 +124,13 @@
             <td>
               <div class="form-group">
                 <label>Zip Code: </label>
-                <input type="number" class="form-control border border-info bg bg-light rounded btn-lg" name="clinic_zip" id="clinic_zip" placeholder="Zip Code" style="width: 300px; height: 50px;" value="{{$clinics->clinic_zip}}">
+                <input type="number" class="form-control" name="clinic_zip" id="clinic_zip" placeholder="Zip Code"  value="{{$clinics->clinic_zip}}">
               </div>
             </td>
             <td>
               <div class="form-group">
                 <label>Clinic Active: </label>
-                <select name="clinic_isActive" id="clinic_isActive" class="form-control border border-info bg bg-light rounded btn-lg" style="width: 300px; height: 50px;">
+                <select name="clinic_isActive" id="clinic_isActive" class="form-control" >
                   <option selected disabled>is this Clinic active?</option>
                   @if($clinics->clinic_isActive == 1 )
                   <option value=1 selected> Yes </option>
@@ -183,8 +149,8 @@
           </tr>
         </thead>
       </table>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary btn-lg" style="width: 250px">Save Changes</button>
+      <div>
+        <button type="submit" class="btn btn-success btn-lg" style="text-align: center"><i class="fas fa-save"></i> Save Changes</button>
       </div>
     </form>
   </div>

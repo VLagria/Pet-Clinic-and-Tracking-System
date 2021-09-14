@@ -1,33 +1,18 @@
 @extends('layoutsadmin.app')
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
 @section('content') 
+<link rel="stylesheet" href="/styles.css">
+
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6"></div>
-                <!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right"></ol>
-                </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+  <br>
+
     <!-- Default box -->
-    <div class="card">
+    <div class="card" style="width: 800px; margin: auto; text-align: center;">
       <div class="card-header">
-          <a class="btn btn-error btn-sm" href="/admin/users/CRUDusers">
+          <a class="btn btn-error btn-sm" href="/admin/users/CRUDusers" style="margin-right: 900px;">
               <i class="fas fa-arrow-left"></i> Return </a>
-          <div class="bg bg-light rounded" style="width: 300px">
-              <br>
-              <h3 class="header">Register User</h3>
+          <div> 
+              <h3 class="header" id="pet_name_id" style="font-size: 400%">Register User</h3>
           </div>
           <br>
           <form action="{{ route('post.addadminsubmit') }}" method="POST" id="regForm">
@@ -40,26 +25,26 @@
                       <div class="form-group ">
                         <tr>
                           <label for="user_name">Username: </label>
-                          <input type="text" style="width: 300px" name="user_name" id="user_name" class="form-control border border-info bg bg-light rounded" placeholder="Enter Username" value="{{ old('user_name')}}">
+                          <input type="text" style="width: 300px; text-align: center; margin: auto;" name="user_name" id="user_name" class="form-control border border-info bg bg-light rounded" placeholder="Enter Username" value="{{ old('user_name')}}">
                           <span class="text-danger error-text user_name_error">@error('user_name'){{ $message }}@enderror</span>
                         </tr>
                       </div>
                       <div class="form-group">
                         <tr>
                           <label for="user_password">Password: </label>
-                          <input type="password" style="width: 300px;" name="user_password" id="user_password" class="form-control border border-info bg bg-light rounded" placeholder="Enter Password" value="{{ old('user_password')}}">
+                          <input type="password" style="width: 300px; text-align: center; margin: auto;" name="user_password" id="user_password" class="form-control border border-info bg bg-light rounded" placeholder="Enter Password" value="{{ old('user_password')}}">
                         </tr>
                       </div>
                       <div class="form-group">
                         <tr>
                           <label for="user_mobile">Mobile No: </label>
-                          <input type="text" style="width: 300px" name="user_mobile" id="user_mobile" class="form-control border border-info bg bg-light rounded" placeholder="Enter Mobile No" value="{{ old('user_mobile')}}">
+                          <input type="text" style="width: 300px; text-align: center; margin: auto;" name="user_mobile" id="user_mobile" class="form-control border border-info bg bg-light rounded" placeholder="Enter Mobile No" value="{{ old('user_mobile')}}">
                         </tr>
                       </div>
                       <div class="form-group">
                         <tr>
                           <label for="user_email">Email: </label>
-                          <input type="email" style="width: 300px" name="user_email" id="user_email" class="form-control border border-info bg bg-light rounded" placeholder="Enter Email" value="{{ old('user_email')}}">
+                          <input type="email" style="width: 300px; text-align: center; margin: auto;" name="user_email" id="user_email" class="form-control border border-info bg bg-light rounded" placeholder="Enter Email" value="{{ old('user_email')}}">
                           <span class="text-danger error-text user_name_error">@error('user_email'){{ $message }}@enderror</span>
                         </tr>
                       </div>
@@ -67,21 +52,21 @@
                         <tr>
                           <label for="inputStatus">Usertype:</label>
                           <br>
-                          <select name="userType_id" style="width: 300px" class="form-control custom-select border border-info bg bg-light rounded">
+                          <select name="userType_id" style="width: 300px; text-align: center; margin: auto;" class="form-control custom-select border border-info bg bg-light rounded">
                             <option value="1" selected>ADMIN</option>
                             <option value="2">VETERINARY</option>
                             <option value="3">CUSTOMER</option>
                           </select>
                         </tr>
                       </div>
+                      <br>
                     </div>
                     <br>
                   </td>
                 </tr>
               </thead>
-              <br>
-              <button type="submit" class="btn btn-primary btn-lg" style="margin-bottom: 10px;">Save Changes</button>
             </table>
+            <button type="submit" class="btn btn-primary btn-lg" style="text-align: center; margin-top: -25px">Save Changes</button>
           </form>
         </div>
       </div>

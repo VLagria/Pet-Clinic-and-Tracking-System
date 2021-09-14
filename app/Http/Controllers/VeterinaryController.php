@@ -6,17 +6,15 @@ use App\Models\Veterinary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use UxWeb\SweetAlert\SweetAlert;
 
 class VeterinaryController extends Controller
 {
     function admin_AddVeterinarian(Request $request){
-
-
         
         $fname = $request->vet_fname;
         $lname = $request->vet_lname;
         $mname = $request->vet_mname;
-
 
         $checkQuery = DB::table('veterinary')
         ->where('vet_fname','=', $fname)
@@ -24,7 +22,8 @@ class VeterinaryController extends Controller
         ->Where('vet_mname', '=', $mname)->first();
 
         if ($checkQuery) {
-            return back()->with('existing','The Veterinarian Already Exist');
+            alert()->warning('The Veterinarian Already Exist','Exist');
+            return back();
         }else{
 
             $request->validate([
@@ -37,11 +36,12 @@ class VeterinaryController extends Controller
                 'user_password'=>$request->user_password,
                 'user_mobile'=>$request->user_mobile,
                 'user_email'=>$request->user_email,
-                'userType_id'=>$request->userType_id
+                'userType_id'=>2
             ]);
 
            if($inCheckQuery){
-                $getId = DB::table('user_accounts')->select('user_id')->where('user_name','=', $request->user_name)->first();
+               $getId = DB::table('user_accounts')->select('user_id')->where('user_name','=', $request->user_name)->first();
+
 
                 if(is_object($getId)){
 
@@ -69,11 +69,12 @@ class VeterinaryController extends Controller
 
                 ]);
                     $id = $request->clinic_id;
-                    return redirect()->route('clinicvet', ['clinic_id'=> $id])->with('newVeterinary', 'Veterinary has been succesfully added!');
+                    alert()->success('Veterinary has been succesfully added!','new Veterinary!');
+                    return redirect();
             }
-           }
+        }
     }
-    }
+}
 
     function admin_AddVetID($clinic_id){
         $userVetID = DB::table('user_accounts')->select('user_id')->orderBy('user_id', 'desc')->first();
@@ -106,9 +107,12 @@ class VeterinaryController extends Controller
         if ($getType = 2) {
             if($deleteVet == true){
                     DB::table('user_accounts')->where('user_id', $user_id)->delete();
+                    alert()->success('Veterinary Deleted', 'Thank you for your service!');
+                    return back();
                 }
         }
-        return back()->with('vet_deleted','Veterinarian Deleted Succesfully');
+        alert()->success('Veterinary Deleted', 'Thank you for your service!');
+        return back();
     }
 
     function admin_GetVet($vet_id){
@@ -158,9 +162,10 @@ class VeterinaryController extends Controller
             ->where('vet_isActive', '=', $vet_isActive)->first();
 
             if ($checkClinicQuery) {
-                return back()->with('editVetFail', 'No changes / all are the same');
+                alert()->warning('No changes / all are the same', 'Update Fail');
+                return back();
             }else{
-
+                
             DB::table('veterinary')
             ->where('vet_id', $vet_id)
             ->update(array(
@@ -177,15 +182,14 @@ class VeterinaryController extends Controller
                 'vet_city'=>$request->vet_city,
                 'vet_dateAdded'=>$request->vet_dateAdded,
                 'vet_zip'=>$request->vet_zip,
-                'vet_isActive'=>$request->vet_isActive,
+                'vet_isActive'=>$request->vet_isActive
         ));
-        
+                $clinic_id = $request->clinic_id;
+                alert()->success('Vet has been updated sucessfully','Updated!');
+                // return redirect()->route('clinicvet', ['clinic_id'=> $clinic_id])->with('success', 'Patient has been updated succesfully');
+                return back();
         }
-
             // return redirect('/admin/clinic/CRUDclinic/home')->with('vet_updated','Vet has been successfully Updated');
-
-            $clinic_id = $request->clinic_id;
-            return redirect()->route('clinicvet', ['clinic_id'=> $clinic_id])->with('success', 'Patient has been updated succesfully');
     }
 
 
@@ -315,7 +319,6 @@ class VeterinaryController extends Controller
     }
 
     function admin_savePetVet(Request $request, $pet_id){
-
         $breed = $request->pet_breed_id;
         $gender = $request->pet_gender;
         $birthday = $request->pet_birthday;
@@ -327,7 +330,6 @@ class VeterinaryController extends Controller
         $customer = $request->customer_id;
         $clinic = $request->clinic_id;
         $status = $request->pet_isActive;
-
 
         $NoActionQuery = DB::table('pets')
         ->where('pet_name','=', $request->pet_name)
@@ -342,9 +344,9 @@ class VeterinaryController extends Controller
         ->where('clinic_id','=', $request->clinic_id)
         ->where('pet_isActive','=', $request->pet_isActive)->first();
 
-
         if ($NoActionQuery) {
-            return back()->with('PetEditFail','No editing happened. Change something to edit.');
+            alert()->warning('Pet has been updated sucessfully','Updated!');
+            return back();
         }else{
             DB::table('pets')
         ->where('pet_id', $pet_id)
@@ -363,7 +365,8 @@ class VeterinaryController extends Controller
         ]);
 
             $id = $request->customer_id;
-            return redirect()->route('adminPetView', ['customer_id'=>$request->customer_id])->with('success','Patients has been updated sucessfully');
+            alert()->warning('Pet has been updated sucessfully','Updated!');
+            return redirect()->route('adminPetView', ['customer_id'=>$request->customer_id]);
         }
 
     }
@@ -371,10 +374,10 @@ class VeterinaryController extends Controller
     function admin_DeletePet($pet_id){
         $delPet = DB::table('pets')->where('pet_id',$pet_id)->delete();
         $getPetName = DB::table('pets')->select('pet_name')->where('pet_id',$pet_id)->first();
-        return back()->with('deletedPet','Pet info deleteted Successfully. Goodbye!');
+
+        alert()->success('Pet info deleteted Successfully. Goodbye!', 'Successfully Deleted!');
+        return back();
     }
-
-
 
 }
     

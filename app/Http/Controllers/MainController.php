@@ -239,7 +239,7 @@ class MainController extends Controller
             'userType_id' => $request->userType_id
         ]);
 
-        alert()->success('SUCCESSFULLY CREATED', 'Creation of Account');
+        alert()->success('Welcome, Admin!', 'Account Created');
         return redirect('/admin/users/CRUDusers')->with('user_created', 'User Created successfully!');
     }
 
@@ -254,7 +254,7 @@ class MainController extends Controller
             'clinic_street'=>'required',
             'clinic_barangay'=>'required',
             'clinic_city'=>'required',
-            'clinic_zip'=>'required | numeric',
+            'clinic_zip'=>'required | numeric'
         ]);
         DB::table('clinic')->insert([
             'clinic_name' => ucwords($request->clinic_name),
@@ -269,7 +269,8 @@ class MainController extends Controller
             'clinic_zip' => ucwords($request->clinic_zip),
             'clinic_isActive' => $request->clinic_isActive
         ]);
-        return redirect('/admin/clinic/CRUDclinic/home')->with('clinic_created', 'Clinic successfully registered!');
+        alert()->success('Clinic successfully registered!', 'Clinic Created!');
+        return redirect('/admin/clinic/CRUDclinic/home');
     }
 
     public function admin_EditClinicSubmit(Request $request, $clinic_id){
@@ -299,7 +300,8 @@ class MainController extends Controller
             ->where('clinic_isActive', '=', $clinic_isActive)->first();
 
             if ($checkClinicQuery) {
-                return back()->with('fail', 'No changes / all are the same');
+                alert()->warning('No changes / all are the same', 'Fail');
+                return redirect('/admin/clinic/CRUDclinic/home');
             }else{
                 DB::table('clinic')
             ->where('clinic_id', '=', $clinic_id)
@@ -316,8 +318,10 @@ class MainController extends Controller
             'clinic_zip' => $request->clinic_zip,
             'clinic_isActive' => $request->clinic_isActive
                 ));
+
+        alert()->success('Clinic has been successfully Updated','Clinic Updated!');
+        return redirect('/admin/clinic/CRUDclinic/home');
         }
-        return redirect('/admin/clinic/CRUDclinic/home')->with('clinic_updated','Clinic has been successfully Updated');
     }
 
     public function editUserDetails(Request $request){
@@ -343,9 +347,11 @@ class MainController extends Controller
             'user_mobile' => $request -> user_mobile,
             'user_email' => $request -> user_email
         ));
-}
+    }
         // return redirect('/admin/users/CRUDusers/')->with('user_updated', true);
-        return redirect('/admin/users/CRUDusers')->with('user_updated','Account has been successfully Updated');
+
+        alert()->success('Account Successfully Updated!', 'Updated!');
+        return redirect('/admin/users/CRUDusers');
     }
 
     function admin_GetUsers($user_id){
@@ -398,7 +404,8 @@ class MainController extends Controller
         $deleteVet = DB::table('veterinary')->where('user_id', $user_id)->delete();
 
         if ($custQuery) {
-            return back()->with('deleteFail', 'Customer has pets. Cannot be deleted.');
+            alert()->warning('Customer Has Pets!', 'Cannot Delete');
+            return back();
         }else{
             if ($getType = 3) {
                 DB::table('customers')->where('user_id', $user_id)->delete();
@@ -415,8 +422,8 @@ class MainController extends Controller
                 }
             }
         }
-                
-                return back()->with('user_deleted','user successfully deleted');
+                alert()->error('Delete Account', 'Account Successfully Deleted');
+                return back();
             }
 
     final function admin_DeleteCustomer2($customer_id){ 
@@ -456,11 +463,12 @@ class MainController extends Controller
         $clinicQuery = DB::table('veterinary')->where('clinic_id', $clinicID)->first();
 
         if($clinicQuery || $clinicQuery2){
-            return back()->with('clinicDeleteFail', 'Clinic contains veterinarians/pets. Empty Clinic First! ');
-            
+            alert()->error('Clinic contains veterinarians/pets. Empty Clinic First! ', 'Deletion Failed!');
+            return back();
         }else{
             DB::table('clinic')->where('clinic_id', $clinic_id)->delete();
-            return back()->with('clinic_deleted','clinic successfully deleted');
+            alert()->warning('clinic successfully deleted!','Clinic Deleted!');
+            return back();
         }
     }
 
@@ -519,6 +527,7 @@ class MainController extends Controller
         return view('admin/users/CRUDusers', compact('userTypes_name'));
     }
 
+
     public function clinicSearch(Request $request){
         $search = $request->get('clinicSearch');
         $getClinicInfo = DB::table('clinic')->select('*')->where('clinic_name', 'LIKE', '%'.$search.'%')->paginate('5');
@@ -542,19 +551,27 @@ class MainController extends Controller
 
         $pet_clinics = DB::table('clinic')->get();
 
+        
+
         return view('admin/vet/CRUDvet', compact('admin_Veterinary','users','pet_clinics','pet_breeds', 'pet_types'));
     }
 
     public function petTypeSearch(Request $request){
         $search = $request->get('petTypeSearch');
-        $typePet = DB::table('pet_types')->select('*')->where('type_name', 'LIKE', '%'.$search.'%')->paginate('5');
+        $typePet = DB::table('pet_types')->select('*')->where('type_name', 'LIKE', '%'.$search.'%')->paginate('8');
         return view('admin/pets/CRUDpettype', compact('typePet'));
     }
 
     public function petSearch(Request $request){
         $search = $request->get('petSearch');
-        $Pet = DB::table('pets')->select('*')->where('pet_name', 'LIKE', '%'.$search.'%')->paginate('5');
+        $Pet = DB::table('pets')->select('*')->where('pet_name', 'LIKE', '%'.$search.'%')->paginate('8');
         return view('admin/pets/CRUDpet', compact('Pet'));
+    }
+
+    public function vetSearch(Request $request){
+        $search = $request->get('vetSearch');
+        $admin_Veterinary = DB::table('veterinary')->select('*')->where('vet_name', 'LIKE', '%'.$search.'%')->paginate('8');
+        return view('/admin/vet/CRUDvet/home', compact('admin_Veterinary'));
     }
 
     public function breedSearch(Request $request){
@@ -627,6 +644,8 @@ class MainController extends Controller
         }
 
     }
+
+    
 }
 
 

@@ -1,6 +1,10 @@
 
 @extends('layoutsadmin.app')
 
+@section('content')
+
+@include('sweet::alert')
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <script src="../lib/jquery.js"></script>
@@ -18,7 +22,6 @@
         user_email: { required: true, email: true },
         vet_fname: { required: true, minlength: 2, maxlength: 15},
         vet_lname: { required: true, minlength: 2, maxlength: 15},
-        vet_mname: { required: true, minlength: 2, maxlength: 15},
         vet_mobile: { required: true, minlength: 9, maxlength: 13},
         vet_tel: { required: true, minlength: 9, maxlength: 13},
         vet_birthday: { required: true },
@@ -36,7 +39,6 @@
         user_password: { required: "Please provide a password", minlength: "Your password must be at least 5 characters long", maxlength: "Must not exceed 35 characters"},
         vet_fname: { required: "Please provide a First Name", minlength: "Name must be at least 2 characters long", maxlength: "Must not exceed 15 characters"},
         vet_lname: { required: "Please provide a Last Name", minlength: "Name must be at least 2 characters long", maxlength: "Must not exceed 15 characters"},
-        vet_mname: { required: "Please provide a Middle Name", minlength: "Name must be at least 2 characters long", maxlength: "Must not exceed 15 characters"},
         vet_mobile: { required: "Please provide Mobile #", minlength: "Minimum of 9 characters", maxlength: "Must not exceed 13 characters"},
         vet_tel: { required: "Please provide Tel. #", minlength: "Minimum of 9 characters", maxlength: "Must not exceed 13 characters"},
         vet_birthday: { required: "Please provide Birthday"},
@@ -60,115 +62,83 @@
     }
   </style>
 
-@section('content')
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-        
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+<br>
 
-   
-<!-- Default box -->
-@if(Session::has('existing')) 
-      <div class="alert alert-warning" role="alert" id="messageModal">
-       {{ Session::get('existing') }}
-     </div>
-     @endif 
-<div class="card">
-    <div class="card-header">
-        <a class="btn btn-error btn-sm" href="/admin/clinic/CRUDclinic/home">
+<div class="card" style="width: auto; margin-left:20px; margin-right:20px; text-align: center; padding: 20px;">
+        <a class="btn btn-error btn-sm" href="/admin/clinic/CRUDclinic/home" style="margin-right: 3000px; padding-top: 10px; margin-left:10px">
             <i class="fas fa-arrow-left">
             </i>
             Return
         </a>
-      <h3 class="header">Register Veterinary</h3>
+      <h3 class="header" id="pet_name_id" style="font-size: 300%; text-align: left;">Register Veterinary</h3>
       <br>
-     
-      
-
      
     <!-- Main content -->
     <form action="{{ route('vet.addveterinarian') }}" method="POST" id="regVet">
         @csrf
-    <table class="table table-striped table-hover">
+
+        <table class="table table-striped table-hover">
+    <div class="card-body table-responsive p-0">    
   <thead>
     <tr>
-        <input type="text" disabled style="width: 50px; border-color: white; background-color: white" class="form-control" value="{{ $userVetID->user_id+1 }}">
-        <input type="hidden" disabled style="width: 50px; border-color: white; background-color: white" class="form-control" name="userType_id" value="2">
-        
         <td>
-            <div class="form-group" style="">
+            <div class="form-group" style="width: auto; text-align: left;">
                 <label>Username: </label>
-                <input type="text" style="width: 300px" class="form-control" id="user_name" name="user_name" value="{{ old('user_name')}}" placeholder="Enter username">
+                <input type="text"  class="form-control" id="user_name" name="user_name" value="{{ old('user_name')}}" placeholder="Enter username">
                 <div >
                     <span class="text-danger error-text user_name_error" id="messageModal">@error('user_name'){{ $message }}@enderror</span>
                 </div>
             </div>
         </td>
         <td>
-            <div class="form-group">
+            <div class="form-group" style="width: auto; text-align: left;">
                 <label>Password: </label>
-                <input type="password" style="width: 300px;" class="form-control" id="user_password" name="user_password" value="{{ old('user_password')}}" placeholder="Enter password">
+                <input type="password"  class="form-control" id="user_password" name="user_password" value="{{ old('user_password')}}" placeholder="Enter password">
             </div>
         </td>
         <td>
-            <div class="form-group">
+            <div class="form-group" style="width: auto; text-align: left;">
                 <label>Account Mobile: </label>
-                <input type="text" style="width: 300px" value="{{ old('user_mobile')}}" class="form-control" id="user_mobile" name="user_mobile" aria-describedby="emailHelp" placeholder="Enter mobile">
+                <input type="text"  value="{{ old('user_mobile')}}" class="form-control" id="user_mobile" name="user_mobile" aria-describedby="emailHelp" placeholder="Enter mobile">
             </div>
         </td>
         <td>
-            <div class="form-group">
+            <div class="form-group" style="width: auto; text-align: left;">
                 <label>Email: </label>
-                <input type="email" class="form-control" value="{{ old('user_email')}}" style="width: 300px" id="user_email" name="user_email" placeholder="Enter email">
+                <input type="email" class="form-control" value="{{ old('user_email')}}"  id="user_email" name="user_email" placeholder="Enter email">
                 <span class="text-danger error-text user_email_error" id="messageModal">@error('user_email'){{ $message }}@enderror</span>
             </div>
         </td>
-      
-            <div class="form-group" style="width: 300px">
-                <input type="hidden" name="userType_id" value="2">
-              </div>
-       
     </tr>
     <tr>
         <td >
-            <div class="form-group">
+            <div class="form-group" style="width: auto; text-align: left;">
                 <label>First Name:</label>
-                <input type="text" style="width: 300px" class="form-control" id="vet_fname" name="vet_fname"  placeholder="Enter First Name">
+                <input type="text" class="form-control" id="vet_fname" name="vet_fname"  placeholder="Enter First Name">
                 <span class="text-danger error-text customer_fname_error">@error('vet_fname'){{ $message }}@enderror</span>
             </div>
         </td>
 
             <td >
-                <div class="form-group">
+                <div class="form-group" style="width: auto; text-align: left;">
                     <label>Last Name:</label>
-                    <input type="text" style="width: 300px" class="form-control" id="vet_lname" name="vet_lname"  placeholder="Enter Last Name">
+                    <input type="text" class="form-control" id="vet_lname" name="vet_lname"  placeholder="Enter Last Name">
                     <span class="text-danger error-text customer_lname_error">@error('vet_lname'){{ $message }}@enderror</span>
                 </div>
             </td>
 
             <td>
-                <div class="form-group">
+                <div class="form-group" style="width: auto; text-align: left;">
                     <label>Middle Name:</label>
-                    <input type="text" style="width: 300px" class="form-control" id="vet_mname" name="vet_mname" aria-describedby="emailHelp" placeholder="Enter Middle Name">
+                    <input type="text" class="form-control" id="vet_mname" name="vet_mname" aria-describedby="emailHelp" placeholder="Enter Middle Name">
                     <span class="text-danger error-text customer_mname_error">@error('vet_mname'){{ $message }}@enderror</span>
                 </div>
             </td>
             <td>
-                <div class="form-group">
+                <div class="form-group" style="width: auto; text-align: left;">
                     <label>Mobile:</label>
-                    <input type="text" class="form-control" style="width: 300px" id="vet_mobile" name="vet_mobile" aria-describedby="emailHelp" placeholder="Enter Mobile No">
+                    <input type="text" class="form-control" id="vet_mobile" name="vet_mobile" aria-describedby="emailHelp" placeholder="Enter Mobile No">
                     <span class="text-danger error-text customer_mobile_error">@error('vet_mobile'){{ $message }}@enderror</span>
                 </div>
             </td>
@@ -176,31 +146,31 @@
     </tr>
     <tr>
         <td>
-            <div class="form-group">
+            <div class="form-group" style="width: auto; text-align: left;">
                 <label>Telephone:</label>
-                <input type="number" class="form-control" style="width: 300px" id="vet_tel" name="vet_tel" placeholder="Enter Telephone">
+                <input type="number" class="form-control" id="vet_tel" name="vet_tel" placeholder="Enter Telephone">
                 <span class="text-danger error-text customer_tel_error">@error('vet_tel'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto; text-align: left;">
                 <label for="date" required class="form-label">Birthdate:</label>
                 <br>
-                <div class="">
+                <div class="" style="width: auto; text-align: left;">
                   <input type="date" class="form-control" id="vet_birthday" name="vet_birthday">
                   <span class="text-danger error-text customer_birthday_error">@error('vet_birthday'){{ $message }}@enderror</span>
                 </div>
               </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
-                <label>House Block/Building/Floor No.:</label>
-                <input type="text" class="form-control" name="vet_blk" id="vet_blk"  placeholder="Enter Address">
-                <span class="text-danger error-text customer_blk_error">@error('vet_blk'){{ $message }}@enderror</span>
+            <div class="form-group" style="width: auto; text-align: left;">
+                <label>House No.:</label>
+                <input type="text" class="form-control" name="vet_blk" id="vet_blActive" placeholder="Enter House No.">
+                <span class="text-danger error-text customer_street_error">@error('vet_street'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto; text-align: left;">
                 <label>Street/Highway:</label>
                 <input type="text" class="form-control" name="vet_street" id="vet_street" placeholder="Enter Address">
                 <span class="text-danger error-text customer_street_error">@error('vet_street'){{ $message }}@enderror</span>
@@ -209,28 +179,28 @@
     </tr>
     <tr>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto; text-align: left;">
                 <label>Subdivision:</label>
                 <input type="text" class="form-control" name="vet_subdivision" id="vet_subdivision"  placeholder="Enter Address">
                 <span class="text-danger error-text customer_subdivision_error">@error('vet_subdivision'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto; text-align: left;">
                 <label>Barangay:</label>
                 <input type="text" class="form-control" name="vet_barangay" id="vet_barangay" placeholder="Enter Address">
                 <span class="text-danger error-text customer_barangay_error">@error('vet_barangay'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto; text-align: left;">
                 <label>City:</label>
                 <input type="text" class="form-control" name="vet_city" id="vet_city"  placeholder="Enter Address">
                 <span class="text-danger error-text customer_city_error">@error('vet_city'){{ $message }}@enderror</span>
             </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto; text-align: left;">
                 <label>Zip Code: </label>
                 <input type="text" class="form-control" name="vet_zip" id="vet_zip" placeholder="Enter Addres">
                 <span class="text-danger error-text customer_zip_error">@error('vet_zip'){{ $message }}@enderror</span>
@@ -240,7 +210,7 @@
 
     <tr>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto; text-align: left;">
                 <label for="date" required class="form-label">Date Added:</label>
                 <br>
                 <div class="">
@@ -250,11 +220,7 @@
               </div>
         </td>
         <td>
-
-
-
-
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto; text-align: left;">
                 <label for="inputStatus">Clinic:</label>
                 @foreach($clinicInfo as $idGetter)
                     @if($idGetter->clinic_id == $vetInfo->clinic_id)
@@ -273,18 +239,18 @@
 
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
-                <label for="inputStatus">Active</label>
+            <div class="form-group" style="width: auto; text-align: left;">
+                <label for="inputStatus">Active:</label>
                 <select id="vet_isActive" class="form-control custom-select" name="vet_isActive">
                   <option selected disabled>is this Veterinarian Active?</option>
-                  <option value="1">Yes</option>
+                  <option value="1" default>Yes</option>
                   <option value="0">No</option>
                 </select>
                 <span class="text-danger error-text isActive_error">@error('isActive'){{ $message }}@enderror</span>
               </div>
         </td>
         <td>
-            <div class="form-group" style="width: 300px">
+            <div class="form-group" style="width: auto; text-align: left;">
                 <label for="inputdp">Vet Profile:</label>
                 <br>
                 <form action="/action_page.php">
@@ -295,23 +261,22 @@
   </thead>
 </table>
 
-<div style="text-align: right; height: 100; padding-top: 20px">
-    <button type="submit" class="btn btn-success btn-sm" style=" height: 40%;"><i class="fas fa-user"></i>Register Veterinary</button>
-
-   
+<div style="padding-bottom: 20px">
+    <button type="submit" class="btn btn-success btn-lg"><i class="fas fa-save"></i> Register Veterinary</button>
 </div>
 
+</div>
 </form>   
 
 </div>
-
- <script>
+<script>
   $("document").ready(function() {
     setTimeout(function() {
       $("#messageModal").remove();
     }, 3000);
   });
 </script>
+
 
 <!-- REQUIRED SCRIPTS -->
 

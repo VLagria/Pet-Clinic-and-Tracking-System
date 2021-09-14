@@ -49,3 +49,11 @@
     text-align: center;
     display: inline-block;
   }
+  #vetSearch {
+    border: solid 1px #CCC;
+    vertical-align: bottom;
+    height: auto;
+    text-align: center;
+    display: inline-block;
+  }
+  

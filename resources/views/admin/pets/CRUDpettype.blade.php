@@ -1,42 +1,15 @@
 @extends('layoutsadmin.app')
 
 @section('content') @csrf 
+
+@include('sweet::alert')
+
 <link rel="stylesheet" href="/styles.css">
 <div class="content-wrapper">
 
 <br>
-  
 
-
-<!-- Default box -->
-@if(Session::has('typeDeleted')) 
-  <div class="alert alert-danger" role="alert" id="messageModal">
-  {{ Session::get('typeDeleted') }}
-  </div>
-@endif 
-
-@if(Session::has('newPettype')) 
-  <div class="alert alert-success" role="alert" id="messageModal">
-  {{ Session::get('newPettype') }}
-  </div>
-@endif 
-
-@if(Session::has('cantDelete')) 
-  <div class="alert alert-warning" role="alert" id="messageModal">
-  {{ Session::get('cantDelete') }}
-  </div>
-@endif  
-
-@if(Session::has('Success')) 
-  <div class="alert alert-success" role="alert" id="messageModal">
-  {{ Session::get('Success') }}
-  </div>
-@endif
-
- 
-
-
-<div class="card" style="width: 900px; margin: auto;">
+<div class="card" style="width: auto; margin-left:20px; margin-right:20px; text-align: center; padding: 20px;">
     <div class="card-header">
       <h3 class="card-title" id="pet_name_id">Pet Types</h3>
       <form action="{{ route('pet.petTypesearch') }}" method="GET">
@@ -54,22 +27,49 @@
       <table class="table table-striped table-valign-middle">
         <thead>
         <tr>
-            <th scope="col" style="width:20%" hidden>ID</th>
-            <th scope="col" style="width: 450px;">Pet Type</th>
+            <th scope="col" >Pet Type</th>
             <th scope="col" >Action</th>
         </tr>
         </thead>
-        <tbody> @foreach ($typePet as $pettype) 
-          <tr >
+        <tbody> 
+          @foreach ($typePet as $pettype) 
+          <tr>
             <td>{{ $pettype->type_name }}</td>
             <td>
               <a href="/admin/pets/CRUDedittype/{{$pettype->type_id}}" title="Edit Pet Type" class="btn btn-info">
                 <i class="fas fa-pencil-alt"></i> </a>
-              <a class="btn btn-danger " title="Delete Pet Type" href="/admin/pets/delete/{{ $pettype->type_id }}">
-                <i class="fas fa-trash"></i></a>
+              <button class="btn btn-danger " title="Delete Pet Type" data-toggle="modal" data-target="#deleteModal{{ $pettype->type_id }}">
+                <i class="fas fa-trash"></i></button>
               </td>
             </tr>
-        
+
+
+<!---------------------------- delete modal -------------------------------->
+<div class="modal fade" id="deleteModal{{$pettype->type_id}}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Pet</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/admin/pets/delete/{{ $pettype->type_id }}" method="GET">
+                @csrf
+                <div class="modal-body">
+                    <h3>Confirm deletion of Type, {{$pettype->type_name}}?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger waves-effect remove-data-from-delete-form">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+<!---------------------------- end delete modal -------------------------------->
+
+
             @endforeach
           </tbody>
         </table>

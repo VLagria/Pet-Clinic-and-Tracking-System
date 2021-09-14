@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use App\Models\Breed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use UxWeb\SweetAlert\SweetAlert;
+
+
 class PetBreedController extends Controller
 {
   function addBreed(Request $request) {
@@ -46,10 +49,12 @@ class PetBreedController extends Controller
         $checkQuery = DB::table('pets')->where('pet_breed_id',$breed_id)->first();
 
         if ($checkQuery) {
-            return back()->with('cantDelete', 'Breed Option is in use. Cannot Delete');
+            alert()->error('Breed option is in use!', 'Cannot Delete');
+            return back();
         }else{
             DB::table('pet_breeds')->where('breed_id', $breed_id)->delete();
-            return redirect('/admin/pets/CRUDpetbreed')->with('breed_deleted','Breed Successfully Deleted');
+            alert()->Success('Breed Name Successfully Deleted!', 'Deleted!');
+            return redirect('/admin/pets/CRUDpetbreed');
         }
         
 

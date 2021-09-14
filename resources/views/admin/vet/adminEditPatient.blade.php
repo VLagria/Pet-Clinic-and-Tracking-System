@@ -2,10 +2,7 @@
 @extends('layoutsadmin.app')
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://jqueryvalidation.org/files/lib/jquery.js"></script>
 <script src="https://jqueryvalidation.org/files/lib/jquery-1.11.1.js"></script>
-<script src="https://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
 
 
 <script>
@@ -100,21 +97,7 @@
 </style>
 @section('content')
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-        
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+    <br>
 
    
 <!-- Default box -->
@@ -123,14 +106,13 @@
         {{ Session::get('PetEditFail')}}
     </div>
 @endif
-<div class="card">
-    <div class="card-header">
-        <a class="btn btn-error btn-sm" href="/admin/customer/viewPatient/{{ $getCustID->customer_id }}">
+<div class="card" style="width: auto; margin-left:20px; margin-right:20px; text-align: left; padding: 20px">
+        <a class="btn btn-error btn-sm" href="/admin/customer/viewPatient/{{ $getCustID->customer_id }}" style="text-align: left;">
             <i class="fas fa-arrow-left">
             </i>
             Return
         </a>
-      <h3 class="header">Edit Pet</h3>
+      <h3 class="header" style="font-size: 300%">Edit Pet</h3>
       <br>
 
 
@@ -282,11 +264,11 @@
                 <select id="pet_isActive" class="form-control custom-select" id="pet_isActive" name="pet_isActive">
                     
                   @if ($editPet->pet_isActive == "1")
-                  <option value="1" selected>Yes</option>
-                  <option value="0">No</option>
+                  <option value="1" selected>Active</option>
+                  <option value="0">inactive</option>
                   @else
-                  <option value="0" selected>No</option>
-                  <option value="1">Yes</option>
+                  <option value="0" selected>inactive</option>
+                  <option value="1">Active</option>
                   @endif
                 </select>
                 <span class="text-danger error-text customer_blk_error">@error('pet_isActive'){{ $message }}@enderror</span>
@@ -307,8 +289,8 @@
   </thead>
 </table>
 
-<div style="text-align: right; height: 100; padding-top: 20px">
-    <button type="submit" class="btn btn-primary btn-sm" style=" height: 50%;"> <i class="fas fa-save"></i> Save Changes </a></button>
+<div style="text-align: center;">
+    <button type="submit" class="btn btn-success btn-lg"> <i class="fas fa-save"></i> Save Changes </a></button>
 
    
 </div>

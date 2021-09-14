@@ -1,5 +1,6 @@
 @extends('layoutsadmin.app')
 @section('content')
+@include('sweet::alert')
 
 <link rel="stylesheet" href="/styles.css">
   <!-- Content Wrapper. Contains page content -->
@@ -7,29 +8,8 @@
     <!-- Content Header (Page header) -->
     <!-- /.content-header -->
     <br>
-    
 
-
-
-<!-- Default box -->
-@if(Session::has('breed_deleted'))
-<div class="alert alert-danger"role="alert"id="messageModal">
-  {{ Session::get('breed_deleted') }}
-</div>
-@endif
-@if(Session::has('newPetbreed'))
-<div class="alert alert-success" role="alert"id="messageModal">
-  {{ Session::get('newPetbreed')}}
-</div>
-@endif
-
-@if(Session::has('cantDelete'))
-<div class="alert alert-warning" role="alert"id="messageModal">
-  {{ Session::get('cantDelete')}}
-</div>
-@endif
-
-<div class="card" style="width: 900px; margin: auto;">
+<div class="card" style="width: auto; margin-left:20px; margin-right:20px; text-align: center; padding: 20px;">
     <div class="card-header">
       <h3 class="card-title" id="pet_name_id">Breed List</h3>
       <form action="{{ route('pet.breedSearch') }}" method="get">
@@ -46,8 +26,7 @@
       <table class="table table-striped table-valign-middle">
         <thead>
         <tr>
-        <th scope="col" style="width:20%" hidden>ID</th>
-        <th scope="col" style="width: 450px;">Pet Breed</th>
+        <th scope="col" >Pet Breed</th>
         <th scope="col">Action</th>
         </tr>
         </thead>
@@ -76,7 +55,7 @@
                   <form action="/admin/pets/delete-breed/{{ $petbreed->breed_id }}" method="GET">
                     {{ csrf_field() }}
                     <div class="modal-body">
-                      <h3>Confirm deletion of Breed Name?</h3>
+                      <h3>Confirm deletion of Breed Name, {{ $petbreed->breed_name }}?</h3>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>

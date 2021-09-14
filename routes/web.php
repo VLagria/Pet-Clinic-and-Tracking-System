@@ -81,8 +81,9 @@ Route::get('/veterinary/editaccount/{user_id}',[VeterinariansController::class, 
 Route::post('/admin/vet/registerVet/save', [VeterinaryController::class, 'admin_AddVeterinarian'])->name('vet.addveterinarian');
 Route::POST('/admin/vet/editVet/saveUpdate/{vet_id}',[VeterinaryController::class,'admin_EditVetDetails'])->name('post.editvetdetails')
 ;
+Route::GET('/admin/vet/viewVetDetails/delete/{user_id}', [VeterinaryController::class, 'admin_DeleteVets'])->name('vet.delete');
 
-Route::get('/vetSearch',[VeterinaryController::class, 'vetSearch'])->name('vet.vetSearch'); //VET SEARCH
+Route::get('/vetSearch',[MainController::class, 'vetSearch'])->name('vet.vetSearch'); //VET SEARCH
 
 Route::get('/admin/customer/customerEdit/{customer_id}',[VeterinaryController::class, 'admin_veteditcustomersID']);
 Route::get('/admin/vet/CRUDvet/home', [MainController::class, 'getAllVet'])->name('vet.getallvet');
